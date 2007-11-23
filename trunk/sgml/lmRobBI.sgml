@@ -1,0 +1,96 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lmRobBI</s-topic>
+</s-topics>
+<s-title>
+Bounded Influence Robust Regression 
+</s-title>
+<s-description>
+Performs bounded influence robust regression.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+lmRobBI(formula, data=&lt;&lt;see below&gt;&gt;, weights=&lt;&lt;see below&gt;&gt;,
+  subset=&lt;&lt;see below&gt;&gt;, na.action=na.fail, model=F, x=F, y=F,
+  contrasts=NULL, control=lmRobBI.control(), ...) 
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="formula">
+a <s-expression>formula</s-expression> object,
+with the response on the left of a <s-expression>~</s-expression> operator,
+and the terms, separated by <s-expression>+</s-expression> operators,
+on the right. 
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name="data">
+a <s-expression>data.frame</s-expression> in which to interpret the variables named in the <s-expression>formula</s-expression>,  
+or in the <s-expression>subset</s-expression> and the <s-expression>weights</s-expression> argument. If this is missing, then the  
+variables in the <s-expression>formula</s-expression> should be on the search list. This may also be a  
+single number to handle some special cases - see below for details. 
+</s-arg>
+<s-arg name="weights">
+vector of observation weights; if supplied, the algorithm fits to minimize  
+a function of the sum of the weights multiplied into the squared residuals.  
+The length of <s-expression>weights</s-expression> must be the same as the number of observations. The  
+weights must be nonnegative and it is strongly recommended that they be  
+strictly positive, since zero weights are ambiguous, compared to use of the  
+<s-expression>subset</s-expression> argument. 
+</s-arg>
+<s-arg name="subset">
+expression saying which subset of the rows of the data should be used in  
+the fit. This can be a logical vector (which is replicated to have length  
+equal to the number of observations), or a numeric vector indicating which  
+observation numbers are to be included, or a character vector of the row  
+names to be included. All observations are included by default. 
+</s-arg>
+<s-arg name="na.action">
+a function to filter missing data. This is applied to the <s-expression>model.frame</s-expression>  
+after any <s-expression>subset</s-expression> argument has been used. The default (with <s-expression>na.fail</s-expression>) is  
+to create an error if any missing values are found. A possible alternative  
+is <s-expression>na.exclude</s-expression>, which deletes observations that contain one or more missing  
+values. 
+</s-arg>
+<s-arg name="model">
+logical flag: if <s-expression>TRUE</s-expression>, the model frame is returned in component model. 
+</s-arg>
+<s-arg name="x">
+logical flag: if <s-expression>TRUE</s-expression>, the model matrix is returned in component <s-expression>x</s-expression>. 
+</s-arg>
+<s-arg name="y">
+logical flag: if <s-expression>TRUE</s-expression>, the response is returned in component <s-expression>y</s-expression>. 
+</s-arg>
+<s-arg name="control">
+a list of control parameters to be used in the numerical algorithms. See  
+<s-expression>lmRobBI.control()</s-expression> for the possible control parameters and their  
+default settings. 
+</s-arg>
+</s-args-optional>
+<s-value>
+a list describing the regression.
+See <s-expression>lmRobBI.object</s-expression> for a complete  
+description of the object returned. 
+</s-value>
+<s-section name=" REFERENCES">
+
+Marazzi, A. (1993).  
+<it>Algorithms, Routines, and S Functions for Robust Statistics.</it>
+Wadsworth &#38; Brooks/Cole, Pacific Grove, CA. 
+</s-section>
+<s-see>
+<s-function name="lmRobBI.object.sgm">lmRobBI.object</s-function>,
+<s-function name="lmRobBI.control.sgm">lmRobBI.control</s-function>.
+</s-see>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>regression</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

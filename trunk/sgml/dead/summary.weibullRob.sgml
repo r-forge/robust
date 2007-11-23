@@ -1,0 +1,48 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>summary.weibullRob</s-topic>
+</s-topics>
+<s-title>
+Summary method for class <s-expression>weibullRob</s-expression>
+</s-title>
+<s-description>
+Returns a summary list for a Robust fit for the
+Weibull distribution. 
+</s-description>
+<s-usage>
+<s-old-style-usage>
+summary.weibullRob(x) 
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="x">
+the fitted model. This is assumed to be of class <s-expression>weibullRob</s-expression>. 
+</s-arg>
+</s-args-required>
+<s-value>
+a list with the neccesary elements to use <s-expression>print.summary.weibullRob</s-expression>
+on it. 
+</s-value>
+<s-details>
+This is a method for the function <s-expression>summary</s-expression> for objects of 
+class <s-expression>weibullRob</s-expression>. It can be invoked by calling <s-expression>summary</s-expression> on an
+object of class <s-expression>weibullRob</s-expression> or directly by calling <s-expression>summary.weibullRob</s-expression>
+regardles of the class of the object.
+</s-details>
+<s-examples>
+<s-example type = text>
+summary(weibullRob(y))
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>robust</s-keyword>
+<s-keyword>Weibull</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

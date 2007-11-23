@@ -1,0 +1,54 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> print.lognormRob </s-topic>
+</s-topics>
+<s-title>
+lognormRob print method
+</s-title>
+<s-description>
+The <s-expression>lognormRob</s-expression> method for the
+generic function print.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+print.lognormRob(x, digits=6)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" x ">
+A <s-expression>lognormRob</s-expression> object.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=" digits ">
+The number of significant digits reported.
+</s-arg>
+</s-args-optional>
+<s-side-effects>
+The estimates of <s-expression>Mu</s-expression> and the standard error of
+<s-expression>Mu</s-expression> are displayed in the commands window.
+</s-side-effects>
+<s-see>
+<s-function name = "asymmetricRob.sgm">lognormRob</s-function>
+</s-see>
+<s-examples>
+<s-example>
+print(lognormRob(stack.loss))
+</s-example>
+<s-example>
+lognormRob(stack.loss) #print method called implicitly
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>
+print
+</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

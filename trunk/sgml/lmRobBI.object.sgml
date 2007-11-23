@@ -1,0 +1,83 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lmRobBI.object</s-topic>
+</s-topics>
+<s-title>
+Robust Linear Model Objects -- Bounded Influence Estimator 
+</s-title>
+<s-description>
+These are objects of class <s-expression>lmRobBI</s-expression> which represent the robust fit of  
+a linear regression model, as estimated by <s-expression>lmRobBI()</s-expression> function. 
+</s-description>
+<s-section name=" GENERATION">
+
+This class of objects is returned from the <s-expression>lmRobBI</s-expression> function. 
+</s-section>
+<s-section name=" METHODS">
+
+<s-expression>coefficients</s-expression>, <s-expression>fitted.values</s-expression>, <s-expression>formula</s-expression>, <s-expression>labels</s-expression>, <s-expression>plot</s-expression>,  
+<s-expression>print</s-expression>, <s-expression>residuals</s-expression>, <s-expression>summary</s-expression>. 
+</s-section>
+<s-section name=" STRUCTURE">
+
+The following components must be included in a legitimate <s-expression>"lmRobBI"</s-expression>  
+object: 
+</s-section>
+<s-value>
+<s-return-component name="coefficients">
+vector of coefficients for the robust regression.  
+</s-return-component>
+<s-return-component name="scale">
+the bounded influence estimate of scale parameter. 
+</s-return-component>
+<s-return-component name="residuals">
+the residual vector corresponding to the estimates returned in  
+<s-expression>coefficients</s-expression>. 
+</s-return-component>
+<s-return-component name="fitted.values">
+the fitted values corresponding to the estimates returned in <s-expression>coefficients</s-expression>. 
+</s-return-component>
+<s-return-component name="O.weights">
+the optimal weights used by the bounded influence estimator. 
+</s-return-component>
+<s-return-component name="cov">
+the estimated covariance matrix of the estimates in <s-expression>coefficients</s-expression>. 
+</s-return-component>
+<s-return-component name="iter.weight">
+the number of iterations used in the nonlinear algorithm for computing 
+the optimal weights. 
+</s-return-component>
+<s-return-component name="iter.coef">
+the number of iterations used in the nonlinear algorithm for computing 
+the coefficient estimates. 
+</s-return-component>
+<s-return-component name="rank">
+the rank of the design matrix <s-expression>x</s-expression>. 
+</s-return-component>
+<s-return-component name="call">
+an image of the call that produced the object, but with the arguments all  
+named and with the actual formula included as the <s-expression>formula</s-expression> argument. 
+</s-return-component>
+<s-return-component name="assign">
+the same as the <s-expression>assign</s-expression> component of an <s-expression>"lm"</s-expression> object. 
+</s-return-component>
+<s-return-component name="contrasts">
+the same as the <s-expression>contrasts</s-expression> component of an <s-expression>"lm"</s-expression> object. 
+</s-return-component>
+<s-return-component name="terms">
+the same as the <s-expression>terms</s-expression> component of an <s-expression>"lm"</s-expression> object.  
+</s-return-component>
+</s-value>
+<s-see>
+<s-function name="lmRobBI.sgm">lmRobBI</s-function>. </s-see>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

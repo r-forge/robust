@@ -1,0 +1,63 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lmRobBI.eff</s-topic>
+</s-topics>
+<s-title>
+Tuning Constant for Bounded Influence Estimator 
+</s-title>
+<s-description>
+Returns one tuning constant for bounded influence estimator, given the  
+asymptotic efficiency.  
+</s-description>
+<s-usage>
+<s-old-style-usage>
+lmRobBI.eff(eff, method="sch", tuning.p=NULL, nx=1, intercept=T, sigmax=1) 
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="eff">
+the asymptotic efficiency required. 
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name="method">
+a character vector, which specifies the type of bounded influence 
+estimator. If <s-expression>method="sch"</s-expression>, the Schweppe-type or Krasker-Welsch type 
+bounded influence estimator is used; if <s-expression>method="mal"</s-expression>, the Mallows-type 
+bounded influence estimator is used. 
+</s-arg>
+<s-arg name="tuning.p">
+a scalar which gives the value of the tuning constant for the  
+psi-function of the corresponding generalized M-estimator. It is 
+only used if <s-expression>method="mal"</s-expression>. 
+</s-arg>
+<s-arg name="nx">
+the number of explanatory variables used in the regression, not including 
+the intercept. 
+</s-arg>
+<s-arg name="intercept">
+logical flag: if <s-expression>TRUE</s-expression>, an intercept will be fitted by the regression. 
+</s-arg>
+<s-arg name="sigmax">
+a scalar which gives the standard deviation of the model matrix <s-expression>x</s-expression>. 
+</s-arg>
+</s-args-optional>
+<s-value>
+the tuning constant of the optimal weight function which will have  
+the required asymptotic efficiency. 
+</s-value>
+<s-see>
+<s-function name="chb.sgm">chb</s-function>,
+<s-function name="lmRobMM.effvy.sgm">lmRobMM.effvy</s-function>.
+</s-see>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

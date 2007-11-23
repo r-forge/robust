@@ -1,0 +1,65 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lmRobBI.control</s-topic>
+</s-topics>
+<s-title>
+Control Parameters for Bounded Influence Robust Regression 
+</s-title>
+<s-description>
+Allows the users to set values affecting the estimation procedure for robust  
+regression in <s-expression>lmRobBI</s-expression>. 
+</s-description>
+<s-usage>
+<s-old-style-usage>
+lmRobBI.control(efficiency=0.95, tuning.p=NULL, max.wt=150, max.rg=30,  
+alg="W", tol=1e-05, tau=1e-11) 
+</s-old-style-usage>
+</s-usage>
+<s-args-optional>
+<s-arg name="efficiency">
+the asymptotic efficiency of the bounded influence estimates. 
+</s-arg>
+<s-arg name="tuning.p">
+a scalar which gives the value of the tuning constant for the  
+psi-function of the corresponding generalized M-estimator. It is 
+only used if <s-expression>method="mal"</s-expression>. 
+</s-arg>
+<s-arg name="max.wt">
+the maximum number of iterations to compute the optimal weights. 
+</s-arg>
+<s-arg name="max.rg">
+the maximum number of iterations to compute the regression estimates. 
+</s-arg>
+<s-arg name="alg">
+specifies the algorithm which will be used to compute the regression 
+estimates. If <s-expression>alg="W"</s-expression>, the conjugate gradient algorithm will be used;  
+if <s-expression>alg="N"</s-expression>, the Newton-Huber algorithm will be used.  
+</s-arg>
+<s-arg name="tol">
+the relative tolerance in the iterative algorithms. 
+</s-arg>
+<s-arg name="tau">
+the tolerance used for the determination of pseudo-rank. 
+</s-arg>
+</s-args-optional>
+<s-value>
+a list containing the values used for each of the control parameters. 
+</s-value>
+<s-see>
+<s-function name="lmRobBI.sgm">lmRobBI</s-function>. </s-see>
+<s-examples>
+<s-example type = text>
+control.95 <- lmRobBI.control(efficiency=0.85) 
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

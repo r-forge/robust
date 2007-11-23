@@ -1,0 +1,61 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> plot.lognormMLE </s-topic>
+</s-topics>
+<s-title>
+lognormMLE plot method
+</s-title>
+<s-description>
+The <s-expression>lognormMLE</s-expression> method for the generic function
+<s-expression>plot</s-expression>.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+plot.lognormMLE(x, data.cwd = T)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" x ">
+A <s-expression>lognormMLE</s-expression> object.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=" data.cwd ">
+If <s-expression>data.cwd=F</s-expression>, data from the current working
+directory will not be used if the data component of the
+<s-expression>lognormMLE</s-expression> object is missing.
+</s-arg>
+</s-args-optional>
+<s-side-effects>
+The estimated density is drawn over a histogram of the data on the current
+graphics device.
+</s-side-effects>
+<s-details>
+If <s-expression>save.data=F</s-expression> in the original call to 
+<s-expression>lognormMLE</s-expression> and 
+<s-expression>data.cwd=T</s-expression> in the plot call, then a histogram
+will be produced using the object in the current working directory with the
+same name as the data argument in the call to
+<s-expression>lognormMLE</s-expression>. 
+</s-details>
+<s-see>
+<s-function name = "asymmetricMLE.sgm">lognormMLE</s-function>.
+</s-see>
+<s-examples>
+<s-example>
+plot(lognormMLE(stack.loss))
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>
+hplot
+</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

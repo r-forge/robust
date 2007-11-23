@@ -1,0 +1,158 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> smooth.splineRob </s-topic>
+</s-topics>
+
+<s-title>
+<!--function to do???-->
+</s-title>
+
+<s-description>
+<!--brief description-->
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+smooth.splineRob(x, y, lambda = "RCp", lambda.range = c(0, 1), chuber =
+1.345)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-required>
+<s-arg name=" x ">
+a numeric vector containing the values of the predictor variable.
+</s-arg>
+
+<s-arg name=" y ">
+response variable, of the same length as x.
+</s-arg>
+</s-args-required>
+
+<s-args-optional>
+<s-arg name=" lambda ">
+the smoothing parameter corresponding to the formulation of the reference
+paper.  Note  that  it  is  not  the  same parameter as spar in the
+function  smooth.spline() in S-PLUS. In fact spar = (lambda *
+sigma)/epsiprime/(max(xx) - min(xx))^3.  If lambda = "cv" then an optimal
+lambda is chosen using crossvalidation.  If lambda = "RCp" then an optimal
+lambda is chosen using the RCp criterion.  The default is "RCp".
+</s-arg>
+
+<s-arg name=" lambda.range ">
+interval in which the optimal smoothing parameter has to be found when
+lambda = "cv" or lambda = "RCp".
+</s-arg>
+
+<s-arg name=" chuber ">
+tuning constant of the Huber psi function.  The default value is set to
+1.345.
+</s-arg>
+</s-args-optional>
+
+<s-value>
+a list with class "smooth.splineRob" containing the following components:
+
+<s-return-component name="estim">
+the fitted M-type smoothing spline corresponding to the ordered xx.
+</s-return-component>
+
+<s-return-component name="sigmahat">
+the associated estimation of  scale (Huber  Proposal 2).
+</s-return-component>
+
+<s-return-component name="sigma.ext">
+the external estimation of scale used in the construction of RCp (if
+Smat = T).
+</s-return-component>
+
+<s-return-component name="x">
+the ordered distinct values of xx.
+</s-return-component>
+
+<s-return-component name="yin">
+the y-values used at the unique x values (weighted averages of the input
+yy).
+</s-return-component>
+
+<s-return-component name="myo">
+value of match(xx, unique(sort(xx))).  This allows one to recover the
+vector of fitted values with respect to the original xx by considering
+estim[myo].
+</s-return-component>
+
+<s-return-component name="weights">
+weights used in the fit. This has the same length as xx, and in the case of
+ties, will consist of the accumulated weights at each unique value of x.
+</s-return-component>
+
+<s-return-component name="Smatrix">
+the smoother matrix S, if Smat=T.
+</s-return-component>
+
+<s-return-component name="diagS">
+the diagonal elements of the smoother matrix S.
+</s-return-component>
+
+<s-return-component name="epsiprime">
+the expectation of the derivative of the psi function.
+</s-return-component>
+
+<s-return-component name="epsicarre">
+the expectation of the squared psi function.
+</s-return-component>
+
+<s-return-component name="cv.score">
+the value of the robust cross-validation criterion.
+</s-return-component>
+
+<s-return-component name="RCp">
+the value of the robust Cp criterion, if Smat=T.
+</s-return-component>
+
+<s-return-component name="chuber">
+the tuning constant used for the fit.
+</s-return-component>
+
+<s-return-component name="lambda">
+the smoothing parameter used for the fit.
+</s-return-component>
+
+<s-return-component name="call">
+an image of the call that created the object with all arguments named.
+</s-return-component>
+</s-value>
+
+<s-section name = "REFERENCES">
+Eva Cantoni and Elvezio  Ronchetti, "Resistant  Selection of the Smoothing
+Paramater for Smooting Splines", 2000, Statistics and Computing, to
+appear.
+<br>
+http://www.unige.ch/ses/metri/cantoni/txt/ECER2001report.ps.
+</s-section>
+
+<s-see>
+<s-function name="smooth.spl.sgm">smooth.spline</s-function>.
+</s-see>
+
+<s-examples>
+<s-example>
+attach(ethanol)
+plot(E, NOx)
+temp.cv <- smooth.splineRob(E, NOx, lambda = "cv")
+lines(temp.cv)
+</s-example>
+</s-examples>
+
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+
+<s-docclass>
+function
+</s-docclass>
+
+</s-function-doc>

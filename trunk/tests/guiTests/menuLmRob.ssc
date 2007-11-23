@@ -1,0 +1,149 @@
+##
+##	Tests for menuLmRob Plots and Results Pages
+##
+
+guiSetOption( option.name="AutoAddPages", value.string="Off" )
+
+tests <- list(	list(formula = Loss ~ ., data = stack.dat),
+					list(formula = y ~ ., data = wagner.dat))
+					
+methods = c("LS + Robust", "Robust", "LS")
+
+for (test in tests) {
+	for (method in methods) {
+
+##
+##	Test Results
+##
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = T,
+		fitting.p = method, print.long.p = F, print.correlation.p = F,
+		print.anova.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = T,
+		fitting.p = method, print.long.p = F, print.correlation.p = F,
+		print.anova.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.long.p = T, print.correlation.p = F,
+		print.anova.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.long.p = T, print.correlation.p = T,
+		print.anova.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.long.p = T, print.correlation.p = F,
+		print.anova.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.long.p = T, print.correlation.p = T,
+		print.anova.p = T))
+		
+##
+##	Test QQ Plots
+##
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = F,
+		robQQline.p = F, halfNormal.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = T,
+		robQQline.p = F, halfNormal.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = F,
+		robQQline.p = T, halfNormal.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = F,
+		robQQline.p = F, halfNormal.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = T,
+		robQQline.p = T, halfNormal.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = T,
+		robQQline.p = F, halfNormal.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = F,
+		robQQline.p = T, halfNormal.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotQQ.p = T, QQplotEnvelope.p = T,
+		robQQline.p = T, halfNormal.p = T))
+		
+##
+##	Test other plots
+##
+
+sms <- c(T, F)
+rps <- c(T, F)
+
+	for (sm in sms) {
+		for (rp in rps) {
+		
+		eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+			fitting.p = method, print.anova.p = F, plotResidVsFit.p = T, smooths = sm,
+			rugplot = rp))
+
+		eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+			fitting.p = method, print.anova.p = F, plotResponseVsFit.p = T, smooths = sm,
+			rugplot = rp))
+
+		eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+			fitting.p = method, print.anova.p = F, plotRRRD.p = T, smooths = sm, rugplot =
+			rp))
+
+		eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+			fitting.p = method, print.anova.p = F, plotRDensity.p = T, smooths = sm,
+			rugplot = rp))
+		}
+	}
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotOverQ.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotOverD.p = T))
+
+##
+##	Test Partial Plots
+##
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = F,
+		plotRugplot.p = F, plotScale.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = T,
+		plotRugplot.p = F, plotScale.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = F,
+		plotRugplot.p = T, plotScale.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = F,
+		plotRugplot.p = F, plotScale.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = T,
+		plotRugplot.p = T, plotScale.p = F))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = T,
+		plotRugplot.p = F, plotScale.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = F,
+		plotRugplot.p = T, plotScale.p = T))
+
+	eval(call("menuLmRob", formula = test$formula, data = test$data, print.short.p = F,
+		fitting.p = method, print.anova.p = F, plotPartial.p = T, plotPartialFit.p = T,
+		plotRugplot.p = T, plotScale.p = T))
+	}
+}

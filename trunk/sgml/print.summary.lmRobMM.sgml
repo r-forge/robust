@@ -1,0 +1,29 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>print.summary.lmRobMM</s-topic>
+</s-topics>
+<s-title>
+Print Method for a summary.lmRobMM Object 
+</s-title>
+<s-description>
+This is a method for the function <s-expression>print()</s-expression> for objects inheriting from  
+class <s-expression>summary.lmRobMM</s-expression>. See <s-expression>print</s-expression> or <s-expression>print.default</s-expression> for the general  
+behavior of this function and for the interpretation of <s-expression>x</s-expression>. 
+</s-description>
+<s-usage>
+<s-old-style-usage>
+print.summary.lmRobMM(x, digits=max(3, .Options$digits - 3), ...) 
+</s-old-style-usage>
+</s-usage>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>print</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>
