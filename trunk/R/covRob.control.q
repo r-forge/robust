@@ -27,7 +27,7 @@ covRob.control <- function(estim, ...)
     if(is.null(control$eps))
       control$eps <- 0.5
 
-		control <- control[c("estim", "nresamp", "maxres", "random.sample",
+    control <- control[c("estim", "nresamp", "maxres", "random.sample",
                          "center", "tune", "prob", "eps")]
   }
 

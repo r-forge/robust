@@ -39,15 +39,17 @@
 
   \item{center}{a numeric vector containing the final robust estimate of the location vector.}
 
-  \item{raw.cov}{a numeric matrix containing the initial robust estimate of the covariance/correlation matrix.}
+  \item{dist}{a numeric vector containing the Mahalanobis distances computed using robust estimates of covariance and location contained in \code{cov} and \code{center}.  If \code{distance = FALSE} this element is set to \code{NA}.}
 
-  \item{raw.center}{a numeric vector containing the initial robust estimate of the location vector.}
+  \item{raw.cov}{a numeric matrix containing the initial robust estimate of the covariance/correlation matrix. If there is no initial robust estimate then this element is set to \code{NA}.}
 
-  \item{dist}{a numeric vector containing the Mahalanobis distances computed using robust estimates of covariance and location contained in \code{cov} and \code{center}.  Only present if \code{distance = TRUE} in the \code{call}.}
+  \item{raw.center}{a numeric vector containing the initial robust estimate of the location vector. If there is no initial robust estimate then this element is set to \code{NA}.}
 
-  \item{corr}{a logical flag.  If \code{corr = TRUE} then \code{cov} and \code{raw.cov} contain robust estimates of the correlation matrix of \code{x}.}
+  \item{raw.dist}{a numeric vector containing the Mahalanobis distances computed using the initial robust estimates of covariance and location contained in \code{raw.cov} and \code{raw.center}. If \code{distance = FALSE} or if there is no initial robust estimate then this element is set to \code{NA}.}
 
-  \item{estim}{a character vector of length 1 containing the name of the robust estimator.}
+  \item{corr}{a logical flag.  If \code{corr = TRUE} then \code{cov} and \code{raw.cov} contain robust estimates of the correlation matrix of \code{data}.}
+
+  \item{estim}{a character string containing the name of the robust estimator.}
 
   \item{control}{a list containing the control parameters used by the robust estimator.}
 }
@@ -59,17 +61,16 @@
 \seealso{
   \code{\link{covRob.control}},
   \code{\link{cov}},
-  \code{\link{fastmcd}},
+  \code{\link{covMcd}},
   \code{\link{donostah}},
   \code{\link{fastcov}},
   \code{\link{rockem}}.
 }
 
 \examples{
-  data(stack.dat)
-  covRob(stack.dat, estim = "mcd", quan = .75, ntrial = 1000)
+  data(stackloss)
+  covRob(stackloss, estim = "mcd", quan = .75, ntrial = 1000)
 }
 
-%\keyword{librobust}
 \keyword{multivariate}
 \keyword{robust}

@@ -8,7 +8,6 @@
 
 /* Begin PBXFileReference section */
 		0E0536150A41EB220012CF66 /* labels.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = labels.lmRob.q; path = R/labels.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0E0E0E7A0B4AF2400078D331 /* fastmcd.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fastmcd.q; path = R/fastmcd.q; sourceTree = SOURCE_ROOT; };
 		0E0E0E7D0B4AF65F0078D331 /* glmRob.mallows.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.mallows.Rd; path = man/glmRob.mallows.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7E0B4AF6780078D331 /* glmRob.misclass.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.Rd; path = man/glmRob.misclass.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7F0B4AF6780078D331 /* glmRob.misclass.w.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.w.Rd; path = man/glmRob.misclass.w.Rd; sourceTree = SOURCE_ROOT; };
@@ -26,7 +25,6 @@
 		0E3CE30B0B487F02008C361D /* glmRob.object.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.object.Rd; path = man/glmRob.object.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE30C0B487F02008C361D /* glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.Rd; path = man/glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE30D0B487F16008C361D /* glmRob.cubif.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.cubif.control.Rd; path = man/glmRob.cubif.control.Rd; sourceTree = SOURCE_ROOT; };
-		0E3CE30E0B487F4E008C361D /* fastmcd.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fastmcd.Rd; path = man/fastmcd.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE32C0B4893C4008C361D /* wt.carroll.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = wt.carroll.Rd; path = man/wt.carroll.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE3300B489683008C361D /* undocumented.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = undocumented.glmRob.Rd; sourceTree = "<group>"; };
 		0E3CE33B0B48A4E5008C361D /* glmRob.cubif.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.cubif.Rd; path = man/glmRob.cubif.Rd; sourceTree = SOURCE_ROOT; };
@@ -44,7 +42,6 @@
 		0E4500090A029C050064D9A4 /* plot.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.covfm.Rd; path = man/plot.covfm.Rd; sourceTree = SOURCE_ROOT; };
 		0E45000A0A029C050064D9A4 /* print.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.covfm.Rd; path = man/print.covfm.Rd; sourceTree = SOURCE_ROOT; };
 		0E45000B0A029C050064D9A4 /* print.summary.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.covfm.Rd; path = man/print.summary.covfm.Rd; sourceTree = SOURCE_ROOT; };
-		0E45000C0A029C050064D9A4 /* rockem.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = rockem.Rd; path = man/rockem.Rd; sourceTree = SOURCE_ROOT; };
 		0E45000D0A029C050064D9A4 /* stack.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = stack.dat.Rd; path = man/stack.dat.Rd; sourceTree = SOURCE_ROOT; };
 		0E45000E0A029C050064D9A4 /* stop.on.bdObject.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = stop.on.bdObject.Rd; path = man/stop.on.bdObject.Rd; sourceTree = SOURCE_ROOT; };
 		0E45000F0A029C050064D9A4 /* summary.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.covfm.Rd; path = man/summary.covfm.Rd; sourceTree = SOURCE_ROOT; };
@@ -73,7 +70,6 @@
 		0E4500290A029C050064D9A4 /* print.summary.cov.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.cov.q; path = R/print.summary.cov.q; sourceTree = SOURCE_ROOT; };
 		0E45002A0A029C050064D9A4 /* print.summary.covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.covRob.q; path = R/print.summary.covRob.q; sourceTree = SOURCE_ROOT; };
 		0E45002B0A029C050064D9A4 /* print.summary.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.covfm.q; path = R/print.summary.covfm.q; sourceTree = SOURCE_ROOT; };
-		0E45002C0A029C050064D9A4 /* rockem.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = rockem.q; path = R/rockem.q; sourceTree = SOURCE_ROOT; };
 		0E45002D0A029C050064D9A4 /* summary.cov.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.cov.q; path = R/summary.cov.q; sourceTree = SOURCE_ROOT; };
 		0E45002E0A029C060064D9A4 /* summary.covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.covRob.q; path = R/summary.covRob.q; sourceTree = SOURCE_ROOT; };
 		0E45002F0A029C060064D9A4 /* summary.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.covfm.q; path = R/summary.covfm.q; sourceTree = SOURCE_ROOT; };
@@ -192,7 +188,6 @@
 		0E4500BE0A029C060064D9A4 /* xyellipse.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = xyellipse.sgml; path = sgml/xyellipse.sgml; sourceTree = SOURCE_ROOT; };
 		0E4500C30A029C060064D9A4 /* ds11.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = ds11.f; path = src/ds11.f; sourceTree = SOURCE_ROOT; };
 		0E4500C40A029C060064D9A4 /* fastcov.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = fastcov.c; path = src/fastcov.c; sourceTree = SOURCE_ROOT; };
-		0E4500C50A029C060064D9A4 /* fastmcd.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = fastmcd.f; path = src/fastmcd.f; sourceTree = SOURCE_ROOT; };
 		0E4500C60A029C060064D9A4 /* gamrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = gamrob.f; path = src/gamrob.f; sourceTree = SOURCE_ROOT; };
 		0E4500C70A029C060064D9A4 /* glmrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = glmrob.f; path = src/glmrob.f; sourceTree = SOURCE_ROOT; };
 		0E4500C80A029C060064D9A4 /* lmrobbi.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = lmrobbi.f; path = src/lmrobbi.f; sourceTree = SOURCE_ROOT; };
@@ -201,10 +196,7 @@
 		0E4500CB0A029C060064D9A4 /* lmrobmm.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = lmrobmm.f; path = src/lmrobmm.f; sourceTree = SOURCE_ROOT; };
 		0E4500CC0A029C060064D9A4 /* mmprnt.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = mmprnt.c; path = src/mmprnt.c; sourceTree = SOURCE_ROOT; };
 		0E4500CD0A029C060064D9A4 /* rb.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = rb.c; path = src/rb.c; sourceTree = SOURCE_ROOT; };
-		0E4500CE0A029C060064D9A4 /* regar.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = regar.f; path = src/regar.f; sourceTree = SOURCE_ROOT; };
 		0E4500CF0A029C060064D9A4 /* robust.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = robust.h; path = src/robust.h; sourceTree = SOURCE_ROOT; };
-		0E4500D00A029C060064D9A4 /* rocovm.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = rocovm.f; path = src/rocovm.f; sourceTree = SOURCE_ROOT; };
-		0E4500D30A029C060064D9A4 /* sfastmcd.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = sfastmcd.c; path = src/sfastmcd.c; sourceTree = SOURCE_ROOT; };
 		0E4500D40A029C060064D9A4 /* tdmean.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = tdmean.f; path = src/tdmean.f; sourceTree = SOURCE_ROOT; };
 		0E4500D50A029C060064D9A4 /* tmlfor.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = tmlfor.f; path = src/tmlfor.f; sourceTree = SOURCE_ROOT; };
 		0E4500D60A029C060064D9A4 /* wblrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = wblrob.f; path = src/wblrob.f; sourceTree = SOURCE_ROOT; };
@@ -240,106 +232,6 @@
 		0E45FF4C0A029C050064D9A4 /* sim.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = sim.dat.txt; path = datasets/sim.dat.txt; sourceTree = SOURCE_ROOT; };
 		0E45FF4D0A029C050064D9A4 /* wagner.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = wagner.dat.txt; path = datasets/wagner.dat.txt; sourceTree = SOURCE_ROOT; };
 		0E45FF4E0A029C050064D9A4 /* DESCRIPTION */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = DESCRIPTION; sourceTree = SOURCE_ROOT; };
-		0E45FF500A029C050064D9A4 /* Installation.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = Installation.fm; path = docs/Installation.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF510A029C050064D9A4 /* RobLibTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobLibTOC.backup.fm; path = docs/RobLibTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF520A029C050064D9A4 /* RobLibTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobLibTOC.fm; path = docs/RobLibTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF530A029C050064D9A4 /* Robust.backup.book */ = {isa = PBXFileReference; lastKnownFileType = file; name = Robust.backup.book; path = docs/Robust.backup.book; sourceTree = SOURCE_ROOT; };
-		0E45FF540A029C050064D9A4 /* Robust.book */ = {isa = PBXFileReference; lastKnownFileType = file; name = Robust.book; path = docs/Robust.book; sourceTree = SOURCE_ROOT; };
-		0E45FF560A029C050064D9A4 /* LawsonData.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LawsonData.wmf; path = docs/anovaFigs/LawsonData.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF570A029C050064D9A4 /* ResidualsVsIndex.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ResidualsVsIndex.WMF; path = docs/anovaFigs/ResidualsVsIndex.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF580A029C050064D9A4 /* aovRobModelPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovRobModelPage.wmf; path = docs/anovaFigs/aovRobModelPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF590A029C050064D9A4 /* aovRobPlotsPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovRobPlotsPage.wmf; path = docs/anovaFigs/aovRobPlotsPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF5A0A029C050064D9A4 /* qqplot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = qqplot.WMF; path = docs/anovaFigs/qqplot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF5B0A029C050064D9A4 /* resid.densities.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = resid.densities.WMF; path = docs/anovaFigs/resid.densities.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF5C0A029C050064D9A4 /* aovrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovrob.backup.fm; path = docs/aovrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF5D0A029C050064D9A4 /* aovrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovrob.fm; path = docs/aovrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF5E0A029C050064D9A4 /* aovrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovrobTOC.backup.fm; path = docs/aovrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF5F0A029C050064D9A4 /* aovrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = aovrobTOC.fm; path = docs/aovrobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF610A029C050064D9A4 /* DistanceDistance.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = DistanceDistance.WMF; path = docs/covFigs/DistanceDistance.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF620A029C050064D9A4 /* EigenvaluesPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = EigenvaluesPlot.WMF; path = docs/covFigs/EigenvaluesPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF630A029C050064D9A4 /* EllpisesPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = EllpisesPlot.WMF; path = docs/covFigs/EllpisesPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF640A029C050064D9A4 /* ImageDisplay.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ImageDisplay.WMF; path = docs/covFigs/ImageDisplay.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF650A029C050064D9A4 /* RobustDistances.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = RobustDistances.WMF; path = docs/covFigs/RobustDistances.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF660A029C050064D9A4 /* covRobAdvancedPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = covRobAdvancedPage.wmf; path = docs/covFigs/covRobAdvancedPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF670A029C050064D9A4 /* covRobEstimatesPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = covRobEstimatesPage.wmf; path = docs/covFigs/covRobEstimatesPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF680A029C050064D9A4 /* covRobPlotPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = covRobPlotPage.wmf; path = docs/covFigs/covRobPlotPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF690A029C050064D9A4 /* covrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = covrob.backup.fm; path = docs/covrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF6A0A029C050064D9A4 /* covrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = covrob.fm; path = docs/covrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF6B0A029C050064D9A4 /* covrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = covrobTOC.backup.fm; path = docs/covrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF6C0A029C050064D9A4 /* covrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = covrobTOC.fm; path = docs/covrobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF6E0A029C050064D9A4 /* DiscRobModelPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DiscRobModelPage.wmf; path = docs/discRobFigs/DiscRobModelPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF6F0A029C050064D9A4 /* DiscRobResultsPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DiscRobResultsPage.wmf; path = docs/discRobFigs/DiscRobResultsPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF700A029C050064D9A4 /* discrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = discrob.backup.fm; path = docs/discrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF710A029C050064D9A4 /* discrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = discrob.fm; path = docs/discrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF720A029C050064D9A4 /* discrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = discrobTOC.backup.fm; path = docs/discrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF730A029C050064D9A4 /* discrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = discrobTOC.fm; path = docs/discrobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF740A029C050064D9A4 /* front.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = front.backup.fm; path = docs/front.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF750A029C050064D9A4 /* front.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = front.fm; path = docs/front.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF770A029C050064D9A4 /* insitfl_blk_2in.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = insitfl_blk_2in.tiff; path = docs/frontFigs/insitfl_blk_2in.tiff; sourceTree = SOURCE_ROOT; };
-		0E45FF780A029C050064D9A4 /* glmrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = glmrob.backup.fm; path = docs/glmrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF790A029C050064D9A4 /* glmrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = glmrob.fm; path = docs/glmrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF7B0A029C050064D9A4 /* DeviancesQQPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = DeviancesQQPlot.WMF; path = docs/glmrobFigs/DeviancesQQPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF7C0A029C050064D9A4 /* DeviancesVsFittedValues.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = DeviancesVsFittedValues.WMF; path = docs/glmrobFigs/DeviancesVsFittedValues.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF7D0A029C050064D9A4 /* GlmRobModelPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GlmRobModelPage.wmf; path = docs/glmrobFigs/GlmRobModelPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF7E0A029C050064D9A4 /* GlmRobPlotsPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = GlmRobPlotsPage.wmf; path = docs/glmrobFigs/GlmRobPlotsPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF7F0A029C050064D9A4 /* MallowsDevQQPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = MallowsDevQQPlot.WMF; path = docs/glmrobFigs/MallowsDevQQPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF800A029C050064D9A4 /* ResponseVsFittedValues.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ResponseVsFittedValues.WMF; path = docs/glmrobFigs/ResponseVsFittedValues.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF810A029C050064D9A4 /* StdDevVsIndex.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = StdDevVsIndex.WMF; path = docs/glmrobFigs/StdDevVsIndex.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF820A029C050064D9A4 /* StdDevVsRobDist.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = StdDevVsRobDist.WMF; path = docs/glmrobFigs/StdDevVsRobDist.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF830A029C050064D9A4 /* carroll.wt.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = carroll.wt.wmf; path = docs/glmrobFigs/carroll.wt.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF840A029C050064D9A4 /* weibull-gui.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "weibull-gui.jpg"; path = "docs/glmrobFigs/weibull-gui.jpg"; sourceTree = SOURCE_ROOT; };
-		0E45FF850A029C050064D9A4 /* weibull-plot-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "weibull-plot-1.jpg"; path = "docs/glmrobFigs/weibull-plot-1.jpg"; sourceTree = SOURCE_ROOT; };
-		0E45FF860A029C050064D9A4 /* weibull-plot-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "weibull-plot-2.jpg"; path = "docs/glmrobFigs/weibull-plot-2.jpg"; sourceTree = SOURCE_ROOT; };
-		0E45FF870A029C050064D9A4 /* weibull-plot3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "weibull-plot3.jpg"; path = "docs/glmrobFigs/weibull-plot3.jpg"; sourceTree = SOURCE_ROOT; };
-		0E45FF880A029C050064D9A4 /* whuber.wt.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = whuber.wt.wmf; path = docs/glmrobFigs/whuber.wt.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF890A029C050064D9A4 /* glmrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = glmrobTOC.backup.fm; path = docs/glmrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF8A0A029C050064D9A4 /* glmrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = glmrobTOC.fm; path = docs/glmrobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF8B0A029C050064D9A4 /* intro.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = intro.backup.fm; path = docs/intro.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF8C0A029C050064D9A4 /* intro.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = intro.fm; path = docs/intro.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF8E0A029C050064D9A4 /* DatabaseFilterDialog.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DatabaseFilterDialog.wmf; path = docs/introFigs/DatabaseFilterDialog.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF8F0A029C050064D9A4 /* LoadLibraryDialog.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = LoadLibraryDialog.wmf; path = docs/introFigs/LoadLibraryDialog.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FF900A029C050064D9A4 /* introTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = introTOC.backup.fm; path = docs/introTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF910A029C050064D9A4 /* introTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = introTOC.fm; path = docs/introTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF920A029C050064D9A4 /* lmrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmrob.backup.fm; path = docs/lmrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF930A029C050064D9A4 /* lmrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmrob.fm; path = docs/lmrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FF950A029C050064D9A4 /* NormalQQPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = NormalQQPlot.WMF; path = docs/lmrobFigs/NormalQQPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF960A029C050064D9A4 /* OverlaidKernelDensity.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = OverlaidKernelDensity.WMF; path = docs/lmrobFigs/OverlaidKernelDensity.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF970A029C050064D9A4 /* OverlaidNormalQQPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = OverlaidNormalQQPlot.WMF; path = docs/lmrobFigs/OverlaidNormalQQPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF980A029C050064D9A4 /* StdRvsRD.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = StdRvsRD.WMF; path = docs/lmrobFigs/StdRvsRD.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF990A029C050064D9A4 /* StdRvsTime.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = StdRvsTime.WMF; path = docs/lmrobFigs/StdRvsTime.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF9A0A029C050064D9A4 /* WagnerKernelDensityPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WagnerKernelDensityPlot.WMF; path = docs/lmrobFigs/WagnerKernelDensityPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF9B0A029C050064D9A4 /* WagnerNormalQQPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WagnerNormalQQPlot.WMF; path = docs/lmrobFigs/WagnerNormalQQPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF9C0A029C050064D9A4 /* WagnerStdRvsRD.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WagnerStdRvsRD.WMF; path = docs/lmrobFigs/WagnerStdRvsRD.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF9D0A029C050064D9A4 /* WagnerStdRvsTime.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = WagnerStdRvsTime.WMF; path = docs/lmrobFigs/WagnerStdRvsTime.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FF9E0A029C050064D9A4 /* comptime.plot.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = comptime.plot.bmp; path = docs/lmrobFigs/comptime.plot.bmp; sourceTree = SOURCE_ROOT; };
-		0E45FF9F0A029C050064D9A4 /* density.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = density.WMF; path = docs/lmrobFigs/density.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFA00A029C050064D9A4 /* lmRobAdvancedPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmRobAdvancedPage.wmf; path = docs/lmrobFigs/lmRobAdvancedPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFA10A029C050064D9A4 /* lmRobModelPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmRobModelPage.wmf; path = docs/lmrobFigs/lmRobModelPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFA20A029C050064D9A4 /* lmRobPlotPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmRobPlotPage.wmf; path = docs/lmrobFigs/lmRobPlotPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFA30A029C050064D9A4 /* simdatPairs.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = simdatPairs.WMF; path = docs/lmrobFigs/simdatPairs.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFA40A029C050064D9A4 /* lmrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmrobTOC.backup.fm; path = docs/lmrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFA50A029C050064D9A4 /* lmrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = lmrobTOC.fm; path = docs/lmrobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFA70A029C050064D9A4 /* ComponentScatterPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = ComponentScatterPlot.WMF; path = docs/princompFigs/ComponentScatterPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFA80A029C050064D9A4 /* LoadingsPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = LoadingsPlot.WMF; path = docs/princompFigs/LoadingsPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFA90A029C050064D9A4 /* VariancesPlot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = VariancesPlot.WMF; path = docs/princompFigs/VariancesPlot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFAA0A029C050064D9A4 /* princompRobEstimatesPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRobEstimatesPage.wmf; path = docs/princompFigs/princompRobEstimatesPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFAB0A029C050064D9A4 /* princompRobPlotPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRobPlotPage.wmf; path = docs/princompFigs/princompRobPlotPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFAC0A029C050064D9A4 /* princompRob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRob.backup.fm; path = docs/princompRob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFAD0A029C050064D9A4 /* princompRob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRob.fm; path = docs/princompRob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFAE0A029C050064D9A4 /* princompRobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRobTOC.backup.fm; path = docs/princompRobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFAF0A029C050064D9A4 /* princompRobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = princompRobTOC.fm; path = docs/princompRobTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFB00A029C050064D9A4 /* references.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = references.backup.fm; path = docs/references.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFB10A029C050064D9A4 /* references.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = references.fm; path = docs/references.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFB20A029C050064D9A4 /* sample.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample.fm; path = docs/sample.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFB30A029C050064D9A4 /* sampleTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = sampleTOC.fm; path = docs/sampleTOC.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFB50A029C050064D9A4 /* GammaDensityOnly.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = GammaDensityOnly.WMF; path = docs/wblgamFigs/GammaDensityOnly.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFB60A029C050064D9A4 /* OverlaidGammaDensity.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = OverlaidGammaDensity.WMF; path = docs/wblgamFigs/OverlaidGammaDensity.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFB70A029C050064D9A4 /* QQplot.WMF */ = {isa = PBXFileReference; lastKnownFileType = file; name = QQplot.WMF; path = docs/wblgamFigs/QQplot.WMF; sourceTree = SOURCE_ROOT; };
-		0E45FFB80A029C050064D9A4 /* wblgamModelPage.wmf */ = {isa = PBXFileReference; lastKnownFileType = file; name = wblgamModelPage.wmf; path = docs/wblgamFigs/wblgamModelPage.wmf; sourceTree = SOURCE_ROOT; };
-		0E45FFB90A029C050064D9A4 /* wblgamrob.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = wblgamrob.backup.fm; path = docs/wblgamrob.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFBA0A029C050064D9A4 /* wblgamrob.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = wblgamrob.fm; path = docs/wblgamrob.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFBB0A029C050064D9A4 /* wblgamrobTOC.backup.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = wblgamrobTOC.backup.fm; path = docs/wblgamrobTOC.backup.fm; sourceTree = SOURCE_ROOT; };
-		0E45FFBC0A029C050064D9A4 /* wblgamrobTOC.fm */ = {isa = PBXFileReference; lastKnownFileType = file; name = wblgamrobTOC.fm; path = docs/wblgamrobTOC.fm; sourceTree = SOURCE_ROOT; };
 		0E45FFC20A029C050064D9A4 /* asymfm.methods.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = asymfm.methods.q; path = funs/asmRob/asymfm.methods.q; sourceTree = SOURCE_ROOT; };
 		0E45FFC30A029C050064D9A4 /* asymmetric.dstn.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = asymmetric.dstn.q; path = funs/asmRob/asymmetric.dstn.q; sourceTree = SOURCE_ROOT; };
 		0E45FFC40A029C050064D9A4 /* gamRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gamRob.q; path = funs/asmRob/gamRob.q; sourceTree = SOURCE_ROOT; };
@@ -797,17 +689,13 @@
 				0E4500C40A029C060064D9A4 /* fastcov.c */,
 				0E4500CC0A029C060064D9A4 /* mmprnt.c */,
 				0E4500CD0A029C060064D9A4 /* rb.c */,
-				0E4500D30A029C060064D9A4 /* sfastmcd.c */,
 				0E4500C30A029C060064D9A4 /* ds11.f */,
-				0E4500C50A029C060064D9A4 /* fastmcd.f */,
 				0E4500C60A029C060064D9A4 /* gamrob.f */,
 				0E4500C70A029C060064D9A4 /* glmrob.f */,
 				0E4500C80A029C060064D9A4 /* lmrobbi.f */,
 				0E4500C90A029C060064D9A4 /* lmrobfs.f */,
 				0E4500CA0A029C060064D9A4 /* lmrobml.f */,
 				0E4500CB0A029C060064D9A4 /* lmrobmm.f */,
-				0E4500CE0A029C060064D9A4 /* regar.f */,
-				0E4500D00A029C060064D9A4 /* rocovm.f */,
 				0E4500D40A029C060064D9A4 /* tdmean.f */,
 				0E4500D50A029C060064D9A4 /* tmlfor.f */,
 				0E4500D60A029C060064D9A4 /* wblrob.f */,
@@ -877,194 +765,6 @@
 				0E45FF4D0A029C050064D9A4 /* wagner.dat.txt */,
 			);
 			path = datasets;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF4F0A029C050064D9A4 /* docs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF500A029C050064D9A4 /* Installation.fm */,
-				0E45FF510A029C050064D9A4 /* RobLibTOC.backup.fm */,
-				0E45FF520A029C050064D9A4 /* RobLibTOC.fm */,
-				0E45FF530A029C050064D9A4 /* Robust.backup.book */,
-				0E45FF540A029C050064D9A4 /* Robust.book */,
-				0E45FF550A029C050064D9A4 /* anovaFigs */,
-				0E45FF5C0A029C050064D9A4 /* aovrob.backup.fm */,
-				0E45FF5D0A029C050064D9A4 /* aovrob.fm */,
-				0E45FF5E0A029C050064D9A4 /* aovrobTOC.backup.fm */,
-				0E45FF5F0A029C050064D9A4 /* aovrobTOC.fm */,
-				0E45FF600A029C050064D9A4 /* covFigs */,
-				0E45FF690A029C050064D9A4 /* covrob.backup.fm */,
-				0E45FF6A0A029C050064D9A4 /* covrob.fm */,
-				0E45FF6B0A029C050064D9A4 /* covrobTOC.backup.fm */,
-				0E45FF6C0A029C050064D9A4 /* covrobTOC.fm */,
-				0E45FF6D0A029C050064D9A4 /* discRobFigs */,
-				0E45FF700A029C050064D9A4 /* discrob.backup.fm */,
-				0E45FF710A029C050064D9A4 /* discrob.fm */,
-				0E45FF720A029C050064D9A4 /* discrobTOC.backup.fm */,
-				0E45FF730A029C050064D9A4 /* discrobTOC.fm */,
-				0E45FF740A029C050064D9A4 /* front.backup.fm */,
-				0E45FF750A029C050064D9A4 /* front.fm */,
-				0E45FF760A029C050064D9A4 /* frontFigs */,
-				0E45FF780A029C050064D9A4 /* glmrob.backup.fm */,
-				0E45FF790A029C050064D9A4 /* glmrob.fm */,
-				0E45FF7A0A029C050064D9A4 /* glmrobFigs */,
-				0E45FF890A029C050064D9A4 /* glmrobTOC.backup.fm */,
-				0E45FF8A0A029C050064D9A4 /* glmrobTOC.fm */,
-				0E45FF8B0A029C050064D9A4 /* intro.backup.fm */,
-				0E45FF8C0A029C050064D9A4 /* intro.fm */,
-				0E45FF8D0A029C050064D9A4 /* introFigs */,
-				0E45FF900A029C050064D9A4 /* introTOC.backup.fm */,
-				0E45FF910A029C050064D9A4 /* introTOC.fm */,
-				0E45FF920A029C050064D9A4 /* lmrob.backup.fm */,
-				0E45FF930A029C050064D9A4 /* lmrob.fm */,
-				0E45FF940A029C050064D9A4 /* lmrobFigs */,
-				0E45FFA40A029C050064D9A4 /* lmrobTOC.backup.fm */,
-				0E45FFA50A029C050064D9A4 /* lmrobTOC.fm */,
-				0E45FFA60A029C050064D9A4 /* princompFigs */,
-				0E45FFAC0A029C050064D9A4 /* princompRob.backup.fm */,
-				0E45FFAD0A029C050064D9A4 /* princompRob.fm */,
-				0E45FFAE0A029C050064D9A4 /* princompRobTOC.backup.fm */,
-				0E45FFAF0A029C050064D9A4 /* princompRobTOC.fm */,
-				0E45FFB00A029C050064D9A4 /* references.backup.fm */,
-				0E45FFB10A029C050064D9A4 /* references.fm */,
-				0E45FFB20A029C050064D9A4 /* sample.fm */,
-				0E45FFB30A029C050064D9A4 /* sampleTOC.fm */,
-				0E45FFB40A029C050064D9A4 /* wblgamFigs */,
-				0E45FFB90A029C050064D9A4 /* wblgamrob.backup.fm */,
-				0E45FFBA0A029C050064D9A4 /* wblgamrob.fm */,
-				0E45FFBB0A029C050064D9A4 /* wblgamrobTOC.backup.fm */,
-				0E45FFBC0A029C050064D9A4 /* wblgamrobTOC.fm */,
-			);
-			path = docs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF550A029C050064D9A4 /* anovaFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF560A029C050064D9A4 /* LawsonData.wmf */,
-				0E45FF570A029C050064D9A4 /* ResidualsVsIndex.WMF */,
-				0E45FF580A029C050064D9A4 /* aovRobModelPage.wmf */,
-				0E45FF590A029C050064D9A4 /* aovRobPlotsPage.wmf */,
-				0E45FF5A0A029C050064D9A4 /* qqplot.WMF */,
-				0E45FF5B0A029C050064D9A4 /* resid.densities.WMF */,
-			);
-			name = anovaFigs;
-			path = docs/anovaFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF600A029C050064D9A4 /* covFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF610A029C050064D9A4 /* DistanceDistance.WMF */,
-				0E45FF620A029C050064D9A4 /* EigenvaluesPlot.WMF */,
-				0E45FF630A029C050064D9A4 /* EllpisesPlot.WMF */,
-				0E45FF640A029C050064D9A4 /* ImageDisplay.WMF */,
-				0E45FF650A029C050064D9A4 /* RobustDistances.WMF */,
-				0E45FF660A029C050064D9A4 /* covRobAdvancedPage.wmf */,
-				0E45FF670A029C050064D9A4 /* covRobEstimatesPage.wmf */,
-				0E45FF680A029C050064D9A4 /* covRobPlotPage.wmf */,
-			);
-			name = covFigs;
-			path = docs/covFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF6D0A029C050064D9A4 /* discRobFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF6E0A029C050064D9A4 /* DiscRobModelPage.wmf */,
-				0E45FF6F0A029C050064D9A4 /* DiscRobResultsPage.wmf */,
-			);
-			name = discRobFigs;
-			path = docs/discRobFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF760A029C050064D9A4 /* frontFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF770A029C050064D9A4 /* insitfl_blk_2in.tiff */,
-			);
-			name = frontFigs;
-			path = docs/frontFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF7A0A029C050064D9A4 /* glmrobFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF7B0A029C050064D9A4 /* DeviancesQQPlot.WMF */,
-				0E45FF7C0A029C050064D9A4 /* DeviancesVsFittedValues.WMF */,
-				0E45FF7D0A029C050064D9A4 /* GlmRobModelPage.wmf */,
-				0E45FF7E0A029C050064D9A4 /* GlmRobPlotsPage.wmf */,
-				0E45FF7F0A029C050064D9A4 /* MallowsDevQQPlot.WMF */,
-				0E45FF800A029C050064D9A4 /* ResponseVsFittedValues.WMF */,
-				0E45FF810A029C050064D9A4 /* StdDevVsIndex.WMF */,
-				0E45FF820A029C050064D9A4 /* StdDevVsRobDist.WMF */,
-				0E45FF830A029C050064D9A4 /* carroll.wt.wmf */,
-				0E45FF840A029C050064D9A4 /* weibull-gui.jpg */,
-				0E45FF850A029C050064D9A4 /* weibull-plot-1.jpg */,
-				0E45FF860A029C050064D9A4 /* weibull-plot-2.jpg */,
-				0E45FF870A029C050064D9A4 /* weibull-plot3.jpg */,
-				0E45FF880A029C050064D9A4 /* whuber.wt.wmf */,
-			);
-			name = glmrobFigs;
-			path = docs/glmrobFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF8D0A029C050064D9A4 /* introFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF8E0A029C050064D9A4 /* DatabaseFilterDialog.wmf */,
-				0E45FF8F0A029C050064D9A4 /* LoadLibraryDialog.wmf */,
-			);
-			name = introFigs;
-			path = docs/introFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FF940A029C050064D9A4 /* lmrobFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FF950A029C050064D9A4 /* NormalQQPlot.WMF */,
-				0E45FF960A029C050064D9A4 /* OverlaidKernelDensity.WMF */,
-				0E45FF970A029C050064D9A4 /* OverlaidNormalQQPlot.WMF */,
-				0E45FF980A029C050064D9A4 /* StdRvsRD.WMF */,
-				0E45FF990A029C050064D9A4 /* StdRvsTime.WMF */,
-				0E45FF9A0A029C050064D9A4 /* WagnerKernelDensityPlot.WMF */,
-				0E45FF9B0A029C050064D9A4 /* WagnerNormalQQPlot.WMF */,
-				0E45FF9C0A029C050064D9A4 /* WagnerStdRvsRD.WMF */,
-				0E45FF9D0A029C050064D9A4 /* WagnerStdRvsTime.WMF */,
-				0E45FF9E0A029C050064D9A4 /* comptime.plot.bmp */,
-				0E45FF9F0A029C050064D9A4 /* density.WMF */,
-				0E45FFA00A029C050064D9A4 /* lmRobAdvancedPage.wmf */,
-				0E45FFA10A029C050064D9A4 /* lmRobModelPage.wmf */,
-				0E45FFA20A029C050064D9A4 /* lmRobPlotPage.wmf */,
-				0E45FFA30A029C050064D9A4 /* simdatPairs.WMF */,
-			);
-			name = lmrobFigs;
-			path = docs/lmrobFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FFA60A029C050064D9A4 /* princompFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FFA70A029C050064D9A4 /* ComponentScatterPlot.WMF */,
-				0E45FFA80A029C050064D9A4 /* LoadingsPlot.WMF */,
-				0E45FFA90A029C050064D9A4 /* VariancesPlot.WMF */,
-				0E45FFAA0A029C050064D9A4 /* princompRobEstimatesPage.wmf */,
-				0E45FFAB0A029C050064D9A4 /* princompRobPlotPage.wmf */,
-			);
-			name = princompFigs;
-			path = docs/princompFigs;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E45FFB40A029C050064D9A4 /* wblgamFigs */ = {
-			isa = PBXGroup;
-			children = (
-				0E45FFB50A029C050064D9A4 /* GammaDensityOnly.WMF */,
-				0E45FFB60A029C050064D9A4 /* OverlaidGammaDensity.WMF */,
-				0E45FFB70A029C050064D9A4 /* QQplot.WMF */,
-				0E45FFB80A029C050064D9A4 /* wblgamModelPage.wmf */,
-			);
-			name = wblgamFigs;
-			path = docs/wblgamFigs;
 			sourceTree = SOURCE_ROOT;
 		};
 		0E45FFBD0A029C050064D9A4 /* funs */ = {
@@ -1351,7 +1051,6 @@
 				0E45FFFD0A029C050064D9A4 /* man */,
 				0E4500BF0A029C060064D9A4 /* src */,
 				0E45FF410A029C050064D9A4 /* datasets */,
-				0E45FF4F0A029C050064D9A4 /* docs */,
 				0E45FFBD0A029C050064D9A4 /* funs */,
 				0E45FFE20A029C050064D9A4 /* gui */,
 				0E4500110A029C050064D9A4 /* meta */,
@@ -1455,8 +1154,6 @@
 				0E4500170A029C050064D9A4 /* covRob.control.q */,
 				0E45001E0A029C050064D9A4 /* donostah.q */,
 				0E45001F0A029C050064D9A4 /* fastcov.q */,
-				0E0E0E7A0B4AF2400078D331 /* fastmcd.q */,
-				0E45002C0A029C050064D9A4 /* rockem.q */,
 				0E4500160A029C050064D9A4 /* cov.q */,
 				0E4500260A029C050064D9A4 /* print.cov.q */,
 				0E45002D0A029C050064D9A4 /* summary.cov.q */,
@@ -1521,8 +1218,6 @@
 				0E4500030A029C050064D9A4 /* covRob.control.Rd */,
 				0E4500040A029C050064D9A4 /* donostah.Rd */,
 				0E4500050A029C050064D9A4 /* fastcov.Rd */,
-				0E3CE30E0B487F4E008C361D /* fastmcd.Rd */,
-				0E45000C0A029C050064D9A4 /* rockem.Rd */,
 				0E4500000A029C050064D9A4 /* cov.Rd */,
 				0E45000A0A029C050064D9A4 /* print.covfm.Rd */,
 				0E45000F0A029C050064D9A4 /* summary.covfm.Rd */,
@@ -1653,9 +1348,11 @@
 		DA0F4D1109FF92A30033A546 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = DA0F4D1209FF92A30033A546 /* Build configuration list for PBXProject "robust" */;
+			compatibilityVersion = "Xcode 2.4";
 			hasScannedForEncodings = 0;
 			mainGroup = DA0F4D0F09FF92A30033A546;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 			);
 		};

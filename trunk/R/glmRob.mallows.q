@@ -26,7 +26,8 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
   n <- dim(x0)[1]
   p <- dim(x0)[2]
 
-  tmp <- fastmcd(x0, print.it = FALSE)
+  #tmp <- fastmcd(x0, print.it = FALSE)
+  tmp <- covMcd(x0, use.correction = FALSE)
   mu <- tmp$center
   V <- tmp$cov
   x1 <- scale(x0, center = mu, scale = rep(1,p))
