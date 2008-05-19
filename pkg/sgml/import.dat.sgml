@@ -1,0 +1,36 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>import.dat</s-topic>
+</s-topics>
+<s-title>
+Monthly Imports and Import Taxes of Argentina 
+</s-title>
+<s-section name=" SUMMARY">
+
+The <s-expression>import.dat</s-expression> data frame has 96 rows and 2 columns. The sample runs from 
+January 1983 to December 1991. 
+</s-section>
+<s-section name=" DATA DESCRIPTION">
+
+This data frame contains the following columns: 
+</s-section>
+<s-args>
+<s-arg name="taxes">
+monthly import taxes of Argentina. 
+</s-arg>
+<s-arg name="import">
+monthly imports of Argentina. 
+</s-arg>
+</s-args>
+<s-keywords>
+<s-keyword>sysdata</s-keyword>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

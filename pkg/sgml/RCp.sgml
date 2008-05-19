@@ -1,0 +1,209 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+
+<s-topics>
+<s-topic> RCp </s-topic>
+</s-topics>
+
+<s-title>
+A Robust Version of Mallows' Cp
+</s-title>
+
+<s-description>
+RCp is a robust version of Mallows' Cp based on weighted least squares
+which allows the selection of subset models which fit the bulk of the data
+in the presence of outliers or deviations from the assumption of normal
+errors.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+RCp(xfile, yfile, k=1.345, b=1.5, MEDIAN=T, iter=20, nbest=5, conv=0.001,
+tol=1e-06, iter1=25, P2=T, s="subset", v1="huber", DIGITS=2, rescale=T)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-required>
+<s-arg name=" xfile ">
+a matrix of explanatory variables. Each column of xfile is a variable, each
+row is an observation.
+</s-arg>
+
+<s-arg name=" yfile ">
+a vector of the dependent variable with length equal to the number of rows
+of xfile.
+</s-arg>
+</s-args-required>
+
+<s-args-optional>
+<s-arg name=" k ">
+the value of the bending constant for the Huber psi function involving the
+rescaled residuals in the weight function. The default for this is
+1.345. Other values allowed are 1.5, 2 and 100. Note that using k=100
+will set the part of the weight function involving the residuals equal to
+one.
+</s-arg>
+
+<s-arg name=" b ">
+the product of b and the average or median  of f(x) is the bending constant
+used for the weight component v1(x) = psi(f(x))/f(x). The default value of
+b is 1.5.
+</s-arg>
+
+<s-arg name=" MEDIAN ">
+if TRUE, the median will be used to calculate the bending constant for v1,
+and if FALSE the mean will be used. The default value is TRUE.
+</s-arg>
+
+<s-arg name=" iter ">
+the maximium number of iterations of weighted least squares to be
+performed. The default value is 20.
+</s-arg>
+
+<s-arg name=" nbest ">
+the number of 'best' subsets to be found for each subset size.
+</s-arg>
+
+<s-arg name=" conv ">
+a numeric value. If the maxium difference of the weights on successive
+iterations is less than this, the iterations will stop. The default value
+for this is 0.001.
+</s-arg>
+
+<s-arg name=" tol ">
+the tolerance allowed for the Cholesky decomposition used to solve for the
+matrix B if v1 = "Bx" is chosen. The default is 1e-06.
+</s-arg>
+
+<s-arg name=" iter1 ">
+the maximum number of iterations performed to find the matrix B if
+v1 = "Bx" is chosen. The default is 25.
+</s-arg>
+
+<s-arg name=" P2 ">
+if TRUE, pivoting will be done when the Cholesky decomposition is found if
+v1 = "Bx" is chosen.
+</s-arg>
+
+<s-arg name=" s ">
+a logical matrix with the same number of columns as xfile. Each row
+of s represents a subset selection where a T indicates the inclusion of the
+corresponding variable and a F its exclusion. The default is the matrix
+representing all possible selections.
+</s-arg>
+
+<s-arg name=" v1 ">
+specifies the function of x to be used in the weight function. The options
+are v1 = "h" for f(x) = h, v1 ="huber" (the default) for f(x) = 1 (this
+will just give Huber type weights), v1 ="sqrth" for f(x) = sqrt(h), v1 =
+"h/(1-h)" for f(x) = h/(1-h) and v1 = "Bx" for f(x) = ||Bx|| (optimal B -
+robust estimators). Here h is the leverage, that is the ith diagonal
+element of the hat matrix (X %*% solve(t(X) %*% X) %*% t(X)).
+</s-arg>
+
+<s-arg name=" DIGITS ">
+gives the number of decimal places to be given in the output. The default
+value is 2.
+</s-arg>
+
+<s-arg name=" rescale ">
+if TRUE the scale factor for the residuals is recalculated after each
+iteration. The default is T.
+</s-arg>
+</s-args-optional>
+
+<s-value>
+a list with class "RCp" with the following components:
+
+<s-return-component name="RCp">
+the robust Cp value for the nbest subset selections of each size.
+</s-return-component>
+
+<s-return-component name="size">
+the number of variables including the constant term in each selection.
+</s-return-component>
+
+<s-return-component name="label">
+a character vector, each element giving  the  names  of the variables in
+the subset.
+</s-return-component>
+
+<s-return-component name="Vp">
+the value of Vp for each selection.
+</s-return-component>
+
+<s-return-component name="Up">
+the value of Up for each selection.
+</s-return-component>
+
+<s-return-component name="res">
+a matrix containing the residuals from the final fit for each selection;
+each row representing a submodel and each column an observation.
+</s-return-component>
+
+<s-return-component name="coef">
+a matrix containing the coefficients from the final fit for each
+selection; each row representing a submodel  and each column a variable.
+</s-return-component>
+
+<s-return-component name="w">
+a matrix  containing the final weights for each selection; each row
+representing a submodel and each column an observation.
+</s-return-component>
+
+<s-return-component name="v1">
+a matrix containing the component of the weight function involving the x's;
+each row representing a submodel  and each column an observation. Note that
+when v1 = "huber" this will be just a matrix of 1's.
+</s-return-component>
+
+<s-return-component name="v2">
+a matrix containing the component of the weight function involving the
+residuals; each row representing a submodel and each column an
+observation.
+</s-return-component>
+
+<s-return-component name="method">
+the type of weight function used; either "mallows" or "huber". 
+</s-return-component>
+
+<s-return-component name="which">
+a logical matrix with each row representing a selected submodel and each
+column an explanatory variable.
+</s-return-component>
+</s-value>
+
+<s-section name = "REFERENCES">
+Ronchetti, E. and Staudte, R.G. (1994). "A robust version of Mallows' Cp,"
+Journal of the American Statistical Association, 89 550-559.
+<br>
+Sommer, S. and Staudte, R.G (1995). "Robust variable selection in
+regression in the presence of outliers and leverage points" Australian
+Journal of Statistics, 37 323-336.
+</s-section>
+
+<s-see>
+<s-function name="summary.RCp.sgm">summary.RCp</s-function>,
+<s-function name="plot.RCp.sgm">plot.RCp</s-function>.
+</s-see>
+
+<s-examples>
+<s-example>
+temp.rcp <- RCp(stack.x, stack.loss)
+</s-example>
+</s-examples>
+
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+
+<s-docclass>
+function
+</s-docclass>
+
+</s-function-doc>
+
+

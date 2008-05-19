@@ -1,0 +1,57 @@
+##
+## these variables are required to source the gui/C* files
+##
+property.file <- paste(getenv("S_PROJ"), "robprop.dft", sep = "/")
+funcinfo.file <- paste(getenv("S_PROJ"), "robfunc.dft", sep = "/")
+
+source("gui/CLmRob.ssc")
+source("gui/CAovRob.ssc")
+source("gui/CCovRob.ssc")
+source("gui/CGamRob.ssc")
+source("gui/CGlmRob.ssc")
+#source("gui/confirmLmRob.ssc")
+source("gui/CPrinCompRob.ssc")
+source("gui/CDiscRob.ssc")
+
+##
+##	store gui objects
+##
+guiStoreDefaultObjects("Property", FileName = property.file)
+guiStoreDefaultObjects("FunctionInfo", FileName = funcinfo.file)
+
+# clean up
+rm(property.file, funcinfo.file)
+if(exists(".Last.value")) rm(.Last.value)
+if(exists("last.dump")) rm(last.dump)
+
+##
+## Thefollowing are now part of the dosQinstalled for WIN32
+##
+#source("gui/backAovRob.ssc")
+#source("gui/backCovRob.ssc")
+#source("gui/backCovRobControl.ssc")
+#source("gui/backGlmRob.ssc")
+#source("gui/backGamRob.ssc")
+#source("gui/backLmRob.options.ssc")
+#source("gui/backLmRob.ssc")
+#source("gui/backPrinCompRob.ssc")
+#source("gui/backDiscRob.ssc")
+
+#source("gui/menuAovRob.ssc")
+#source("gui/menuCovRob.ssc")
+#source("gui/menuGlmRob.ssc")
+#source("gui/menuGamRob.ssc")
+#source("gui/menuGlmRobOptions.ssc")
+#source("gui/menuLmRob.ssc")
+#source("gui/menuLmRobOptions.ssc")
+#source("gui/menuPrinCompRob.ssc")
+#source("gui/menuDiscRob.ssc")
+
+#source("gui/tabGlmRob.ssc")
+#source("gui/tabPredict.ssc")
+
+##
+##	install .first.lib and .last.lib
+##
+#source("gui/libfncts.ssc")
+

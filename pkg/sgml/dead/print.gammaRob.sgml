@@ -1,0 +1,30 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>print.gammaRob</s-topic>
+</s-topics>
+<s-title>
+Use <s-expression>print()</s-expression> on a <s-expression>gammaRob</s-expression> object 
+</s-title>
+<s-description>
+This is a method for the function <s-expression>print()</s-expression> for objects of 
+class <s-expression>gammaRob</s-expression>. See <s-expression>print</s-expression> or <s-expression>print.default</s-expression> for the 
+general behavior of this function and for the  
+interpretation of <s-expression>x</s-expression>. 
+</s-description>
+<s-usage>
+<s-old-style-usage>
+print.gammaRob(x) 
+</s-old-style-usage>
+</s-usage>
+<s-keywords>
+<s-keyword>robust</s-keyword>
+<s-keyword>Gamma</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

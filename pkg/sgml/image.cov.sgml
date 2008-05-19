@@ -1,0 +1,58 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> image.cov </s-topic>
+</s-topics>
+
+<s-title>
+Correlation Image Display
+</s-title>
+
+<s-description>
+Uses the image function to identify significant differences between
+classical and robust correlation matrix estimates.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+image.cov(object, probs=c(0.95, 0.99), ...)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-required>
+<s-arg name=" object ">
+a <s-expression>fit.models</s-expression> object containing a
+<s-expression>cov</s-expression> element and
+<s-expression>covRob</s-expression> element.
+</s-arg>
+</s-args-required>
+
+<s-args-optional>
+
+<s-arg name=" probs ">
+a vector of probabilities determining how differences are colored in the image.
+Differences with significance between 0 and min(probs) are white, differences
+between max(probs) and 1 are black, and intermediate values are gray
+scaled.  The number of colors depends on the length of probs.
+</s-arg>
+</s-args-optional>
+
+<s-side-effects>
+An image is produced on a new graphsheet (note that the graphsheet device
+is available only on the Windows platform).
+</s-side-effects>
+
+<s-see>
+<s-function name="identify.cov.sgm">identify.cov</s-function>.
+</s-see>
+
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

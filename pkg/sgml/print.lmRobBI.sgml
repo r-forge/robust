@@ -1,0 +1,42 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>print.lmRobBI</s-topic>
+</s-topics>
+<s-title>
+Print Method for an lmRobBI Object
+</s-title>
+<s-description>
+Displays the result from a <TT>lmRobBI</TT> regression.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+print.lmRobBI(x, ...) 
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="x">
+an object of class <TT>"lmRobBI"</TT>.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name="...">
+</s-arg>
+</s-args-optional>
+<s-value>
+the input object <TT>x</TT> is returned invisibly.
+</s-value>
+<s-see>
+<s-function name="lmRobBI.sgm">lmRobBI</s-function>.
+</s-see>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>print</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

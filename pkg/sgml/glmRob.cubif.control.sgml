@@ -1,0 +1,92 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+
+<s-topics>
+   <s-topic>glmRob.cubif.control</s-topic>
+</s-topics>
+
+<s-title>
+Control for Bounded Influence Robust GLM Estimator
+</s-title>
+
+<s-description>
+Allows users to set parameters for <s-expression>glmRob</s-expression>.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+glmRob.cubif.control(epsilon = 0.001, maxit = 50, bpar = 2, cpar = 1.5, trc
+= F, ...)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-optional>
+<s-arg name="epsilon">
+convergence threshold for the parameters.
+</s-arg>
+
+<s-arg name="maxit">
+maximum number of iterations.
+</s-arg>
+
+<s-arg name="ufact">
+tuning constant for the final estimate. The truncation  
+value for the likelihood equation is equal to `ufact *  
+sqrt(p) where <s-expression>p</s-expression> is the rank of the design matrix. The larger 
+this value the more similar to the maximum likelihood estimate 
+the final estimate is. The smallest acceptable value  
+for <s-expression>ufact</s-expression> is 1.1 . 
+</s-arg>
+
+<s-arg name="bpar">
+</s-arg>
+
+<s-arg name="cpar">
+tuning constant for the initial estimate. This is the 
+truncation value for the likelihood equation for the  
+initial estimate. It determines the starting point of the 
+iterative algorithm to calculate the final estimate.  
+</s-arg>
+
+<s-arg name="trc">
+logical value. If <s-expression>TRUE</s-expression> the number of the
+current iteration is printed on the screen. 
+</s-arg>
+</s-args-optional>
+
+<s-value>
+a list is returned, consisting of these parameters packaged to be 
+used by <s-expression>glmRob()</s-expression>. The values for
+<s-expression>glmRob.cubif.control()</s-expression> can be supplied 
+directly in a call to <s-expression>glmRob()</s-expression>. These values
+are filtered through <s-expression>glmRob.cubif.control()</s-expression>
+inside <s-expression>glmRob()</s-expression>. 
+</s-value>
+
+<s-see>
+<s-function name="glmRob.sgm">glmRob</s-function>. </s-see>
+<s-examples>
+
+<s-example type = text>
+# The following are equivalent
+<br>
+glmRob(formula, family, fit.method = 'cubif',
+cubif.control=glmRob.cubif.control(epsilon=0.0001, maxit = 100))
+glmRob(formula, family, fit.method = 'cubif', epsilon=0.0001, maxit = 100)
+</s-example>
+</s-examples>
+
+<s-keywords>
+<s-keyword>robust</s-keyword>
+<s-keyword>regression</s-keyword>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+
+<s-docclass>
+function
+</s-docclass>
+
+</s-function-doc>

@@ -1,0 +1,102 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>rq.object</s-topic>
+</s-topics>
+<s-title>
+Linear Quantile Regression Object 
+</s-title>
+<s-description>
+These are objects of class
+<s-expression>
+rq. 
+</s-expression>
+They represent the fit of a linear conditional quantile function model. 
+</s-description>
+<s-section name=" GENERATION">
+
+This class of objects is returned from the 
+<s-expression>rq</s-expression> function 
+to represent a fitted linear quantile regression model. 
+</s-section>
+<s-section name=" METHODS">
+The <s-expression>"rq"</s-expression> class of objects has methods for the following generic 
+functions: 
+<br><br>
+<s-expression>coef</s-expression>, 
+<s-expression>effects</s-expression>, 
+<s-expression>formula</s-expression>, 
+<s-expression>labels</s-expression>, 
+<s-expression>model.frame</s-expression>, 
+<s-expression>model.matrix</s-expression>, 
+<s-expression>plot</s-expression>, 
+<s-expression>predict</s-expression>, 
+<s-expression>print</s-expression>, 
+<s-expression>print.summary</s-expression>, 
+<s-expression>residuals</s-expression>, 
+<s-expression>summary</s-expression>, 
+<br><br>
+</s-section>
+<s-section name=" STRUCTURE">
+The following components must be included in a legitimate 
+<s-expression>rq</s-expression> object. 
+</s-section>
+<s-value>
+<s-return-component name="coefficients">
+the coefficients of the quantile regression fit. 
+The names of the coefficients are the names of the 
+single-degree-of-freedom effects (the columns of the 
+model matrix). 
+If the model was fitted by method "br" with ci=T, then
+the coefficient component consists of a matrix whose
+first column consists of the vector of estimated coefficients
+and the second and third columns are the lower and upper
+limits of a confidence interval for the respective coefficients.
+</s-return-component>
+<s-return-component name="residuals">
+the residuals from the fit. 
+</s-return-component>
+<s-return-component name="contrasts">
+a list containing sufficient information to construct the contrasts 
+used to fit any factors occurring in the model. 
+The list contains entries that are either matrices or character vectors. 
+When a factor is coded by contrasts, the corresponding contrast matrix 
+is stored in this list. 
+Factors that appear only as dummy variables and variables in the model 
+that are matrices correspond to character vectors in the list. 
+The character vector has the level names for a factor or the column 
+labels for a matrix. 
+</s-return-component>
+<s-return-component name="model">
+optionally the model frame, if <s-expression>model=T</s-expression>. 
+</s-return-component>
+<s-return-component name="x">
+optionally the model matrix, if <s-expression>x=T</s-expression>. 
+</s-return-component>
+<s-return-component name="y">
+optionally the response, if <s-expression>y=T</s-expression>. 
+<br><br>
+</s-return-component>
+</s-value>
+<s-details>
+The coefficients, residuals, and effects may be extracted 
+by the generic functions of the same name, rather than 
+by the <s-expression>$</s-expression> operator.
+For pure <s-expression>rq</s-expression> objects this is less critical 
+than for some of the inheritor classes. 
+Note that the extractor function <s-expression>coef</s-expression> returns a vector with missing values 
+omitted.
+</s-details>
+<s-see>
+<s-function name="rq.sgm">rq</s-function>,  <s-function name="coef.sgm">coefficients</s-function>.   </s-see>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>classes</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

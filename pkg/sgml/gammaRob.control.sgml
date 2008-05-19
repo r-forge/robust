@@ -1,0 +1,127 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> gammaRob.control </s-topic>
+</s-topics>
+
+<s-title>
+Control for the Robust Gamma Parameter Estimator
+</s-title>
+
+<s-description>
+Generates a list of control parameters for the robust gamma distribution
+parameter estimator used in gammaRob.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+gammaRob.control(estim, b1=1.5, b2=1.7, k=101, A=c(0, 0, 0),
+                 maxta=1, maxtc=1, maxit=100, tol=0.0001, til=0.001,
+                 sigma=0, alpha1=0.5, alpha2=20.5, u=0.99, beta=0.4,
+                 gam=0.4, cov=T)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-required>
+<s-arg name=" estim ">
+the robust estimator used in gammaRob.  The choices are "tdmean" for the
+truncated mean and "M" for the M.  The M estimator is not available
+for the lognormal distribution.  Only the parameters required for this
+estimator are returned.
+</s-arg>
+</s-args-required>
+
+
+<s-section name="Parameters for the truncated mean">
+<descrip>
+
+<tag>alpha1</tag>
+the regula falsi procedure (Marazzi and Ruffieux 1999) is applied to the
+interval <s-expression>[alpha1, alpha2]</s-expression>.
+
+<tag>alpha2</tag>
+see alpha1.
+
+<tag>u</tag>
+the value of the tuning constant.
+
+<tag>beta</tag>
+value of Beta in the interval <s-expression>[0, 0.5]</s-expression>.
+
+<tag>gam</tag>
+value of Gamma in the interval <s-expression>[0, 0.5]</s-expression>.
+
+<tag>tol</tag>
+relative precision of alpha, sigma, and the truncation points.
+
+<tag>cov</tag>
+if TRUE an estimate of the variance of the mean is computed.
+</descrip>
+</s-section>
+
+<s-section name="Parameters for the M">
+<descrip>
+
+<tag>b1</tag>
+the tuning constant b1.
+
+<tag>b2</tag>
+the tuning constant b2.
+
+<tag>k</tag>
+the number of values of alpha for which Ab(alpha) and cb(alpha) must be
+computed.
+
+<tag>A</tag>
+initial value of Ab(alpha).
+
+<tag>maxta</tag>
+maximum number of steps for improving Ab(alpha).
+
+<tag>maxtc</tag>
+maximum number of steps for improving cb(alpha).
+
+<tag>maxit</tag>
+maximum number of cycles of the main algorithm.
+
+<tag>tol</tag>
+desired relative precision of each element of Ab(alpha) and cb(alpha).
+
+<tag>til</tag>
+desired relative accuracy of numerical integrations.
+
+<tag>sigma</tag>
+if positive, then the only parameter fit is alpha.
+
+<tag>cov</tag>
+if TRUE the covariance matrix of the parameters is returned.
+</descrip>
+</s-section>
+
+<s-value>
+a list containing the control parameters for the estimator specified by
+<s-expression>estim</s-expression>.
+<s-value>
+
+<s-see>
+<s-function name="asymmetricRob.sgm">gammaRob</s-function>.
+</s-see>
+
+<s-examples>
+<s-example type = text>
+gammaRob(los, control = gammaRob.control("tdmean", tol=1e-6))
+</s-example>
+</s-examples>
+
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+
+<s-docclass>
+function
+</s-docclass>
+
+</s-function-doc>
