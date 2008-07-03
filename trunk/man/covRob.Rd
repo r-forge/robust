@@ -61,10 +61,9 @@
 \seealso{
   \code{\link{covRob.control}},
   \code{\link{cov}},
-  \code{\link{covMcd}},
+  \code{\link[robustbase]{covMcd}},
   \code{\link{donostah}},
-  \code{\link{fastcov}},
-  \code{\link{rockem}}.
+  \code{\link{fastcov}}.
 }
 
 \examples{

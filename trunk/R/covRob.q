@@ -1,6 +1,5 @@
-covRob <- function(data, corr = FALSE, distance = TRUE,
-				na.action = na.fail, estim = "auto",
-				control = covRob.control(estim, ...), ...)
+covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
+                   estim = "auto", control = covRob.control(estim, ...), ...)
 {
   ## Step 1. Check the data and control options ##
 
@@ -42,9 +41,11 @@ covRob <- function(data, corr = FALSE, distance = TRUE,
 			bad.args <- sQuote(setdiff(dots.names, control.names))
 			estim <- dQuote(estim)
 			if(length(bad.args) == 1)
-				stop(bad.args, " is not a control argument for the ", estim, " estimator")
+				stop(sQuote(bad.args), " is not a control argument for the ",
+             dQuote(estim), " estimator")
 			else
-				stop(paste(bad.args, collapse = ", "), " are not control arguments for the ", estim, " estimator")
+				stop(paste(sQuote(bad.args), collapse = ", "), " are not control ",
+             "arguments for the ", dQuote(estim), " estimator")
 		}
 	}
 
@@ -95,8 +96,11 @@ covRob <- function(data, corr = FALSE, distance = TRUE,
       ans <- covMcd(data, cor = FALSE, alpha = quan, nsamp = ntrial,
                     seed = NULL, trace = FALSE, use.correction = TRUE)
 
-      ans$raw.dist <- ans$raw.mah
-      ans$dist <- ans$mah
+      ans$center <- ans$raw.center
+      ans$cov <- ans$raw.cov
+      ans$dist <- ans$raw.mah
+      ans$raw.cov <- ans$raw.cov / prod(ans$raw.cnp2)
+      ans$raw.dist <- ans$raw.mah * prod(ans$raw.cnp2)
 			ans
 		},
 
@@ -110,11 +114,9 @@ covRob <- function(data, corr = FALSE, distance = TRUE,
       ans <- covMcd(data, cor = FALSE, alpha = quan, nsamp = ntrial,
                     seed = NULL, trace = FALSE, use.correction = FALSE)
 
-      weights <- ans$raw.weights
-      tmp <- cov.wt(data, wt = weights, cor = corr)
-      ans$cov <- sum(weights)/(sum(weights) - 1.0) * tmp$cov
-      ans$center <- tmp$center
-      ans$raw.dist <- ans$raw.mah
+      ans$dist <- ans$mah
+      ans$raw.cov <- ans$raw.cov / prod(ans$raw.cnp2)
+      ans$raw.dist <- ans$raw.mah * prod(ans$raw.cnp2)
 
 			ans
 		},
