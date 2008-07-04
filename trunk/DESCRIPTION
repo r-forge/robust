@@ -13,7 +13,7 @@ Author: Jeff Wang <jwang@statsci.com>,
         Doug Martin <doug@statsci.com>,
         Kjell Konis <konis@stats.ox.ac.uk>.
 Maintainer: Kjell Konis <konis@stats.ox.ac.uk>
-Depends: R (>= 2.6.0), MASS, lattice, robustbase
+Depends: R (>= 2.6.0), MASS, lattice, robustbase, rrcov
 Description: A package of robust methods.
 License: GPL
 

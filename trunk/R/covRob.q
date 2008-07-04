@@ -4,7 +4,8 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
   ## Step 1. Check the data and control options ##
 
 	data <- na.action(data)
-	data <- as.matrix(data)
+  if(is.data.frame(data))
+    data <- data.matrix(data)
 
 	n <- nrow(data)
 	p <- ncol(data)
@@ -36,10 +37,27 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 	else {
 		dots <- list(...)
 		dots.names <- names(dots)
+
+  ## For backwards compatibility we support the use of quan and ntrial   ##
+  ## to specify alpha and nsamp for estim = "mcd", estim = "weighted"    ##
+  ## and estim = "M". Providing both quan and alpha or both ntrial and   ##
+  ## nsamp will result in an error.                                      ##
+
+    if(any(dots.names == "quan") && all(dots.names != "alpha")) {
+      dots.names[dots.names == "quan"] <- "alpha"
+      names(dots) <- dots.names
+    }
+
+    if(any(dots.names == "ntrial") && all(dots.names != "nsamp")) {
+      dots.names[dots.names == "ntrial"] <- "nsamp"
+      names(dots) <- dots.names
+    }
+
 		control.names <- names(control)
+    if(any(control.names == "init.control"))
+      control.names <- c(control.names, names(control$init.control))
 		if(any(!is.element(dots.names, control.names))) {
 			bad.args <- sQuote(setdiff(dots.names, control.names))
-			estim <- dQuote(estim)
 			if(length(bad.args) == 1)
 				stop(sQuote(bad.args), " is not a control argument for the ",
              dQuote(estim), " estimator")
@@ -53,30 +71,22 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 
 	ans <- switch(estim,
 
-		donostah = {
-			donostah(data, control)
-		},
+		donostah = donostah(data, control),
 
-		pairwiseqc = {
-			fastcov(data, control)
-		},
+		pairwiseqc = fastcov(data, control),
 
-		pairwisegk = {
-			fastcov(data, control)
-		},
+		pairwisegk = fastcov(data, control),
 
 		m = {
-			quan <- control$quan
-			ntrial <- control$ntrial
+      mcd.control <- control$init.control
+      control$init.control <- NULL
+			if(mcd.control$alpha > 1)
+				mcd.control$alpha <- mcd.control$alpha / n
 
-			if(quan > 1)
-				quan <- quan / n
+      init <- covMcd(data, cor = FALSE, control = mcd.control)
 
-      init <- covMcd(data, cor = FALSE, alpha = quan, nsamp = ntrial,
-                     seed = NULL, trace = FALSE, use.correction = FALSE)
-
-			ans <- covMest(data, cor = FALSE, r = control$r, arp = control$alpha,
-                     eps = control$tol, maxiter = control$maxit,
+			ans <- covMest(data, cor = FALSE, r = control$r, arp = control$arp,
+                     eps = control$eps, maxiter = control$maxiter,
                      t0 = init$raw.center, S0 = init$raw.cov)
 
       ans$dist <- ans$mah
@@ -87,14 +97,10 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 		},
 
 		mcd = {
-			quan <- control$quan
-			ntrial <- control$ntrial
+			if(control$alpha > 1)
+				control$alpha <- control$alpha / n
 
-			if(quan > 1)
-				quan <- quan / n
-
-      ans <- covMcd(data, cor = FALSE, alpha = quan, nsamp = ntrial,
-                    seed = NULL, trace = FALSE, use.correction = TRUE)
+      ans <- covMcd(data, cor = FALSE, control = control)
 
       ans$center <- ans$raw.center
       ans$cov <- ans$raw.cov
@@ -105,14 +111,10 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 		},
 
 		weighted = {
-			quan <- control$quan
-			ntrial <- control$ntrial
+			if(control$alpha > 1)
+				control$alpha <- control$alpha / n
 
-			if(quan > 1)
-				quan <- quan / n
-
-      ans <- covMcd(data, cor = FALSE, alpha = quan, nsamp = ntrial,
-                    seed = NULL, trace = FALSE, use.correction = FALSE)
+      ans <- covMcd(data, cor = FALSE, control = control)
 
       ans$dist <- ans$mah
       ans$raw.cov <- ans$raw.cov / prod(ans$raw.cnp2)
