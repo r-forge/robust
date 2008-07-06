@@ -9,8 +9,8 @@ test.lmRob <- function(object, type = "bias", level = NULL, n.permute = 99)
   m <- object$m
 
   Terms <- attr(m, "terms")
-  weights <- model.extract(m, weights)
-  y <- model.extract(m, response)
+  weights <- model.extract(m, "weights")
+  y <- model.extract(m, "response")
   x <- model.matrix(Terms, m, contrasts)
   n <- length(y)
   p <- length(coef(object))

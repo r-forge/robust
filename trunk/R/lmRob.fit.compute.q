@@ -177,17 +177,17 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
   }
 
   else if(iop == 4) { 
-    set.seed(sed)
-
-    if(is.null(genetic.control))
-      genetic.control <- lmRob.genetic.control()
-
-    z1 <- lmRob.ga(x, y, rank, genetic.control, ipsi, xk, beta, tolr=tlo,
-                   tau=tua, maxs1=mxs)
-
-    coeff0 <- z1$theta[1:rank]
-    scale0 <- z1$smin
-    resid0 <- z1$rs
+#    set.seed(sed)
+#
+#    if(is.null(genetic.control))
+#      genetic.control <- lmRob.genetic.control()
+#
+#    z1 <- lmRob.ga(x, y, rank, genetic.control, ipsi, xk, beta, tolr=tlo,
+#                   tau=tua, maxs1=mxs)
+#
+#    coeff0 <- z1$theta[1:rank]
+#    scale0 <- z1$smin
+#    resid0 <- z1$rs
   }
 
   else if(!is.null(x1)) {

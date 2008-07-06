@@ -51,7 +51,7 @@ anova.glmRoblist <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 	if(test != "none") {
 		n <- length(object[[1]]$residuals)
 		o <- order(dfres)
-		stat.anova(aod, test, deviance.lm(object[[o[1]]])/dfres[o[1]], dfres[o[1]], n)
+		stat.anova(aod, test, stats:::deviance.lm(object[[o[1]]])/dfres[o[1]], dfres[o[1]], n)
 	}
 	else aod
 }

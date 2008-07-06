@@ -9,7 +9,7 @@ lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, ...)
     stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
           "contain a model frame component")
   model <- x[[(1:n.models)[model][1]]]$model
-  y <- model.extract(model, response)
+  y <- model.extract(model, "response")
 
   panel.special <- function(x, y, smooths = FALSE, rugplot = FALSE)
   {

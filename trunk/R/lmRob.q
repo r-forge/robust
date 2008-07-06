@@ -18,7 +18,7 @@ lmRob <- function(formula, data, weights, subset,
   m <- eval(m, sys.parent())
   Terms <- attr(m, "terms")
   weights <- model.extract(m, weights)
-  Y <- model.extract(m, response)
+  Y <- model.extract(m, "response")
 
   ##	In this section we make the model.matrix X and the sub
   ##	model.matices X1 and X2 such that X1 contains all of the

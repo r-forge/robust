@@ -20,7 +20,7 @@ glmRob <- function(formula, family = binomial(), data, weights, subset,
 	m <- eval(m, sys.parent())
 	Terms <- attr(m, "terms")
 	a <- attributes(m)
-	Y <- model.extract(m, response)
+	Y <- model.extract(m, "response")
 	X <- model.matrix(Terms, m, contrasts)
 	offset <- model.extract(m, offset)
 

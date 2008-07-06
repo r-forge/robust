@@ -144,8 +144,8 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
       df <- data.frame(py = as.vector(py), px = as.vector(px),
         mod = rep(mod.names, each = n))
 
-      panel.special <- function(x, y, id.n, robQQln) {
-        panel.xyplot(x, y, pch = 16, col = 6)
+      panel.special <- function(x, y, id.n, robQQln, ...) {
+        panel.xyplot(x, y, pch = 16, col = 6, ...)
         panel.addons(x, y, smooths = FALSE, rugplot = FALSE, id.n = id.n)
 
         if(robQQln)
