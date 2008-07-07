@@ -553,7 +553,8 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
         else if (eff == 0.9)  yc <- 3.882646
         else if (eff == 0.85) yc <- 3.443689
         else if (eff == 0.8)  yc <- 3.136909
-        else                  yc <- chb(eff)$cb
+        #else                  yc <- chb(eff)$cb
+        else                  yc <- lmRob.effvy(eff, ipsi = 2)
       }
 
       else 

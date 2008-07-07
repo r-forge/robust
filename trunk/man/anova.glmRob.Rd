@@ -32,11 +32,13 @@ an \code{anova} object.
 }
 
 \examples{
-#data(breslow.dat)
-#bres.int <- glmRob(sumY ~ Age10 + Base4*Trt, family = poisson(), data = breslow.dat)
-#bres.main <- glmRob(sumY ~ Age10 + Base4 + Trt, family = poisson(), data = breslow.dat)
-#anova(bres.int)
-#anova(bres.int, bres.main)
+data(breslow.dat)
+
+bres.int <- glmRob(sumY ~ Age10 + Base4*Trt, family = poisson(), data = breslow.dat)
+anova(bres.int)
+
+bres.main <- glmRob(sumY ~ Age10 + Base4 + Trt, family = poisson(), data = breslow.dat)
+anova(bres.main, bres.int)
 }
 
 \keyword{robust}

@@ -39,7 +39,8 @@ lmRob.const <- function(eff, ipsi = 1)
     else if(eff == 0.9) cc <- 3.882646
     else if(eff == 0.85) cc <- 3.443689
     else if(eff == 0.8) cc <- 3.136909
-    else cc <- chb(eff)$cb
+    #else cc <- chb(eff)$cb
+    else cc <- lmRob.effvy(eff, ipsi = 2)
   }
 
   tmp <- lmRob.eff0(itype = 1, ta = cc, tc = cc, ipsi = ipsi)
