@@ -16,17 +16,17 @@
 \arguments{
   \item{x}{a numeric matrix containing the data.}
 
-  \item{control}{a list of control parameters.  The utility function \code{\link{covRob.control}} creates a list of the control parameters and their default values.  See details for the required control parameters and their default values.}
+  \item{control}{a list of control parameters. The utility function \code{\link{covRob.control}} creates a list of the control parameters and their default values. See details for the required control parameters and their default values.}
 }
 
 \value{
 a list with the following components:
 
-  \item{call}{an image of the call that produced the object with all the arguments named.}
-
   \item{cov}{a numeric matrix containing the Stahel-Donoho estimate of the covariance/correlation matrix.}
 
   \item{center}{a numeric vector containing the Stahel-Donoho estimate of the location vector.}
+
+  \item{dist}{a numeric vector containing the squared Mahalanobis distances.}
 }
 
 \details{
@@ -50,7 +50,7 @@ This function is called by the high-level function \code{\link{covRob}} when the
 }
 
 \section{References}{
-Maronna, R. A. and Yohai, V. J. (1995).  The behavior of the Stahel-Donoho robust multivariate estimator.  \emph{Journal of the American Statistical Association}, 90, 330-341.
+R. A. Maronna and V. J. Yohai (1995) The Behavior of the Stahel-Donoho Robust Multivariate Estimator. \emph{Journal of the American Statistical Association} \bold{90} (429), 330--341.
 }
 
 \seealso{

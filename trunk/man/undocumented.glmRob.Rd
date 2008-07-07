@@ -18,7 +18,7 @@ These functions are used by \code{\link{glmRob}} and its methods.  They are not 
 glmRob.gfedca(vtheta, ci, wa, ni, oi = 0, icase) 
 glmRob.gicstp(icase, ialg, ni, vtheta, ai, oi, tol, maxit)
 glmRob.gintac(x, y, ni, oi, icase, maxtt, maxta, tolt, tola, b, c) 
-glmRob.glmdev(y, ni, ci, wa, vtheta, offset = 0, icase = ics)
+glmRob.glmdev(y, ni, ci, wa, vtheta, offset = 0, icase = 0)
 glmRob.gymain(x, y, ni, cov, a, theta, oi = 0, b,
   gam, tau, icase, iugl, iopt, ialg, icnvt, icnva, maxit, maxtt,
   maxta, maxtc, tol, tolt, tola, tolc, trc = FALSE) 

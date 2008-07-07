@@ -328,6 +328,9 @@
 		0E96A3A40A55C1DC009C18C6 /* summary.lmfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.lmfm.Rd; path = man/summary.lmfm.Rd; sourceTree = SOURCE_ROOT; };
 		0E96A3A50A55C21F009C18C6 /* gen.data.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.Rd; path = man/gen.data.Rd; sourceTree = SOURCE_ROOT; };
 		0E96A3A60A55C21F009C18C6 /* splus.assign.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = splus.assign.Rd; path = man/splus.assign.Rd; sourceTree = SOURCE_ROOT; };
+		0E9C45050E2129C800DE7FD9 /* compatibility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compatibility.c; path = src/compatibility.c; sourceTree = SOURCE_ROOT; };
+		0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.ga.q; sourceTree = "<group>"; };
+		0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.genetic.control.q; sourceTree = "<group>"; };
 		0EBC2E0A0A2F70E300C89C9F /* lmRob.const.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.const.q; path = R/lmRob.const.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E0B0A2F70E300C89C9F /* lmRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.control.q; path = R/lmRob.control.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E0C0A2F70E300C89C9F /* lmRob.eff0.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.eff0.q; path = R/lmRob.eff0.q; sourceTree = SOURCE_ROOT; };
@@ -686,6 +689,7 @@
 			children = (
 				DAAAEB910A0A08A000212C6E /* Makevars */,
 				0E4500CF0A029C060064D9A4 /* robust.h */,
+				0E9C45050E2129C800DE7FD9 /* compatibility.c */,
 				0E4500C40A029C060064D9A4 /* fastcov.c */,
 				0E4500CC0A029C060064D9A4 /* mmprnt.c */,
 				0E4500CD0A029C060064D9A4 /* rb.c */,
@@ -850,6 +854,8 @@
 		0E45FFD40A029C050064D9A4 /* lmRob */ = {
 			isa = PBXGroup;
 			children = (
+				0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */,
+				0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */,
 				0E45FFD60A029C050064D9A4 /* lmRobbi.q */,
 				0E45FFD70A029C050064D9A4 /* lmasmRob.q */,
 				0E45FFD90A029C050064D9A4 /* rcp.q */,

@@ -1,7 +1,5 @@
 fastcov <- function(x, control)
 {
-	the.call <- match.call()
-
 	n <- nrow(x)
 	p <- ncol(x)
 
@@ -49,8 +47,7 @@ fastcov <- function(x, control)
 
 	fclist$cov <- V1$cov
 	fclist$center <- V1$center
-	fclist$call <- the.call
 
-	fclist[c("call", "cov", "center", "raw.cov", "raw.center")]
+	fclist[c("cov", "center", "raw.cov", "raw.center")]
 }
 

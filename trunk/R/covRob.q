@@ -1,8 +1,6 @@
 covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
                    estim = "auto", control = covRob.control(estim, ...), ...)
 {
-  ## Step 1. Check the data and control options ##
-
 	data <- na.action(data)
   if(is.data.frame(data))
     data <- data.matrix(data)
@@ -18,9 +16,10 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 		colNames <- paste("V", 1:p, sep = "")
 
 	if(p < 2)
-	    stop("Need at least two columns in data to compute a covariance")
+	    stop(sQuote("data"), " must have at least two columns to compute ",
+          "a covariance matrix")
 	if(n < p)
-	    stop("Not enough data")
+	    stop("not enough observations")
 
 	estim <- casefold(estim)
 
@@ -66,8 +65,6 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
              "arguments for the ", dQuote(estim), " estimator")
 		}
 	}
-
-  ## Step 2. Call the robust covariance estimator ##
 
 	ans <- switch(estim,
 
@@ -127,13 +124,8 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 
 	) # end of switch
 
-
-  ## Step 3. Create output object ##
-
 	dimnames(ans$cov) <- list(colNames, colNames)
 	names(ans$center) <- colNames
-
-  ## If no initial estimate set as missing ##
 
   if(is.null(ans$raw.cov)) {
     ans$raw.cov <- NA
@@ -144,8 +136,6 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 		dimnames(ans$raw.cov) <- list(colNames, colNames)
 		names(ans$raw.center) <- colNames
 	}
-
-	## compute Mahalanobis distances ##
 
 	if(distance) {
     if(is.null(ans$dist))
@@ -168,8 +158,6 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 	if(!is.na(ans$raw.dist[1]) && !is.null(rowNames))
 		names(ans$raw.dist) <- rowNames
 
-	## covariance or correlation ##
-
 	if(corr) {
 		std <- sqrt(diag(ans$cov))
 		ans$cov <- ans$cov / (std %o% std)
@@ -181,15 +169,13 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 	}
 
 	ans$corr <- corr
-
-	## some diagnostic information ##
-
 	ans$estim <- estim
 	ans$control <- control
 	ans$call <- match.call()
 
 	ans <- ans[c("call", "cov", "center", "dist", "raw.cov", "raw.center",
                "raw.dist", "corr", "estim", "control")]
+
 	oldClass(ans) <- "covRob"
 	ans
 }
