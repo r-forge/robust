@@ -407,6 +407,7 @@
 		0EFE1A9C0B97693C0022F697 /* leuk.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = leuk.dat.Rd; path = man/leuk.dat.Rd; sourceTree = SOURCE_ROOT; };
 		DA0C9F680E225E9300973220 /* leuk.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = leuk.dat.txt; path = data/leuk.dat.txt; sourceTree = SOURCE_ROOT; };
 		DA0C9F690E225E9300973220 /* mallows.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mallows.dat.txt; path = data/mallows.dat.txt; sourceTree = SOURCE_ROOT; };
+		DA0C9F7D0E225F9300973220 /* mallows.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mallows.dat.Rd; path = man/mallows.dat.Rd; sourceTree = SOURCE_ROOT; };
 		DA1294C10B38024A00B17596 /* glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = glmRob.q; sourceTree = "<group>"; };
 		DA1294F00B380D8B00B17596 /* anova.glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = anova.glmRob.q; sourceTree = "<group>"; };
 		DA1294F10B380D8B00B17596 /* anova.glmRoblist.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = anova.glmRoblist.q; sourceTree = "<group>"; };
@@ -440,9 +441,6 @@
 		DA1295170B380D8C00B17596 /* s.logistic.misclass.fit.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = s.logistic.misclass.fit.q; sourceTree = "<group>"; };
 		DA1295180B380D8C00B17596 /* summary.glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = summary.glmRob.q; sourceTree = "<group>"; };
 		DA1295190B380D8C00B17596 /* wt.carroll.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = wt.carroll.q; sourceTree = "<group>"; };
-		DAA713270BA039A800F4A316 /* lawson.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lawson.dat.txt; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/datasets/lawson.dat.txt; sourceTree = SOURCE_ROOT; };
-		DAA713290BA039A800F4A316 /* mallows.dat.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = mallows.dat.q; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/datasets/mallows.dat.q; sourceTree = SOURCE_ROOT; };
-		DAA713620BA06A1800F4A316 /* mallows.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = mallows.dat.Rd; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/man/mallows.dat.Rd; sourceTree = SOURCE_ROOT; };
 		DAAAEB910A0A08A000212C6E /* Makevars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makevars; path = src/Makevars; sourceTree = SOURCE_ROOT; };
 		DAB89EB30A1CA95600F2C64D /* lmRob.RFPE.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.RFPE.q; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -757,8 +755,6 @@
 		0E45FF410A029C050064D9A4 /* datasets */ = {
 			isa = PBXGroup;
 			children = (
-				DAA713270BA039A800F4A316 /* lawson.dat.txt */,
-				DAA713290BA039A800F4A316 /* mallows.dat.q */,
 				0E45FF430A029C050064D9A4 /* bushfire.dat.txt */,
 				0E45FF440A029C050064D9A4 /* hawkins.dat.txt */,
 				0E45FF450A029C050064D9A4 /* hemo.cont.txt */,
@@ -1209,7 +1205,7 @@
 			children = (
 				0E8F52F70B8E4BBF00B057CB /* breslow.dat.Rd */,
 				0EFE1A9C0B97693C0022F697 /* leuk.dat.Rd */,
-				DAA713620BA06A1800F4A316 /* mallows.dat.Rd */,
+				DA0C9F7D0E225F9300973220 /* mallows.dat.Rd */,
 				0E45000D0A029C050064D9A4 /* stack.dat.Rd */,
 				0E4500100A029C050064D9A4 /* woodmod.dat.Rd */,
 			);
