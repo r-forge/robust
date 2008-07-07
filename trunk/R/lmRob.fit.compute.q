@@ -490,7 +490,8 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
 ##
 
   dev0 <- scale0^2
-  tmp <- ucov0 * dev0 / n
+  #tmp <- ucov0 * dev0 / n
+  tmp <- (ucov0 * dev0) / n
   scov0 <- matrix(NA, nrow = rank, ncol = rank)
   dimnames(scov0) <- list(xnames, xnames)
   i2 <- 0
@@ -596,7 +597,8 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
 
       ucov1 <- z2$ucov
       M.weights1 <- z2$wi
-      tmp <- ucov1 * scale0^2 / n
+      #tmp <- ucov1 * scale0^2 / n
+      tmp <- (ucov1 * scale0^2) / n
       scov1  <- matrix(NA, nrow = rank, ncol = rank)
       dimnames(scov1) <- list(xnames,xnames)
       i2 <- 0
@@ -718,7 +720,8 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
   if(!is.null(genetic.control))
     z$genetic.control <- genetic.control 
   z$qr <- qrx
-	z$yc <- lmRob.effvy(eff)
+	#z$yc <- lmRob.effvy(eff)
+	z$yc <- yc
   oldClass(z) <- c("lmRob")
 	z
 }
