@@ -405,6 +405,8 @@
 		0EE4DC9F0B83A90000BA046A /* anova.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = anova.glmRob.Rd; path = man/anova.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0EE4DCC90B83BBFD00BA046A /* anova.lmRoblist.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = anova.lmRoblist.q; path = R/anova.lmRoblist.q; sourceTree = SOURCE_ROOT; };
 		0EFE1A9C0B97693C0022F697 /* leuk.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = leuk.dat.Rd; path = man/leuk.dat.Rd; sourceTree = SOURCE_ROOT; };
+		DA0C9F680E225E9300973220 /* leuk.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = leuk.dat.txt; path = data/leuk.dat.txt; sourceTree = SOURCE_ROOT; };
+		DA0C9F690E225E9300973220 /* mallows.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mallows.dat.txt; path = data/mallows.dat.txt; sourceTree = SOURCE_ROOT; };
 		DA1294C10B38024A00B17596 /* glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = glmRob.q; sourceTree = "<group>"; };
 		DA1294F00B380D8B00B17596 /* anova.glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = anova.glmRob.q; sourceTree = "<group>"; };
 		DA1294F10B380D8B00B17596 /* anova.glmRoblist.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = anova.glmRoblist.q; sourceTree = "<group>"; };
@@ -440,8 +442,6 @@
 		DA1295190B380D8C00B17596 /* wt.carroll.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = wt.carroll.q; sourceTree = "<group>"; };
 		DAA713270BA039A800F4A316 /* lawson.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lawson.dat.txt; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/datasets/lawson.dat.txt; sourceTree = SOURCE_ROOT; };
 		DAA713290BA039A800F4A316 /* mallows.dat.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = mallows.dat.q; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/datasets/mallows.dat.q; sourceTree = SOURCE_ROOT; };
-		DAA713400BA0658800F4A316 /* mallows.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = mallows.dat.txt; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/data/mallows.dat.txt; sourceTree = SOURCE_ROOT; };
-		DAA713410BA069BC00F4A316 /* leuk.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = leuk.dat.txt; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/data/leuk.dat.txt; sourceTree = SOURCE_ROOT; };
 		DAA713620BA06A1800F4A316 /* mallows.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = mallows.dat.Rd; path = ../../../../../../var/automount/export/rs/konis/Documents/Projects/robust/man/mallows.dat.Rd; sourceTree = SOURCE_ROOT; };
 		DAAAEB910A0A08A000212C6E /* Makevars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makevars; path = src/Makevars; sourceTree = SOURCE_ROOT; };
 		DAB89EB30A1CA95600F2C64D /* lmRob.RFPE.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.RFPE.q; sourceTree = "<group>"; };
@@ -746,8 +746,8 @@
 			isa = PBXGroup;
 			children = (
 				0E3CE2E50B487217008C361D /* breslow.dat.txt */,
-				DAA713410BA069BC00F4A316 /* leuk.dat.txt */,
-				DAA713400BA0658800F4A316 /* mallows.dat.txt */,
+				DA0C9F680E225E9300973220 /* leuk.dat.txt */,
+				DA0C9F690E225E9300973220 /* mallows.dat.txt */,
 				0E45FF3F0A029C050064D9A4 /* stack.dat.txt */,
 				0E45FF400A029C050064D9A4 /* woodmod.dat.txt */,
 			);
