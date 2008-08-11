@@ -67,7 +67,7 @@ glmRob.cubif <- function(x, y, intercept = FALSE, offset = 0.0,
 	if(intercept)
     x <- cbind(1,x)
 
-	if(length(offset) <= 1)
+	if(is.null(offset) || length(offset) <= 1)
     offset <- rep(0.0, ly) 
 
 	p <- ncol(x)
@@ -256,8 +256,8 @@ glmRob.cubif <- function(x, y, intercept = FALSE, offset = 0.0,
 	jjj <- (1:n)*(dni!=0) 
 	eta[iii] <- zf$vtheta[jjj]
 
-  if(any(offset))
-    offset[iii] <- offset[jjj]
+  #if(any(offset))
+  offset[iii] <- offset[jjj]
 
   ci[iii] <- zf$ci[jjj]
 	ai[iii] <- zf$ai[jjj] 

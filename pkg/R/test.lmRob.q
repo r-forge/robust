@@ -9,8 +9,8 @@ test.lmRob <- function(object, type = "bias", level = NULL, n.permute = 99)
   m <- object$m
 
   Terms <- attr(m, "terms")
-  weights <- model.extract(m, weights)
-  y <- model.extract(m, response)
+  weights <- model.extract(m, "weights")
+  y <- model.extract(m, "response")
   x <- model.matrix(Terms, m, contrasts)
   n <- length(y)
   p <- length(coef(object))
@@ -27,7 +27,8 @@ test.lmRob <- function(object, type = "bias", level = NULL, n.permute = 99)
 
     control$initial.alg <- "Random"
     gen.list <- object$genetic.control
-    perm.x <- samp.permute(1:n, n.permute)
+    #perm.x <- samp.permute(1:n, n.permute)
+    perm.x <- sapply(rep(n, n.permute), function(u) sample(1:u))
     beta.all <- rep(0, n.permute)
 
     for(i in 1:n.permute) {
@@ -92,7 +93,8 @@ test.lmRob <- function(object, type = "bias", level = NULL, n.permute = 99)
     else if (eff == 0.9)  yc <- 3.882646
     else if (eff == 0.85) yc <- 3.443689
     else if (eff == 0.8)  yc <- 3.136909
-    else                  yc <- chb(eff)$cb
+    #else                  yc <- chb(eff)$cb
+    else                  yc <- lmRob.effvy(eff, ipsi = 2)
   }
 
   else 

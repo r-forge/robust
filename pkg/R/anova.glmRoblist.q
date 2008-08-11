@@ -17,6 +17,7 @@ anova.glmRoblist <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 			else return(paste(i - 1, i, sep = " vs. "))
 		}
 	}
+
 	test <- match.arg(test)
 	rt <- length(object)
 
@@ -25,8 +26,7 @@ anova.glmRoblist <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 		anova(object, ...)
 	}
 
-	forms <- sapply(object, function(x)
-	as.character(formula(x)))
+	forms <- sapply(object, function(x) as.character(formula(x)))
 	subs <- as.logical(match(forms[2,  ], forms[2, 1], FALSE))
 	if(!all(subs))
 		warning("Some fit objects deleted because response differs from the first model")
@@ -34,7 +34,7 @@ anova.glmRoblist <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 		stop("The first model has a different response from the rest")
 	forms <- forms[, subs]
 	object <- object[subs]
-	dfres <- sapply(object, "[[", "df.resid")
+	dfres <- sapply(object, "[[", "df.residual")
 	dev <- sapply(object, "[[", "deviance")
 	tl <- lapply(object, labels)
 	rt <- length(dev)
@@ -51,7 +51,7 @@ anova.glmRoblist <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 	if(test != "none") {
 		n <- length(object[[1]]$residuals)
 		o <- order(dfres)
-		stat.anova(aod, test, deviance.lm(object[[o[1]]])/dfres[o[1]], dfres[o[1]], n)
+		stat.anova(aod, test, stats:::deviance.lm(object[[o[1]]])/dfres[o[1]], dfres[o[1]], n)
 	}
 	else aod
 }

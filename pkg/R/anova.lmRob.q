@@ -50,7 +50,8 @@ anova.lmRob <- function(object, ..., test=c("RF","RWald"))
       }
       else {
         cst <- lmRob.const(efficiency, ipsi)
-        yc <- chb(efficiency)$cb 
+        #yc <- chb(efficiency)$cb 
+        yc <- lmRob.effvy(efficiency, ipsi = 2)
       }
     }
   }

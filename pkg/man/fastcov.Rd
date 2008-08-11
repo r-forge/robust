@@ -22,8 +22,6 @@
 \value{
   a list with the following components:
 
-  \item{call}{an image of the call that produced the object with all the arguments named.}
-
   \item{cov}{a numeric matrix containing the Stahel-Donoho estimate of the covariance/correlation matrix.}
 
   \item{center}{a numeric vector containing the Stahel-Donoho estimate of the location vector.}

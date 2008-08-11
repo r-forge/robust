@@ -194,10 +194,10 @@ step.lmRob <- function(object, scope, scale, direction =
 
 		change <- paste(change[o], dimnames(aod)[[1]][o])
 		Terms <- terms(update(formula(fit), eval(parse(text = paste("~ .", change)))))
-		attr(Terms, "formula") <- new.formula <- rebld.formula(Terms)
+		attr(Terms, "formula") <- new.formula <- formula(Terms)
 		asgn <- sub.assign(Terms, Asgn)
 		tx <- x[, unlist(Asgn[names(asgn)]), drop = FALSE]
-		newfit <- lmRob(new.formula, data = m, robust.control = robust.control)
+		newfit <- lmRob(new.formula, data = m, control = robust.control)
 		bRFPE <- aod[, "RFPE"][o]
 
 		if(trace)

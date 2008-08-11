@@ -1,31 +1,27 @@
 donostah <- function(x, control)
 {
-	the.call <- match.call()
-
 	n <- nrow(x)
 	p <- ncol(x)
-
-## extract and process the control parameters ##
 
   center <- control$center
 	nresamp <- control$nresamp
 	maxres <- control$maxres
-	random.sample <- control$random.sample
-	tune <- control$tune
 	prob <- control$prob
 	eps <- control$eps
 
-	if(!random.sample) {
-		old.random.seed <- .Random.seed
-		on.exit(assign(".Random.seed", old.random.seed))
+	if(!control$random.sample) {
+    if(exists(".Random.seed", where = 1)) {
+      random.seed <- get(".Random.seed", pos = 1)
+      on.exit(assign(".Random.seed", random.seed, pos = 1))
+    }
 		set.seed(21)
 	}
 
-	if(casefold(nresamp) == "auto")
-		nresamp <- ceiling(log(1-control$prob)/log(1 - (1 - control$eps)^(p + 1)))
+  if(casefold(nresamp) == "auto")
+    nresamp <- ceiling(log(1 - control$prob)/log(1 - (1 - control$eps)^(p+1)))
 
 	else if(!is.integer(nresamp)) 
-		stop("nresamp must be 0, a positive integer, or \"auto\".")
+		stop("nresamp must be a nonnegative integer or ", dQuote("auto"))
 
 	if(nresamp != 0)
 		nresamp <- max(1000, nresamp)
@@ -34,34 +30,30 @@ donostah <- function(x, control)
 		maxres <- 2 * nresamp
 
 	else if(!is.integer(maxres))
-		stop("maxres must be a positive integer.")
+		stop(sQuote("maxres"), " is not a positive integer")
 
 	tune <- sqrt(qchisq(control$tune, p))
 
-## allocate memory for the Fortran subroutine ##
-
 	icent <- 1
-	locat <- rep(0, p)
-	covmat <- matrix(0, p, p)
-	wk <- rep(0, 4*n+p)
-	iwork <- rep(0, 4*n+p)
+	locat <- double(p)
+	covmat <- matrix(0.0, p, p)
+	storage.mode(covmat) <- "double"
+	wk <- double(4*n+p)
+	iwork <- integer(4*n+p)
 	nresper <- 0
-	w <- rep(0, n)
-	z <- rep(0, n)
+	w <- double(n)
+	z <- double(n)
 
 	if(length(center) == 1 && !center)
 		center <- rep(0, p)
 
 	if(length(center) > 1) {
 		if(length(center) != p)
-			stop("Dimension of center and data do not match")
+			stop("the dimension of ", sQuote("center"), " does not match the ",
+           "dimension of ", sQuote("x"))
 		x <- sweep(x, 2, center)
 		icent <- 0
 	}
-
-## covmat needs to retain its matrixness ##
-
-	storage.mode(covmat) <- "double"
 
 	sdlist <- .Fortran("rlds",
                       n = as.integer(n),
@@ -84,12 +76,12 @@ donostah <- function(x, control)
 		center = if(length(center) > 1) rep(0, p) else sdlist$center,
 		cov = sdlist$cov)
 
-	sdlist$covmat <- sdlist$covmat * median(dist) / qchisq(.5, p)
-	sdlist$dist <- dist
+  consistency.correction <- median(dist) / qchisq(.5, p)
+	sdlist$cov <- sdlist$cov * consistency.correction
+	sdlist$dist <- dist / consistency.correction
 
 	if(length(center) > 1)
 		sdlist$center <- center
 
-	sdlist$call <- the.call
-	sdlist[c("call", "cov", "center", "dist")]
+	sdlist[c("cov", "center", "dist")]
 }

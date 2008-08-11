@@ -1,4 +1,4 @@
-glmRob.glmdev <- function(y, ni, ci, wa, vtheta, offset = 0, icase = ics)
+glmRob.glmdev <- function(y, ni, ci, wa, vtheta, offset = 0, icase = 0)
 {
   n <- length(y)
   dev <- double(1)

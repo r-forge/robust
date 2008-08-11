@@ -49,8 +49,8 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
   old.warn <- options()$warn
   on.exit(options(warn = old.warn))
   options(warn = -1)
+
   w.glm.fit <- glm.fit(x = x, y = y, family = binomial(), offset = offset, w = w)
-  options(warn = old.warn)
   w.glm.fit$call <- the.call
   w.glm.fit$control <- control
   w.glm.fit$prior.weights <- NULL
@@ -59,11 +59,8 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
 
   if(any(offset) && attr(Terms, "intercept")) {
     if(length(Terms)) {
-      options(warn = -1)
       null.deviance <- glm.fit(x[, "(Intercept)", drop = FALSE],
-        y, w, offset = offset, family = family,
-        null.dev = NULL)$deviance
-      options(warn = old.warn)
+        y, w, offset = offset, family = family)$deviance
     }
     else
       null.deviance <- w.glm.fit$deviance

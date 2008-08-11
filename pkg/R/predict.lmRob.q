@@ -129,6 +129,8 @@ predict.lmRob <- function(object, newdata, type = "response",
   coefs <- coef(object)
   term.labels <- attr(Terms, "term.labels")
   asgn <- attr(coefs, "assign")
+  if(is.null(asgn))
+    asgn <- object$assign
   if(!is.list(asgn))
     asgn <- splus.assign(asgn, term.labels)
 
