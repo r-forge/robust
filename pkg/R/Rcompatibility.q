@@ -3,6 +3,7 @@ stop.on.bdObject <- function(x)
 	invisible()
 }
 
+
 key <- function(x, y, text, lines, corner = c(0, 1), cex = par("cex"),
 	col = par("col"), lty = par("lty"), lwd = par("lwd"), pch = par("pch"),
   ...)
@@ -25,11 +26,13 @@ key <- function(x, y, text, lines, corner = c(0, 1), cex = par("cex"),
 	invisible()
 }
 
+
 splus.assign <- function(asgn, term.labels)
 {
-  if(min(asgn) == 0)
+  if(min(asgn) == 0) {
     term.labels <- c("(Intercept)", term.labels)
-  asgn <- asgn + 1
+    asgn <- asgn + 1
+  }
   ans <- list()
   n <- length(term.labels)
   for(i in 1:n)
@@ -37,4 +40,5 @@ splus.assign <- function(asgn, term.labels)
   names(ans) <- term.labels
   ans
 }
+
 

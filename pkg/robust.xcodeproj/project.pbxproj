@@ -200,25 +200,6 @@
 		0E4500D40A029C060064D9A4 /* tdmean.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = tdmean.f; path = src/tdmean.f; sourceTree = SOURCE_ROOT; };
 		0E4500D50A029C060064D9A4 /* tmlfor.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = tmlfor.f; path = src/tmlfor.f; sourceTree = SOURCE_ROOT; };
 		0E4500D60A029C060064D9A4 /* wblrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = wblrob.f; path = src/wblrob.f; sourceTree = SOURCE_ROOT; };
-		0E4500D90A029C060064D9A4 /* asymmetric.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = asymmetric.t; path = tests/asymmetric.t; sourceTree = SOURCE_ROOT; };
-		0E4500DA0A029C060064D9A4 /* covm.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covm.t; path = tests/covm.t; sourceTree = SOURCE_ROOT; };
-		0E4500DB0A029C060064D9A4 /* discrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = discrob.t; path = tests/discrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500DC0A029C060064D9A4 /* glmrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmrob.t; path = tests/glmrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500DE0A029C060064D9A4 /* menuAovRob.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuAovRob.SSC; path = tests/guiTests/menuAovRob.SSC; sourceTree = SOURCE_ROOT; };
-		0E4500DF0A029C060064D9A4 /* menuCovRob.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuCovRob.SSC; path = tests/guiTests/menuCovRob.SSC; sourceTree = SOURCE_ROOT; };
-		0E4500E00A029C060064D9A4 /* menuGamRob.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuGamRob.SSC; path = tests/guiTests/menuGamRob.SSC; sourceTree = SOURCE_ROOT; };
-		0E4500E10A029C060064D9A4 /* menuGlmRob.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuGlmRob.SSC; path = tests/guiTests/menuGlmRob.SSC; sourceTree = SOURCE_ROOT; };
-		0E4500E20A029C060064D9A4 /* menuLmRob.ssc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuLmRob.ssc; path = tests/guiTests/menuLmRob.ssc; sourceTree = SOURCE_ROOT; };
-		0E4500E30A029C060064D9A4 /* menuPrimCompRob.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = menuPrimCompRob.SSC; path = tests/guiTests/menuPrimCompRob.SSC; sourceTree = SOURCE_ROOT; };
-		0E4500E40A029C060064D9A4 /* lmrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmrob.t; path = tests/lmrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500E50A029C060064D9A4 /* plots.aovrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.aovrob.t; path = tests/plots.aovrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500E60A029C060064D9A4 /* plots.covrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.covrob.t; path = tests/plots.covrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500E70A029C060064D9A4 /* plots.glmrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.glmrob.t; path = tests/plots.glmrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500E80A029C060064D9A4 /* plots.lmrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.lmrob.t; path = tests/plots.lmrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500E90A029C060064D9A4 /* plots.princomprob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.princomprob.t; path = tests/plots.princomprob.t; sourceTree = SOURCE_ROOT; };
-		0E4500EA0A029C060064D9A4 /* plots.wblrob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plots.wblrob.t; path = tests/plots.wblrob.t; sourceTree = SOURCE_ROOT; };
-		0E4500EB0A029C060064D9A4 /* princomprob.t */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = princomprob.t; path = tests/princomprob.t; sourceTree = SOURCE_ROOT; };
-		0E4500EC0A029C060064D9A4 /* test.sourcer.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = test.sourcer.q; path = tests/test.sourcer.q; sourceTree = SOURCE_ROOT; };
 		0E45FF3A0A029C050064D9A4 /* allfuns.SSC */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = allfuns.SSC; sourceTree = SOURCE_ROOT; };
 		0E45FF3D0A029C050064D9A4 /* Copyright */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = Copyright; sourceTree = SOURCE_ROOT; };
 		0E45FF3F0A029C050064D9A4 /* stack.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = stack.dat.txt; path = data/stack.dat.txt; sourceTree = SOURCE_ROOT; };
@@ -705,41 +686,6 @@
 			path = src;
 			sourceTree = SOURCE_ROOT;
 		};
-		0E4500D80A029C060064D9A4 /* tests */ = {
-			isa = PBXGroup;
-			children = (
-				0E4500D90A029C060064D9A4 /* asymmetric.t */,
-				0E4500DA0A029C060064D9A4 /* covm.t */,
-				0E4500DB0A029C060064D9A4 /* discrob.t */,
-				0E4500DC0A029C060064D9A4 /* glmrob.t */,
-				0E4500DD0A029C060064D9A4 /* guiTests */,
-				0E4500E40A029C060064D9A4 /* lmrob.t */,
-				0E4500E50A029C060064D9A4 /* plots.aovrob.t */,
-				0E4500E60A029C060064D9A4 /* plots.covrob.t */,
-				0E4500E70A029C060064D9A4 /* plots.glmrob.t */,
-				0E4500E80A029C060064D9A4 /* plots.lmrob.t */,
-				0E4500E90A029C060064D9A4 /* plots.princomprob.t */,
-				0E4500EA0A029C060064D9A4 /* plots.wblrob.t */,
-				0E4500EB0A029C060064D9A4 /* princomprob.t */,
-				0E4500EC0A029C060064D9A4 /* test.sourcer.q */,
-			);
-			path = tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		0E4500DD0A029C060064D9A4 /* guiTests */ = {
-			isa = PBXGroup;
-			children = (
-				0E4500DE0A029C060064D9A4 /* menuAovRob.SSC */,
-				0E4500DF0A029C060064D9A4 /* menuCovRob.SSC */,
-				0E4500E00A029C060064D9A4 /* menuGamRob.SSC */,
-				0E4500E10A029C060064D9A4 /* menuGlmRob.SSC */,
-				0E4500E20A029C060064D9A4 /* menuLmRob.ssc */,
-				0E4500E30A029C060064D9A4 /* menuPrimCompRob.SSC */,
-			);
-			name = guiTests;
-			path = tests/guiTests;
-			sourceTree = SOURCE_ROOT;
-		};
 		0E45FF3E0A029C050064D9A4 /* data */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,7 +1003,6 @@
 				0E45FFE20A029C050064D9A4 /* gui */,
 				0E4500110A029C050064D9A4 /* meta */,
 				0E4500320A029C060064D9A4 /* sgml */,
-				0E4500D80A029C060064D9A4 /* tests */,
 			);
 			sourceTree = "<group>";
 		};
