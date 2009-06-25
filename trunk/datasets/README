@@ -1,0 +1,11 @@
+These are *not* installed:
+
+Rather those in
+
+1) ../data/		will be available by  data()
+
+2) ../inst/datasets/ 	will be available for read.table(system.file(..)..)
+
+----
+
+'1)' is preferable, but then needs a sensible help file!
