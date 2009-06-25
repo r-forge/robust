@@ -21,7 +21,7 @@ step.lmRob(object, scope, scale, direction = c("both", "backward", "forward"), t
 \item{direction}{a character value specifying the mode of stepwise search.  The possibilities are "both", "backward", and "forward", with a default of "backward".  Presently only "backward" stepwise searches are implemented.}
 
 \item{trace}{a logical value.  If \code{TRUE}, information is printed during stepwise search.}
- 
+
 \item{keep}{a filter function whose input is a fitted model object and the associated AIC statistic, and whose output is arbitrary.  Typically keep will select a subset of the components of the object and return them.  The default is not to keep anything.}
 
 \item{steps}{an integer value specifying the the maximum number of steps to be considered.  The default is 1000 (essentially as many as required).  It is typically used to stop the process early.}
@@ -40,10 +40,9 @@ the model with the lowest Robust Final Prediction Error encountered during the s
 }
 
 \seealso{
-/code{\link{lmRob}}, 
-/code{\link{lmRob.RFPE}}, 
-/code{\link{add1.lmRob}}, 
-/code{\link{drop1.lmRob}}.
+  \code{\link{lmRob}},
+  \code{\link{lmRob.RFPE}},
+  \code{\link{add1.lmRob}}, \code{\link{drop1.lmRob}}.
 }
 
 \examples{

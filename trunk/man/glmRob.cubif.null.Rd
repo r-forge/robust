@@ -1,14 +1,17 @@
 \name{glmRob.cubif.null}
 \alias{glmRob.cubif.null}
 
-\title{CUBIF Null Deviance}
+\title{glmRob CUBIF Null Deviance}
 
 \description{
-Computes the null deviance in the CUBIF method.
+  Computes the null deviance in the CUBIF
+  (\bold{c}onditionally \bold{u}nbiased \bold{b}ounded \bold{i}n\bold{f}luence)
+  method.
 }
 
 \usage{
-glmRob.cubif.null(x, y, ni, offset, ics, family, control, robust.cov.control)
+glmRob.cubif.null(x, y, ni, offset, ics, family,
+                  control, robust.cov.control)
 }
 
 \arguments{
@@ -23,10 +26,11 @@ glmRob.cubif.null(x, y, ni, offset, ics, family, control, robust.cov.control)
 }
 
 \value{
-a numeric value containing the null deviance.
+  a numeric value containing the null deviance.
 }
 
 \seealso{
+  \code{\link{glmRob.cubif}}
 }
 
 \keyword{robust}

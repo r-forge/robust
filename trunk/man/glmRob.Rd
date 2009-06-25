@@ -8,8 +8,9 @@ Produces an object of class \code{glmRob} which is a Robust Generalized Linear M
 
 \usage{
 glmRob(formula, family = binomial(), data, weights, subset,
-  na.action, method = "cubif", model = TRUE, x = FALSE, y = TRUE,
-  control = glmRob.control, contrasts = NULL, ...)
+       na.action, method = "cubif",
+       model = TRUE, x = FALSE, y = TRUE,
+       control = glmRob.control, contrasts = NULL, \dots)
 }
 
 \arguments{
@@ -50,7 +51,7 @@ Kunsch, L., Stefanski L. and Carroll, R. (1989). Conditionally Unbiased Bounded-
 
 Carroll, R. J. and Pederson, S. (1993). On Robustness in the Logistic Regression Model. JRSS 55, 693-706.
 
-Marazzi, A. (1993). Algorithms, routines and S functions for robust statistics. Wadsworth & Brooks/Cole, Pacific Grove, CA. 
+Marazzi, A. (1993). Algorithms, routines and S functions for robust statistics. Wadsworth & Brooks/Cole, Pacific Grove, CA.
 }
 
 \seealso{
@@ -65,7 +66,8 @@ Marazzi, A. (1993). Algorithms, routines and S functions for robust statistics. 
 \examples{
 data(breslow.dat)
 
-glmRob(sumY ~ Age10 + Base4*Trt, family = poisson(), data = breslow.dat, method = "cubif")
+glmRob(sumY ~ Age10 + Base4*Trt, family = poisson(),
+       data = breslow.dat, method = "cubif")
 }
 
 \keyword{robust}
