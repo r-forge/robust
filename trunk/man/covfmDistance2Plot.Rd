@@ -12,7 +12,8 @@
 }
 
 \arguments{
-  \item{x}{an object of class "covfm" containing 2 elements.}
+  \item{x}{an object of class \code{"covfm"} containing 2 elements,
+    typically the result of \code{\link{fit.models}(..)}.}
 
   \item{chisq.percent}{a numeric value between 0 and 1 giving the chi-squared percent point used to compute the outlyingness threshold.}
 
@@ -33,14 +34,14 @@
   \code{\link{plot.covfm}},
   \code{\link{fit.models}},
   \code{\link{covRob}},
-  \code{\link{cov}}.
+  \code{\link{ccov}}.
 }
 
 \examples{
-  data(woodmod.dat)
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
-  covfmDistance2Plot(woodmod.fm)
+ data(woodmod.dat)
+ woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                          data = woodmod.dat)
+ covfmDistance2Plot(woodmod.fm)
 }
-
 \keyword{hplot}
 

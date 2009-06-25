@@ -1,4 +1,4 @@
-cov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
+ccov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
                 na.action = na.fail, unbiased = TRUE)
 {
 	the.call <- match.call()
@@ -53,4 +53,13 @@ cov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
   ans
 }
 
+## For now
+cov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
+                na.action = na.fail, unbiased = TRUE)
+{
+    .Deprecated("ccov")
+    ##          ------
+    ccov(data, corr=corr, center=center, distance=distance,
+         na.action=na.action, unbiased=unbiased)
+}
 

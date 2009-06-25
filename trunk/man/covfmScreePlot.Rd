@@ -12,7 +12,8 @@
 }
 
 \arguments{
-  \item{x}{an object of class "covfm" containing 2 elements.}
+  \item{x}{an object of class \code{"covfm"} containing 2 elements,
+    typically the result of \code{\link{fit.models}(..)}.}
 
   \item{variables}{a vector of positive integers specifying which eigenvalues are to be drawn.  By default the 10 largest eigenvalues are plotted.}
 
@@ -31,12 +32,13 @@
   \code{\link{plot.covfm}},
   \code{\link{fit.models}},
   \code{\link{covRob}},
-  \code{\link{cov}}.
+  \code{\link{ccov}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
+  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                           data = woodmod.dat)
   covfmScreePlot(woodmod.fm)
 }
 

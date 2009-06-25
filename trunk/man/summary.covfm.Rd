@@ -41,20 +41,21 @@
 
 \seealso{
   \code{\link{summary}},
-  \code{\link{cov}},
+  \code{\link{ccov}},
   \code{\link{covRob}},
   \code{\link{fit.models}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodmod.cov <- cov(woodmod.dat)
+  woodmod.cov <- ccov(woodmod.dat)
   woodmod.sc <- summary(woodmod.cov)
 
   woodmod.covRob <- covRob(woodmod.dat)
   woodmod.scr <- summary(woodmod.covRob)
 
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
+  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                data = woodmod.dat)
   woodmod.sfm <- summary(woodmod.fm)
 }
 

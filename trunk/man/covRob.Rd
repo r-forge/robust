@@ -84,7 +84,7 @@ Version 0.3-2 of the Robust Library: the \code{fastmcd} and \code{rockem} functi
   \code{\link{fastcov}},
   \code{\link[rrcov]{covMest}},
   \code{\link{covRob.control}},
-  \code{\link{cov}}.
+  \code{\link{ccov}}.
 }
 
 \examples{

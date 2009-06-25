@@ -14,58 +14,43 @@ get.fit.models.database <- function()
 
 	##	Add linear models
 
-	classes <- c("lmRob", "lm")
-	object.class <- "lmfm"
-	validation.function <- NULL
-
-	fmdb[["lmfm"]] <- list(	classes = classes,
-													object.class = object.class,
-													validation.function = validation.function)
+	fmdb[["lmfm"]] <-
+            list(classes = c("lmRob", "lm"),
+                 object.class = "lmfm",
+                 validation.function = NULL)
 
 	##	Add generalized linear models
 
-	classes <- c("glmRob", "glm")
-	object.class <- "glmfm"
-	validation.function <- NULL
-
-	fmdb[["glmfm"]] <- list(classes = classes,
-													object.class = object.class,
-													validation.function = validation.function)
+	fmdb[["glmfm"]] <-
+            list(classes = c("glmRob", "glm"),
+                 object.class = "glmfm",
+                 validation.function = NULL)
 
 	##	Add AOV models
 
-	classes <- c("aovRob", "aov")
-	object.class <- "aovfm"
-	validation.function <- NULL
-
-	fmdb[["aovfm"]] <- list(classes = classes,
-													object.class = object.class,
-													validation.function = validation.function)
+	fmdb[["aovfm"]] <-
+            list(classes = c("aovRob", "aov"),
+                 object.class = "aovfm",
+                 validation.function = NULL)
 
 	##	Add AOV models
 
-	classes <- c("discRob", "discrim")
-	object.class <- "discfm"
-	validation.function <- NULL
-
-	fmdb[["discfm"]] <- list(classes = classes,
-													object.class = object.class,
-													validation.function = validation.function)
+	fmdb[["discfm"]] <-
+            list(classes = c("discRob", "discrim"),
+                 object.class = "discfm",
+                 validation.function = NULL)
 
 	##	Add covariance models
 
-	classes <- c("covRob", "cov")
-	object.class <- "covfm"
-	validation.function <- NULL
-
-	fmdb[["covfm"]] <- list(classes = classes,
-													object.class = object.class,
-													validation.function = validation.function)
+	fmdb[["covfm"]] <-
+            list(classes = c("covRob", "cov", "ccov"),# renamed cov() to ccov()
+                 object.class = "covfm",
+                 validation.function = NULL)
 
 	##	Add asymmetric models
 
-	classes <- c(	"gammaRob", "gammaMLE", "weibullRob", "weibullMLE",
-								"lognormRob", "lognormMLE")
+	classes <- c("gammaRob", "gammaMLE", "weibullRob", "weibullMLE",
+                     "lognormRob", "lognormMLE")
 	object.class <- "asymfm"
 	validation.function <- NULL
 
