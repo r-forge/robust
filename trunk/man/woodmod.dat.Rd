@@ -6,7 +6,11 @@
 }
 
 \description{
-  The explanatory variables from the Modified Data on Wood Specific Gravity analyzed in Rousseeuw and Leroy (1987).
+  The explanatory variables from the Modified Data on Wood Specific
+  Gravity analyzed in Rousseeuw and Leroy (1987).
+
+  Note that \code{data(wood, package="robustbase")} contains the same
+  data, and additionally the y-variable.
 }
 
 \usage{
@@ -37,6 +41,10 @@
 \examples{
   data(woodmod.dat)
   woodmod.dat
+
+  data(wood, package = "robustbase")
+  stopifnot(data.matrix(woodmod.dat) ==
+            data.matrix(wood [,1:5]))
 }
 
 \keyword{datasets}
