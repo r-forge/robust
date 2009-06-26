@@ -4,7 +4,8 @@
 
 	#Global
 {
-	princompRob.data <- woodmod.dat
+	data(wood, package = "robustbase")
+	princompRob.data <- wood[, 1:5]
 	T
 }
 
@@ -15,7 +16,7 @@
 {
 	#make a princompRob object and start pdf device
 	temp <- princompRob(data = princompRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.princompRob.pdf")
+	pdf("plot.princompRob.pdf")
 	T
 }
 
@@ -39,7 +40,7 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "princompRob", Classical = "princomp"), data = princompRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.princomp.both.pdf")
+	pdf("plot.fit.models.princomp.both.pdf")
 	T
 }
 
@@ -80,7 +81,7 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "princompRob"), data = princompRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.princompRob.only.pdf")
+	pdf("plot.fit.models.princompRob.only.pdf")
 	T
 }
 
@@ -118,7 +119,7 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Classical = "princomp"), data = princompRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.princomp.only.pdf")
+	pdf("plot.fit.models.princomp.only.pdf")
 	T
 }
 

@@ -1,11 +1,11 @@
-##
+## -*- R -*-
 ##	loop tests for covRob plots
 ##
 
 	#Global
 {
 	the.data <- los
-	T
+	TRUE
 }
 
 ###########################################################
@@ -15,8 +15,8 @@
 {
 	#make a gammaRob object and start pdf device
 	temp <- gammaRob(data = the.data)
-	pdf.graph("plot.gamma.pdf")
-	T
+	pdf("plot.gamma.pdf")
+	TRUE
 }
 
 {
@@ -27,7 +27,7 @@
 {
 	#make a gammaMLE object
 	temp <- gammaMLE(data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -38,7 +38,7 @@
 {
 	#make a gamma fit.models object
 	temp <- fit.models(list(Robust = "gammaRob", MLE = "gammaMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -54,7 +54,7 @@
 {
 	#make a gamma fit.models object with only robust model
 	temp <- fit.models(list(Robust = "gammaRob"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -70,7 +70,7 @@
 {
 	#make a gamma fit.models object with only MLE model
 	temp <- fit.models(list(MLE = "gammaMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -87,7 +87,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 #################################################################
@@ -97,8 +97,8 @@
 {
 	#make a weibullRob object and start pdf device
 	temp <- weibullRob(data = the.data)
-	pdf.graph("plot.weibull.pdf")
-	T
+	pdf("plot.weibull.pdf")
+	TRUE
 }
 
 {
@@ -109,7 +109,7 @@
 {
 	#make a weibullMLE object
 	temp <- weibullMLE(data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -120,7 +120,7 @@
 {
 	#make a weibull fit.models object
 	temp <- fit.models(list(Robust = "weibullRob", MLE = "weibullMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -136,7 +136,7 @@
 {
 	#make a weibull fit.models object with only robust model
 	temp <- fit.models(list(Robust = "weibullRob"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -152,7 +152,7 @@
 {
 	#make a weibull fit.models object with only MLE model
 	temp <- fit.models(list(MLE = "weibullMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -169,7 +169,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 #################################################################
@@ -179,8 +179,8 @@
 {
 	#make a lognormRob object and start pdf device
 	temp <- lognormRob(data = the.data)
-	pdf.graph("plot.lognorm.pdf")
-	T
+	pdf("plot.lognorm.pdf")
+	TRUE
 }
 
 {
@@ -191,7 +191,7 @@
 {
 	#make a lognormMLE object
 	temp <- lognormMLE(data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -202,7 +202,7 @@
 {
 	#make a lognorm fit.models object
 	temp <- fit.models(list(Robust = "lognormRob", MLE = "lognormMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -218,7 +218,7 @@
 {
 	#make a lognorm fit.models object with only robust model
 	temp <- fit.models(list(Robust = "lognormRob"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -234,7 +234,7 @@
 {
 	#make a lognorm fit.models object with only MLE model
 	temp <- fit.models(list(MLE = "lognormMLE"), data = the.data)
-	T
+	TRUE
 }
 
 {
@@ -251,7 +251,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 #################################################################
@@ -260,5 +260,5 @@
 	#Clean Global
 {
 	rm(the.data)
-	T
+	TRUE
 }

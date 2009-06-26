@@ -1,11 +1,14 @@
+#### -*- R -*-
+
 ##
 ##	loop tests for covRob plots
 ##
 
-	#Global
+## Global
 {
-	covRob.data <- woodmod.dat
-	T
+    data(wood, package = "robustbase")
+    covRob.data <- wood[, 1:5]
+    TRUE
 }
 
 ###########################################################
@@ -15,8 +18,8 @@
 {
 	#make a covRob object and start pdf device
 	temp <- covRob(data = covRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.covRob.pdf")
-	T
+	pdf("plot.covRob.pdf")
+	TRUE
 }
 
 {
@@ -43,7 +46,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 
@@ -53,9 +56,11 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "covRob", Classical = "cov"), data = covRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.cov.both.pdf")
-	T
+	temp <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                           data = covRob.data,
+                           control = covRob.control(estim = "donostah"))
+	pdf("plot.fit.models.cov.both.pdf")
+	TRUE
 }
 
 {
@@ -87,7 +92,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 
@@ -100,8 +105,8 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "covRob"), data = covRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.covRob.only.pdf")
-	T
+	pdf("plot.fit.models.covRob.only.pdf")
+	TRUE
 }
 
 {
@@ -128,7 +133,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #################################################################
@@ -137,9 +142,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Classical = "cov"), data = covRob.data, control = covRob.control(estim = "donostah"))
-	pdf.graph("plot.fit.models.cov.only.pdf")
-	T
+	temp <- fit.models(list(Classical = "ccov"), data = covRob.data, control = covRob.control(estim = "donostah"))
+	pdf("plot.fit.models.cov.only.pdf")
+	TRUE
 }
 
 {
@@ -166,7 +171,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #####################################################
@@ -176,7 +181,7 @@
 	# Remove Globals
 {
 	rm(covRob.data)
-	T
+	TRUE
 }
 
 

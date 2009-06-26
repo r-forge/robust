@@ -1,12 +1,17 @@
+#### -*- R -*-
+
 ##
 ##	loop tests for aovRob plots
 ##
 
 	#Global
 {
-	aovRob.data <- lawson.dat
-	aovRob.formula <- y ~ .
-	T
+    lawson.dat <- read.table(system.file("datasets", "lawson.tab",
+					 package = "robust"),
+			     header=TRUE)
+    aovRob.data <- lawson.dat
+    aovRob.formula <- y ~ .
+    TRUE
 }
 
 ###########################################################
@@ -16,8 +21,8 @@
 {
 	#make an lmRob object and start pdf device
 	temp <- aovRob(aovRob.formula, data = aovRob.data)
-	pdf.graph("plot.aovRob.pdf")
-	T
+	pdf("plot.aovRob.pdf")
+	TRUE
 }
 
 {
@@ -69,7 +74,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 
@@ -80,8 +85,8 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "aovRob", LS = "aov"), aovRob.formula, data = aovRob.data)
-	pdf.graph("plot.fit.models.aov.both.pdf")
-	T
+	pdf("plot.fit.models.aov.both.pdf")
+	TRUE
 }
 
 {
@@ -133,7 +138,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 
@@ -146,8 +151,8 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "aovRob"), aovRob.formula, data = aovRob.data)
-	pdf.graph("plot.fit.models.aovRob.only.pdf")
-	T
+	pdf("plot.fit.models.aovRob.only.pdf")
+	TRUE
 }
 
 {
@@ -200,7 +205,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #################################################################
@@ -210,8 +215,8 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(LS = "aov"), aovRob.formula, data = aovRob.data)
-	pdf.graph("plot.fit.models.aov.only.pdf")
-	T
+	pdf("plot.fit.models.aov.only.pdf")
+	TRUE
 }
 
 {
@@ -264,7 +269,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #####################################################
@@ -275,7 +280,7 @@
 {
 	rm(aovRob.data)
 	rm(aovRob.formula)
-	T
+	TRUE
 }
 
 

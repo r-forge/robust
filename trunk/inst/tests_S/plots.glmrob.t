@@ -1,13 +1,14 @@
+#### -*- R -*-
+
 ##
-##	loop tests for lmRob plots
+##	loop tests for glmRob plots
 ##
 
 	#Global
 {
-	glmRob.data <- breslow.dat
+	data(breslow.dat)
 	glmRob.formula <- sumY ~ Age10 + Base4 * Trt
-	glmRob.family <- "poisson"
-	T
+	TRUE
 }
 
 ###########################################################
@@ -16,9 +17,9 @@
 
 {
 	#make an glmRob object and start pdf device
-	temp <- glmRob(glmRob.formula, data = glmRob.data, family = glmRob.family)
-	pdf.graph("plot.glmRob.pdf")
-	T
+	temp <- glmRob(glmRob.formula, data = breslow.dat, family = "poisson")
+	pdf("plot.glmRob.pdf")
+	TRUE
 }
 
 {
@@ -60,7 +61,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 
@@ -70,9 +71,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "glmRob", MLE = "glm"), glmRob.formula, data = glmRob.data, family = glmRob.family)
-	pdf.graph("plot.fit.models.glm.both.pdf")
-	T
+	temp <- fit.models(list(Robust = "glmRob", MLE = "glm"), glmRob.formula, data = breslow.dat, family = "poisson")
+	pdf("plot.fit.models.glm.both.pdf")
+	TRUE
 }
 
 {
@@ -114,7 +115,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 
@@ -126,9 +127,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "glmRob"), glmRob.formula, data = glmRob.data, family = glmRob.family)
-	pdf.graph("plot.fit.models.glmRob.only.pdf")
-	T
+	temp <- fit.models(list(Robust = "glmRob"), glmRob.formula, data = breslow.dat, family = "poisson")
+	pdf("plot.fit.models.glmRob.only.pdf")
+	TRUE
 }
 
 {
@@ -170,7 +171,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #################################################################
@@ -179,9 +180,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(MLE = "glm"), glmRob.formula, data = glmRob.data, family = glmRob.family)
-	pdf.graph("plot.fit.models.glm.only.pdf")
-	T
+	temp <- fit.models(list(MLE = "glm"), glmRob.formula, data = breslow.dat, family = "poisson")
+	pdf("plot.fit.models.glm.only.pdf")
+	TRUE
 }
 {
 	#Normal QQ-Plot of Pearson Residuals
@@ -218,24 +219,12 @@
 	class(try(plot(temp, which = 1:6))) != "Error"
 }
 
-{
-	#clean up and write to file
-	dev.off()
-	rm(temp)
-	T
-}
 
 #################################################################
 
-	# Remove Globals
 {
-	rm(glmRob.data)
-	rm(glmRob.family)
-	rm(glmRob.formula)
-	T
+	#clean up and write to file
+	dev.off()
+	rm(temp, glmRob.formula, breslow.dat)
+	TRUE
 }
-
-
-
-
-

@@ -1,5 +1,5 @@
 
-R version 2.9.1 RC (2009-06-24 r48832)
+R version 2.9.1 RC (2009-06-25 r48836)
 Copyright (C) 2009 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
@@ -248,7 +248,7 @@ NULL
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: ccov
-> ### Title: Classical ccovariance Estimation
+> ### Title: Classical Covariance Estimation
 > ### Aliases: ccov cov
 > ### Keywords: multivariate
 > 
@@ -2343,12 +2343,16 @@ Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...) :
 19 0.417 0.1687 0.405 0.415 0.981
 20 0.528 0.1057 0.424 0.566 0.909
 > 
+>   data(wood, package = "robustbase")
+>   stopifnot(data.matrix(woodmod.dat) ==
++             data.matrix(wood [,1:5]))
+> 
 > 
 > 
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.397 0.15 4.921 0 0 
+Time elapsed:  4.412 0.139 4.834 0 0 
 > grDevices::dev.off()
 null device 
           1 

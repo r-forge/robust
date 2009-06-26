@@ -16,7 +16,7 @@
 {
 	#make an lmRob object and start pdf device
 	temp <- lmRob(lmRob.formula, data = lmRob.data)
-	pdf.graph("plot.lmRob.pdf")
+	pdf("plot.lmRob.pdf")
 	T
 }
 
@@ -80,57 +80,57 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "lmRob", LS = "lm"), lmRob.formula, data = lmRob.data)
-	pdf.graph("plot.fit.models.lm.both.pdf")
+	pdf("plot.fit.models.lm.both.pdf")
 	T
 }
 
 {
-	#Normal QQ-Plot of Residuals 
+	#Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 1))) != "Error"
 }
 
 {
-	#Estimated Kernel Density of Residuals 
+	#Estimated Kernel Density of Residuals
 	class(try(plot(temp, which = 2))) != "Error"
 }
 
 {
-	#Robust Residuals vs Robust Distances 
+	#Robust Residuals vs Robust Distances
 	class(try(plot(temp, which = 3))) != "Error"
 }
 
 {
-	#Residuals vs Fitted Values 
+	#Residuals vs Fitted Values
 	class(try(plot(temp, which = 4))) != "Error"
 }
 
 {
-	#Sqrt of abs(Residuals) vs Fitted Values 
+	#Sqrt of abs(Residuals) vs Fitted Values
 	class(try(plot(temp, which = 5))) != "Error"
 }
 
 {
-	#Response vs Fitted Values 
+	#Response vs Fitted Values
 	class(try(plot(temp, which = 6))) != "Error"
 }
 
 {
-	#Standardized Residuals vs Index (Time) 
+	#Standardized Residuals vs Index (Time)
 	class(try(plot(temp, which = 7))) != "Error"
 }
 
 {
-	#Overlaid Normal QQ-Plot of Residuals 
+	#Overlaid Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 8))) != "Error"
 }
 
 {
-	#Overlaid Estimated Density of Residuals 
+	#Overlaid Estimated Density of Residuals
 	class(try(plot(temp, which = 9))) != "Error"
 }
 
 {
-	#All 
+	#All
 	class(try(plot(temp, which = 1:9))) != "Error"
 }
 
@@ -151,57 +151,57 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(Robust = "lmRob"), lmRob.formula, data = lmRob.data)
-	pdf.graph("plot.fit.models.lmRob.only.pdf")
+	pdf("plot.fit.models.lmRob.only.pdf")
 	T
 }
 
 {
-	#Normal QQ-Plot of Residuals 
+	#Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 1))) != "Error"
 }
 
 {
-	#Estimated Kernel Density of Residuals 
+	#Estimated Kernel Density of Residuals
 	class(try(plot(temp, which = 2))) != "Error"
 }
 
 {
-	#Robust Residuals vs Robust Distances 
+	#Robust Residuals vs Robust Distances
 	class(try(plot(temp, which = 3))) != "Error"
 }
 
 {
-	#Residuals vs Fitted Values 
+	#Residuals vs Fitted Values
 	class(try(plot(temp, which = 4))) != "Error"
 }
 
 {
-	#Sqrt of abs(Residuals) vs Fitted Values 
+	#Sqrt of abs(Residuals) vs Fitted Values
 	class(try(plot(temp, which = 5))) != "Error"
 }
 
 {
-	#Response vs Fitted Values 
+	#Response vs Fitted Values
 	class(try(plot(temp, which = 6))) != "Error"
 }
 
 {
-	#Standardized Residuals vs Index (Time) 
+	#Standardized Residuals vs Index (Time)
 	class(try(plot(temp, which = 7))) != "Error"
 }
 
 {
-	#Overlaid Normal QQ-Plot of Residuals 
+	#Overlaid Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 8))) != "Error"
 }
 
 {
-	#Overlaid Estimated Density of Residuals 
+	#Overlaid Estimated Density of Residuals
 	class(try(plot(temp, which = 9))) != "Error"
 }
 
 {
-	#All 
+	#All
 	class(try(plot(temp, which = 1:9))) != "Error"
 }
 
@@ -219,57 +219,57 @@
 {
 	#make a fit.models object and start pdf device
 	temp <- fit.models(list(LS = "lm"), lmRob.formula, data = lmRob.data)
-	pdf.graph("plot.fit.models.lm.only.pdf")
+	pdf("plot.fit.models.lm.only.pdf")
 	T
 }
 
 {
-	#Normal QQ-Plot of Residuals 
+	#Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 1))) != "Error"
 }
 
 {
-	#Estimated Kernel Density of Residuals 
+	#Estimated Kernel Density of Residuals
 	class(try(plot(temp, which = 2))) != "Error"
 }
 
 {
-	#Robust Residuals vs Robust Distances 
+	#Robust Residuals vs Robust Distances
 	class(try(plot(temp, which = 3))) != "Error"
 }
 
 {
-	#Residuals vs Fitted Values 
+	#Residuals vs Fitted Values
 	class(try(plot(temp, which = 4))) != "Error"
 }
 
 {
-	#Sqrt of abs(Residuals) vs Fitted Values 
+	#Sqrt of abs(Residuals) vs Fitted Values
 	class(try(plot(temp, which = 5))) != "Error"
 }
 
 {
-	#Response vs Fitted Values 
+	#Response vs Fitted Values
 	class(try(plot(temp, which = 6))) != "Error"
 }
 
 {
-	#Standardized Residuals vs Index (Time) 
+	#Standardized Residuals vs Index (Time)
 	class(try(plot(temp, which = 7))) != "Error"
 }
 
 {
-	#Overlaid Normal QQ-Plot of Residuals 
+	#Overlaid Normal QQ-Plot of Residuals
 	class(try(plot(temp, which = 8))) != "Error"
 }
 
 {
-	#Overlaid Estimated Density of Residuals 
+	#Overlaid Estimated Density of Residuals
 	class(try(plot(temp, which = 9))) != "Error"
 }
 
 {
-	#All 
+	#All
 	class(try(plot(temp, which = 1:9))) != "Error"
 }
 
