@@ -3,7 +3,7 @@
 \alias{ccov}
 \alias{cov}% for now, backcompatibility
 
-\title{Classical covariance Estimation}
+\title{Classical Covariance Estimation}
 
 \description{
   Computes an estimate of the covariance/correlation matrix and location
@@ -15,7 +15,7 @@
 
 \usage{
 ccov(data, corr = FALSE, center = TRUE, distance = TRUE,
-    na.action = na.fail, unbiased = TRUE)
+    na.action = na.fail, unbiased = TRUE, control = list())
 }
 
 \arguments{
@@ -29,7 +29,11 @@ ccov(data, corr = FALSE, center = TRUE, distance = TRUE,
 
   \item{na.action}{a function to filter missing data.  The default \code{na.fail} produces an error if missing values are present.  An alternative is \code{na.omit} which deletes observations that contain one or more missing values.}
 
-  \item{unbiased}{a logical flag.  If \code{unbiased = TRUE} then an unbiased estimate of the covariance matrix is computed.  If \code{unbiased = FALSE} then a maximum likelihood estimate is computed.}
+  \item{unbiased}{logical indicating if an unbiased estimate of the
+    covariance matrix is should becomputed.  If false, the maximum
+    likelihood estimate is computed.}
+  \item{control}{not used, but necessarily allowed in order to fit the
+    \code{\link{fit.models}} framework.}
 }
 
 \value{

@@ -1,56 +1,49 @@
 ccov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
-                na.action = na.fail, unbiased = TRUE)
+                 na.action = na.fail, unbiased = TRUE,
+                 control = list())# <- silently ignored
 {
-	the.call <- match.call()
+    the.call <- match.call()
+    if(any(isc <- names(the.call) == "control"))
+        the.call <- the.call[ !isc ]
 
-	data <- na.action(data)
-	data <- as.matrix(data)
+    data <- na.action(data)
+    if(!is.matrix(data))
+        data <- as.matrix(data)
 
-  n <- dim(data)[1]
-	p <- dim(data)[2]
+    n <- nrow(data)
+    p <- ncol(data)
+    dn <- dimnames(data)
+    dimnames(data) <- NULL
+    rowNames <- dn[[1]]
+    if(is.null(rowNames)) rowNames <- 1:n
+    colNames <- dn[[2]]
+    if(is.null(colNames)) colNames <- paste("V", 1:p, sep = "")
 
-	rowNames <- dimnames(data)[[1]]
-	colNames <- dimnames(data)[[2]]
-	dimnames(data) <- NULL
+    if(length(center) != p && is.logical(center)) {
+        center <- if(center) apply(data, 2, mean) else numeric(p)
+    }
 
-	if(is.null(rowNames))
-		rowNames <- 1:n
+    data <- sweep(data, 2, center)
 
-	if(is.null(colNames))
-		colNames <- paste("V", 1:p, sep = "")
+    covmat <- crossprod(data) / (if(unbiased) (n - 1) else n)
 
-	if(length(center) != p && is.logical(center)) {
-		if(center)
-			center <- apply(data, 2, mean)
-		else
-			center <- rep(0.0, p)
-	}
+    if(distance)
+        dist <- mahalanobis(data, rep(0, p), covmat)
 
-	data <- sweep(data, 2, center)
-	covmat <- crossprod(data)
+    if(corr) {
+        std <- sqrt(diag(covmat))
+        covmat <- covmat / (std %o% std)
+    }
 
-  if(unbiased)
-    covmat <-  covmat / (n - 1)
-	else
-		covmat <-  covmat / n
+    dimnames(covmat) <- list(colNames, colNames)
+    names(center) <- colNames
 
-  if(distance)
-    dist <- mahalanobis(data, rep(0, p), covmat)
+    if(distance)
+        names(dist) <- rowNames
 
-  if(corr) {
-    std <- sqrt(diag(covmat))
-		covmat <- covmat / (std %o% std)
-  }
-
-	dimnames(covmat) <- list(colNames, colNames)
-	names(center) <- colNames
-
-	if(distance)
-		names(dist) <- rowNames
-
-	ans <- list(call = the.call, cov = covmat, center = center, dist = dist, corr = corr)
-  oldClass(ans) <- c("cov")
-  ans
+    ans <- list(call = the.call, cov = covmat, center = center, dist = dist, corr = corr)
+    oldClass(ans) <- c("cov")
+    ans
 }
 
 ## For now
