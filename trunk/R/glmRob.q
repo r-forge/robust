@@ -74,5 +74,3 @@ glmRob <- function(formula, family = binomial(), data, weights, subset,
     oldClass(fit) <- "glmRob"
     fit
 }
-
-

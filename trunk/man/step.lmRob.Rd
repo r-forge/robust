@@ -8,11 +8,13 @@ Performs stepwise model selection on a robustly fitted linear model.  Presently 
 }
 
 \usage{
-step.lmRob(object, scope, scale, direction = c("both", "backward", "forward"), trace = TRUE, keep = NULL, steps = 1000, fast = FALSE, ...)
+step.lmRob(object, scope, scale,
+           direction = c("both", "backward", "forward"),
+           trace = TRUE, keep = NULL, steps = 1000, fast = FALSE, \dots)
 }
 
 \arguments{
-\item{object}{an lmRob object.}
+\item{object}{an \code{\link{lmRob}} object.}
 
 \item{scope}{either a formula or a list with elements \code{lower} and \code{upper} each of which is a formula.  The terms in the right-hand-side of \code{lower} are always included in the model and the additional terms in the right-hand-side of \code{upper} are the candidates for inclusion/exclusion from the model.  If a single formula is given, it is taken to be \code{upper} and \code{lower} is set to the empty model.  The \code{.} operator is interpreted in the context of the formula in \code{object}.}
 

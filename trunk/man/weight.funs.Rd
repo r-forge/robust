@@ -27,13 +27,14 @@ chi.weight(x, ips = 1, xk = 1.06)
       \item{\code{ips = 2}}{rescaled bisquare},
       \item{\code{ips = 3}}{Huber},
       \item{\code{ips = 4}}{smoothed Huber},
-      which is currently only available for \code{psi.*()} and its derivative \code{psp.*()}.
+      which is currently only available for \code{psi.*()} and its
+      derivative \code{psp.*()}.
   }}
   \item{xk}{a numeric value specifying the tuning constant.}
 }
 
 \details{
-  See the Theoretical Details section, p. 58-99, in chapter 2 of
+  See the section \dQuote{Theoretical Details}, p. 58-59, in chapter 2 of
   \file{Robust.pdf}.
   %% Huber isn't there; and notably   "smoothed Huber" ain't
 }
@@ -41,6 +42,9 @@ chi.weight(x, ips = 1, xk = 1.06)
 \value{
   a numeric vector, say \code{r} of the same length as \code{x},
   containing the function values \eqn{r_i = f(x_i)}{r[i] = f(x[i])}.
+}
+\seealso{
+  \code{\link{wt.carroll}}
 }
 
 \examples{

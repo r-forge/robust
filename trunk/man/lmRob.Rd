@@ -56,17 +56,35 @@ By default, the \code{lmRob} function automatically chooses an appropriate algor
 }
 
 \section{References}{
-Gervini, D., and Yohai, V. J. (1999).  A class of robust and fully efficient regression estimates, mimeo, Universidad de Buenos Aires.
+  Gervini, D., and Yohai, V. J. (1999).
+  A class of robust and fully efficient regression estimates;
+  mimeo, Universidad de Buenos Aires.
 
-Marazzi, A. (1993). \emph{Algorithms, routines, and S functions for robust statistics}.  Wadsworth & Brooks/Cole, Pacific Grove, CA.
+  Marazzi, A. (1993).
+  \emph{Algorithms, routines, and S functions for robust statistics}.
+  Wadsworth & Brooks/Cole, Pacific Grove, CA.
 
-Maronna, R. A., and Yohai, V. J. (1999).  Robust regression with both continuous and categorical predictors, mimeo, Universidad de Buenos Aires.
+%   Maronna, R. A., and Yohai, V. J. (1999).
+%   Robust regression with both continuous and categorical predictors;
+%   mimeo, Universidad de Buenos Aires.
 
-Pena, D., and Yohai, V. (1999).  A Fast Procedure for Outlier Diagnostics in Large Regression Problems, \emph{Journal of the American Statistical Association}, 94, 434-445.
+  Maronna, R. A., and Yohai, V. J. (2000).
+  Robust regression with both continuous and categorical predictors.
+  \emph{Journal of Statistical Planning and Inference} \bold{89}, 197--214.
 
-Yohai, V. (1988).  High breakdown-point and high efficiency estimates for regression, \emph{Annals of Statistics}, 15, 642-665.
+  Pena, D., and Yohai, V. (1999).
+  A Fast Procedure for Outlier Diagnostics in Large Regression Problems.
+  \emph{Journal of the American Statistical Association} \bold{94}, 434--445.
 
-Yohai, V., Stahel, W. A., and Zamar, R. H. (1991).  A procedure for robust estimation and inference in linear regression, in Stahel, W. A. and Weisberg, S. W., Eds., \emph{Directions in robust statistics and diagnostics, Part II}. Springer-Verlag.
+  Yohai, V. (1988).
+  High breakdown-point and high efficiency estimates for regression.
+  \emph{Annals of Statistics} \bold{15}, 642--665.
+
+  Yohai, V., Stahel, W. A., and Zamar, R. H. (1991).
+  A procedure for robust estimation and inference in linear regression; in
+  Stahel, W. A. and Weisberg, S. W., Eds.,
+  \emph{Directions in robust statistics and diagnostics, Part II}.
+  Springer-Verlag.
 }
 
 \seealso{

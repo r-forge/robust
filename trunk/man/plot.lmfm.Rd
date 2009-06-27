@@ -20,7 +20,7 @@ Creates a set plots useful for comparing the fitted linear models in an lmfm obj
 }
 
 \value{
-\code{x} is invislbly returned.
+\code{x} is invisibly returned.
 }
 
 \section{Side Effects}{

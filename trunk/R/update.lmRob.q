@@ -1,18 +1,14 @@
-update.lmRob <- function(object, formula, evaluate = TRUE, class, ...)
+update.lmRob <- function(object, formula., ..., evaluate = TRUE)
 {
-  if(missing(formula)) {
+  if(missing(formula.)) {
 
-    if(is.null(object$T.coefficients))
+    if(!is.list(object) || is.null(object$T.coefficients))
       stop("There is nothing to update.")
 
+    ## build 'ans' which is like object, but  initial and final  *swapped* :
+
     ans <- object
-
-    if(object$est == "initial")
-      ans$est <- "final"
-
-    else 
-      ans$est <- "initial"
-
+    ans$est <- if(object$est == "initial") "final" else "initial"
     ans$coefficients <- object$T.coefficients
     ans$T.coefficients <- object$coefficients
     ans$cov <- object$T.cov
@@ -31,12 +27,11 @@ update.lmRob <- function(object, formula, evaluate = TRUE, class, ...)
       ans$M.weights   <- object$T.M.weights
       ans$T.M.weights <- object$M.weights
     }
+
+    ans
   }
-
   else
-    ans <- NextMethod()
-
-  ans
+      NextMethod()
 }
 
 
