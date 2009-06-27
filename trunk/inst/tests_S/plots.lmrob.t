@@ -1,12 +1,13 @@
-##
-##	loop tests for lmRob plots
-##
+#### -*- R -*-
+####
+####	loop tests for lmRob plots
+####
 
-	#Global
+## Global
 {
-	lmRob.data <- wagner.dat
-	lmRob.formula <- y ~ .
-	T
+    source(system.file("datasets", "wagner.q",
+		       package = "robust")) # wagnerGrowth
+    is.data.frame(lmRob.data <- wagnerGrowth)
 }
 
 ###########################################################
@@ -15,9 +16,9 @@
 
 {
 	#make an lmRob object and start pdf device
-	temp <- lmRob(lmRob.formula, data = lmRob.data)
+	temp <- lmRob(y ~ ., data = lmRob.data)
 	pdf("plot.lmRob.pdf")
-	T
+	TRUE
 }
 
 {
@@ -69,7 +70,7 @@
 	#clean up and write to file
 	rm(temp)
 	dev.off()
-	T
+	TRUE
 }
 
 
@@ -79,9 +80,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "lmRob", LS = "lm"), lmRob.formula, data = lmRob.data)
+	temp <- fit.models(list(Robust = "lmRob", LS = "lm"), y ~ ., data = lmRob.data)
 	pdf("plot.fit.models.lm.both.pdf")
-	T
+	TRUE
 }
 
 {
@@ -138,7 +139,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 
@@ -150,9 +151,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "lmRob"), lmRob.formula, data = lmRob.data)
+	temp <- fit.models(list(Robust = "lmRob"), y ~ ., data = lmRob.data)
 	pdf("plot.fit.models.lmRob.only.pdf")
-	T
+	TRUE
 }
 
 {
@@ -209,7 +210,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #################################################################
@@ -218,9 +219,9 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(LS = "lm"), lmRob.formula, data = lmRob.data)
+	temp <- fit.models(list(LS = "lm"), y ~ ., data = lmRob.data)
 	pdf("plot.fit.models.lm.only.pdf")
-	T
+	TRUE
 }
 
 {
@@ -277,7 +278,7 @@
 	#clean up and write to file
 	dev.off()
 	rm(temp)
-	T
+	TRUE
 }
 
 #####################################################
@@ -287,8 +288,7 @@
 	# Remove Globals
 {
 	rm(lmRob.data)
-	rm(lmRob.formula)
-	T
+	TRUE
 }
 
 

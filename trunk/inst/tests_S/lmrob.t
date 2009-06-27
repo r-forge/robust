@@ -128,28 +128,27 @@
 
 {
 ## test robust "mixed" linear models with wagner data
-    wagner.dat <- read.table(system.file("datasets", "wagner.tab",
-					 package = "robust"),
-			     header=TRUE)
-    tmp <- lmRob(y ~
-                 Region + ## 21 levels
-                 Period + ##  3 levels
-                 PA+ GPA+ HS+ GHS,
-		 data = wagner.dat, control =
-		 lmRob.control(weight = "Bisquare",
-			       efficiency = 0.77, final.alg = "adaptive"))
-###_____ FIXME ____
-    if(FALSE) ## completely platform dependent ???
+## In the future,  use
+##  data(wagnerGrowth, package = "robustbase")
+    source(system.file("datasets", "wagner.q",
+                       package = "robust")) # wagnerGrowth
+    ## 21 levels + 3 levels + 4 continuous :
+    tmp <- lmRob(y ~ Region + Period + ., data = wagnerGrowth)
     all.equal(unname(coef(tmp)),
-	      c(-70.2985086,
-		16.489339, 11.2556028, 13.8203292, 21.6230365, 10.7583011,
-		5.14380025, -5.4973341, 8.41317519, 15.9822119, 6.39515151,
-		7.04806796, 4.34124351, -0.935975738, 32.3256547, 29.7655659,
-		27.2887089, 4.6610776, 14.5739453, 31.1460109, 17.88174,
-		10.8415108, 18.6936249,
-		1.36991918, 0.371032466, 3.47707856, 2.22426915),
+              c(-58.48739738,
+                4.24094749, 28.95751724, 25.57747551, 22.72475947, -0.9850417527,
+                10.7973689, 23.58086125, 14.47839294, 14.22681835, 8.319455272,
+                10.35773846, 15.3466895, 10.36446368, 2.029283378, -8.077244089,
+                6.805266348, 12.66957858, 5.855703339, 3.350434134, -6.422418986,
+                8.761413075, 16.27819707,
+                1.130854624, 0.3911569697, 3.726122795, 2.790172641),
 	      tol = 1e-5)
-    TRUE
+
+    ## now with non-default control :
+    tmp2 <- lmRob(y ~ Region + Period + ., data = wagnerGrowth,
+                 control = lmRob.control(weight = "Bisquare",
+                 efficiency = 0.77, final.alg = "adaptive"))
+    ## FIXME ?: This seems completely platform(?) dependent
 }
 
 {
@@ -163,7 +162,7 @@
 
 {
 ## remove function ###
-  rm(gen.data, simu.dat, .Random.seed, tmp, m, mBB)
+  rm(gen.data, simu.dat, .Random.seed, tmp, tmp2, m, mBB)
   TRUE
 }
 
