@@ -1,10 +1,10 @@
 #### -*- R -*-
 
 ##
-##	loop tests for glmRob plots
-##
+## Tests for glmRob and fit.models(<glm> .) plots
+##           ------------------------------------
 
-	#Global
+## Global
 {
 	data(breslow.dat)
 	glmRob.formula <- sumY ~ Age10 + Base4 * Trt
@@ -22,39 +22,16 @@
 	TRUE
 }
 
+
 {
-	#Residuals vs Fitted Values
-	class(try(plot(temp, which = 1))) != "Error"
+    ## Each of the 7 kinds of plots  which =  2 .. 8 :
+    all(sapply(2:8, function(wh)
+               class(try(plot(temp, which = wh))) != "Error"))
 }
 
 {
-	#Sqrt of abs(Residuals) vs Predictions
-	class(try(plot(temp, which = 2))) != "Error"
-}
-
-{
-	#Response vs Fitted Values
-	class(try(plot(temp, which = 3))) != "Error"
-}
-
-{
-	#Normal QQplot of Pearson Residuals
-	class(try(plot(temp, which = 4))) != "Error"
-}
-
-{
-	#RR vs RD
-	class(try(plot(temp, which = 5))) != "Error"
-}
-
-{
-	#QQplot of Deviance Residuals
-	class(try(plot(temp, which = 6))) != "Error"
-}
-
-{
-	#All
-	class(try(plot(temp, which = 1:6))) != "Error"
+    ## All
+    class(try(plot(temp, which = "all"))) != "Error"
 }
 
 {
@@ -67,49 +44,27 @@
 
 ################################################################
 
-	#2 Test plot.fit.models with glmRob comparison
+## 2 Test plot.fit.models with glmRob - glm  Comparison
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "glmRob", MLE = "glm"), glmRob.formula, data = breslow.dat, family = "poisson")
+	temp <- fit.models(list(Robust = "glmRob", MLE = "glm"),
+                           glmRob.formula, data = breslow.dat, family = "poisson")
 	pdf("plot.fit.models.glm.both.pdf")
 	TRUE
 }
 
 {
-	#Normal QQ-Plot of Pearson Residuals
-	class(try(plot(temp, which = 1))) != "Error"
+    ## Each of the 7 kinds of plots  which =  2 .. 8 :
+    all(sapply(2:8, function(wh)
+               class(try(plot(temp, which = wh))) != "Error"))
 }
 
 {
-	#Standardized Pearson Residuals vs Robust Distances
-	class(try(plot(temp, which = 2))) != "Error"
+    ## All
+    class(try(plot(temp, which = "all"))) != "Error"
 }
 
-{
-	#Deviance Residuals vs Fitted Values
-	class(try(plot(temp, which = 3))) != "Error"
-}
-
-{
-	#Sqrt of abs(Deviance Residuals) vs Fitted Values
-	class(try(plot(temp, which = 4))) != "Error"
-}
-
-{
-	#Response vs Fitted Values
-	class(try(plot(temp, which = 5))) != "Error"
-}
-
-{
-	#QQ-Plot of Deviance Residuals
-	class(try(plot(temp, which = 6))) != "Error"
-}
-
-{
-	#All
-	class(try(plot(temp, which = 1:6))) != "Error"
-}
 
 {
 	#clean up and write to file
@@ -127,56 +82,35 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "glmRob"), glmRob.formula, data = breslow.dat, family = "poisson")
+	temp <- fit.models(list(Robust = "glmRob"),
+                           glmRob.formula, data = breslow.dat, family = "poisson")
+        st <- summary(temp)
+        print(st) # gave error, now ok
 	pdf("plot.fit.models.glmRob.only.pdf")
 	TRUE
 }
 
 {
-	#Normal QQ-Plot of Pearson Residuals
-	class(try(plot(temp, which = 1))) != "Error"
+    ## Each of the 7 kinds of plots  which =  2 .. 8 :
+    all(sapply(2:8, function(wh)
+               class(try(plot(temp, which = wh))) != "Error"))
 }
 
 {
-	#Standardized Pearson Residuals vs Robust Distances
-	class(try(plot(temp, which = 2))) != "Error"
-}
-
-{
-	#Deviance Residuals vs Fitted Values
-	class(try(plot(temp, which = 3))) != "Error"
-}
-
-{
-	#Sqrt of abs(Deviance Residuals) vs Fitted Values
-	class(try(plot(temp, which = 4))) != "Error"
-}
-
-{
-	#Response vs Fitted Values
-	class(try(plot(temp, which = 5))) != "Error"
-}
-
-{
-	#QQ-Plot of Deviance Residuals
-	class(try(plot(temp, which = 6))) != "Error"
-}
-
-{
-	#All
-	class(try(plot(temp, which = 1:6))) != "Error"
+    ## All
+    class(try(plot(temp, which = "all"))) != "Error"
 }
 
 {
 	#clean up and write to file
 	dev.off()
-	rm(temp)
+	rm(temp, st)
 	TRUE
 }
 
 #################################################################
 
-	#4 Test plot.fit.models with lm only
+	#4 Test plot.fit.models with glm only
 
 {
 	#make a fit.models object and start pdf device
@@ -184,39 +118,16 @@
 	pdf("plot.fit.models.glm.only.pdf")
 	TRUE
 }
+
 {
-	#Normal QQ-Plot of Pearson Residuals
-	class(try(plot(temp, which = 1))) != "Error"
+    ## Each of the 7 kinds of plots  which =  2 .. 8 :
+    all(sapply(2:8, function(wh)
+               class(try(plot(temp, which = wh))) != "Error"))
 }
 
 {
-	#Standardized Pearson Residuals vs Robust Distances
-	class(try(plot(temp, which = 2))) != "Error"
-}
-
-{
-	#Deviance Residuals vs Fitted Values
-	class(try(plot(temp, which = 3))) != "Error"
-}
-
-{
-	#Sqrt of abs(Deviance Residuals) vs Fitted Values
-	class(try(plot(temp, which = 4))) != "Error"
-}
-
-{
-	#Response vs Fitted Values
-	class(try(plot(temp, which = 5))) != "Error"
-}
-
-{
-	#QQ-Plot of Deviance Residuals
-	class(try(plot(temp, which = 6))) != "Error"
-}
-
-{
-	#All
-	class(try(plot(temp, which = 1:6))) != "Error"
+    ## All
+    class(try(plot(temp, which = "all"))) != "Error"
 }
 
 

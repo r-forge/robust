@@ -2,6 +2,23 @@ library(robust)
 
 sessionInfo()
 
+testTRUEfile <- function(file, srcfile = NULL, verbose = TRUE) {
+    exps <- parse(file = file, srcfile=srcfile)
+    if(verbose) cat(length(exps)," expressions :\n")
+    for(i in seq_along(exps)) {
+        if(verbose) cat(" ")
+        if(!isTRUE(eval(exps[[i]], envir = .GlobalEnv))) {
+            ch.ex <- paste(substr(paste(format(exps[[i]])[-1],
+                                        collapse = " ; "), 1, 60), "...")
+## For testing many at once:
+            warning("*** ", ch.ex,"  was *not* TRUE", immediate. = TRUE)
+## Once, the tests work
+##             stop("*** ", ch.ex,"  was *not* TRUE")
+        }
+        if(verbose) cat(i %% 10)
+    }
+}
+
 tDir <- system.file("tests_S", package = "robust")
 
 tstFiles <- list.files(tDir, pattern = "\\.t$")
@@ -19,20 +36,6 @@ tstFiles <- list.files(tDir, pattern = "\\.t$")
 
 for(f in tstFiles) {
     cat("Test File", f,": ")
-    ##
-    exps <- parse(file = file.path(tDir, f), srcfile=NULL)
-    cat(length(exps)," expressions :\n")
-    for(i in seq_along(exps)) {
-        cat(" ")
-        if(!isTRUE(eval(exps[[i]]))) {
-            ch.ex <- paste(substr(paste(format(exps[[i]])[-1],
-                                        collapse = " ; "), 1, 60), "...")
-## For testing many at once:
-            warning("*** ", ch.ex,"  was *not* TRUE", immediate. = TRUE)
-## Once, the tests work
-##             stop("*** ", ch.ex,"  was *not* TRUE")
-        }
-        cat(i %% 10)
-    }
+    testTRUEfile(file.path(tDir, f), verbose = TRUE)
     cat("\n\n")
 }
