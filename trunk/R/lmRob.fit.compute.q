@@ -711,10 +711,14 @@ lmRob.fit.compute <- function(x2, y, x1=NULL, x1.idx=NULL, nrep=NULL,
     }
 
     if(!is.null(genetic.control))
-	z$genetic.control <- genetic.control
+      z$genetic.control <- genetic.control
+
     z$qr <- qrx
     ##z$yc <- lmRob.effvy(eff)
+
+  if(casefold(est) == "final")
     z$yc <- yc
-    oldClass(z) <- c("lmRob")
-    z
+
+  oldClass(z) <- c("lmRob")
+  z
 }
