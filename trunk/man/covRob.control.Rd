@@ -30,7 +30,7 @@
 \seealso{
   This function is a utility function for \code{\link{covRob}}.<br>
 
-  The current supported robust estimators are: \code{\link{donostah}}, \code{\link[robustbase]{covMcd}} and \code{\link{fastcov}}.
+  The underlying robust estimators are: \code{\link[rrcov]{CovSde}}, \code{\link[robustbase]{covMcd}} and \code{\link[rrcov]{CovOgk}}.  Power-users should consider calling these functions directly.
 }
 
 \examples{

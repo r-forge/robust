@@ -30,6 +30,7 @@ tstFiles <- list.files(tDir, pattern = "\\.t$")
 	      "princomprob.t",	## princompRob() not ported
 	      "plots.princomprob.t", ## ditto
 	      "plots.aovrob.t", ## aovRob() not ported __ FIXME: use lawson data in lmRob()!
+	      "covm.t", ## loc/scat estimators all come from robustbase/rrcov now
 	      "")
 
 (tstFiles <- tstFiles[! match(tstFiles, .not.yet, nomatch=0)])
