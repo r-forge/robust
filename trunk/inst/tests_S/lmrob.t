@@ -118,6 +118,7 @@
 
 {
 ## test REWLS with stack.loss data ##
+  data(stack.dat)
   tmp <- lmRob(Loss~.-1, data = stack.dat, control =
                lmRob.control(weight = "Bisquare", initial.alg = "random",
                              efficiency = 0.77, final.alg = "adaptive"))

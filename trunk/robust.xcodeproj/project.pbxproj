@@ -416,6 +416,20 @@
 		DA1295170B380D8C00B17596 /* s.logistic.misclass.fit.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = s.logistic.misclass.fit.q; sourceTree = "<group>"; };
 		DA1295180B380D8C00B17596 /* summary.glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = summary.glmRob.q; sourceTree = "<group>"; };
 		DA1295190B380D8C00B17596 /* wt.carroll.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = wt.carroll.q; sourceTree = "<group>"; };
+		DA4CB634106CA90000A17693 /* wagner.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = wagner.q; path = inst/datasets/wagner.q; sourceTree = SOURCE_ROOT; };
+		DA4CB635106CA90000A17693 /* lawson.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lawson.tab; path = inst/datasets/lawson.tab; sourceTree = SOURCE_ROOT; };
+		DA4CB637106CA91900A17693 /* asymmetric.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = asymmetric.t; path = inst/tests_S/asymmetric.t; sourceTree = SOURCE_ROOT; };
+		DA4CB638106CA91900A17693 /* glmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = glmrob.t; path = inst/tests_S/glmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB639106CA91900A17693 /* plots.glmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.glmrob.t; path = inst/tests_S/plots.glmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63A106CA91900A17693 /* covm.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = covm.t; path = inst/tests_S/covm.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63B106CA91900A17693 /* discrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = discrob.t; path = inst/tests_S/discrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63C106CA91900A17693 /* plots.wblrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.wblrob.t; path = inst/tests_S/plots.wblrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63D106CA91900A17693 /* plots.aovrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.aovrob.t; path = inst/tests_S/plots.aovrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63E106CA91900A17693 /* plots.covrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.covrob.t; path = inst/tests_S/plots.covrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63F106CA91900A17693 /* plots.princomprob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.princomprob.t; path = inst/tests_S/plots.princomprob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB640106CA91900A17693 /* princomprob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = princomprob.t; path = inst/tests_S/princomprob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB641106CA91900A17693 /* lmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lmrob.t; path = inst/tests_S/lmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB642106CA91900A17693 /* plots.lmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.lmrob.t; path = inst/tests_S/plots.lmrob.t; sourceTree = SOURCE_ROOT; };
 		DA62215C10174F99006D6F40 /* robust-Ex.Rout.save */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "robust-Ex.Rout.save"; path = "tests/Examples/robust-Ex.Rout.save"; sourceTree = SOURCE_ROOT; };
 		DA62215D10174F99006D6F40 /* weight-tst.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = "weight-tst.R"; path = "tests/weight-tst.R"; sourceTree = SOURCE_ROOT; };
 		DA62215E10174F99006D6F40 /* Run-tests.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = "Run-tests.R"; path = "tests/Run-tests.R"; sourceTree = SOURCE_ROOT; };
@@ -905,6 +919,8 @@
 			isa = PBXGroup;
 			children = (
 				0EBC2E460A2F728F00C89C9F /* Copyright */,
+				DA4CB633106CA90000A17693 /* datasets */,
+				DA4CB636106CA91900A17693 /* tests_S */,
 			);
 			path = inst;
 			sourceTree = SOURCE_ROOT;
@@ -1268,6 +1284,36 @@
 			);
 			name = lmfm;
 			path = R;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA4CB633106CA90000A17693 /* datasets */ = {
+			isa = PBXGroup;
+			children = (
+				DA4CB634106CA90000A17693 /* wagner.q */,
+				DA4CB635106CA90000A17693 /* lawson.tab */,
+			);
+			name = datasets;
+			path = inst/datasets;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA4CB636106CA91900A17693 /* tests_S */ = {
+			isa = PBXGroup;
+			children = (
+				DA4CB637106CA91900A17693 /* asymmetric.t */,
+				DA4CB638106CA91900A17693 /* glmrob.t */,
+				DA4CB639106CA91900A17693 /* plots.glmrob.t */,
+				DA4CB63A106CA91900A17693 /* covm.t */,
+				DA4CB63B106CA91900A17693 /* discrob.t */,
+				DA4CB63C106CA91900A17693 /* plots.wblrob.t */,
+				DA4CB63D106CA91900A17693 /* plots.aovrob.t */,
+				DA4CB63E106CA91900A17693 /* plots.covrob.t */,
+				DA4CB63F106CA91900A17693 /* plots.princomprob.t */,
+				DA4CB640106CA91900A17693 /* princomprob.t */,
+				DA4CB641106CA91900A17693 /* lmrob.t */,
+				DA4CB642106CA91900A17693 /* plots.lmrob.t */,
+			);
+			name = tests_S;
+			path = inst/tests_S;
 			sourceTree = SOURCE_ROOT;
 		};
 		DA62215A10174F99006D6F40 /* tests */ = {

@@ -1,13 +1,11 @@
 
-R version 2.9.1 RC (2009-06-25 r48836)
+R version 2.9.2 (2009-08-24)
 Copyright (C) 2009 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
-
-  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -93,7 +91,7 @@ Loading required package: rrcov
 Loading required package: pcaPP
 Loading required package: mvtnorm
 pcaPP 0.1-1 loaded
-Scalable Robust Estimators with High Breakdown Point (version 0.5-01)
+Scalable Robust Estimators with High Breakdown Point (version 0.5-02)
 
 Attaching package: 'robust'
 
@@ -290,7 +288,7 @@ Classical Estimate of Location:
 +                       family = poisson(), data = breslow.dat)
 > coef(bres.fm)
           (Intercept)     Age10      Base4 Trtprogabide Base4:Trtprogabide
-Robust       1.843604 0.1292611 0.13274133   -0.4239688        0.028685240
+Robust       1.843604 0.1292611 0.13274133   -0.4239688        0.028685241
 Classical    1.968014 0.2434901 0.08542626   -0.2552565        0.007534172
 > 
 > 
@@ -439,42 +437,6 @@ Robust Estimate of Location:
 >   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
 +                          data = woodmod.dat)
 >   covfmSqrtMDPlot(woodm.fm)
-> 
-> 
-> 
-> cleanEx(); nameEx("donostah")
-> ### * donostah
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: donostah
-> ### Title: Donoho-Stahel Covariance Estimation
-> ### Aliases: donostah
-> ### Keywords: multivariate robust
-> 
-> ### ** Examples
-> 
->   data(woodmod.dat)
->   X <- as.matrix(woodmod.dat)
->   ds.control <- covRob.control("donostah")
->   donostah(X, ds.control)
-$cov
-             [,1]          [,2]          [,3]          [,4]          [,5]
-[1,]  0.038232411  0.0066281691 -0.0021649580 -0.0015136057 -0.0048569583
-[2,]  0.006628169  0.0016511870  0.0001381625 -0.0010400249 -0.0003837196
-[3,] -0.002164958  0.0001381625  0.0036708838  0.0001513602  0.0015113329
-[4,] -0.001513606 -0.0010400249  0.0001513602  0.0048313022 -0.0014408971
-[5,] -0.004856958 -0.0003837196  0.0015113329 -0.0014408971  0.0044166121
-
-$center
-[1] 0.5692784 0.1189235 0.5093381 0.5399037 0.8963895
-
-$dist
- [1]  1.2996011  0.3348443  0.4098581 15.8191656  0.4578100 18.0052148
- [7]  8.5876125 24.2856689  8.1617147  5.1665386  2.0411725  5.3157348
-[13]  5.7098583  0.2672208  0.3173219  5.5844756  3.4097281  0.4361726
-[19] 25.9519862  3.5363818
-
 > 
 > 
 > 
@@ -716,7 +678,7 @@ glmRob(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
 
 Coefficients:
        (Intercept)              Age10              Base4       Trtprogabide 
-        1.84360360         0.12926113         0.13274133        -0.42396881 
+        1.84360360         0.12926113         0.13274133        -0.42396882 
 Base4:Trtprogabide 
         0.02868524 
 
@@ -886,7 +848,7 @@ Residual Deviance: 29.59432
 > bres.rob <- glmRob(sumY ~ Age10 + Base4 * Trt, family = poisson(), data = breslow.dat) 
 > coef(bres.rob) 
        (Intercept)              Age10              Base4       Trtprogabide 
-        1.84360360         0.12926113         0.13274133        -0.42396881 
+        1.84360360         0.12926113         0.13274133        -0.42396882 
 Base4:Trtprogabide 
         0.02868524 
 > family(bres.rob) 
@@ -1026,23 +988,23 @@ attr(,"contrasts")$Trt
 
 > residuals(bres.rob) 
            1            2            3            4            5            6 
-  0.11060055   0.15838783   0.10565712  -0.03422370  -2.43143416  -0.11029123 
+  0.11060055   0.15838783   0.10565712  -0.03422370  -2.43143415  -0.11029123 
            7            8            9           10           11           12 
  -0.56077837   4.01057838   0.02769331   4.75342801   1.22808913   0.81327925 
           13           14           15           16           17           18 
-  0.13661216   0.22513904  -9.08844673  -5.17973770  -2.97498073 -15.17422780 
+  0.13661216   0.22513904  -9.08844672  -5.17973770  -2.97498073 -15.17422777 
           19           20           21           22           23           24 
- -0.58169250  -0.02470494   0.08339918   0.81262459  -0.96587554   1.59102902 
+ -0.58169250  -0.02470493   0.08339918   0.81262459  -0.96587554   1.59102902 
           25           26           27           28           29           30 
-  9.42042454  -2.48240825  -0.38217390   1.96487594  -7.59854852  -0.18424575 
+  9.42042455  -2.48240825  -0.38217390   1.96487595  -7.59854852  -0.18424576 
           31           32           33           34           35           36 
  -1.43987374   1.20518717   2.10586354  -1.04925857   8.88468045   2.28602779 
           37           38           39           40           41           42 
-  0.28046734  -7.36289026   0.04659108  -1.52763614  -2.30223234   0.08140161 
+  0.28046735  -7.36289027   0.04659108  -1.52763613  -2.30223234   0.08140161 
           43           44           45           46           47           48 
-  3.52667744   0.57130621   1.54458015  -0.21281900   1.39507057  -2.29851054 
+  3.52667743   0.57130621   1.54458015  -0.21281900   1.39507057  -2.29851054 
           49           50           51           52           53           54 
--54.82672077  -0.57811369  -0.72724569  -3.17602260   2.37107678  -1.35313785 
+-54.82672087  -0.57811369  -0.72724569  -3.17602260   2.37107678  -1.35313785 
           55           56           57           58           59 
   0.85458037   7.58481809  -2.61926763  -4.71797265  -0.25508712 
 > 
@@ -1362,7 +1324,7 @@ glmRob(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
 
 Coefficients:
        (Intercept)              Age10              Base4       Trtprogabide 
-        1.84360360         0.12926113         0.13274133        -0.42396881 
+        1.84360360         0.12926113         0.13274133        -0.42396882 
 Base4:Trtprogabide 
         0.02868524 
 
@@ -1413,7 +1375,7 @@ Coefficients:
 (Intercept)         1.84360360  1.968014341
 Age10               0.12926113  0.243490118
 Base4               0.13274133  0.085426259
-Trtprogabide       -0.42396881 -0.255256522
+Trtprogabide       -0.42396882 -0.255256522
 Base4:Trtprogabide  0.02868524  0.007534172
 
 Residual Deviance Estimates:
@@ -1635,14 +1597,14 @@ Call: glmRob(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
     data = breslow.dat)
 Deviance Residuals:
          Min           1Q       Median           3Q          Max 
--54.82672077  -1.48375494  -0.02470494   1.02988377   9.42042454 
+-54.82672087  -1.48375494  -0.02470493   1.02988377   9.42042455 
 
 Coefficients:
                          Value Std. Error    t value
 (Intercept)         1.84360360 0.29347984  6.2818748
 Age10               0.12926113 0.07631478  1.6937890
 Base4               0.13274133 0.03902276  3.4016385
-Trtprogabide       -0.42396881 0.22775512 -1.8615117
+Trtprogabide       -0.42396882 0.22775512 -1.8615117
 Base4:Trtprogabide  0.02868524 0.04318602  0.6642252
 
 (Dispersion Parameter for poisson family taken to be 1 )
@@ -1719,20 +1681,20 @@ Classical: glm(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
 
 Deviance Residuals:
                   Min        1Q      Median        3Q       Max
-   Robust: -54.826721 -1.483755 -0.02470494 1.0298838  9.420425
+   Robust: -54.826721 -1.483755 -0.02470493 1.0298838  9.420425
 Classical:  -6.003217 -2.074438 -1.08033178 0.8201996 11.038580
 
 Coefficients:
                                     Value  Std. Error    t value      Pr(>|t|)
    Robust        (Intercept)  1.843603599 0.293479836  6.2818748            NA
 Classical        (Intercept)  1.968014341 0.135929343 14.4782156  1.663600e-47
-   Robust              Age10  0.129261126 0.076314777  1.6937890            NA
+   Robust              Age10  0.129261127 0.076314777  1.6937890            NA
 Classical              Age10  0.243490118 0.041297036  5.8960677  3.722663e-09
    Robust              Base4  0.132741328 0.039022762  3.4016385            NA
 Classical              Base4  0.085426259 0.003665622 23.3047119 3.971458e-120
-   Robust       Trtprogabide -0.423968815 0.227755116 -1.8615117            NA
+   Robust       Trtprogabide -0.423968816 0.227755116 -1.8615117            NA
 Classical       Trtprogabide -0.255256522 0.076525418 -3.3355783  8.512219e-04
-   Robust Base4:Trtprogabide  0.028685240 0.043186016  0.6642252            NA
+   Robust Base4:Trtprogabide  0.028685241 0.043186016  0.6642252            NA
 Classical Base4:Trtprogabide  0.007534172 0.004408863  1.7088698  8.747507e-02
 
 Residual Deviance:
@@ -2082,14 +2044,14 @@ Call: glmRob(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
     data = breslow.dat)
 Deviance Residuals:
          Min           1Q       Median           3Q          Max 
--54.82672077  -1.48375494  -0.02470494   1.02988377   9.42042454 
+-54.82672087  -1.48375494  -0.02470493   1.02988377   9.42042455 
 
 Coefficients:
                          Value Std. Error    t value
 (Intercept)         1.84360360 0.29347984  6.2818748
 Age10               0.12926113 0.07631478  1.6937890
 Base4               0.13274133 0.03902276  3.4016385
-Trtprogabide       -0.42396881 0.22775512 -1.8615117
+Trtprogabide       -0.42396882 0.22775512 -1.8615117
 Base4:Trtprogabide  0.02868524 0.04318602  0.6642252
 
 (Dispersion Parameter for poisson family taken to be 1 )
@@ -2136,20 +2098,20 @@ Classical: glm(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(),
 
 Deviance Residuals:
                   Min        1Q      Median        3Q       Max
-   Robust: -54.826721 -1.483755 -0.02470494 1.0298838  9.420425
+   Robust: -54.826721 -1.483755 -0.02470493 1.0298838  9.420425
 Classical:  -6.003217 -2.074438 -1.08033178 0.8201996 11.038580
 
 Coefficients:
                                     Value  Std. Error    t value      Pr(>|t|)
    Robust        (Intercept)  1.843603599 0.293479836  6.2818748            NA
 Classical        (Intercept)  1.968014341 0.135929343 14.4782156  1.663600e-47
-   Robust              Age10  0.129261126 0.076314777  1.6937890            NA
+   Robust              Age10  0.129261127 0.076314777  1.6937890            NA
 Classical              Age10  0.243490118 0.041297036  5.8960677  3.722663e-09
    Robust              Base4  0.132741328 0.039022762  3.4016385            NA
 Classical              Base4  0.085426259 0.003665622 23.3047119 3.971458e-120
-   Robust       Trtprogabide -0.423968815 0.227755116 -1.8615117            NA
+   Robust       Trtprogabide -0.423968816 0.227755116 -1.8615117            NA
 Classical       Trtprogabide -0.255256522 0.076525418 -3.3355783  8.512219e-04
-   Robust Base4:Trtprogabide  0.028685240 0.043186016  0.6642252            NA
+   Robust Base4:Trtprogabide  0.028685241 0.043186016  0.6642252            NA
 Classical Base4:Trtprogabide  0.007534172 0.004408863  1.7088698  8.747507e-02
 
 Residual Deviance:
@@ -2206,10 +2168,10 @@ Residuals:
 
 Coefficients:
             Value         Std. Error    Bootstrap SE  t value      
-(Intercept) -3.765246e+01  5.002560e+00  4.784733e+00 -7.526638e+00
-Air.Flow     7.976856e-01  7.129424e-02  4.869781e-02  1.118864e+01
-Water.Temp   5.773405e-01  1.754566e-01  1.340419e-01  3.290503e+00
-Acid.Conc.  -6.706018e-02  6.512470e-02  6.101638e-02 -1.029720e+00
+(Intercept) -3.765246e+01  5.002560e+00  4.446897e+00 -7.526638e+00
+Air.Flow     7.976856e-01  7.129424e-02  5.048605e-02  1.118864e+01
+Water.Temp   5.773405e-01  1.754566e-01  1.337963e-01  3.290503e+00
+Acid.Conc.  -6.706018e-02  6.512470e-02  5.808474e-02 -1.029720e+00
             Pr(>|t|)     
 (Intercept)  8.289315e-07
 Air.Flow     2.913857e-09
@@ -2352,7 +2314,7 @@ Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...) :
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.412 0.139 4.834 0 0 
+Time elapsed:  5.481 0.355 6.577 0 0 
 > grDevices::dev.off()
 null device 
           1 
