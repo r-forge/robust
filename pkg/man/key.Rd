@@ -10,7 +10,9 @@
 }
 
 \usage{
-  key(x, y, text, lines, corner = c(0, 1), cex = par("cex"), col = par("col"), lty = par("lty"), lwd = par("lwd"), pch = par("pch"), ...)
+  key(x, y, text, lines, corner = c(0, 1),
+      cex = par("cex"), col = par("col"),
+      lty = par("lty"), lwd = par("lwd"), pch = par("pch"), \dots)
 }
 
 \arguments{

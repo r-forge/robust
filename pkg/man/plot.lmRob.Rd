@@ -20,7 +20,7 @@ Creates a set plots useful for assessing a robustly fitted linear model.  The pl
 }
 
 \value{
-\code{x} is invislbly returned.
+\code{x} is invisibly returned.
 }
 
 \section{Side Effects}{

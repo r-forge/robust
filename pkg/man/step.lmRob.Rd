@@ -8,11 +8,13 @@ Performs stepwise model selection on a robustly fitted linear model.  Presently 
 }
 
 \usage{
-step.lmRob(object, scope, scale, direction = c("both", "backward", "forward"), trace = TRUE, keep = NULL, steps = 1000, fast = FALSE, ...)
+step.lmRob(object, scope, scale,
+           direction = c("both", "backward", "forward"),
+           trace = TRUE, keep = NULL, steps = 1000, fast = FALSE, \dots)
 }
 
 \arguments{
-\item{object}{an lmRob object.}
+\item{object}{an \code{\link{lmRob}} object.}
 
 \item{scope}{either a formula or a list with elements \code{lower} and \code{upper} each of which is a formula.  The terms in the right-hand-side of \code{lower} are always included in the model and the additional terms in the right-hand-side of \code{upper} are the candidates for inclusion/exclusion from the model.  If a single formula is given, it is taken to be \code{upper} and \code{lower} is set to the empty model.  The \code{.} operator is interpreted in the context of the formula in \code{object}.}
 
@@ -21,7 +23,7 @@ step.lmRob(object, scope, scale, direction = c("both", "backward", "forward"), t
 \item{direction}{a character value specifying the mode of stepwise search.  The possibilities are "both", "backward", and "forward", with a default of "backward".  Presently only "backward" stepwise searches are implemented.}
 
 \item{trace}{a logical value.  If \code{TRUE}, information is printed during stepwise search.}
- 
+
 \item{keep}{a filter function whose input is a fitted model object and the associated AIC statistic, and whose output is arbitrary.  Typically keep will select a subset of the components of the object and return them.  The default is not to keep anything.}
 
 \item{steps}{an integer value specifying the the maximum number of steps to be considered.  The default is 1000 (essentially as many as required).  It is typically used to stop the process early.}
@@ -40,10 +42,9 @@ the model with the lowest Robust Final Prediction Error encountered during the s
 }
 
 \seealso{
-/code{\link{lmRob}}, 
-/code{\link{lmRob.RFPE}}, 
-/code{\link{add1.lmRob}}, 
-/code{\link{drop1.lmRob}}.
+  \code{\link{lmRob}},
+  \code{\link{lmRob.RFPE}},
+  \code{\link{add1.lmRob}}, \code{\link{drop1.lmRob}}.
 }
 
 \examples{

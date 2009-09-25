@@ -1,16 +1,21 @@
-\name{cov}
-\alias{cov}
+%% --- NOTA BENE:  Renamed function  from  cov() to ccov()
+\name{ccov}
+\alias{ccov}
+\alias{cov}% for now, backcompatibility
 
-\title{
-  Classical Covariance Estimation
-}
+\title{Classical Covariance Estimation}
 
 \description{
-  Computes an estimate of the covariance/correlation matrix and location vector using classical methods.
+  Computes an estimate of the covariance/correlation matrix and location
+  vector using classical methods.
+
+  Its main intention is to return an object compatible to that
+  produced by \code{\link{covRob}}, but fit using classical methods.
 }
 
 \usage{
-  cov(data, corr = FALSE, center = TRUE, distance = TRUE, na.action = na.fail, unbiased = TRUE)
+ccov(data, corr = FALSE, center = TRUE, distance = TRUE,
+    na.action = na.fail, unbiased = TRUE, control = list())
 }
 
 \arguments{
@@ -24,7 +29,11 @@
 
   \item{na.action}{a function to filter missing data.  The default \code{na.fail} produces an error if missing values are present.  An alternative is \code{na.omit} which deletes observations that contain one or more missing values.}
 
-  \item{unbiased}{a logical flag.  If \code{unbiased = TRUE} then an unbiased estimate of the covariance matrix is computed.  If \code{unbiased = FALSE} then a maximum likelihood estimate is computed.}
+  \item{unbiased}{logical indicating if an unbiased estimate of the
+    covariance matrix is should becomputed.  If false, the maximum
+    likelihood estimate is computed.}
+  \item{control}{not used, but necessarily allowed in order to fit the
+    \code{\link{fit.models}} framework.}
 }
 
 \value{
@@ -36,13 +45,17 @@
 
   \item{center}{a numeric vector containing the estimate of the location vector.}
 
-  \item{dist}{a numeric vector containing the Mahalanobis distances.  Only present if \code{distance = TRUE} in the \code{call}. }
+  \item{dist}{a numeric vector containing the Mahalanobis distances.  Only
+    present if \code{distance = TRUE} in the \code{call}.}
 
-  \item{corr}{a logical flag.  If \code{corr = TRUE} then \code{cov} contains an estimate of the correlation matrix of \code{x}.}
+  \item{corr}{a logical flag.  If \code{corr = TRUE} then \code{cov}
+    contains an estimate of the correlation matrix of \code{x}.}
 }
 
-\details{
-This function is intended to produce an object similar to that produced by the \code{covRob} in the robust library but fit using classical methods.
+\note{
+  Originally, and in S-PLUS, this function was called \code{cov}; it has
+  been renamed, as that did mask the function in the standard package
+  \pkg{stats}.
 }
 
 \seealso{
@@ -53,7 +66,7 @@ This function is intended to produce an object similar to that produced by the \
 
 \examples{
   data(stack.dat)
-  cov(stack.dat)
+  ccov(stack.dat)
 }
 
 %\keyword{librobust}

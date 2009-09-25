@@ -39,7 +39,7 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 
 \seealso{
   \code{\link{plot}},
-  \code{\link{cov}},
+  \code{\link{ccov}},
   \code{\link{covRob}},
   \code{\link{fit.models}},
   \code{\link{covfmDistance2Plot}},
@@ -49,15 +49,15 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 }
 
 \examples{
-  data(woodmod.dat)
-  woodmod.cov <- cov(woodmod.dat)
-  plot(woodmod.cov, which.plots = 1)
+data(woodmod.dat)
+woodmod.cov    <- ccov   (woodmod.dat)
+woodmod.covRob <- covRob(woodmod.dat)
+plot(woodmod.cov, which.plots = 1)
+plot(woodmod.covRob, which = 1)
 
-  woodmod.covRob <- covRob(woodmod.dat)
-  plot(woodmod.covRob, which = 1)
-
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
-  plot(woodmod.fm, which = 1)
+woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                         data = woodmod.dat)
+plot(woodmod.fm, which = 1)
 }
 
 %\keyword{librobust}

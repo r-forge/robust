@@ -31,11 +31,8 @@
 		0E3CE3510B48BB16008C361D /* glmRob.cubif.Ini.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.cubif.Ini.Rd; path = man/glmRob.cubif.Ini.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE3520B48BB16008C361D /* glmRob.cubif.null.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.cubif.null.Rd; path = man/glmRob.cubif.null.Rd; sourceTree = SOURCE_ROOT; };
 		0E3CE3530B48BB16008C361D /* glmRob.Initial.LMS.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.Initial.LMS.Rd; path = man/glmRob.Initial.LMS.Rd; sourceTree = SOURCE_ROOT; };
-		0E4500000A029C050064D9A4 /* cov.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = cov.Rd; path = man/cov.Rd; sourceTree = SOURCE_ROOT; };
 		0E4500020A029C050064D9A4 /* covRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.Rd; path = man/covRob.Rd; sourceTree = SOURCE_ROOT; };
 		0E4500030A029C050064D9A4 /* covRob.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.control.Rd; path = man/covRob.control.Rd; sourceTree = SOURCE_ROOT; };
-		0E4500040A029C050064D9A4 /* donostah.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = donostah.Rd; path = man/donostah.Rd; sourceTree = SOURCE_ROOT; };
-		0E4500050A029C050064D9A4 /* fastcov.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fastcov.Rd; path = man/fastcov.Rd; sourceTree = SOURCE_ROOT; };
 		0E4500060A029C050064D9A4 /* fit.models.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fit.models.Rd; path = man/fit.models.Rd; sourceTree = SOURCE_ROOT; };
 		0E4500070A029C050064D9A4 /* get.fit.models.database.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = get.fit.models.database.Rd; path = man/get.fit.models.database.Rd; sourceTree = SOURCE_ROOT; };
 		0E4500080A029C050064D9A4 /* key.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = key.Rd; path = man/key.Rd; sourceTree = SOURCE_ROOT; };
@@ -56,8 +53,6 @@
 		0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.q; path = R/covfmEllipsesPlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001B0A029C050064D9A4 /* covfmScreePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.q; path = R/covfmScreePlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.q; path = R/covfmSqrtMDPlot.q; sourceTree = SOURCE_ROOT; };
-		0E45001E0A029C050064D9A4 /* donostah.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = donostah.q; path = R/donostah.q; sourceTree = SOURCE_ROOT; };
-		0E45001F0A029C050064D9A4 /* fastcov.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fastcov.q; path = R/fastcov.q; sourceTree = SOURCE_ROOT; };
 		0E4500200A029C050064D9A4 /* fit.models.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = fit.models.q; path = R/fit.models.q; sourceTree = SOURCE_ROOT; };
 		0E4500210A029C050064D9A4 /* get.fit.models.database.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = get.fit.models.database.q; path = R/get.fit.models.database.q; sourceTree = SOURCE_ROOT; };
 		0E4500220A029C050064D9A4 /* library.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = library.q; path = R/library.q; sourceTree = SOURCE_ROOT; };
@@ -186,7 +181,6 @@
 		0E4500BC0A029C060064D9A4 /* weights.lmRobBI.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weights.lmRobBI.sgml; path = sgml/weights.lmRobBI.sgml; sourceTree = SOURCE_ROOT; };
 		0E4500BD0A029C060064D9A4 /* www.weight.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = www.weight.sgml; path = sgml/www.weight.sgml; sourceTree = SOURCE_ROOT; };
 		0E4500BE0A029C060064D9A4 /* xyellipse.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = xyellipse.sgml; path = sgml/xyellipse.sgml; sourceTree = SOURCE_ROOT; };
-		0E4500C30A029C060064D9A4 /* ds11.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = ds11.f; path = src/ds11.f; sourceTree = SOURCE_ROOT; };
 		0E4500C40A029C060064D9A4 /* fastcov.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = fastcov.c; path = src/fastcov.c; sourceTree = SOURCE_ROOT; };
 		0E4500C60A029C060064D9A4 /* gamrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = gamrob.f; path = src/gamrob.f; sourceTree = SOURCE_ROOT; };
 		0E4500C70A029C060064D9A4 /* glmrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = glmrob.f; path = src/glmrob.f; sourceTree = SOURCE_ROOT; };
@@ -422,6 +416,23 @@
 		DA1295170B380D8C00B17596 /* s.logistic.misclass.fit.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = s.logistic.misclass.fit.q; sourceTree = "<group>"; };
 		DA1295180B380D8C00B17596 /* summary.glmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = summary.glmRob.q; sourceTree = "<group>"; };
 		DA1295190B380D8C00B17596 /* wt.carroll.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = wt.carroll.q; sourceTree = "<group>"; };
+		DA4CB634106CA90000A17693 /* wagner.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = wagner.q; path = inst/datasets/wagner.q; sourceTree = SOURCE_ROOT; };
+		DA4CB635106CA90000A17693 /* lawson.tab */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lawson.tab; path = inst/datasets/lawson.tab; sourceTree = SOURCE_ROOT; };
+		DA4CB637106CA91900A17693 /* asymmetric.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = asymmetric.t; path = inst/tests_S/asymmetric.t; sourceTree = SOURCE_ROOT; };
+		DA4CB638106CA91900A17693 /* glmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = glmrob.t; path = inst/tests_S/glmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB639106CA91900A17693 /* plots.glmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.glmrob.t; path = inst/tests_S/plots.glmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63A106CA91900A17693 /* covm.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = covm.t; path = inst/tests_S/covm.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63B106CA91900A17693 /* discrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = discrob.t; path = inst/tests_S/discrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63C106CA91900A17693 /* plots.wblrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.wblrob.t; path = inst/tests_S/plots.wblrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63D106CA91900A17693 /* plots.aovrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.aovrob.t; path = inst/tests_S/plots.aovrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63E106CA91900A17693 /* plots.covrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.covrob.t; path = inst/tests_S/plots.covrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB63F106CA91900A17693 /* plots.princomprob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.princomprob.t; path = inst/tests_S/plots.princomprob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB640106CA91900A17693 /* princomprob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = princomprob.t; path = inst/tests_S/princomprob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB641106CA91900A17693 /* lmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lmrob.t; path = inst/tests_S/lmrob.t; sourceTree = SOURCE_ROOT; };
+		DA4CB642106CA91900A17693 /* plots.lmrob.t */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plots.lmrob.t; path = inst/tests_S/plots.lmrob.t; sourceTree = SOURCE_ROOT; };
+		DA62215C10174F99006D6F40 /* robust-Ex.Rout.save */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "robust-Ex.Rout.save"; path = "tests/Examples/robust-Ex.Rout.save"; sourceTree = SOURCE_ROOT; };
+		DA62215D10174F99006D6F40 /* weight-tst.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = "weight-tst.R"; path = "tests/weight-tst.R"; sourceTree = SOURCE_ROOT; };
+		DA62215E10174F99006D6F40 /* Run-tests.R */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.rez; name = "Run-tests.R"; path = "tests/Run-tests.R"; sourceTree = SOURCE_ROOT; };
 		DAAAEB910A0A08A000212C6E /* Makevars */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Makevars; path = src/Makevars; sourceTree = SOURCE_ROOT; };
 		DAB89EB30A1CA95600F2C64D /* lmRob.RFPE.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.RFPE.q; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -672,7 +683,6 @@
 				0E4500C40A029C060064D9A4 /* fastcov.c */,
 				0E4500CC0A029C060064D9A4 /* mmprnt.c */,
 				0E4500CD0A029C060064D9A4 /* rb.c */,
-				0E4500C30A029C060064D9A4 /* ds11.f */,
 				0E4500C60A029C060064D9A4 /* gamrob.f */,
 				0E4500C70A029C060064D9A4 /* glmrob.f */,
 				0E4500C80A029C060064D9A4 /* lmrobbi.f */,
@@ -909,6 +919,8 @@
 			isa = PBXGroup;
 			children = (
 				0EBC2E460A2F728F00C89C9F /* Copyright */,
+				DA4CB633106CA90000A17693 /* datasets */,
+				DA4CB636106CA91900A17693 /* tests_S */,
 			);
 			path = inst;
 			sourceTree = SOURCE_ROOT;
@@ -998,6 +1010,7 @@
 				0EBC2E450A2F728F00C89C9F /* inst */,
 				0E45FFFD0A029C050064D9A4 /* man */,
 				0E4500BF0A029C060064D9A4 /* src */,
+				DA62215A10174F99006D6F40 /* tests */,
 				0E45FF410A029C050064D9A4 /* datasets */,
 				0E45FFBD0A029C050064D9A4 /* funs */,
 				0E45FFE20A029C050064D9A4 /* gui */,
@@ -1099,8 +1112,6 @@
 			children = (
 				0E4500180A029C050064D9A4 /* covRob.q */,
 				0E4500170A029C050064D9A4 /* covRob.control.q */,
-				0E45001E0A029C050064D9A4 /* donostah.q */,
-				0E45001F0A029C050064D9A4 /* fastcov.q */,
 				0E4500160A029C050064D9A4 /* cov.q */,
 				0E4500260A029C050064D9A4 /* print.cov.q */,
 				0E45002D0A029C050064D9A4 /* summary.cov.q */,
@@ -1163,9 +1174,6 @@
 			children = (
 				0E4500020A029C050064D9A4 /* covRob.Rd */,
 				0E4500030A029C050064D9A4 /* covRob.control.Rd */,
-				0E4500040A029C050064D9A4 /* donostah.Rd */,
-				0E4500050A029C050064D9A4 /* fastcov.Rd */,
-				0E4500000A029C050064D9A4 /* cov.Rd */,
 				0E45000A0A029C050064D9A4 /* print.covfm.Rd */,
 				0E45000F0A029C050064D9A4 /* summary.covfm.Rd */,
 				0E45000B0A029C050064D9A4 /* print.summary.covfm.Rd */,
@@ -1276,6 +1284,55 @@
 			);
 			name = lmfm;
 			path = R;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA4CB633106CA90000A17693 /* datasets */ = {
+			isa = PBXGroup;
+			children = (
+				DA4CB634106CA90000A17693 /* wagner.q */,
+				DA4CB635106CA90000A17693 /* lawson.tab */,
+			);
+			name = datasets;
+			path = inst/datasets;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA4CB636106CA91900A17693 /* tests_S */ = {
+			isa = PBXGroup;
+			children = (
+				DA4CB637106CA91900A17693 /* asymmetric.t */,
+				DA4CB638106CA91900A17693 /* glmrob.t */,
+				DA4CB639106CA91900A17693 /* plots.glmrob.t */,
+				DA4CB63A106CA91900A17693 /* covm.t */,
+				DA4CB63B106CA91900A17693 /* discrob.t */,
+				DA4CB63C106CA91900A17693 /* plots.wblrob.t */,
+				DA4CB63D106CA91900A17693 /* plots.aovrob.t */,
+				DA4CB63E106CA91900A17693 /* plots.covrob.t */,
+				DA4CB63F106CA91900A17693 /* plots.princomprob.t */,
+				DA4CB640106CA91900A17693 /* princomprob.t */,
+				DA4CB641106CA91900A17693 /* lmrob.t */,
+				DA4CB642106CA91900A17693 /* plots.lmrob.t */,
+			);
+			name = tests_S;
+			path = inst/tests_S;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA62215A10174F99006D6F40 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				DA62215B10174F99006D6F40 /* Examples */,
+				DA62215D10174F99006D6F40 /* weight-tst.R */,
+				DA62215E10174F99006D6F40 /* Run-tests.R */,
+			);
+			path = tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		DA62215B10174F99006D6F40 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				DA62215C10174F99006D6F40 /* robust-Ex.Rout.save */,
+			);
+			name = Examples;
+			path = tests/Examples;
 			sourceTree = SOURCE_ROOT;
 		};
 		DAB89E380A1CA1A500F2C64D /* lmRob */ = {

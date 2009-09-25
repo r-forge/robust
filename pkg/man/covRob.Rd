@@ -31,13 +31,15 @@ covRob(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 }
 
 \details{
-The \code{covRob} function selects a robust covariance estimator that is likely to provide a \emph{good} estimate in a reasonable amount of time. Presently this selection is based solely on the problem size. The Donoho-Stahel estimator is used if there are less than 1000 observations and less than 10 variables or less than 5000 observations and less than 5 variables. If there are less than 50000 observations and less than 20 variables then the MCD is used. For larger problems, the Orthogonalized Quadrant Correlation estimator is used.
+The \code{covRob} function selects a robust covariance estimator that is likely to provide a \emph{good} estimate in a reasonable amount of time. Presently this selection is based on the problem size. The Donoho-Stahel estimator is used if there are less than 1000 observations and less than 10 variables or less than 5000 observations and less than 5 variables. If there are less than 50000 observations and less than 20 variables then the MCD is used. For larger problems, the Orthogonalized Quadrant Correlation estimator is used.
 
 The MCD and Reweighted-MCD estimates (\code{estim = "mcd"} and \code{estim = "weighted"} respectively) are computed using the \code{\link[robustbase]{covMcd}} function in the robustbase package. By default, \code{\link[robustbase]{covMcd}} returns the reweighted estimate; the actual MCD estimate is contained in the components of the output list prefixed with \code{raw}.
 
 The M estimate (\code{estim = "M"}) is computed using the \code{\link[rrcov]{covMest}} function in the rrcov package. For historical reasons the Robust Library uses the MCD to compute the initial estimate.
 
-The Donoho-Stahel estimator and the pairwise estimators are computed using the Robust Library functions \code{\link{donostah}} and \code{\link{fastcov}}.
+The Donoho-Stahel (\code{estim = "donostah"}) estimator is computed using the \code{\link[rrcov]{CovSde}} function provided in the rrcov package.
+
+The pairwise estimators (\code{estim = "pairwisegk"} and \code{estim = "pairwiseqc"}) are computed using the \code{\link[rrcov]{CovOgk}} function in the rrcov package.
 }
 
 \value{
@@ -75,16 +77,16 @@ R. A. Maronna and R. H. Zamar (2002) Robust estimates of location and dispersion
 }
 
 \note{
-Version 0.3-2 of the Robust Library: the \code{fastmcd} and \code{rockem} functions contributed from the S-Plus Robust Library were replaced by dependencies on the \code{\link[robustbase]{covMcd}} function in the robust base package and on the \code{\link[rrcov]{covMest}} in the rrcov package. Computed results may differ from earlier versions of the Robust Library. In particular, the MCD estimators are now adjusted by a small sample size correction factor. Additionally, a bug was fixed where the final MCD covariance estimate produced with \code{estim = "mcd"} was not rescaled for consistency.
+Version 0.3-6 of the Robust Library: all of the functions origianlly contributed by the S-Plus Robust Library have been replaced by dependencies on the robustbase and rrcov packages. Computed results may differ from earlier versions of the Robust Library. In particular, the MCD estimators are now adjusted by a small sample size correction factor. Additionally, a bug was fixed where the final MCD covariance estimate produced with \code{estim = "mcd"} was not rescaled for consistency.
 }
 
 \seealso{
-  \code{\link{donostah}},
+  \code{\link[robustbase]{CovSde}},
   \code{\link[robustbase]{covMcd}},
-  \code{\link{fastcov}},
+  \code{\link[robustbase]{CovOgk}},
   \code{\link[rrcov]{covMest}},
   \code{\link{covRob.control}},
-  \code{\link{cov}}.
+  \code{\link{ccov}}.
 }
 
 \examples{

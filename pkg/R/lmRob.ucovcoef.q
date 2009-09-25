@@ -1,8 +1,8 @@
-lmRob.ucovcoef <- function(x, y, resid, sigma, p, ipsi, xk, tau, tl) 
+lmRob.ucovcoef <- function(x, y, resid, sigma, p, ipsi, xk, tau, tl)
 {
 
 ##
-## Unscaled covariance matrix of cofficients
+## Unscaled covariance matrix of coefficients
 ##
 
   wi <- resid/sigma
@@ -19,7 +19,7 @@ lmRob.ucovcoef <- function(x, y, resid, sigma, p, ipsi, xk, tau, tl)
   sx <- x * z
   np <- ncol(sx)
   n <- length(resid)
- 
+
   storage.mode(sigma) <- "double"
   fact <- .Fortran("rlkffam2",
                    as.double(resid),
@@ -46,7 +46,7 @@ lmRob.ucovcoef <- function(x, y, resid, sigma, p, ipsi, xk, tau, tl)
                  ip=integer(np),
                  PACKAGE = "robust")
 
-  k  <- zz$k  
+  k  <- zz$k
   xt <- zz$x
   ncov <- np*(np+1)/2
   zc <- .Fortran("rlkiasm2",

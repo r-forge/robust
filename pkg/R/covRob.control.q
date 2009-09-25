@@ -15,9 +15,6 @@ covRob.control <- function(estim, ...)
     if(is.null(control$random.sample))
       control$random.sample <- FALSE
 
-    if(is.null(control$center))
-      control$center <- TRUE
-
     if(is.null(control$tune))
       control$tune <- 0.95
 
@@ -28,7 +25,7 @@ covRob.control <- function(estim, ...)
       control$eps <- 0.5
 
     control <- control[c("estim", "nresamp", "maxres", "random.sample",
-                         "center", "tune", "prob", "eps")]
+                         "tune", "prob", "eps")]
   }
 
 	else if(estim == "mcd" || estim == "weighted") {

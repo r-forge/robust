@@ -5,7 +5,7 @@
 \title{Weight Functions}
 
 \description{
-Compute various weights.
+  Compute various weights.
 }
 
 \usage{
@@ -21,6 +21,9 @@ wt.huber(u, const = 1.345)
 
 \value{
 a numeric vector containing the weights.
+}
+\seealso{
+  \code{\link{psi.weight}}
 }
 
 \keyword{robust}

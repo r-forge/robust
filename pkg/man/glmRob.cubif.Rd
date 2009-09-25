@@ -1,15 +1,19 @@
 \name{glmRob.cubif}
 \alias{glmRob.cubif}
 
-\title{CUBIF GLM Fitter}
+\title{Robust GLM CUBIF Fitter}
 
 \description{
-Robustly fit a generalized linear model using a conditionally unbiased bounded influence estimator. This function is called by the high-level function \code{\link{glmRob}} when \code{method = "cubif"} (the default) is specified.
+  Robustly fit a generalized linear model using a
+  \bold{c}onditionally \bold{u}nbiased \bold{b}ounded
+  \bold{i}n\bold{f}luence (\dQuote{cubif}) estimator.  This function is
+  called by the high-level function \code{\link{glmRob}} when
+  \code{method = "cubif"} (the default) is specified.
 }
 
 \usage{
-glmRob.cubif(x, y, intercept = FALSE, offset = 0, family = binomial(),
-  null.dev = TRUE, control)
+glmRob.cubif(x, y, intercept = FALSE, offset = 0,
+        family = binomial(), null.dev = TRUE, control)
 }
 
 \arguments{
@@ -27,14 +31,19 @@ glmRob.cubif(x, y, intercept = FALSE, offset = 0, family = binomial(),
 }
 
 \references{
-Kunsch, L., Stefanski L. and Carroll, R. (1989). Conditionally Unbiased Bounded-Influence Estimation in General Regression Models, with Applications to Generalized Linear Models. JASA 84, 460-466.
+  Kunsch, L., Stefanski L. and Carroll, R. (1989).
+  Conditionally Unbiased Bounded-Influence Estimation in General
+  Regression Models, with Applications to Generalized Linear Models.
+  JASA \bold{84}, 460--466.
 
-Marazzi, A. (1993). Algorithms, routines and S functions for robust statistics. Wadsworth & Brooks/Cole, Pacific Grove, CA.
+  Marazzi, A. (1993).
+  Algorithms, routines and S functions for robust statistics.
+  Wadsworth & Brooks/Cole, Pacific Grove, CA.
 }
 
 \seealso{
-\code{\link{glmRob}},
-\code{\link{glmRob.cubif.control}}.
+  \code{\link{glmRob}},
+  \code{\link{glmRob.cubif.control}}.
 }
 
 \keyword{robust}

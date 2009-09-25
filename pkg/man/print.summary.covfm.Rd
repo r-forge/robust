@@ -3,12 +3,11 @@
 \alias{print.summary.covRob}
 \alias{print.summary.covfm}
 
-\title{
-  Print Method
-}
+\title{Print Methods for Cov* Summary Results}
 
 \description{
-  The generic print method for objects of class "summary.cov", "summary.covRob", and "summary.covfm".
+  The generic print method for objects of class "summary.cov",
+  "summary.covRob", and "summary.covfm".
 }
 
 \usage{
@@ -20,9 +19,11 @@
 \arguments{
   \item{x}{an oject of class "summary.cov", "summary.covRob", or "summary.covfm".}
 
-  \item{print.distance}{a logical flag.  If \code{print.distance = TRUE} the mahalanobis distances are printed as well.}
+  \item{print.distance}{a logical flag.  If \code{print.distance = TRUE}
+    the mahalanobis distances are printed as well.}
 
-  \item{\dots}{additional arguments to be passed to the print functions, for example \code{digits}.}
+  \item{\dots}{additional arguments to be passed to the print functions,
+    for example \code{digits}.}
 }
 
 \value{
@@ -34,16 +35,14 @@
 }
 
 \seealso{
-  \code{\link{print}},
-  \code{\link{summary}},
-  \code{\link{cov}},
-  \code{\link{covRob}},
+  \code{\link{print}}, \code{\link{summary}},
+  \code{\link{ccov}}, \code{\link{covRob}},
   \code{\link{fit.models}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodmod.cov <- cov(woodmod.dat)
+  woodmod.cov <- ccov(woodmod.dat)
   woodmod.sc <- summary(woodmod.cov)
   print(woodmod.sc)
 
@@ -51,7 +50,8 @@
   woodmod.scr <- summary(woodmod.covRob)
   print(woodmod.scr, digits = 4)
 
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
+  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                           data = woodmod.dat)
   woodmod.sfm <- summary(woodmod.fm)
   print(woodmod.sfm, print.distances = TRUE)
 }

@@ -1,5 +1,7 @@
 lmRob.lar <- function(x, y, tol=1e-6)
 {
+  ## LAR : Least Absolute Residuals -- i.e. L_1  M-estimate
+
   x <- as.matrix(x)
   p <- ncol(x)
   n <- nrow(x)
@@ -8,7 +10,8 @@ lmRob.lar <- function(x, y, tol=1e-6)
   bet0 <- 0.773372647623  ## bet0 = pnorm(0.75)
   tmpn <- double(n)
   tmpp <- double(p)
-  z1 <- .Fortran("rllarsbi",
+
+  z1 <- .Fortran("rllarsbi", ##-> ../src/lmrobbi.f
                  x,
                  y,
                  as.integer(n),
@@ -27,8 +30,12 @@ lmRob.lar <- function(x, y, tol=1e-6)
                  SC3=tmpp,
                  SC4=tmpp,
                  BET0=as.double(bet0),
-                 PACKAGE = "robust")
-  list(coef=z1$THETA[1:p], scale=z1$SIGMA, resid=z1$RS)
+                 PACKAGE = "robust")[c("THETA","SIGMA","RS","NIT")]
+  names(z1) <- c("coef", "scale","resid","iter")
+  ##           c("THETA","SIGMA", "RS",  "NIT")
+  length(z1$coef) <- p
+  z1
+  ##list(coef=z1$THETA[1:p], scale=z1$SIGMA, resid=z1$RS)
 }
 
 

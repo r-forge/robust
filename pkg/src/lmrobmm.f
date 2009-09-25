@@ -3,12 +3,22 @@ C     ROBUST MM-ESTIMATION
 C     MATHSOFT, INC.
 C     08/09/00
 C=======================================================================
-      SUBROUTINE RLEXCHM2(S,N,NN,H,K)
+c
+c All subroutine/function names originally were
+c "RL....M2" : [R]obust [L]ibrary ... "MM"-Estimation
+c  ~~    ~~
+c           change ----> only capitalize the information-content part
+c
+      SUBROUTINE rlEXCHm2(S,N,NN,H,K)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION S(NN)
       INTEGER H
 C-----------------------------------------------------------------------
+c  EXCHange  S(..H ..) with S(.. K ..)  :
+c  -------   auxiliary only called from  rlKFASm2()  below
+C-----------------------------------------------------------------------
+
       LH=H*(H+1)/2
       LK=K*(K+1)/2
       T=S(LH)
@@ -50,7 +60,7 @@ C-----------------------------------------------------------------------
  45   RETURN
       END
 C=======================================================================
-      SUBROUTINE RLKFASM2(XT,COV,K,NP,MDX,NCOV,F,SE,SG,IP)
+      SUBROUTINE rlKFASm2(XT,COV,K,NP,MDX,NCOV,F,SE,SG,IP)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION COV(NCOV),XT(MDX,NP),SE(NP),SG(NP)
@@ -61,27 +71,30 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     TRANSFORM UNSCALED COVARIANCE MATRIX TO COMPENSATE
 C     HOUSEHOLDER TRANSFORMATIONS AND PERMUTATIONS
+c
+c Called from S /R 's lmRob.ucovcoef()  {and from [g]lmRob's Fortran}
 C-----------------------------------------------------------------------
       IF (K.EQ.NP) GOTO 130
       DO 120 II=1,K
          I=II
-         CALL RLVSVM2(I,KP1,NP,XT(I,1),MDX,SG(I),COV,NCOV,SE)
+         CALL rlVSVm2(I,KP1,NP,XT(I,1),MDX,SG(I),COV,NCOV,SE)
  120  CONTINUE
  130  CONTINUE
       DO 150 JJ=1,LDIAG
          J=LDIAG-JJ+1
          IF (IP(J).EQ.J) GOTO 150
          L=IP(J)
-         CALL RLEXCHM2(COV,NP,NCOV,J,L)
+         CALL rlEXCHm2(COV,NP,NCOV,J,L)
  150  CONTINUE
 C-----------------------------------------------------------------------
 C     MULTIPLY COV BY THE SCALE FACTOR F
 C-----------------------------------------------------------------------
-      IF (F .GT. 0.D0) CALL RLSCALM2(COV,F,NCOV,1,NCOV)
+      IF (F .GT. 0.D0) CALL rlSCALm2(COV,F,NCOV,1,NCOV)
       RETURN
       END
+
 C=======================================================================
-      SUBROUTINE RLKIASM2(XT,K,NP,MDX,NCOV,FU,FB,COV)
+      SUBROUTINE rlKIASm2(XT,K,NP,MDX,NCOV,FU,FB,COV)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION XT(MDX,NP),COV(NCOV)
@@ -143,7 +156,7 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     MULTIPLY COV BY THE SCALE FACTOR FU
 C-----------------------------------------------------------------------
-      IF (FU .GT. DZERO) CALL RLSCALM2(COV,FU,NCOV,1,NCOV)
+      IF (FU .GT. DZERO) CALL rlSCALm2(COV,FU,NCOV,1,NCOV)
 C-----------------------------------------------------------------------
 C     COMPLETE COV
 C-----------------------------------------------------------------------
@@ -161,7 +174,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLMCHLM2(A,N,NN,INFO)
+      SUBROUTINE rlMCHLm2(A,N,NN,INFO)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION A(NN)
@@ -179,7 +192,7 @@ C-----------------------------------------------------------------------
          IF (JM1.LT.1) GOTO 20
          DO 10 K=1,JM1
             KJ=KJ+1
-            CALL RLDOTPM2(A(KK+1),A(JJ+1),K-1,1,1,NN-KK,NN-JJ,DTP)
+            CALL rlDOTPm2(A(KK+1),A(JJ+1),K-1,1,1,NN-KK,NN-JJ,DTP)
             T=A(KJ)-DTP
             KK=KK+K
             T=T/A(KK)
@@ -197,7 +210,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLSCALM2(X,SA,N,INCX,MDX)
+      SUBROUTINE rlSCALm2(X,SA,N,INCX,MDX)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX)
@@ -232,7 +245,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLSWAPM2(X,Y,N,INCX,INCY,MDX,MDY)
+      SUBROUTINE rlSWAPm2(X,Y,N,INCX,INCY,MDX,MDY)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX),Y(MDY)
@@ -281,7 +294,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLMINVM2(R,N,NN,TAU,ISING)
+      SUBROUTINE rlMINVm2(R,N,NN,TAU,ISING)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION R(NN)
@@ -322,7 +335,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLMTT1M2(A,B,N,NN)
+      SUBROUTINE rlMTT1m2(A,B,N,NN)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION A(NN),B(NN)
@@ -350,12 +363,12 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLSTORM2(Y,N,J,YJ)
+      SUBROUTINE rlSTORm2(Y,N,J,YJ)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION Y(N)
 C-----------------------------------------------------------------------
-C     RLSTORM2 SEARCHES THE J-TH VALUE IN ORDER OF MAGNITUDE IN 
+C     rlSTORm2 SEARCHES THE J-TH VALUE IN ORDER OF MAGNITUDE IN
 C     A VECTOR OF LENGTH N.
 C-----------------------------------------------------------------------
       L=1
@@ -385,7 +398,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLH12M2(MODE,LPIVOT,L1,M,U,IUE,UP,C,ICE,ICV,NCV,MDC)
+      SUBROUTINE rlH12m2(MODE,LPIVOT,L1,M,U,IUE,UP,C,ICE,ICV,NCV,MDC)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION U(IUE,M),C(MDC)
@@ -449,7 +462,7 @@ C-----------------------------------------------------------------------
  130  RETURN
       END
 C=======================================================================
-      SUBROUTINE RLXSYM2(X,Y,S,N,NN,RESULT)
+      SUBROUTINE rlXSYm2(X,Y,S,N,NN,RESULT)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(N),Y(N),S(NN)
@@ -472,7 +485,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRNDM2(ISEED,RN)
+      SUBROUTINE rlRNDm2(ISEED,RN)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION T(128)
@@ -501,11 +514,12 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLNCOMM2(N,NP,IT)
+      SUBROUTINE rlNCOMm2(N,NP,IT)
 C.......................................................................
       DIMENSION IT(NP)
 C-----------------------------------------------------------------------
 C     COMPUTE ALL COMBINATIONS FOR RESAMPLING ALGORITHM
+c     i.e., given previous  it[1:np] in {1,..,n} -- compute *next* one
 C-----------------------------------------------------------------------
       IN=NP
  10   IT(IN)=IT(IN)+1
@@ -521,7 +535,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRICLM2(XT,Y,N,NP,MDXT,THETA,SH,SP)
+      SUBROUTINE rlRICLm2(XT,Y,N,NP,MDXT,THETA,SH,SP)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION XT(MDXT,NP),Y(N),THETA(MDXT),SH(NP)
@@ -529,7 +543,7 @@ C.......................................................................
 C-----------------------------------------------------------------------
       DO 20 JJ=1,NP
          J=JJ
-         CALL RLH12M2(2,J,J+1,N,XT(1,J),1,SH(J),Y,1,N,1,N)
+         CALL rlH12m2(2,J,J+1,N,XT(1,J),1,SH(J),Y,1,N,1,N)
  20   CONTINUE
 C-----------------------------------------------------------------------
 C     SOLVE THE SYSTEM
@@ -537,15 +551,15 @@ C-----------------------------------------------------------------------
       DO 30 I=1,N
          THETA(I)=Y(I)
  30   CONTINUE
-      CALL RLSOLVM2(XT,THETA,NP,NP,MDXT,N)
+      CALL rlSOLVm2(XT,THETA,NP,NP,MDXT,N)
 C-----------------------------------------------------------------------
 C     TRANSFORM THE SOLUTION VECTOR FOR OUTPUT
 C-----------------------------------------------------------------------
-      CALL RLPERMM2(THETA,SP,NP,NP)
+      CALL rlPERMm2(THETA,SP,NP,NP)
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLNSIGM2(RS,WGT,WGT2,SIGMA,SIGMB,N,ITYPE,IPS,XK,CONST)
+      SUBROUTINE rlNSIGm2(RS,WGT,WGT2,SIGMA,SIGMB,N,ITYPE,IPS,XK,CONST)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N),WGT(N),WGT2(N)
@@ -553,7 +567,7 @@ C.......................................................................
 C-----------------------------------------------------------------------
 C     COMPUTES A NEW VALUE SIGMB FOR THE ROBUST ESTIMATE OF THE
 C     ERROR STANDARD DEVIATION IN THE HUBER'S ALGORITHM FOR REGRESSION.
-C     RLNSIGM2 CALLS THE FUNCTION RLCHIM2.
+C     rlNSIGm2 CALLS THE FUNCTION rlCHIm2.
 C-----------------------------------------------------------------------
       TMP=ZERO
       IF (ITYPE.NE.1) GOTO 20
@@ -562,7 +576,7 @@ C     HUBER-TYPE
 C-----------------------------------------------------------------------
       DO 10 I=1,N
          S=RS(I)/SIGMA
-         TMP=TMP+RLCHIM2(S,IPS,XK)
+         TMP=TMP+rlCHIm2(S,IPS,XK)
  10   CONTINUE
       GOTO 90
 C-----------------------------------------------------------------------
@@ -572,7 +586,7 @@ C-----------------------------------------------------------------------
       DO 30 I=1,N
          S=RS(I)/SIGMA
          IF (WGT(I) .LE. ZERO) GOTO 30
-         TMP=TMP+RLCHIM2(S,IPS,XK)*WGT(I)
+         TMP=TMP+rlCHIm2(S,IPS,XK)*WGT(I)
  30   CONTINUE
       GOTO 90
 C-----------------------------------------------------------------------
@@ -582,24 +596,24 @@ C-----------------------------------------------------------------------
          SW=SIGMA*WGT(I)
          IF (SW .EQ. ZERO .OR. WGT(I) .LE. ZERO) GOTO 50
          S=RS(I)/SW
-         TMP=TMP+RLCHIM2(S,IPS,XK)*WGT2(I)
+         TMP=TMP+rlCHIm2(S,IPS,XK)*WGT2(I)
  50   CONTINUE
  90   SIGMB=DSQRT(TMP/CONST)*SIGMA
       RETURN
       END
 C=======================================================================
-      FUNCTION RLISIGM2(SIGMA,SIGMB,TOL)
+      FUNCTION rlISIGm2(SIGMA,SIGMB,TOL)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-      INTEGER RLISIGM2
+      INTEGER rlISIGm2
 C-----------------------------------------------------------------------
       DS=DABS(SIGMA-SIGMB)/DMAX1(1.D0,SIGMA)
-      RLISIGM2=0
-      IF (TOL.GE.DS) RLISIGM2=1
+      rlISIGm2=0
+      IF (TOL.GE.DS) rlISIGm2=1
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRESDM2(X,Y,THETA,N,NP,MDX,RS)
+      SUBROUTINE rlRESDm2(X,Y,THETA,N,NP,MDX,RS)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),THETA(NP),RS(N)
@@ -617,7 +631,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLSOLVM2(X,THETA,NP,K,MDX,MDT)
+      SUBROUTINE rlSOLVm2(X,THETA,NP,K,MDX,MDT)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),THETA(MDT)
@@ -649,7 +663,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLPERMM2(X,SP,N,NDIM)
+      SUBROUTINE rlPERMm2(X,SP,N,NDIM)
 C.......................................................................
       DOUBLE PRECISION TMP,X(NDIM)
       INTEGER SP(NDIM)
@@ -667,7 +681,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLQRSSM2(RS,WGT,WGT2,N,ITYPE,SIGMA,CONST,QR,IPS,XK)
+      SUBROUTINE rlQRSSm2(RS,WGT,WGT2,N,ITYPE,SIGMA,CONST,QR,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N),WGT(N),WGT2(N)
@@ -680,7 +694,7 @@ C     HUBER-TYPE
 C-----------------------------------------------------------------------
       DO 10 I=1,N
         S=RS(I)/SIGMA
-        TMP=TMP+RLRHOM2(S,IPS,XK)
+        TMP=TMP+rlRHOm2(S,IPS,XK)
  10   CONTINUE
       GOTO 50
 C-----------------------------------------------------------------------
@@ -690,7 +704,7 @@ C-----------------------------------------------------------------------
       DO 20 I=1,N
          IF (WGT(I) .EQ. ZERO .OR. WGT(I) .EQ. -ONE) GOTO 20
          S=RS(I)/SIGMA
-         TMP=TMP+RLRHOM2(S,IPS,XK)*WGT(I)
+         TMP=TMP+rlRHOm2(S,IPS,XK)*WGT(I)
  20   CONTINUE
       GOTO 50
 C-----------------------------------------------------------------------
@@ -699,13 +713,13 @@ C-----------------------------------------------------------------------
  30   DO 40 I=1,N
          IF (WGT(I) .EQ. ONE .OR. WGT(I) .EQ. -ONE) GOTO 40
          S=RS(I)/(SIGMA*WGT(I))
-         TMP=TMP+RLRHOM2(S,IPS,XK)*WGT2(I)
+         TMP=TMP+rlRHOm2(S,IPS,XK)*WGT2(I)
  40   CONTINUE
  50   QR=(TMP+CONST)*SIGMA
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLQRSHM2(RS,N,NP,SIGMA,QR,IPS,XK)
+      SUBROUTINE rlQRSHm2(RS,N,NP,SIGMA,QR,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N)
@@ -713,19 +727,19 @@ C-----------------------------------------------------------------------
       TMP=0.D0
       DO 10 I=1,N
         S=RS(I)/SIGMA
-        TMP=TMP+RLRHOM2(S,IPS,XK)
+        TMP=TMP+rlRHOm2(S,IPS,XK)
  10   CONTINUE
       QR=TMP/DBLE(N-NP)
       RETURN
       END
 C=======================================================================
-      FUNCTION RLICTHM2(NP,NCOV,DELTA,SIGMA,S,TOL,ICNV)
+      FUNCTION rlICTHm2(NP,NCOV,DELTA,SIGMA,S,TOL,ICNV)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-      INTEGER RLICTHM2
+      INTEGER rlICTHm2
       DIMENSION DELTA(NP),S(NCOV)
 C-----------------------------------------------------------------------
-      RLICTHM2=0
+      rlICTHm2=0
       TOL1=TOL*SIGMA
       IF (ICNV.EQ.2) GOTO 200
       IF (ICNV.EQ.3) GOTO 300
@@ -736,9 +750,9 @@ C-----------------------------------------------------------------------
          IF (TOL2 .LT. DABS(DELTA(J))) RETURN
  100  CONTINUE
       GOTO 500
- 200  CALL RLXSYM2(DELTA,DELTA,S,NP,NCOV,TOL2)
+ 200  CALL rlXSYm2(DELTA,DELTA,S,NP,NCOV,TOL2)
       TOL2=DSQRT(TOL2)
-      IF (TOL1 .GE. TOL2) RLICTHM2=1
+      IF (TOL1 .GE. TOL2) rlICTHm2=1
       RETURN
  300  L=0
       DO 350 J=1,NP
@@ -746,26 +760,26 @@ C-----------------------------------------------------------------------
          TOL2=DABS(DELTA(J))*DSQRT(S(L))
          IF (TOL1 .LT. TOL2) RETURN
  350  CONTINUE
- 500  RLICTHM2=1
+ 500  rlICTHm2=1
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLFACSM2(RS,N,K,SIGMA,TL,XKAPPA,SUM2,IPS,XK)
+      SUBROUTINE rlFACSm2(RS,N,K,SIGMA,TL,XKAPPA,SUM2,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N)
 C-----------------------------------------------------------------------
 C     COMPUTES CORRECTION FACTORS XKAPPA AND SUM2 FOR
 C     THE COVARIANCE MATRIX.
-C     RLFACSM2 CALLS THE FUNCTIONS RLPSIM2 AND RLPSPM2
+C     rlFACSm2 CALLS THE FUNCTIONS rlPSIm2 AND rlPSPm2
 C-----------------------------------------------------------------------
       TMP1=0.D0
       TMP2=0.D0
       DN=DBLE(N)
       DO 10 J=1,N
          S=RS(J)/SIGMA
-         TMP1=TMP1+RLPSPM2(S,IPS,XK)
-         PS=RLPSIM2(S,IPS,XK)
+         TMP1=TMP1+rlPSPm2(S,IPS,XK)
+         PS=rlPSIm2(S,IPS,XK)
          TMP2=TMP2+PS*PS
  10   CONTINUE
       XMU=TMP1/DN
@@ -773,7 +787,7 @@ C-----------------------------------------------------------------------
       VAR=0.D0
       DO 20 J=1,N
          S=RS(J)/SIGMA
-         VAR=VAR+(RLPSPM2(S,IPS,XK)-XMU)**2
+         VAR=VAR+(rlPSPm2(S,IPS,XK)-XMU)**2
  20   CONTINUE
       VAR=VAR/DN
       XKAPPA=0.D0
@@ -784,7 +798,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLVSVM2(LPIVOT,L1,M,U,IUE,UP,S,NCOV,SB)
+      SUBROUTINE rlVSVm2(LPIVOT,L1,M,U,IUE,UP,S,NCOV,SB)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION S(NCOV),U(IUE,M),SB(M)
@@ -794,14 +808,14 @@ C     LET V BE THE ELEMENTARY HOUSEHOLDER TRANSFORMATION DEFINED
 C     BY THE VECTOR U=(U(1)...U(N)) (WITH U(1)=...=U(LPIVOT-1)=0,
 C     U(LPIVOT)=UP,U(LPIVOT+1)=...=U(K)=0 AND U(K+1)...U(N) POSSIBLY
 C     DIFFERENT FROM 0) AND S A SYMMETRIC MATRIX STORED COLUMNWISE
-C     IN THE ARRAY S OF LENGTH NCOV=N*(N+1)/2.  RLVSVM2 COMPUTES THE
+C     IN THE ARRAY S OF LENGTH NCOV=N*(N+1)/2.  rlVSVm2 COMPUTES THE
 C     SYMMETRIC MATRIX V*S*V AND STORES IT IN S.  IUE IS THE STORAGE
 C     INCREMENT BETWEEN ELEMENTS OF THE VECTOR U.  THE LPIVOT-TH COMPO-
 C     NENT OF U IS STORED IN UP WHEREAS THE STORAGE LOCATION U(LPIVOT)
 C     CONTAINS THE NORM S (S.L6,P.55,FORMULA 10.5).
 C-----------------------------------------------------------------------
 C     ERRORS
-C     1.  NCOV.NE.N*(N+1)/2.  NO COMPUTATION DONE BY RLVSVM2.
+C     1.  NCOV.NE.N*(N+1)/2.  NO COMPUTATION DONE BY rlVSVm2.
 C-----------------------------------------------------------------------
       IF (L1.GT.M) RETURN
       ONE=1.D0
@@ -909,7 +923,7 @@ C-----------------------------------------------------------------------
  999  RETURN
       END
 C=======================================================================
-      SUBROUTINE RLDOTPM2(X,Y,N,INCX,INCY,NX,NY,RESULT)
+      SUBROUTINE rlDOTPm2(X,Y,N,INCX,INCY,NX,NY,RESULT)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(NX),Y(NY)
@@ -950,7 +964,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRMTRM2(X,N,NP,MDX,INTCH,TAU,K,SF,SG,SH,IP)
+      SUBROUTINE rlRMTRm2(X,N,NP,MDX,INTCH,TAU,K,SF,SG,SH,IP)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),SF(NP),SG(NP),SH(NP)
@@ -1001,10 +1015,10 @@ C     COMPUTE THE HOUSEHOLDER TRANSF. Q AND APPLY IT TO X
 C-----------------------------------------------------------------------
  70      MDC=NP-J
          IF (MDC.GT.0)
-     +        CALL RLH12M2(1,J,J+1,N,X(1,J),1,SH(J),X(1,J+1),1,MDX,
+     +        CALL rlH12m2(1,J,J+1,N,X(1,J),1,SH(J),X(1,J+1),1,MDX,
      +        MDC,MDX*MDC)
          IF (MDC.EQ.0)
-     +        CALL RLH12M2(1,J,J+1,N,X(1,J),1,SH(J),SF,1,1,0,1)
+     +        CALL rlH12m2(1,J,J+1,N,X(1,J),1,SH(J),SF,1,1,0,1)
  80   CONTINUE
 C-----------------------------------------------------------------------
 C     X CONTAINS NOW THE TRANSFORMED DESIGN MATRIX Q*X.
@@ -1039,21 +1053,21 @@ C-----------------------------------------------------------------------
       MDC=MDX*(NP-1)
       DO 150 II=1,K
          I=KP1-II
-         CALL RLH12M2(1,I,KP1,NP,X(I,1),MDX,SG(I),X,MDX,1,I-1,
+         CALL rlH12m2(1,I,KP1,NP,X(I,1),MDX,SG(I),X,MDX,1,I-1,
      +        MDC+I-1)
  150  CONTINUE
  160  CONTINUE
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRWAGM2(X,Y,THETA,WGT,COV,PSP0,SIGMAI,N,NP,
+      SUBROUTINE rlRWAGm2(X,Y,THETA,WGT,COV,PSP0,SIGMAI,N,NP,
      +     MDX,NCOV,TOL,GAM,TAU,ITYPE,ISIGMA,ICNV,MAXIT,MAXIS,NIT,
      +     SIGMAF,RS,DELTA,SC,SF,SG,SH,IP,SW,SX,IPS,XK,BETA,BET0)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),THETA(NP),WGT(N),COV(NCOV),RS(N),
      +     DELTA(NP),SC(N),SF(NP),SG(NP),SH(NP),SW(N),SX(MDX,NP)
-      INTEGER IP(NP),RLICTHM2,RLISIGM2
+      INTEGER IP(NP),rlICTHm2,rlISIGm2
       DATA ZERO,ONE,TL/0.D0,1.D0,1.D-10/
 C-----------------------------------------------------------------------
 C     W-ALGORITHM FOR ROBUST AND BOUNDED INFLUENCE LINEAR REGRESSION
@@ -1086,16 +1100,16 @@ C     STEP 1. SET NIT := 1
 C-----------------------------------------------------------------------
  100  NIT=1
 C-----------------------------------------------------------------------
-C     STEP 2. COMPUTE RLRESDM2 AS R=Y-X*THETA
+C     STEP 2. COMPUTE rlRESDm2 AS R=Y-X*THETA
 C-----------------------------------------------------------------------
- 200  CALL RLRESDM2(X,Y,THETA,N,NP,MDX,RS)
+ 200  CALL rlRESDm2(X,Y,THETA,N,NP,MDX,RS)
 C-----------------------------------------------------------------------
 C     STEP 3. COMPUTE A NEW VALUE SIGMB FOR SIGMA.
 C-----------------------------------------------------------------------
       IF (ISIGMA .LT. 0 .AND. NIT .EQ. 1) GOTO 300
       IF (ISIGMA .EQ. 0) GOTO 300
       SIGMA=SIGMB
-      CALL RLRSIGM2(RS,WGT,SIGMA,N,NP,TOL,ITYP,ISIGMA,MAXIS,
+      CALL rlRSIGm2(RS,WGT,SIGMA,N,NP,TOL,ITYP,ISIGMA,MAXIS,
      +     NIS,SIGMB,SW,SC,IPS,XK,BETA,BET0)
       IF (SIGMB.LE.TL) RETURN
 C-----------------------------------------------------------------------
@@ -1110,7 +1124,7 @@ C-----------------------------------------------------------------------
          IF (WGT(I) .LE. ZERO) GOTO 410
          IF (ITYP.EQ.2) GOTO 400
          T=T/WGT(I)
- 400     SC(I)=RLPSIM2(T,IPS,XK)/T
+ 400     SC(I)=rlPSIm2(T,IPS,XK)/T
  410     PI=DSQRT(SC(I))
          IF (ITYP.EQ.2) PI=PI*SW(I)
          RS(I)=PI*RS(I)
@@ -1121,19 +1135,19 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     STEP 5. SOLVE FOR DELTA
 C-----------------------------------------------------------------------
-      CALL RLRMTRM2(SX,N,NP,MDX,INTCH,TAU,K,SF,SG,SH,IP)
+      CALL rlRMTRm2(SX,N,NP,MDX,INTCH,TAU,K,SF,SG,SH,IP)
       IF (K.EQ.0) RETURN
       KK=MDX*(K-1)+K
-      IF (K.NE.NP) CALL RLSWAPM2(SX,SF,K,MDXP1,1,KK,K)
+      IF (K.NE.NP) CALL rlSWAPm2(SX,SF,K,MDXP1,1,KK,K)
       DO 500 JJ=1,LDIAG
          J=JJ
-         CALL RLH12M2(2,J,J+1,N,SX(1,J),1,SH(J),RS,1,N,1,N)
+         CALL rlH12m2(2,J,J+1,N,SX(1,J),1,SH(J),RS,1,N,1,N)
  500  CONTINUE
-      IF (K.NE.NP) CALL RLSWAPM2(SX,SF,K,MDXP1,1,KK,K)
+      IF (K.NE.NP) CALL rlSWAPm2(SX,SF,K,MDXP1,1,KK,K)
 C-----------------------------------------------------------------------
 C     SOLVE FOR DELTA
 C-----------------------------------------------------------------------
-      CALL RLSOLVM2(SX,RS,NP,K,MDX,N)
+      CALL rlSOLVm2(SX,RS,NP,K,MDX,N)
       IF (K.EQ.NP) GOTO 530
       KP1=K+1
       DO 510 J=KP1,NP
@@ -1141,12 +1155,12 @@ C-----------------------------------------------------------------------
  510  CONTINUE
       DO 520 J=1,K
          I=J
-         CALL RLH12M2(2,I,KP1,NP,SX(I,1),MDX,SG(I),RS,1,N,1,NP)
+         CALL rlH12m2(2,I,KP1,NP,SX(I,1),MDX,SG(I),RS,1,N,1,NP)
  520  CONTINUE
  530  DO 540 J=1,NP
          DELTA(J)=GAM*RS(J)
  540  CONTINUE
-      CALL RLPERMM2(DELTA,IP,LDIAG,NP)
+      CALL rlPERMm2(DELTA,IP,LDIAG,NP)
 C-----------------------------------------------------------------------
 C     STEP 6. COMPUTE NEW SOLUTION
 C-----------------------------------------------------------------------
@@ -1158,21 +1172,21 @@ C     STEP 7. STOP ITERATIONS IF DESIRED PRECISION IS REACHED
 C-----------------------------------------------------------------------
       IF (NIT.EQ.MAXIT) GOTO 800
       IF (ISIGMA.LT.0.AND.NIT.EQ.1) GOTO 700
-      IF(RLICTHM2(NP,NCOV,DELTA,SIGMA,COV,TOL,ICNV).EQ.1
-     +     .AND. RLISIGM2(SIGMA,SIGMB,TOL).EQ.1) GOTO 800
+      IF(rlICTHm2(NP,NCOV,DELTA,SIGMA,COV,TOL,ICNV).EQ.1
+     +     .AND. rlISIGm2(SIGMA,SIGMB,TOL).EQ.1) GOTO 800
  700  NIT=NIT+1
       GOTO 200
  800  SIGMAF=SIGMB
-      CALL RLRESDM2(X,Y,THETA,N,NP,MDX,RS)
+      CALL rlRESDm2(X,Y,THETA,N,NP,MDX,RS)
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRSIGM2(RS,WGT,SIGMAI,N,NP,TOL,ITYPE,ISIGMA,MAXIS,
+      SUBROUTINE rlRSIGm2(RS,WGT,SIGMAI,N,NP,TOL,ITYPE,ISIGMA,MAXIS,
      +     NIT,SIGMAF,SW,SC,IPS,XK,BETA,BET0)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N),WGT(N),SW(N),SC(N)
-      INTEGER RLISIGM2
+      INTEGER rlISIGm2
       DATA ONE,ZERO,TL/1.D0,0.D0,1.D-10/
 C-----------------------------------------------------------------------
 C     UPDATE THE SCALE PARAMETER OF AN M-ESTIMATE
@@ -1205,13 +1219,13 @@ C-----------------------------------------------------------------------
 C     STEP 2. COMPUTE A NEW VALUE SIGMB FOR SIGMA
 C-----------------------------------------------------------------------
  100  SIGMA=SIGMB
-      CALL RLNSIGM2(RS,WGT,SW,SIGMA,SIGMB,N,ITYP,IPS,XK,CONST)
+      CALL rlNSIGm2(RS,WGT,SW,SIGMA,SIGMB,N,ITYP,IPS,XK,CONST)
       IF (SIGMB.GT.TL) GOTO 300
       RETURN
 C-----------------------------------------------------------------------
 C     STEP 3. STOP ITERATIONS IF DESIRED PRECISION IS REACHED
 C-----------------------------------------------------------------------
- 300  IF (RLISIGM2(SIGMA,SIGMB,TOL).EQ.1.OR.NIT.EQ.MAXIS) GOTO 400
+ 300  IF (rlISIGm2(SIGMA,SIGMB,TOL).EQ.1.OR.NIT.EQ.MAXIS) GOTO 400
       NIT=NIT+1
       GOTO 100
  400  SIGMAF=SIGMB
@@ -1249,12 +1263,12 @@ C-----------------------------------------------------------------------
          SC(N0)=DABS(RS(I))
  800  CONTINUE
  900  MED=(N0/2)+1
-      CALL RLSTORM2(SC,N0,MED,SIGMAF)
+      CALL rlSTORm2(SC,N0,MED,SIGMAF)
       SIGMAF=SIGMAF/BET0
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLHSESM2(X,Y,N,NP,NQ,MDX,MDW,MDI,IOPT,INTCH,
+      SUBROUTINE rlHSESm2(X,Y,N,NP,NQ,MDX,MDW,MDI,IOPT,INTCH,
      +     NREP,TOLS,TOLR,TAU,MAXS1,ISEED,IERR,SMIN,
      +     THETA,RS,IT1,WORK,IWORK,IPS,XK,BETA,BET0,ITRACE)
 C.......................................................................
@@ -1271,14 +1285,14 @@ C-----------------------------------------------------------------------
       N3=N2+NP
       N4=N3+NP
       N5=N4+NP
-      CALL RLHSE2M2(X,Y,N,NP,NQ,MDX,IOPT,INTCH,NREP,TOLS,TOLR,TAU,
+      CALL rlHSE2m2(X,Y,N,NP,NQ,MDX,IOPT,INTCH,NREP,TOLS,TOLR,TAU,
      +     MAXS1,ISEED,IERR,SMIN,THETA,RS,IT1,WORK(1),WORK(N0),
      +     WORK(N1),WORK(N2),WORK(N3),WORK(N4),WORK(N5),IWORK(1),
      +     IWORK(NP1),IPS,XK,BETA,BET0,ITRACE)
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLHSE2M2(X,Y,N,NP,NQ,MDX,IOPT,INTCH,NREP,TOLS,TOLR,
+      SUBROUTINE rlHSE2m2(X,Y,N,NP,NQ,MDX,IOPT,INTCH,NREP,TOLS,TOLR,
      +     TAU,MAXS1,ISEED,IERR,SMIN,THETA,RS,IT1,XX,YY,XTHETA,
      +     SF,SG,SH,SZ,SP,IT,IPS,XK,BETA,BET0,ITRACE)
 C.......................................................................
@@ -1298,11 +1312,11 @@ C-----------------------------------------------------------------------
       IF (ITRACE .EQ. 1) THEN
          call mminitclk(iclock)
          ielapse=0
-         if (np .le. 10) then 
+         if (np .le. 10) then
             ninc=15000
          else if (np .le. 15) then
             ninc=10000
-         else 
+         else
             ninc=5000
          endif
       endif
@@ -1310,13 +1324,13 @@ C-----------------------------------------------------------------------
       IERR=2
       SMIN=ZERO
       ITYPE=1
-      PSP0=RLPSPM2(ZERO,IPS,XK)
+      PSP0=rlPSPm2(ZERO,IPS,XK)
 C-----------------------------------------------------------------------
 C     STEP 1: DRAW A SUBSAMPLE
 C-----------------------------------------------------------------------
  100  IF (IOPT.NE.3) THEN
          DO 130 K=1,NQ
- 110        CALL RLRNDM2(ISEED,RND)
+ 110        CALL rlRNDm2(ISEED,RND)
             ITK=RND*N+1
             DO 120 KK=1,K-1
                IF (ITK.EQ.IT(KK)) GOTO 110
@@ -1329,7 +1343,7 @@ C-----------------------------------------------------------------------
                IT(K)=K
  140        CONTINUE
          ELSE
-            CALL RLNCOMM2(N,NQ,IT)
+            CALL rlNCOMm2(N,NQ,IT)
          ENDIF
       ENDIF
       DO 160 K=1,NQ
@@ -1349,12 +1363,12 @@ C-----------------------------------------------------------------------
          K = K + 1
       ENDDO
       IF (ALLZERO) GOTO 700
-      CALL RLRMTRM2(XX,NQ,NP,NQ,INTCH,TAU,KK,SF,SG,SH,SP)
+      CALL rlRMTRm2(XX,NQ,NP,NQ,INTCH,TAU,KK,SF,SG,SH,SP)
       IF(KK.NE.NP) GOTO 700
 C-----------------------------------------------------------------------
 C     STEP 3: SOLVE SYSTEM OF LINEAR EQUATIONS
 C-----------------------------------------------------------------------
-      CALL RLRICLM2(XX,YY,NQ,NP,NQ,XTHETA,SH,SP)
+      CALL rlRICLm2(XX,YY,NQ,NP,NQ,XTHETA,SH,SP)
 C-----------------------------------------------------------------------
 C     STEP 4: COMPUTE RESIDUALS
 C-----------------------------------------------------------------------
@@ -1373,14 +1387,14 @@ C-----------------------------------------------------------------------
             IF (ARI .NE. ZERO) S=DMIN1(S,ARI)
  430     CONTINUE
          IF (S .EQ. 1.0D7) GOTO 800
-         CALL RLSTORM2(SZ,N,K1,S0)
+         CALL rlSTORm2(SZ,N,K1,S0)
          S0=2.D0*S0
          IF (S0 .EQ. ZERO) S0=S
          SRES=S0
       ENDIF
  435  D=ZERO
       DO 440 I=1,N
-         D=D+RLCHIM2(RS(I)/SRES,IPS,XK)
+         D=D+rlCHIm2(RS(I)/SRES,IPS,XK)
  440  CONTINUE
       IF (SMIN .NE. ZERO .AND. D .GT. CONST) GOTO 700
       IF (D .LE. CONST) GOTO 500
@@ -1390,7 +1404,7 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     STEP 5: SOLVE FOR SRES
 C-----------------------------------------------------------------------
- 500  CALL RLRSIGM2(RS,SZ,S0,N,NP,TOLR,ITYPE,1,MAXS1,NIS,SRES,SZ,
+ 500  CALL rlRSIGm2(RS,SZ,S0,N,NP,TOLR,ITYPE,1,MAXS1,NIS,SRES,SZ,
      +     SZ,IPS,XK,BETA,BET0)
 C-----------------------------------------------------------------------
 C     STEP 6: UPDATE BEST FIT
@@ -1434,7 +1448,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLKTASM2(X,N,NP,MDX,NCOV,TAU,F,A,COV)
+      SUBROUTINE rlKTASm2(X,N,NP,MDX,NCOV,TAU,F,A,COV)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),A(NCOV),COV(NCOV)
@@ -1461,21 +1475,21 @@ C-----------------------------------------------------------------------
 C     COMPUTE A LOWER TRIANGULAR MATRIX A SUCH THAT
 C     (X'X)^(-1)=A'A; SET COV=A'A.
 C-----------------------------------------------------------------------
-      CALL RLMCHLM2(COV,NP,NN,INFO)
+      CALL rlMCHLm2(COV,NP,NN,INFO)
       IF (INFO.EQ.0) GOTO 68
       RETURN
  68   DO 70 L=1,NN
          A(L)=COV(L)
  70   CONTINUE
-      CALL RLMINVM2(A,NP,NN,TAU,ISING)
+      CALL rlMINVm2(A,NP,NN,TAU,ISING)
       IF (ISING.EQ.0) GOTO 75
       RETURN
- 75   CALL RLMTT1M2(A,COV,NP,NN)
-      IF (F .GT. 0.D0) CALL RLSCALM2(COV,F,NCOV,1,NCOV)
+ 75   CALL rlMTT1m2(A,COV,NP,NN)
+      IF (F .GT. 0.D0) CALL rlSCALm2(COV,F,NCOV,1,NCOV)
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLKFFAM2(RS,N,NP,SIGMA,FH,IPS,XK)
+      SUBROUTINE rlKFFAm2(RS,N,NP,SIGMA,FH,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION RS(N)
@@ -1486,13 +1500,13 @@ C     MATRIX OF PARAMETER ESTIMATES
 C-----------------------------------------------------------------------
       FH=1.D0
       IF (NP.EQ.N) RETURN
-      CALL RLFACSM2(RS,N,NP,SIGMA,TL,XKAPPA,SUM2,IPS,XK)
+      CALL rlFACSm2(RS,N,NP,SIGMA,TL,XKAPPA,SUM2,IPS,XK)
       IF (XKAPPA .EQ. 0.D0) RETURN
       FH=(XKAPPA*XKAPPA)*SUM2
       RETURN
       END
 C=======================================================================
-      subroutine RLGENEM2(x,y,n,np,npopsize,probmutate,initgen,
+      subroutine rlGENEm2(x,y,n,np,npopsize,probmutate,initgen,
      +     nbirths,nstock,maxslen,objvec,ntable,nstocklen,noldstock,
      +     stockprob,intch,tolr,tau,maxs1,smin,theta,rs,
      +     sz,sp,sg,sf,xtheta,yy,sh,xx,ntind,ips,xk,beta,bet0)
@@ -1505,16 +1519,16 @@ C.......................................................................
       integer nstocklen(npopsize),ntind(maxslen)
       integer ntable(2*maxslen),sp(np)
 C-----------------------------------------------------------------------
-      psp0 = RLPSPM2(0.D0,ips,xk)
+      psp0 = rlPSPm2(0.D0,ips,xk)
       itype = 1
       call fseedi()
       if (noldstock .GT. 0) then
         goto 9
-      else 
+      else
         goto 11
       endif
  9    DO 10 I = 1, NOLDSTOCK
-         call RLGEN2M2(x,y,nstock(1,i),nstocklen(i),n,np,
+         call rlGEN2m2(x,y,nstock(1,i),nstocklen(i),n,np,
      +        maxslen,xx,yy,xtheta,rs,sres,sf,sg,
      +        sh,sp,sz,intch,tolr,tau,maxs1,itype,ips,xk,
      +        beta,bet0)
@@ -1522,12 +1536,12 @@ C-----------------------------------------------------------------------
  10   CONTINUE
  11   if (noldstock .LT. npopsize) then
          goto 12
-      else 
+      else
          goto 31
       endif
  12   do 30 i=noldstock+1,npopsize
          call getrandind(n,np,maxslen,ntind,ni)
-         call RLGEN2M2(x,y,ntind,ni,n,np,maxslen,xx,yy,
+         call rlGEN2m2(x,y,ntind,ni,n,np,maxslen,xx,yy,
      +        xtheta,rs,sres,sf,sg,sh,sp,sz,
      +        intch,tolr,tau,maxs1,itype,ips,xk,
      +        beta,bet0)
@@ -1537,7 +1551,7 @@ C-----------------------------------------------------------------------
  20      CONTINUE
          nstocklen(i) = ni
  30   CONTINUE
- 31   call RLGMAXM2(stmax,indmax,npopsize,objvec)
+ 31   call rlGMAXm2(stmax,indmax,npopsize,objvec)
 C-----------------------------------------------------------------------
 C     Take random samples
 C-----------------------------------------------------------------------
@@ -1545,7 +1559,7 @@ C-----------------------------------------------------------------------
          i = 1
  40      if (i .LE. initgen) then
             call getrandind(n,np,maxslen,ntind,ni)
-            call RLGEN2M2(x,y,ntind,ni,n,np,maxslen,xx,yy,
+            call rlGEN2m2(x,y,ntind,ni,n,np,maxslen,xx,yy,
      +           xtheta,rs,sres,sf,sg,sh,sp,sz,
      +           intch,tolr,tau,maxs1,itype,ips,xk,
      +           beta,bet0)
@@ -1556,7 +1570,7 @@ C-----------------------------------------------------------------------
                   nstock(j,indmax) = ntind(j)
  50            CONTINUE
                nstocklen(indmax) = ni
-               call RLGMAXM2(stmax,indmax,npopsize,objvec)
+               call rlGMAXm2(stmax,indmax,npopsize,objvec)
             endif
             i = i + 1
             goto 40
@@ -1569,7 +1583,7 @@ C-----------------------------------------------------------------------
  60   if (i .LE. nbirths) then
          call marriage(nstock,maxslen,npopsize,stockprob,
      +        nstocklen,probmutate,ntind,ni,n,np,npins,ntable)
-         call RLGEN2M2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,
+         call rlGEN2m2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,
      +        sres,sf,sg,sh,sp,sz,intch,tolr,tau,maxs1,itype,ips,xk,
      +        beta,bet0)
          tmp = sres
@@ -1593,7 +1607,7 @@ C-----------------------------------------------------------------------
          goto 60
       endif
       call fseedo()
-      
+
       tmp = 1.0d36
       do 80 j=1,npopsize
          if (objvec(j) .LT. tmp) then
@@ -1605,7 +1619,7 @@ C-----------------------------------------------------------------------
       do 90 i=1,ni
          ntind(i) = nstock(i,ind)
  90   CONTINUE
-      call RLGEN2M2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,sres,
+      call rlGEN2m2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,sres,
      +     sf,sg,sh,sp,sz,intch,tolr,tau,maxs1,itype,ips,xk,
      +     beta,bet0)
       smin = sres
@@ -1625,7 +1639,7 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      subroutine RLGEN2M2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,
+      subroutine rlGEN2m2(x,y,ntind,ni,n,np,maxslen,xx,yy,xtheta,rs,
      +     sres,sf,sg,sh,sp,sz,intch,tolr,tau,maxs1,itype,ips,xk,
      +     beta,bet0)
 C.......................................................................
@@ -1640,7 +1654,7 @@ C-----------------------------------------------------------------------
       k1 = n/2 + 1
       do 100 i=1,ni
          itmp = ntind(i)
-         do 90 j=1,np 
+         do 90 j=1,np
             xx(i,j) = x(itmp,j)
  90      CONTINUE
          yy(i) = y(itmp)
@@ -1648,12 +1662,12 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     Decompose Sampled Matrix: tmat
 C-----------------------------------------------------------------------
-      call RLRMTRM2(xx,ni,np,maxslen,intch,tau,kk,sf,sg,sh,sp)
+      call rlRMTRm2(xx,ni,np,maxslen,intch,tau,kk,sf,sg,sh,sp)
       if (kk .NE. np) then
          sres = big
          return
       endif
-      call RLRICLM2(xx,yy,ni,np,maxslen,xtheta,sh,sp)
+      call rlRICLm2(xx,yy,ni,np,maxslen,xtheta,sh,sp)
       do 120 i=1,n
          s = y(i)
          do 110 j=1,np
@@ -1667,24 +1681,24 @@ C-----------------------------------------------------------------------
          sz(i) = ari
          if (ari .NE. 0.D0) s = dmin1(s,ari)
  130  CONTINUE
-      CALL RLSTORM2(SZ,N,K1,S0)
+      CALL rlSTORm2(SZ,N,K1,S0)
       S0 = 2.D0*S0
       IF (S0 .EQ. 0.D0) S0 = S
       SRES = S0
  135  D = 0.D0
       DO 140 I=1,N
-         D = D + RLCHIM2(RS(I)/SRES,IPS,XK)
+         D = D + rlCHIm2(RS(I)/SRES,IPS,XK)
  140  CONTINUE
       IF (D .LE. CONST) GOTO 150
       S0 = 1.5D0*S0
       SRES = S0
       GOTO 135
- 150  CALL RLRSIGM2(rs,sz,s0,n,np,tolr,itype,1,maxs1,nis,
+ 150  CALL rlRSIGm2(rs,sz,s0,n,np,tolr,itype,1,maxs1,nis,
      +     sres,sz,sz,ips,xk,beta,bet0)
       RETURN
       END
 C=======================================================================
-      subroutine RLGMAXM2(stmax,indmax,npopsize,objvec)
+      subroutine rlGMAXm2(stmax,indmax,npopsize,objvec)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (a-h,o-z)
       dimension objvec(npopsize)
@@ -1705,99 +1719,12 @@ C-----------------------------------------------------------------------
       RETURN
       END
 C=======================================================================
-      FUNCTION RLPSIM2(S,IPS,XK)
+      FUNCTION rlPSIm2(S,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF PSI FUNCTION
-C     IPS = 1: OPTIMAL FUNCTION
-C     IPS = 2: RESCALED BISQUARE FUNCTION
-C     IPS = 3: HUBER FUNCTION
-C     IPS = 4: SMOOTHED HUBER FUNCTION
-C-----------------------------------------------------------------------
-      ABST=DABS(S)
-      IF (IPS .EQ. 1) GOTO 100
-      IF (IPS .EQ. 2) GOTO 200
-      IF (IPS .EQ. 3) GOTO 300
-      IF (IPS .EQ. 4) GOTO 400
- 100  R1= -1.944D0 
-      R2=  1.728D0
-      R3= -0.312D0
-      R4=  0.016D0
-      AX=ABST/XK
-      IF (AX .GT. 3.D0) THEN 
-         RLPSIM2=0.D0
-      ELSE IF(AX .GT. 2.D0) THEN
-         AX=S/XK 
-         IF (AX .GT. 0.D0) THEN
-            RLPSIM2=DMAX1(0.D0,XK*(R4*AX**7+R3*AX**5+R2*AX**3+R1*AX))
-         ELSE
-            RLPSIM2=-DABS(XK*(R4*AX**7+R3*AX**5+R2*AX**3+R1*AX))
-         ENDIF
-      ELSE
-         RLPSIM2=S
-      ENDIF 
-      RETURN 
- 200  RLPSIM2=0.D0
-      IF (ABST .LT. XK) THEN
-         SK=S/XK
-         RLPSIM2=(6.D0*SK/XK)*(1.D0-SK*SK)*(1.D0-SK*SK)
-      ENDIF
-      RETURN
- 300  RLPSIM2=DMIN1(XK,ABST)
-      IF (S .LT. 0.D0) RLPSIM2=-RLPSIM2
-      RETURN
- 400  IF (ABST .LE. XK) THEN
-         RLPSIM2=S
-      ELSE
-         RLPSIM2=S/ABST*XK*(1.D0+(1.D0-(ABST/XK)**(-3.D0))/3.D0)
-      ENDIF
-      RETURN
-      END
-C=======================================================================
-      FUNCTION RLRHOM2(S,IPS,XK)
-C.......................................................................
-      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF RHO FUNCTION
-C     IPS = 1: OPTIMAL FUNCTION
-C     IPS = 2: RESCALED BISQUARE FUNCTION
-C     IPS = 3: HUBER FUNCTION 
-C-----------------------------------------------------------------------
-      ABST=DABS(S)
-      S2=S*S
-      IF (IPS .EQ. 1) GOTO 100
-      IF (IPS .EQ. 2) GOTO 200
-      IF (IPS .EQ. 3 .OR. IPS .EQ. 4) GOTO 300
- 100  R1=-1.944D0/2.0D0
-      R2= 1.728D0/4.0D0 
-      R3=-0.312D0/6.0D0 
-      R4= 0.016D0/8.0D0 
-      AX=ABST/XK
-      IF (AX .GT. 3.D0) THEN
-         RLRHOM2=3.25D0*XK*XK
-      ELSE IF (AX .GT. 2.D0) THEN
-         RLRHOM2=XK*XK*(R1*AX**2+R2*AX**4+R3*AX**6+R4*AX**8+1.792D0)
-      ELSE
-         RLRHOM2=S2/2.D0
-      ENDIF
-      RETURN
- 200  RLRHOM2=1.D0
-      IF (ABST .LT. XK) THEN
-         S2=S2/(XK**2)
-         RLRHOM2=(S2*(S2-3.D0)+3.D0)*S2
-      ENDIF
-      RETURN
- 300  RLRHOM2=S2/2.D0
-      IF (ABST .GT. XK) RLRHOM2=XK*(ABST-XK/2.D0)
-      RETURN
-      END
-C=======================================================================
-      FUNCTION RLPSPM2(S,IPS,XK)
-C.......................................................................
-      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF PSP FUNCTION
+C     Compute  psi(s, xk) -- vectorized as rlPSIAm2(N,SVALS,FVALS,IPS,XK)
+c
 C     IPS = 1: OPTIMAL FUNCTION
 C     IPS = 2: RESCALED BISQUARE FUNCTION
 C     IPS = 3: HUBER FUNCTION
@@ -1814,31 +1741,123 @@ C-----------------------------------------------------------------------
       R4=  0.016D0
       AX=ABST/XK
       IF (AX .GT. 3.D0) THEN
-         RLPSPM2=0.D0 
-      ELSE IF (AX .GT. 2.D0) THEN 
-         RLPSPM2=7.D0*R4*AX**6+5.D0*R3*AX**4+3.D0*R2*AX**2+R1
-      ELSE 
-         RLPSPM2=1.D0
+         rlPSIm2=0.D0
+      ELSE IF(AX .GT. 2.D0) THEN
+         AX=S/XK
+         IF (AX .GT. 0.D0) THEN
+            rlPSIm2=DMAX1(0.D0,XK*(R4*AX**7+R3*AX**5+R2*AX**3+R1*AX))
+         ELSE
+            rlPSIm2=-DABS(XK*(R4*AX**7+R3*AX**5+R2*AX**3+R1*AX))
+         ENDIF
+      ELSE
+         rlPSIm2=S
       ENDIF
       RETURN
- 200  RLPSPM2=0.D0
+ 200  rlPSIm2=0.D0
       IF (ABST .LT. XK) THEN
-         S2=(S/XK)**2
-         RLPSPM2=(6.D0/XK)*(1.D0-S2)*(1.D0-5.D0*S2)/XK
+         SK=S/XK
+         rlPSIm2=(6.D0*SK/XK)*(1.D0-SK*SK)*(1.D0-SK*SK)
       ENDIF
       RETURN
- 300  RLPSPM2=0.D0
-      IF (ABST .LE. XK) RLPSPM2=1.D0
+ 300  rlPSIm2=DMIN1(XK,ABST)
+      IF (S .LT. 0.D0) rlPSIm2=-rlPSIm2
       RETURN
- 400  RLPSPM2=1.D0
-      IF (ABST .GT. XK) RLPSPM2=(ABST/XK)**(-3.D0)
+ 400  IF (ABST .LE. XK) THEN
+         rlPSIm2=S
+      ELSE
+         rlPSIm2=S/ABST*XK*(1.D0+(1.D0-(ABST/XK)**(-3.D0))/3.D0)
+      ENDIF
       RETURN
       END
 C=======================================================================
-      FUNCTION RLCHIM2(S,IPS,XK)
+      FUNCTION rlRHOm2(S,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 C-----------------------------------------------------------------------
+C     Compute  rho(s, xk) -- vectorized as rlRHOAm2(N,SVALS,FVALS,IPS,XK)
+c
+C     IPS = 1: OPTIMAL FUNCTION
+C     IPS = 2: RESCALED BISQUARE FUNCTION
+C     IPS = 3: HUBER FUNCTION
+C-----------------------------------------------------------------------
+      ABST=DABS(S)
+      S2=S*S
+      IF (IPS .EQ. 1) GOTO 100
+      IF (IPS .EQ. 2) GOTO 200
+      IF (IPS .EQ. 3 .OR. IPS .EQ. 4) GOTO 300
+ 100  R1=-1.944D0/2.0D0
+      R2= 1.728D0/4.0D0
+      R3=-0.312D0/6.0D0
+      R4= 0.016D0/8.0D0
+      AX=ABST/XK
+      IF (AX .GT. 3.D0) THEN
+         rlRHOm2=3.25D0*XK*XK
+      ELSE IF (AX .GT. 2.D0) THEN
+         rlRHOm2=XK*XK*(R1*AX**2+R2*AX**4+R3*AX**6+R4*AX**8+1.792D0)
+      ELSE
+         rlRHOm2=S2/2.D0
+      ENDIF
+      RETURN
+ 200  rlRHOm2=1.D0
+      IF (ABST .LT. XK) THEN
+         S2=S2/(XK**2)
+         rlRHOm2=(S2*(S2-3.D0)+3.D0)*S2
+      ENDIF
+      RETURN
+ 300  rlRHOm2=S2/2.D0
+      IF (ABST .GT. XK) rlRHOm2=XK*(ABST-XK/2.D0)
+      RETURN
+      END
+C=======================================================================
+      FUNCTION rlPSPm2(S,IPS,XK)
+C.......................................................................
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C-----------------------------------------------------------------------
+C     Compute  psi'(s, xk)  = psp(s,.) -- vectorized as rlPSPAm2(N,SVALS,FVALS,IPS,XK)
+c
+C     IPS = 1: OPTIMAL FUNCTION
+C     IPS = 2: RESCALED BISQUARE FUNCTION
+C     IPS = 3: HUBER FUNCTION
+C     IPS = 4: SMOOTHED HUBER FUNCTION
+C-----------------------------------------------------------------------
+      ABST=DABS(S)
+      IF (IPS .EQ. 1) GOTO 100
+      IF (IPS .EQ. 2) GOTO 200
+      IF (IPS .EQ. 3) GOTO 300
+      IF (IPS .EQ. 4) GOTO 400
+ 100  R1= -1.944D0
+      R2=  1.728D0
+      R3= -0.312D0
+      R4=  0.016D0
+      AX=ABST/XK
+      IF (AX .GT. 3.D0) THEN
+         rlPSPm2=0.D0
+      ELSE IF (AX .GT. 2.D0) THEN
+         rlPSPm2=7.D0*R4*AX**6+5.D0*R3*AX**4+3.D0*R2*AX**2+R1
+      ELSE
+         rlPSPm2=1.D0
+      ENDIF
+      RETURN
+ 200  rlPSPm2=0.D0
+      IF (ABST .LT. XK) THEN
+         S2=(S/XK)**2
+         rlPSPm2=(6.D0/XK)*(1.D0-S2)*(1.D0-5.D0*S2)/XK
+      ENDIF
+      RETURN
+ 300  rlPSPm2=0.D0
+      IF (ABST .LE. XK) rlPSPm2=1.D0
+      RETURN
+ 400  rlPSPm2=1.D0
+      IF (ABST .GT. XK) rlPSPm2=(ABST/XK)**(-3.D0)
+      RETURN
+      END
+C=======================================================================
+      FUNCTION rlCHIm2(S,IPS,XK)
+C.......................................................................
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C-----------------------------------------------------------------------
+c Compute  chi(s, xk)  -- vectorized as rlCHIAm2(N,SVALS,FVALS,IPS,XK)
+c
 C     COMPUTES THE VALUE OF CHI FUNCTION
 C     IPS = 1: OPTIMAL FUNCTION
 C     IPS = 2: RESCALED BISQUARE FUNCTION
@@ -1847,49 +1866,58 @@ C-----------------------------------------------------------------------
       IF (IPS .EQ. 1) GOTO 100
       IF (IPS .EQ. 2) GOTO 200
       IF (IPS .EQ. 3 .OR. IPS .EQ. 4) GOTO 300
+c                    ^^^^^^^^^^^^^^^ why?  FIXME?
  100  R1=-1.944D0/2.0D0
-      R2= 1.728D0/4.0D0 
-      R3=-0.312D0/6.0D0 
-      R4= 0.016D0/8.0D0 
+      R2= 1.728D0/4.0D0
+      R3=-0.312D0/6.0D0
+      R4= 0.016D0/8.0D0
       AX=DABS(S/XK)
       IF (AX .GT. 3.D0) THEN
-         RLCHIM2=3.25D0*XK*XK
+         rlCHIm2=3.25D0*XK*XK
       ELSE IF (AX .GT. 2.D0) THEN
-         RLCHIM2=XK*XK*(R1*AX**2+R2*AX**4+R3*AX**6+R4*AX**8+1.792D0)
-      ELSE 
-         RLCHIM2=S*S/2.D0
+         rlCHIm2=XK*XK*(R1*AX**2+R2*AX**4+R3*AX**6+R4*AX**8+1.792D0)
+      ELSE
+         rlCHIm2=S*S/2.D0
       ENDIF
       RETURN
- 200  RLCHIM2=1.D0
+ 200  rlCHIm2=1.D0
       ABST=DABS(S)
       IF (ABST .LT. XK) THEN
          S2=(S/XK)**2
-         RLCHIM2=(S2*(S2-3.D0)+3.D0)*S2
+         rlCHIm2=(S2*(S2-3.D0)+3.D0)*S2
       ENDIF
       RETURN
  300  ABST=DABS(S)
       PS=DMIN1(XK,ABST)
-      RLCHIM2=PS*PS/2.D0
+      rlCHIm2=PS*PS/2.D0
       RETURN
       END
+c_______________________________________________________________________
+c
+c--> The following *vectorized* versions of
+c-->     psi(), psi'() = psp(), rho(), chi()
+c--> are  called from S / R  as   psi.weight(), etc :
+c
 C=======================================================================
-      SUBROUTINE RLPSIAM2(N,SVALS,FVALS,IPS,XK)
+      SUBROUTINE rlPSIAm2(N,SVALS,FVALS,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION SVALS(N),FVALS(N)
 C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF PSI FUNCTION
+c computes  psi(s[i], .) , i = 1:n
+c
 C     IPS = 1: OPTIMAL FUNCTION
 C     IPS = 2: RESCALED BISQUARE FUNCTION
 C     IPS = 3: HUBER FUNCTION
+C     IPS = 4: SMOOTHED HUBER FUNCTION
 C-----------------------------------------------------------------------
       DO 150 I=1,N
-         FVALS(I)=RLPSIM2(SVALS(I),IPS,XK)
+         FVALS(I)=rlPSIm2(SVALS(I),IPS,XK)
  150  CONTINUE
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLRHOAM2(N,SVALS,FVALS,IPS,XK)
+      SUBROUTINE rlRHOAm2(N,SVALS,FVALS,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION SVALS(N),FVALS(N)
@@ -1900,39 +1928,42 @@ C     IPS = 2: RESCALED BISQUARE FUNCTION
 C     IPS = 3: HUBER FUNCTION
 C-----------------------------------------------------------------------
       DO 150 I=1,N
-         FVALS(I)=RLRHOM2(SVALS(I),IPS,XK)
+         FVALS(I)=rlRHOm2(SVALS(I),IPS,XK)
  150  CONTINUE
       RETURN
       END
 C=======================================================================
-      SUBROUTINE RLPSPAM2(N,SVALS,FVALS,IPS,XK)
+      SUBROUTINE rlPSPAm2(N,SVALS,FVALS,IPS,XK)
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION SVALS(N),FVALS(N)
 C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF PSP FUNCTION
+c computes  psi'(s[i], *) = psp(s[i], *), i = 1:n
+c
+C     IPS = 1: OPTIMAL FUNCTION
+C     IPS = 2: RESCALED BISQUARE FUNCTION
+C     IPS = 3: HUBER FUNCTION
+C     IPS = 4: SMOOTHED HUBER FUNCTION
+C-----------------------------------------------------------------------
+      DO 150 I=1,N
+         FVALS(I)=rlPSPm2(SVALS(I),IPS,XK)
+ 150  CONTINUE
+      RETURN
+      END
+C=======================================================================
+      SUBROUTINE rlCHIAm2(N,SVALS,FVALS,IPS,XK)
+C.......................................................................
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      DIMENSION SVALS(N),FVALS(N)
+C-----------------------------------------------------------------------
+c computes  chi(s[i], *) , i = 1:n
+
 C     IPS = 1: OPTIMAL FUNCTION
 C     IPS = 2: RESCALED BISQUARE FUNCTION
 C     IPS = 3: HUBER FUNCTION
 C-----------------------------------------------------------------------
       DO 150 I=1,N
-         FVALS(I)=RLPSPM2(SVALS(I),IPS,XK)
- 150  CONTINUE
-      RETURN
-      END
-C=======================================================================
-      SUBROUTINE RLCHIAM2(N,SVALS,FVALS,IPS,XK)
-C.......................................................................
-      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
-      DIMENSION SVALS(N),FVALS(N)
-C-----------------------------------------------------------------------
-C     COMPUTES THE VALUE OF PSP FUNCTION
-C     IPS = 1: OPTIMAL FUNCTION
-C     IPS = 2: RESCALED BISQUARE FUNCTION
-C     IPS = 3: HUBER FUNCTION
-C-----------------------------------------------------------------------
-      DO 150 I=1,N
-         FVALS(I)=RLCHIM2(SVALS(I),IPS,XK)
+         FVALS(I)=rlCHIm2(SVALS(I),IPS,XK)
  150  CONTINUE
       RETURN
       END

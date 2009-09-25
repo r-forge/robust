@@ -68,11 +68,31 @@ covRob <- function(data, corr = FALSE, distance = TRUE, na.action = na.fail,
 
 	ans <- switch(estim,
 
-		donostah = donostah(data, control),
+		donostah = {
+      args <- list(x = data)
+      if(control$nresamp != "auto") args$nsamp <- control$nresamp
+      if(control$maxres != "auto") args$maxres <- control$maxres
+      if(!control$random.sample) set.seed(21)
+      args$tune <- control$tune
+      args$prob <- control$prob
+      args$eps <- control$eps
+      ds <- do.call("CovSde", args)
+      list(cov = getCov(ds), center = getCenter(ds), dist = getDistance(ds))
+    },
 
-		pairwiseqc = fastcov(data, control),
+		pairwiseqc = {
+      #fastcov(data, control)
+      x <- CovOgk(data, control = CovControlOgk(smrob = "s_mad", svrob = "qc"))
+      list(center = getCenter(x), cov = getCov(x), dist = getDistance(x),
+           raw.center = x@raw.center, raw.cov = x@raw.cov, raw.dist = x@raw.mah)
+    },
 
-		pairwisegk = fastcov(data, control),
+		pairwisegk = {
+      #fastcov(data, control)
+      x <- CovOgk(data)
+      list(center = getCenter(x), cov = getCov(x), dist = getDistance(x),
+           raw.center = x@raw.center, raw.cov = x@raw.cov, raw.dist = x@raw.mah)
+    },
 
 		m = {
       mcd.control <- control$init.control

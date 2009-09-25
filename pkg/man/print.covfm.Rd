@@ -33,20 +33,20 @@
 
 \seealso{
   \code{\link{print}},
-  \code{\link{cov}},
+  \code{\link{ccov}},
   \code{\link{covRob}},
   \code{\link{fit.models}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodmod.cov <- cov(woodmod.dat)
-  print(woodmod.cov)
-
+  woodmod.cov <- ccov(woodmod.dat)
   woodmod.covRob <- covRob(woodmod.dat)
+  print(woodmod.cov)
   print(woodmod.covRob)
 
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"), data = woodmod.dat)
+  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+                           data = woodmod.dat)
   print(woodmod.fm)
 }
 
