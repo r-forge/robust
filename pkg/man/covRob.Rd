@@ -77,13 +77,13 @@ R. A. Maronna and R. H. Zamar (2002) Robust estimates of location and dispersion
 }
 
 \note{
-Version 0.3-6 of the Robust Library: all of the functions origianlly contributed by the S-Plus Robust Library have been replaced by dependencies on the robustbase and rrcov packages. Computed results may differ from earlier versions of the Robust Library. In particular, the MCD estimators are now adjusted by a small sample size correction factor. Additionally, a bug was fixed where the final MCD covariance estimate produced with \code{estim = "mcd"} was not rescaled for consistency.
+Version 0.3-8 of the Robust Library: all of the functions origianlly contributed by the S-Plus Robust Library have been replaced by dependencies on the robustbase and rrcov packages. Computed results may differ from earlier versions of the Robust Library. In particular, the MCD estimators are now adjusted by a small sample size correction factor. Additionally, a bug was fixed where the final MCD covariance estimate produced with \code{estim = "mcd"} was not rescaled for consistency.
 }
 
 \seealso{
-  \code{\link[robustbase]{CovSde}},
+  \code{\link[rrcov]{CovSde}},
   \code{\link[robustbase]{covMcd}},
-  \code{\link[robustbase]{CovOgk}},
+  \code{\link[rrcov]{CovOgk}},
   \code{\link[rrcov]{covMest}},
   \code{\link{covRob.control}},
   \code{\link{ccov}}.
