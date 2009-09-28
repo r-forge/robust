@@ -181,7 +181,6 @@
 		0E4500BC0A029C060064D9A4 /* weights.lmRobBI.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weights.lmRobBI.sgml; path = sgml/weights.lmRobBI.sgml; sourceTree = SOURCE_ROOT; };
 		0E4500BD0A029C060064D9A4 /* www.weight.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = www.weight.sgml; path = sgml/www.weight.sgml; sourceTree = SOURCE_ROOT; };
 		0E4500BE0A029C060064D9A4 /* xyellipse.sgml */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = xyellipse.sgml; path = sgml/xyellipse.sgml; sourceTree = SOURCE_ROOT; };
-		0E4500C40A029C060064D9A4 /* fastcov.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; name = fastcov.c; path = src/fastcov.c; sourceTree = SOURCE_ROOT; };
 		0E4500C60A029C060064D9A4 /* gamrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = gamrob.f; path = src/gamrob.f; sourceTree = SOURCE_ROOT; };
 		0E4500C70A029C060064D9A4 /* glmrob.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = glmrob.f; path = src/glmrob.f; sourceTree = SOURCE_ROOT; };
 		0E4500C80A029C060064D9A4 /* lmrobbi.f */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.fortran; name = lmrobbi.f; path = src/lmrobbi.f; sourceTree = SOURCE_ROOT; };
@@ -680,7 +679,6 @@
 				DAAAEB910A0A08A000212C6E /* Makevars */,
 				0E4500CF0A029C060064D9A4 /* robust.h */,
 				0E9C45050E2129C800DE7FD9 /* compatibility.c */,
-				0E4500C40A029C060064D9A4 /* fastcov.c */,
 				0E4500CC0A029C060064D9A4 /* mmprnt.c */,
 				0E4500CD0A029C060064D9A4 /* rb.c */,
 				0E4500C60A029C060064D9A4 /* gamrob.f */,

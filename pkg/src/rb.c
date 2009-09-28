@@ -517,9 +517,23 @@ void rl_sampler_i(Sint n, Sint *x)
 	 * rand() returns an integer between 0 and RAND_MAX
 	 */
 
-	Sint i;
-	for(i=0;i<n;i++) 
-		x[i] = (Sint) ( (Sfloat) rand() / RAND_MAX * (Sfloat) (n-1) );
+  /* Sint i;
+   * for(i=0;i<n;i++) 
+   * x[i] = (Sint) ( (Sfloat) rand() / RAND_MAX * (Sfloat) (n-1) );
+   */
+
+  long ignored = 0;
+  Sint i = 0;
+  Sfloat u = 0.0;
+
+  seed_in(&ignored);
+
+  for(i = 0; i < n; i++) {
+    u = unif_rand();
+    x[i] = (Sint) (u * ((Sfloat) (n - 1)));
+  }
+
+  seed_out(&ignored);
 }
 
 
