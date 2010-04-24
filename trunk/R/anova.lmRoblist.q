@@ -87,6 +87,10 @@ anova.lmRoblist <- function(object, const, ipsi, yc,
   forms <- sapply(object, function(x) as.character(formula(x)))
   subs <- as.logical(match(forms[2,  ], forms[2, 1], FALSE))
 
+  ns <- sapply(object, function(u) length(residuals(u)))
+  if(any(ns != ns[1])) 
+    stop("models were not all fitted to the same size dataset")
+
   if(!all(subs)) 
     warning("Some fit objects deleted because response differs from the first model")
 
