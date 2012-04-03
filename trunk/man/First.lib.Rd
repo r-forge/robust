@@ -1,5 +1,5 @@
-\name{.First.lib}
-\alias{.First.lib}
+\name{.onLoad}
+\alias{.onLoad}
 
 \title{First Run}
 
@@ -8,16 +8,12 @@
 }
 
 \usage{
-  .First.lib(libname, pkgname)
+  .onLoad(libname, pkgname)
 }
 
 \arguments{
   \item{libname}{library}
   \item{pkgname}{section}
-}
-
-\value{
-  a single uniform random number is returned invisibly.
 }
 
 \keyword{utilities}

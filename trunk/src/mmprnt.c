@@ -4,8 +4,7 @@
 /* Date  : 12/20/1999                                   */
 /*------------------------------------------------------*/
 
-#include <S.h>
-#include "robust.h"
+#include <R.h>
 #include <time.h>
 
 #if defined(S_newio_IS_STDIO_FILE)
@@ -31,12 +30,12 @@ void F77_NAME(mmprint)(Sint *nrep, Sint *itmp, Sint *ct,
   lapt = (Sint) ((*elap)/(*itmp)*tmp); 
   
   if (lapt < 60)
-    printf("00:00:%02d left\n", lapt);
+    Rprintf("00:00:%02d left\n", lapt);
 //    printf("00:00:%02ld left\n", lapt);
   else if (lapt < 360) {
     nleft = lapt/60;
     lapt = lapt % 60;
-    printf("00:%02ld:%02d left\n", nleft, lapt);
+    Rprintf("00:%02ld:%02d left\n", nleft, lapt);
 //    printf("00:%02ld:%02ld left\n", nleft, lapt);
   }
   else {
@@ -44,7 +43,7 @@ void F77_NAME(mmprint)(Sint *nrep, Sint *itmp, Sint *ct,
     lapt = lapt % 360;
     nleft = lapt/60;
     lapt = lapt % 60;
-    printf("%ld:%02ld:%02d left\n", ihr, nleft, lapt);
+    Rprintf("%ld:%02ld:%02d left\n", ihr, nleft, lapt);
 //    printf("%ld:%02ld:%02ld left\n", ihr, nleft, lapt);
   }
 }

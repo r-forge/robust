@@ -252,6 +252,7 @@
 		0E45FFFB0A029C050064D9A4 /* tabPredict.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = tabPredict.q; path = gui/tabPredict.q; sourceTree = SOURCE_ROOT; };
 		0E45FFFE0A029C050064D9A4 /* First.lib.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = First.lib.Rd; path = man/First.lib.Rd; sourceTree = SOURCE_ROOT; };
 		0E45FFFF0A029C050064D9A4 /* arg.names.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = arg.names.Rd; path = man/arg.names.Rd; sourceTree = SOURCE_ROOT; };
+		0E61FA2E152A70D5005596B3 /* NAMESPACE */ = {isa = PBXFileReference; lastKnownFileType = text; path = NAMESPACE; sourceTree = "<group>"; };
 		0E67A7650B8266E60044A84B /* methods.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = methods.glmRob.Rd; path = man/methods.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0E67A7850B8270DD0044A84B /* plot.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.glmRob.Rd; path = man/plot.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0E67A7860B8270DD0044A84B /* print.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.glmRob.Rd; path = man/print.glmRob.Rd; sourceTree = SOURCE_ROOT; };
@@ -998,6 +999,7 @@
 		DA0F4D0F09FF92A30033A546 = {
 			isa = PBXGroup;
 			children = (
+				0E61FA2E152A70D5005596B3 /* NAMESPACE */,
 				0E45FF4E0A029C050064D9A4 /* DESCRIPTION */,
 				0E45FF3D0A029C050064D9A4 /* Copyright */,
 				0E4500300A029C060064D9A4 /* README */,
@@ -1351,7 +1353,11 @@
 			isa = PBXProject;
 			buildConfigurationList = DA0F4D1209FF92A30033A546 /* Build configuration list for PBXProject "robust" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = DA0F4D0F09FF92A30033A546;
 			projectDirPath = "";
 			projectRoot = "";
