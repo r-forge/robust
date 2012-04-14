@@ -27,12 +27,9 @@ lmRob <- function(formula, data, weights, subset, na.action,
   if(nrow(X) <= ncol(X))
     stop("Robust method is inappropriate: there are not enough observations")
 
-  ##	In this section we make the model.matrix X and the sub
-  ##	model.matices X1 and X2 such that X1 contains all of the
-  ##	columns of X that correspond to factor variables and X2
-  ##	contains all the columns of X that correspond to numeric
-  ##	variables.
-  ##  x1.idx[] are the indices of columns of X that are in X1.
+  ## Find the columns of the model matrix X arising from coding
+  ## factor variables and store their indices in x1.idx.
+  ## Conceptually, the design matrix	X = [ x1 | x2 ].
 
   asgn <- attr(X, "assign")
   factor.vars <- names(m)[sapply(m, is.factor)]

@@ -74,7 +74,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
       init.alg <- "l1"
     }
 
-    # Use alternating S/M when both continuous and factor variables are present
+    # Use alternate S/M when both continuous and factor variables are present
     else if(p1 > 0 && p2 > 0) {
       init.alg <- "altms"
     }
