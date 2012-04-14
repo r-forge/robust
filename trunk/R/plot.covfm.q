@@ -70,49 +70,49 @@ plot.covfm <- function(x, which.plots = "ask", ...)
         {
           covfmScreePlot(x, ...)
 
-          if(names(dev.cur()) == "graphsheet") {
-            guiModify("GraphSheetPage",
-              Name = paste("$", tab.index, sep = ""),
-              NewName = "Screeplot")
-
-            tab.index <- tab.index + 1
-          }
+#          if(names(dev.cur()) == "graphsheet") {
+#            guiModify("GraphSheetPage",
+#              Name = paste("$", tab.index, sep = ""),
+#              NewName = "Screeplot")
+#
+#            tab.index <- tab.index + 1
+#          }
         }
         ,
         {
           covfmSqrtMDPlot(x, ...)
 
-          if(names(dev.cur()) == "graphsheet") {
-            guiModify("GraphSheetPage",
-              Name = paste("$", tab.index, sep = ""),
-              NewName = "Robust Distances")
-
-            tab.index <- tab.index + 1
-          }
+#          if(names(dev.cur()) == "graphsheet") {
+#            guiModify("GraphSheetPage",
+#              Name = paste("$", tab.index, sep = ""),
+#              NewName = "Robust Distances")
+#
+#            tab.index <- tab.index + 1
+#          }
         }
         ,
         {
           covfmEllipsesPlot(x, ...)
 
-          if(names(dev.cur()) == "graphsheet") {
-            guiModify("GraphSheetPage",
-              Name = paste("$", tab.index, sep = ""),
-              NewName = "Ellipses Matrix")
-
-            tab.index <- tab.index + 1
-          }
+#          if(names(dev.cur()) == "graphsheet") {
+#            guiModify("GraphSheetPage",
+#              Name = paste("$", tab.index, sep = ""),
+#              NewName = "Ellipses Matrix")
+#
+#            tab.index <- tab.index + 1
+#          }
         }
         ,
         {
           covfmDistance2Plot(x, ...)
 
-          if(names(dev.cur()) == "graphsheet") {
-            guiModify("GraphSheetPage",
-              Name = paste("$", tab.index, sep = ""),
-              NewName = "Distance - Distance")
-
-            tab.index <- tab.index + 1
-          }
+#          if(names(dev.cur()) == "graphsheet") {
+#            guiModify("GraphSheetPage",
+#              Name = paste("$", tab.index, sep = ""),
+#              NewName = "Distance - Distance")
+#
+#            tab.index <- tab.index + 1
+#          }
         }
 			) #end of switch
 		}
