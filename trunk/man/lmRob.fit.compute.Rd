@@ -8,23 +8,19 @@ Fits a robust linear model with high breakdown point and high efficiency estimat
 }
 
 \usage{
-lmRob.fit.compute(x2, y, x1 = NULL, x1.idx = NULL, nrep = NULL, robust.control = NULL, genetic.control = NULL, ...)
+lmRob.fit.compute(x, y, x1.idx = NULL, nrep = NULL, robust.control = NULL, ...)
 }
 
 \arguments{
-\item{x2}{numeric vector or matrix for the continuous predictors. }
+\item{x}{a numeric matrix containing the design matrix. }
 
-\item{y}{numeric vector for the response in a linear model.}
+\item{y}{a numeric vector containing the linear model response.}
 
-\item{x1}{numeric vector or matrix for the discrete predictors.  }
-
-\item{x1.idx}{numeric vector giving the index of \code{x1} as column numbers of the whole predictor matrix.}
+\item{x1.idx}{a numeric vector containing the indices of columns of the design matrix arising from the coding of factor variables.}
 
 \item{nrep}{the number of random subsamples to be drawn.  If \code{"Exhaustive"} resampling is being used, the value of \code{nrep} is ignored.}
 
 \item{robust.control}{a list of control parameters to be used in the numerical algorithms. See \code{lmRob.control} for the possible control parameters and their default settings.}
-
-\item{genetic.control}{a list of control parameters to be used in the genetic algorithm, if chosen.}
 
 \item{\dots}{additional arguments.}
 }
