@@ -1,11 +1,14 @@
 
-R version 2.9.2 (2009-08-24)
-Copyright (C) 2009 The R Foundation for Statistical Computing
+R version 2.15.0 (2012-03-30)
+Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-apple-darwin11.3.0/x86_64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
 Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
 
 R is a collaborative project with many contributors.
 Type 'contributors()' for more information and
@@ -15,73 +18,8 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
-> ### * <HEADER>
-> ###
-> attach(NULL, name = "CheckExEnv")
-> assign("nameEx",
-+        local({
-+ 	   s <- "__{must remake R-ex/*.R}__"
-+            function(new) {
-+                if(!missing(new)) s <<- new else s
-+            }
-+        }),
-+        pos = "CheckExEnv")
-> ## Add some hooks to label plot pages for base and grid graphics
-> assign("base_plot_hook",
-+        function() {
-+            pp <- par(c("mfg","mfcol","oma","mar"))
-+            if(all(pp$mfg[1:2] == c(1, pp$mfcol[2]))) {
-+                outer <- (oma4 <- pp$oma[4]) > 0; mar4 <- pp$mar[4]
-+                mtext(sprintf("help(\"%s\")", nameEx()), side = 4,
-+                      line = if(outer)max(1, oma4 - 1) else min(1, mar4 - 1),
-+                outer = outer, adj = 1, cex = .8, col = "orchid", las=3)
-+            }
-+        },
-+        pos = "CheckExEnv")
-> assign("grid_plot_hook",
-+        function() {
-+            grid::pushViewport(grid::viewport(width=grid::unit(1, "npc") -
-+                               grid::unit(1, "lines"), x=0, just="left"))
-+            grid::grid.text(sprintf("help(\"%s\")", nameEx()),
-+                            x=grid::unit(1, "npc") + grid::unit(0.5, "lines"),
-+                            y=grid::unit(0.8, "npc"), rot=90,
-+                            gp=grid::gpar(col="orchid"))
-+        },
-+        pos = "CheckExEnv")
-> setHook("plot.new",     get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("persp",        get("base_plot_hook", pos = "CheckExEnv"))
-> setHook("grid.newpage", get("grid_plot_hook", pos = "CheckExEnv"))
-> assign("cleanEx",
-+        function(env = .GlobalEnv) {
-+ 	   rm(list = ls(envir = env, all.names = TRUE), envir = env)
-+            RNGkind("default", "default")
-+ 	   set.seed(1)
-+    	   options(warn = 1)
-+ 	   .CheckExEnv <- as.environment("CheckExEnv")
-+ 	   delayedAssign("T", stop("T used instead of TRUE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   delayedAssign("F", stop("F used instead of FALSE"),
-+ 		  assign.env = .CheckExEnv)
-+ 	   sch <- search()
-+ 	   newitems <- sch[! sch %in% .oldSearch]
-+ 	   for(item in rev(newitems))
-+                eval(substitute(detach(item), list(item=item)))
-+ 	   missitems <- .oldSearch[! .oldSearch %in% sch]
-+ 	   if(length(missitems))
-+ 	       warning("items ", paste(missitems, collapse=", "),
-+ 		       " have been removed from the search path")
-+        },
-+        pos = "CheckExEnv")
-> assign("ptime", proc.time(), pos = "CheckExEnv")
-> ## at least one package changes these via ps.options(), so do this
-> ## before loading the package.
-> ## Use postscript as incomplete files may be viewable, unlike PDF.
-> ## Choose a size that is close to on-screen devices, fix paper
-> grDevices::ps.options(width = 7, height = 7, paper = "a4", reset = TRUE)
-> grDevices::postscript("robust-Ex.ps")
-> 
-> assign("par.postscript", graphics::par(no.readonly = TRUE), pos = "CheckExEnv")
-> options(contrasts = c(unordered = "contr.treatment", ordered = "contr.poly"))
+> pkgname <- "robust"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('robust')
 Loading required package: MASS
@@ -90,20 +28,18 @@ Loading required package: robustbase
 Loading required package: rrcov
 Loading required package: pcaPP
 Loading required package: mvtnorm
-pcaPP 0.1-1 loaded
-Scalable Robust Estimators with High Breakdown Point (version 0.5-02)
+Scalable Robust Estimators with High Breakdown Point (version 1.3-01)
 
-Attaching package: 'robust'
+Attaching package: ‘robust’
 
+The following object(s) are masked from ‘package:stats’:
 
-	The following object(s) are masked from package:stats :
-
-	 cov 
+    cov
 
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
-> assign(".oldNS", loadedNamespaces(), pos = 'CheckExEnv')
-> cleanEx(); nameEx("add1.lmRob")
+> cleanEx()
+> nameEx("add1.lmRob")
 > ### * add1.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -132,7 +68,8 @@ Acid.Conc.  1 14.6099
 > 
 > 
 > 
-> cleanEx(); nameEx("anova.glmRob")
+> cleanEx()
+> nameEx("anova.glmRob")
 > ### * anova.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -170,7 +107,8 @@ Base4:Trt  1   -949.1        54     3888.2
 > 
 > 
 > 
-> cleanEx(); nameEx("anova.lmRob")
+> cleanEx()
+> nameEx("anova.lmRob")
 > ### * anova.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -195,19 +133,20 @@ Air.Flow           1  41.228 6.026e-11 ***
 Water.Temp         1   6.522  0.009257 ** 
 Acid.Conc.         1   0.551  0.449386    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > anova(stack.full, stack.small)
 
 Response: Loss
-      Terms        Df RobustF    Pr(F)    
-[1,]  1.000  1.000                        
-[2,]  2.000  1.000  1  27.354 9.84e-08 ***
+     Terms     Df RobustF     Pr(F)    
+[1,]     1   1                         
+[2,]     2   1  1  27.354 9.839e-08 ***
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
 > 
 > 
 > 
-> cleanEx(); nameEx("arg.names")
+> cleanEx()
+> nameEx("arg.names")
 > ### * arg.names
 > 
 > flush(stderr()); flush(stdout())
@@ -224,7 +163,8 @@ NULL
 > 
 > 
 > 
-> cleanEx(); nameEx("breslow.dat")
+> cleanEx()
+> nameEx("breslow.dat")
 > ### * breslow.dat
 > 
 > flush(stderr()); flush(stdout())
@@ -240,7 +180,8 @@ NULL
 > 
 > 
 > 
-> cleanEx(); nameEx("ccov")
+> cleanEx()
+> nameEx("ccov")
 > ### * ccov
 > 
 > flush(stderr()); flush(stdout())
@@ -270,7 +211,8 @@ Classical Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("coef.glmfm")
+> cleanEx()
+> nameEx("coef.glmfm")
 > ### * coef.glmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -293,7 +235,8 @@ Classical    1.968014 0.2434901 0.08542626   -0.2552565        0.007534172
 > 
 > 
 > 
-> cleanEx(); nameEx("coef.lmfm")
+> cleanEx()
+> nameEx("coef.lmfm")
 > ### * coef.lmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -314,7 +257,8 @@ LS       -39.91967 0.7156402  1.2952861 -0.15212252
 > 
 > 
 > 
-> cleanEx(); nameEx("covRob")
+> cleanEx()
+> nameEx("covRob")
 > ### * covRob
 > 
 > flush(stderr()); flush(stdout())
@@ -344,7 +288,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("covRob.control")
+> cleanEx()
+> nameEx("covRob.control")
 > ### * covRob.control
 > 
 > flush(stderr()); flush(stdout())
@@ -364,7 +309,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("covfmDistance2Plot")
+> cleanEx()
+> nameEx("covfmDistance2Plot")
 > ### * covfmDistance2Plot
 > 
 > flush(stderr()); flush(stdout())
@@ -383,7 +329,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("covfmEllipsesPlot")
+> cleanEx()
+> nameEx("covfmEllipsesPlot")
 > ### * covfmEllipsesPlot
 > 
 > flush(stderr()); flush(stdout())
@@ -402,7 +349,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("covfmScreePlot")
+> cleanEx()
+> nameEx("covfmScreePlot")
 > ### * covfmScreePlot
 > 
 > flush(stderr()); flush(stdout())
@@ -421,7 +369,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("covfmSqrtMDPlot")
+> cleanEx()
+> nameEx("covfmSqrtMDPlot")
 > ### * covfmSqrtMDPlot
 > 
 > flush(stderr()); flush(stdout())
@@ -440,7 +389,8 @@ Robust Estimate of Location:
 > 
 > 
 > 
-> cleanEx(); nameEx("drop1.lmRob")
+> cleanEx()
+> nameEx("drop1.lmRob")
 > ### * drop1.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -471,7 +421,8 @@ Acid.Conc.  1 16.049
 > 
 > 
 > 
-> cleanEx(); nameEx("fit.models")
+> cleanEx()
+> nameEx("fit.models")
 > ### * fit.models
 > 
 > flush(stderr()); flush(stdout())
@@ -494,7 +445,8 @@ Acid.Conc.  1 16.049
 > 
 > 
 > 
-> cleanEx(); nameEx("get.fit.models.database")
+> cleanEx()
+> nameEx("get.fit.models.database")
 > ### * get.fit.models.database
 > 
 > flush(stderr()); flush(stdout())
@@ -588,7 +540,8 @@ NULL
 > 
 > 
 > 
-> cleanEx(); nameEx("glmRob")
+> cleanEx()
+> nameEx("glmRob")
 > ### * glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -619,7 +572,8 @@ Residual Deviance: 3888.204
 > 
 > 
 > 
-> cleanEx(); nameEx("glmRob.mallows")
+> cleanEx()
+> nameEx("glmRob.mallows")
 > ### * glmRob.mallows
 > 
 > flush(stderr()); flush(stdout())
@@ -647,7 +601,8 @@ Residual Deviance: 40.05956
 > 
 > 
 > 
-> cleanEx(); nameEx("glmRob.misclass")
+> cleanEx()
+> nameEx("glmRob.misclass")
 > ### * glmRob.misclass
 > 
 > flush(stderr()); flush(stdout())
@@ -677,7 +632,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("leuk.dat")
+> cleanEx()
+> nameEx("leuk.dat")
 > ### * leuk.dat
 > 
 > flush(stderr()); flush(stdout())
@@ -693,7 +649,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("lmRob")
+> cleanEx()
+> nameEx("lmRob")
 > ### * lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -710,7 +667,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("lmRob.RFPE")
+> cleanEx()
+> nameEx("lmRob.RFPE")
 > ### * lmRob.RFPE
 > 
 > flush(stderr()); flush(stdout())
@@ -729,7 +687,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("lmRob.control")
+> cleanEx()
+> nameEx("lmRob.control")
 > ### * lmRob.control
 > 
 > flush(stderr()); flush(stdout())
@@ -747,7 +706,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("mallows.dat")
+> cleanEx()
+> nameEx("mallows.dat")
 > ### * mallows.dat
 > 
 > flush(stderr()); flush(stdout())
@@ -763,7 +723,8 @@ Residual Deviance: 29.59432
 > 
 > 
 > 
-> cleanEx(); nameEx("methods.glmRob")
+> cleanEx()
+> nameEx("methods.glmRob")
 > ### * methods.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -942,7 +903,8 @@ attr(,"contrasts")$Trt
 > 
 > 
 > 
-> cleanEx(); nameEx("methods.lmRob")
+> cleanEx()
+> nameEx("methods.lmRob")
 > ### * methods.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1029,7 +991,8 @@ attr(,"assign")
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.covfm")
+> cleanEx()
+> nameEx("plot.covfm")
 > ### * plot.covfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1053,7 +1016,8 @@ attr(,"assign")
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.lmRob")
+> cleanEx()
+> nameEx("plot.lmRob")
 > ### * plot.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1071,7 +1035,8 @@ attr(,"assign")
 > 
 > 
 > 
-> cleanEx(); nameEx("plot.lmfm")
+> cleanEx()
+> nameEx("plot.lmfm")
 > ### * plot.lmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1089,7 +1054,8 @@ attr(,"assign")
 > 
 > 
 > 
-> cleanEx(); nameEx("predict.glmRob")
+> cleanEx()
+> nameEx("predict.glmRob")
 > ### * predict.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1123,7 +1089,8 @@ attr(,"assign")
 > 
 > 
 > 
-> cleanEx(); nameEx("predict.lmRob")
+> cleanEx()
+> nameEx("predict.lmRob")
 > ### * predict.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1162,7 +1129,8 @@ $df
 > 
 > 
 > 
-> cleanEx(); nameEx("print.covfm")
+> cleanEx()
+> nameEx("print.covfm")
 > ### * print.covfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1235,7 +1203,8 @@ Classical 0.5508500 0.1330400 0.5086500 0.5112000 0.9069500
 > 
 > 
 > 
-> cleanEx(); nameEx("print.glmRob")
+> cleanEx()
+> nameEx("print.glmRob")
 > ### * print.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1278,7 +1247,8 @@ Residual Deviance: 3888.204
 > 
 > 
 > 
-> cleanEx(); nameEx("print.glmfm")
+> cleanEx()
+> nameEx("print.glmfm")
 > ### * print.glmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1335,7 +1305,8 @@ Classical : 556.513 on 54 degrees of freedom
 > 
 > 
 > 
-> cleanEx(); nameEx("print.lmRob")
+> cleanEx()
+> nameEx("print.lmRob")
 > ### * print.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1365,14 +1336,15 @@ lmRob(formula = Loss ~ ., data = stack.dat)
 
 Coefficients:
 (Intercept)    Air.Flow  Water.Temp  Acid.Conc. 
-    -37.652       0.798       0.577      -0.067 
+   -37.6525      0.7977      0.5773     -0.0671 
 
 Degrees of freedom: 21 total; 17 residual
 Residual standard error: 1.84 
 > 
 > 
 > 
-> cleanEx(); nameEx("print.lmfm")
+> cleanEx()
+> nameEx("print.lmfm")
 > ### * print.lmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1405,7 +1377,8 @@ Robust: 1.837073 on 17 degrees of freedom
 > 
 > 
 > 
-> cleanEx(); nameEx("print.summary.covfm")
+> cleanEx()
+> nameEx("print.summary.covfm")
 > ### * print.summary.covfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1508,7 +1481,8 @@ Classical 0.01285267 0.002962077 0.002112468 0.001634436 0.0001075257
 > 
 > 
 > 
-> cleanEx(); nameEx("print.summary.glmRob")
+> cleanEx()
+> nameEx("print.summary.glmRob")
 > ### * print.summary.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1586,7 +1560,8 @@ Base4:Trtprogabide  0.52264    -0.06402 -0.88082 -0.89436
 > 
 > 
 > 
-> cleanEx(); nameEx("print.summary.glmfm")
+> cleanEx()
+> nameEx("print.summary.glmfm")
 > ### * print.summary.glmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1664,7 +1639,8 @@ Classical: 556.5 on 54 degrees of freedom
 > 
 > 
 > 
-> cleanEx(); nameEx("print.summary.lmRob")
+> cleanEx()
+> nameEx("print.summary.lmRob")
 > ### * print.summary.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1703,7 +1679,8 @@ LS-estimate  2.640243 0.6197110
 > 
 > 
 > 
-> cleanEx(); nameEx("print.summary.lmfm")
+> cleanEx()
+> nameEx("print.summary.lmfm")
 > ### * print.summary.lmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1791,7 +1768,8 @@ LS-estimate  2.640243 0.6197110
 > 
 > 
 > 
-> cleanEx(); nameEx("stack.dat")
+> cleanEx()
+> nameEx("stack.dat")
 > ### * stack.dat
 > 
 > flush(stderr()); flush(stdout())
@@ -1830,7 +1808,8 @@ LS-estimate  2.640243 0.6197110
 > 
 > 
 > 
-> cleanEx(); nameEx("step.lmRob")
+> cleanEx()
+> nameEx("step.lmRob")
 > ### * step.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -1901,6 +1880,7 @@ Coefficients:
 Degrees of freedom: 21 total; 17 residual
 Residual standard error: 1.837073 
 > 
+> 
 > ## Try the fast procedure ##
 > step.lmRob(stack.rob, scope = my.scope, fast = TRUE)
 Start:  RFPE= 16.032 
@@ -1930,7 +1910,8 @@ Residual standard error: 1.837073
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.covfm")
+> cleanEx()
+> nameEx("summary.covfm")
 > ### * summary.covfm
 > 
 > flush(stderr()); flush(stdout())
@@ -1955,7 +1936,8 @@ Residual standard error: 1.837073
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.glmRob")
+> cleanEx()
+> nameEx("summary.glmRob")
 > ### * summary.glmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -2003,7 +1985,8 @@ Base4:Trtprogabide  0.52264463 -0.06401706 -0.88082103 -0.89435819
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.glmfm")
+> cleanEx()
+> nameEx("summary.glmfm")
 > ### * summary.glmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -2052,7 +2035,8 @@ Classical: 556.5132 on 54 degrees of freedom
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.lmRob")
+> cleanEx()
+> nameEx("summary.lmRob")
 > ### * summary.lmRob
 > 
 > flush(stderr()); flush(stdout())
@@ -2120,7 +2104,8 @@ LS-estimate  2.640243 0.6197110
 > 
 > 
 > 
-> cleanEx(); nameEx("summary.lmfm")
+> cleanEx()
+> nameEx("summary.lmfm")
 > ### * summary.lmfm
 > 
 > flush(stderr()); flush(stdout())
@@ -2173,7 +2158,8 @@ LS-estimate  2.640243 0.6197110
 > 
 > 
 > 
-> cleanEx(); nameEx("weight.funs")
+> cleanEx()
+> nameEx("weight.funs")
 > ### * weight.funs
 > 
 > flush(stderr()); flush(stdout())
@@ -2194,14 +2180,13 @@ LS-estimate  2.640243 0.6197110
 > matplot(x, f.x, type = "l", lwd = 1.5,
 +         main = "psi.weight(.) etc -- 'optimal'")
 > abline(h = 0, v = 0, lwd = 2, col = "#D3D3D380") # opaque gray
-Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...) :
-  semi-transparency is not supported on this device: reported only once per page
 > legend("bottom", leg, inset = .01,
 +        lty = 1:4, col = 1:4, lwd = 1.5, bg = "#FFFFFFC0")
 > 
 > 
 > 
-> cleanEx(); nameEx("woodmod.dat")
+> cleanEx()
+> nameEx("woodmod.dat")
 > ### * woodmod.dat
 > 
 > flush(stderr()); flush(stdout())
@@ -2246,7 +2231,7 @@ Warning in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...) :
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  18.259 0.557 19.561 0 0 
+Time elapsed:  3.175 0.079 3.256 0 0 
 > grDevices::dev.off()
 null device 
           1 

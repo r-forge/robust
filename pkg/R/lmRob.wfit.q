@@ -1,9 +1,10 @@
-lmRob.wfit <- function(x, y, w, x1=NULL, x2=NULL, x1.idx=NULL, nrep=NULL,
-                       robust.control=NULL, genetic.control=NULL, ...)
+lmRob.wfit <- function(x, y, w, x1.idx = NULL, nrep = NULL,
+                       robust.control = NULL, ...)
 {
   if(!is.numeric(x)) stop("model matrix must be numeric")
   if(!is.numeric(y)) stop("response must be numeric")
-  if(any(w < 0)) stop("negative weights not allowed")
+
+  if(any(w < 0)) stop("negative weights are not allowed")
   contr <- attr(x, "contrasts")
   has0wgts <- any(zero <- w == 0)
 
@@ -13,30 +14,38 @@ lmRob.wfit <- function(x, y, w, x1=NULL, x2=NULL, x1.idx=NULL, nrep=NULL,
     ww <- w
     x0 <- x[zero, , drop = FALSE]
     y0 <- y[zero]
-    if (!is.null(x2))
-      x2 <- x2[pos, , drop = FALSE]
-    if (!is.null(x1))
-      x1 <- x1[pos, , drop = FALSE]
+#    if(!is.null(x2))
+#      x2 <- x2[pos, , drop = FALSE]
+#    if (!is.null(x1))
+#      x1 <- x1[pos, , drop = FALSE]
+    x <- x[pos, , drop = FALSE]
     y <- y[pos]
     w <- w[pos]
   }
 
   rt.w <- sqrt(w)
-  if(!is.null(x2)) x2 <- x2 * rt.w
-  if(!is.null(x1)) x1 <- x1 * rt.w
+#  if(!is.null(x2)) x2 <- x2 * rt.w
+#  if(!is.null(x1)) x1 <- x1 * rt.w
+  x <- x * rt.w
   y <- y * rt.w
 
-  fit <- lmRob.fit.compute(x2, y, x1=x1, x1.idx=x1.idx, nrep=nrep,
-                           robust.control=robust.control,
-                           genetic.control=genetic.control, ...)
-  if(is.null(fit)) return(NULL)
+  fit <- lmRob.fit.compute(x, y, x1.idx = x1.idx, nrep = nrep,
+                           robust.control = robust.control, ...)
 
-  fit$residuals <- fit$residuals/rt.w
-  fit$fitted.values <- fit$fitted.values/rt.w
+  if(is.null(fit))
+    return(NULL)
+
+  fit$residuals <- fit$residuals / rt.w
+  fit$fitted.values <- fit$fitted.values / rt.w
 
   if(has0wgts) { # zero weights, "extend back"
     nas <- is.na(fit$coef)
-    f0 <- if(any(nas)) x0[, !nas] %*% fit$coef[!nas] else x0 %*% fit$coef
+
+    if(any(nas))
+      f0 <- x0[, !nas] %*% fit$coef[!nas]
+    else
+      f0 <- x0 %*% fit$coef
+
     r[pos] <- fit$resid
     f[pos] <- fit$fitted
     r[zero] <- y0 - f0

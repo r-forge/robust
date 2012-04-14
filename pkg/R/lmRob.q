@@ -5,17 +5,20 @@
 # Insightful Corporation                                         #
 #----------------------------------------------------------------#
 
-lmRob <- function(formula, data, weights, subset,
-		na.action, model = TRUE, x = FALSE, y = FALSE, contrasts = NULL,
-		nrep = NULL, control = lmRob.control(...),
-		genetic.control = NULL, ...)
+lmRob <- function(formula, data, weights, subset, na.action,
+                  model = TRUE, x = FALSE, y = FALSE, contrasts = NULL,
+                  nrep = NULL, control = lmRob.control(...), ...)
 {
   the.call <- match.call()
-  m <- match.call(expand = FALSE)
-  m$model <- m$x <- m$y <- m$contrasts <- m$nrep <- NULL
-  m$control <- m$genetic.control <- m$... <- NULL
-  m[[1]] <- as.name("model.frame")
-  m <- eval(m, sys.parent())
+
+  m.call <- match.call(expand.dots = FALSE)
+  m.args <- match(c("formula", "data", "subset", "weights", "na.action"),
+                  names(m.call), 0)
+  m.call <- m.call[c(1, m.args)]
+  m.call$drop.unused.levels <- TRUE
+  m.call[[1]] <- as.name("model.frame")
+  m <- eval(m.call, parent.frame())
+
   Terms <- attr(m, "terms")
   weights <- model.extract(m, weights)
   Y <- model.extract(m, "response")
@@ -35,14 +38,18 @@ lmRob <- function(formula, data, weights, subset,
   factor.vars <- names(m)[sapply(m, is.factor)]
   factors <- attr(Terms, "factors")
 
-  factors <- if(length(factors))
-    factors[factor.vars, , drop = FALSE] else matrix(0., nrow = 0, ncol = 0)
+  if(length(factors))
+    factors <- factors[factor.vars, , drop = FALSE]
+  else
+    factors <- matrix(0.0, nrow = 0, ncol = 0)
 
   order <- attr(Terms, "order")
   intercept <- attr(Terms, "intercept")
 
-  all.factors <- if(nrow(factors) > 0)
-    apply(factors > 0, 2, sum) == order else logical(0)
+  if(nrow(factors) > 0)
+    all.factors <- apply(factors > 0, 2, sum) == order
+  else
+    all.factors <- logical(0)
 
   x1.idx <- which(asgn %in% which(all.factors))
   x2.idx <- setdiff(1:(dim(X)[2]), x1.idx)
@@ -67,28 +74,26 @@ lmRob <- function(formula, data, weights, subset,
 
   ##	If X1 is empty then set it to NULL.
 
-  if(length(x1.idx))
-    X1 <- X[, x1.idx, drop = FALSE]
-  else {
-    x1.idx <- NULL
-    X1 <- NULL
-  }
+#  if(length(x1.idx))
+#    X1 <- X[, x1.idx, drop = FALSE]
+#  else {
+#    x1.idx <- NULL
+#    X1 <- NULL
+#  }
 
   ##	If X2 is empty then set it to NULL.
 
-  if(length(x2.idx))
-    X2 <- X[, x2.idx, drop = FALSE]
-  else
-    X2 <- NULL
+#  if(length(x2.idx))
+#    X2 <- X[, x2.idx, drop = FALSE]
+#  else
+#    X2 <- NULL
 
   if(length(weights))
-    fit <- lmRob.wfit(X, Y, weights, x1 = X1, x2 = X2, x1.idx = x1.idx,
-                      nrep = nrep, robust.control = control,
-                      genetic.control = genetic.control)
+    fit <- lmRob.wfit(X, Y, weights, x1.idx = x1.idx, nrep = nrep,
+                      robust.control = control)
   else
-    fit <- lmRob.fit(X, Y, x1 = X1, x2 = X2, x1.idx = x1.idx, nrep = nrep,
-                     robust.control = control,
-                     genetic.control = genetic.control)
+    fit <- lmRob.fit(X, Y, x1.idx = x1.idx, nrep = nrep,
+                     robust.control = control)
 
   if(is.null(fit))
     return(NULL)

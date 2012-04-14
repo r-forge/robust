@@ -66,26 +66,26 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 				       main = "Deviance Residuals vs. Fitted Values",
 				       ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "Deviances vs. Fitted Values")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "Deviances vs. Fitted Values")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 3 :
 	       {
 		   lmfmRespVsFittedPlot(x, ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "Response vs. Fitted Values")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "Response vs. Fitted Values")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 4 :
@@ -96,13 +96,13 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 				 ylab = "Ordered Pearson Residuals",
 				 ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "QQ-Plot of Pearson Residuals")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "QQ-Plot of Pearson Residuals")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 5 :
@@ -143,13 +143,13 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 				strip.default(..., style = 1),
 				...))
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "Deviances QQ-Plot")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "Deviances QQ-Plot")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 6 :
@@ -161,13 +161,13 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 				  ylab = "Deviance Residuals",
 				  ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "Deviance Residuals vs. Robust Distances")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "Deviance Residuals vs. Robust Distances")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 7 :
@@ -179,13 +179,13 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 				  ylab = "Deviance Residuals",
 				  ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "Deviances vs. Index")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "Deviances vs. Index")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ,
 		   ## 1+ 8 :
@@ -196,13 +196,13 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 					   ylab = "Sqrt(abs(Deviance Residuals))",
 					   ...)
 
-		   if(names(dev.cur()) == "graphsheet") {
-		       guiModify("GraphSheetPage",
-				 Name = paste("$", graph.number, sep = ""),
-				 NewName = "sqrt(abs(Deviances)) vs. Fitted Values")
-
-		       graph.number <- graph.number + 1
-		   }
+#		   if(names(dev.cur()) == "graphsheet") {
+#		       guiModify("GraphSheetPage",
+#				 Name = paste("$", graph.number, sep = ""),
+#				 NewName = "sqrt(abs(Deviances)) vs. Fitted Values")
+#
+#		       graph.number <- graph.number + 1
+#		   }
 	       }
 		   ) ## switch(pick, ..)
 

@@ -50,7 +50,8 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
   on.exit(options(warn = old.warn))
   options(warn = -1)
 
-  w.glm.fit <- glm.fit(x = x, y = y, family = binomial(), offset = offset, w = w)
+  w.glm.fit <- glm.fit(x = x, y = y, weights = w, offset = offset,
+                       family = binomial())
   w.glm.fit$call <- the.call
   w.glm.fit$control <- control
   w.glm.fit$prior.weights <- NULL

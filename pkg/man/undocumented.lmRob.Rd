@@ -15,8 +15,8 @@ These functions are used by \code{\link{lmRob}} and its methods.  They are not i
 }
 
 \usage{
-lmRob.fit(x, y, x1 = NULL, x2 = NULL, x1.idx = NULL, nrep = NULL, robust.control = NULL, genetic.control = NULL, ...)
-lmRob.wfit(x, y, w, x1 = NULL, x2 = NULL, x1.idx = NULL, nrep = NULL, robust.control = NULL, genetic.control = NULL, ...)
+lmRob.fit(x, y, x1.idx = NULL, nrep = NULL, robust.control = NULL, ...)
+lmRob.wfit(x, y, w, x1.idx = NULL, nrep = NULL, robust.control = NULL, ...)
 lmRob.const(eff, ipsi = 1)
 lmRob.eff0(mu = 1, itype = 1, iucv = 1, iwww = 1, ialfa = 1, sigmx = 1, upper = 10, til = 1e-04, maxit = 150, tol = 1e-05, epmach = .Machine$double.eps, uflow = .Machine$double.xmin, ta = 0, tb = 0, tc = 0, ipsi = 3)
 lmRob.effad(eff)
@@ -27,12 +27,9 @@ lmRob.wm(x, y, coeff0, ucov0, scale0, itype = 1, isigma = -1, ipsi = 1, xk = 0.9
 \arguments{
 \item{x}{x}
 \item{y}{y}
-\item{x1}{x1}
-\item{x2}{x2}
 \item{x1.idx}{x1.idx}
 \item{nrep}{nrep}
 \item{robust.control}{robust.control}
-\item{genetic.control}{genetic.control}
 \item{...}{...}
 \item{w}{w}
 \item{eff}{eff}

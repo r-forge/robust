@@ -11,8 +11,7 @@
 \usage{
 lmRob(formula, data, weights, subset, na.action,
       model = TRUE, x = FALSE, y = FALSE, contrasts = NULL,
-      nrep = NULL, control = lmRob.control(...),
-      genetic.control = NULL, ...)
+      nrep = NULL, control = lmRob.control(...), ...)
 }
 
 \arguments{
@@ -41,8 +40,6 @@ the number of observations. The weights must be nonnegative and it is strongly r
 \item{nrep}{the number of random subsamples to be drawn. If \code{"Exhaustive"} resampling is being used, the value of \code{nrep} is ignored.}
 
 \item{control}{a list of control parameters to be used in the numerical algorithms. See \code{\link{lmRob.control}} for the possible control parameters and their default settings.}
-
-\item{genetic.control}{a list of control parameters to be used in the genetic algorithm, if chosen.}
 
 \item{\dots}{additional arguments are passed to the ccontrol functions.}
 }
