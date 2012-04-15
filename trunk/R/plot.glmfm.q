@@ -154,7 +154,7 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 		   ,
 		   ## 1+ 6 :
 	       {
-		   lmfmSRvsRDPlot(x,
+		   lmfmResVsRDPlot(x,
 				  type = "deviance",
 				  main = "Standardized Deviance Residuals vs. Robust Distances",
 				  xlab = "Robust Distances",
@@ -172,7 +172,7 @@ plot.glmfm <- function(x, which.plots = "ask",	...)
 		   ,
 		   ## 1+ 7 :
 	       {
-		   lmfmStdResPlot(x,
+		   lmfmResVsIdxPlot(x,
 				  type = "deviance",
 				  main = "Standardized Deviance Residuals vs. Index (Time)",
 				  xlab = "Index (Time)",

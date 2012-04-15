@@ -1,10 +1,10 @@
 \name{lmfm2DRegPlot}
 \alias{lmfm2DRegPlot}
 
-\title{Data with Fit}
+\title{Scatter Plot with Overlaid Fit(s)}
 
 \description{
-Plots the linear model fits in an lmfm object over a scatterplot of the data.
+Produces a scatter plot of the data with overlaid fits.
 }
 
 \usage{

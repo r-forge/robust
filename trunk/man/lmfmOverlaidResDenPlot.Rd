@@ -1,10 +1,10 @@
 \name{lmfmOverlaidResDenPlot}
 \alias{lmfmOverlaidResDenPlot}
 
-\title{Overlaid Residual Density Plot}
+\title{Overlaid Kernel Density Estimate of Residuals}
 
 \description{
-Overlaid residual density plots for each of the models in an lmfm object.
+Produces an overlaid plot comparing kernel density estimates of the residuals.
 }
 
 \usage{

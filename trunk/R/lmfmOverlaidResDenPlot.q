@@ -10,13 +10,13 @@ lmfmOverlaidResDenPlot <- function(x, main, xlab, ylab, ...)
   mod.names <- names(x)
 
   if(missing(main))
-    main <- "Kernel Density of Residuals"
+    main <- "Kernel Density Estimate of Residuals"
 
   if(missing(xlab))
     xlab <- "Residuals"
 
   if(missing(ylab))
-    ylab <- "Kernel Density"
+    ylab <- "Density"
 
 	res <- sapply(x, residuals)
 	denx <- deny <- matrix(0, 100, n.models)
@@ -38,14 +38,8 @@ lmfmOverlaidResDenPlot <- function(x, main, xlab, ylab, ...)
     lwd = n.models:1,
     ...)
 
-  key(max(denx), max(deny),
-    text = list(mod.names),
-    lines = list(type = "l",
-              col = 1:n.models,
-              lty = 1:n.models,
-              lwd = n.models:1),
-    corner = c(1, 1),
-    transparent = TRUE)
+  legend(x = "topleft", legend = mod.names, col = 1:n.models, lty = 1:n.models,
+         lwd = n.models:1, bty = "n")
 
   invisible(x)
 }

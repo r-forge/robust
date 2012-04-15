@@ -57,8 +57,8 @@ The selected plots are drawn on a graphics device.
   \code{\link{lmfmResVsFittedPlot}},
   \code{\link{lmfmRespVsFittedPlot}},
   \code{\link{lmfmResQQPlot}},
-  \code{\link{lmfmSRvsRDPlot}}.
-  \code{\link{lmfmStdResPlot}},
+  \code{\link{lmfmResVsRDPlot}}.
+  \code{\link{lmfmResVsIdxPlot}},
   \code{\link{lmfmSqrtResVsFittedPlot}}.
 }
 

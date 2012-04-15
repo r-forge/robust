@@ -1,14 +1,14 @@
-\name{lmfmSRvsRDPlot}
-\alias{lmfmSRvsRDPlot}
+\name{lmfmResVsRDPlot}
+\alias{lmfmResVsRDPlot}
 
-\title{Standardized Residuals versus Robust Distances Plot}
+\title{Residuals vs. Robust Distances Plot}
 
 \description{
-Produces side-by-side residuals versus robust distances plots from an lmfm object.
+Produces a side-by-side plot of the residuals versus the robust distances.
 }
 
 \usage{
-lmfmSRvsRDPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, ...)
+lmfmResVsRDPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -26,11 +26,11 @@ lmfmSRvsRDPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, .
 
   \item{ylab}{a character string specifying the y-axis label.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

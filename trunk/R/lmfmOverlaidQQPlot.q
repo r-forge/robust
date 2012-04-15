@@ -10,7 +10,7 @@ lmfmOverlaidQQPlot <- function(x, main, xlab, ylab, ...)
     xlab <- "Quantiles of Standard Normal"
 
   if(missing(ylab))
-    ylab <- "Residuals"
+    ylab <- "Ordered Residuals"
 
   model <- sapply(x, function(u) !is.null(u$model))
 
@@ -32,10 +32,8 @@ lmfmOverlaidQQPlot <- function(x, main, xlab, ylab, ...)
     main = main,
     ...)
 
-  key(min(px), max(py),
-    text = list(mod.names),
-    lines = list(type = "p", col = 1:n.models, pch = 1:n.models),
-    transparent = TRUE)
+  legend(x = "topleft", legend = mod.names, col = 1:n.models, pch = 1:n.models,
+         bty = "n")
 
   invisible(x)
 }

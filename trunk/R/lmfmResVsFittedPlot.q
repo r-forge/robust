@@ -1,5 +1,6 @@
 lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
-  rugplot = FALSE, id.n = 3, main, xlab, ylab, ...)
+                                rugplot = FALSE, id.n = 3, main, xlab, ylab,
+                                ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -21,24 +22,27 @@ lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
     panel.abline(h = 0, lty = 2)
     invisible()
   }
-    
+
+  mod <- factor(rep(mod.names, each = n), levels = mod.names)
+
   df <- data.frame(r = as.vector(sapply(x, residuals, type = type)),
-    f = as.vector(sapply(x, predict)),
-    mod = rep(mod.names, each = n))
+                   f = as.vector(sapply(x, fitted)),
+                   mod = mod)
 
-  print(xyplot(r ~ f | mod,
-    data = df,
-    xlab = xlab,
-    ylab = ylab,
-    main = main,
-    panel = panel.special,
-    smooths = smooths,
-    rugplot = rugplot,
-    id.n = id.n,
-    strip = function(...) strip.default(..., style = 1),
-    layout = c(n.models, 1, 1),
-    ...))
+  p <- xyplot(r ~ f | mod,
+              data = df,
+              xlab = xlab,
+              ylab = ylab,
+              main = main,
+              panel = panel.special,
+              smooths = smooths,
+              rugplot = rugplot,
+              id.n = id.n,
+              strip = function(...) strip.default(..., style = 1),
+              layout = c(n.models, 1, 1),
+              ...)
 
-  invisible(x)
+  print(p)
+  invisible(p)
 }
 

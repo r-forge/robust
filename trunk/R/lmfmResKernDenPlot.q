@@ -1,20 +1,22 @@
-lmfmResKernDenPlot <- function(x, ...)
+lmfmResKernDenPlot <- function(x, n = 512, main, xlab, ylab, ...)
 {
-  bandwidth.nrd <- function(x) {
-    r <- quantile(x, c(0.25, 0.75), na.rm = TRUE)
-    h <- (r[2] - r[1])/1.34
-    4 * 1.06 * min(sqrt(var(x, na.rm = TRUE)), h) * length(x)^{-1/5}
-  }
+  if(missing(main))
+    main <- "Kernel Density Estimate of Residuals"
+
+  if(missing(xlab))
+    xlab <- "Residuals"
+
+  if(missing(ylab))
+    ylab <- "Density"
 
   n.models <- length(x)
   mod.names <- names(x)
 
 	res <- sapply(x, residuals)
-	denx <- deny <- matrix(0, 100, n.models)
+	denx <- deny <- matrix(0, n, n.models)
 
 	for(i in 1:n.models) {
-		b <- bandwidth.nrd(res[, i])
-		den <- density(res[, i], width = b, n = 100, na.rm = TRUE)
+		den <- density(res[, i], bw = "SJ", n = n, na.rm = TRUE)
 		denx[, i] <- den$x
 		deny[, i] <- den$y
 	}
@@ -25,22 +27,25 @@ lmfmResKernDenPlot <- function(x, ...)
     panel.abline(v = 0, lty = 2)
     invisible()
   }
-    
-  df <- data.frame(denx = as.vector(denx),
-      deny = as.vector(deny),
-      mod = rep(mod.names, rep(100, n.models)))
-        
-  print(xyplot(deny ~ denx | mod,
-    data = df,
-    xlab = "Residuals",
-    ylab = "Kernel Density",
-    panel = panel.special,
-    main = "Kernel Density of Residuals",
-    strip = function(...) strip.default(..., style = 1),
-    layout = c(n.models, 1, 1),
-    ...))
 
-  invisible(x)
+  mod <- factor(rep(mod.names, each = n), levels = mod.names)
+
+  df <- data.frame(denx = as.vector(denx),
+                   deny = as.vector(deny),
+                   mod = mod)
+
+  p <- xyplot(deny ~ denx | mod,
+              data = df,
+              xlab = xlab,
+              ylab = ylab,
+              panel = panel.special,
+              main = main,
+              strip = function(...) strip.default(..., style = 1),
+              layout = c(n.models, 1, 1),
+              ...)
+
+  print(p)
+  invisible(p)
 }
 
 
