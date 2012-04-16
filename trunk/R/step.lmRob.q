@@ -1,6 +1,5 @@
-step.lmRob <- function(object, scope, scale, direction =
-	c("both", "backward", "forward"), trace = TRUE, keep = NULL,
-	steps = 1000, fast = FALSE, ...)
+step.lmRob <- function(object, scope, scale, direction = c("both", "backward", "forward"),
+                       trace = TRUE, keep = NULL, steps = 1000, fast = FALSE, ...)
 {
 	if(missing(direction))
 		direction <- "backward"
@@ -10,21 +9,21 @@ step.lmRob <- function(object, scope, scale, direction =
 	if(direction != "backward")
 		stop("Presently step.lmRob only supports backward model selection.")
 
-	sub.assign <- function(terms, assign)
-	{
-		a <- attributes(terms)
-		tl <- a$term.labels
-		if(a$intercept)
-			tl <- c(names(assign)[1], tl)
-		asgn <- assign[tl]
-		poi <- 0
-		for(i in tl) {
-			la <- length(asgn[[i]])
-			asgn[[i]] <- seq(poi + 1, poi + la)
-			poi <- poi + la
-		}
-		asgn
-	}
+#	sub.assign <- function(terms, assign)
+#	{
+#		a <- attributes(terms)
+#		tl <- a$term.labels
+#		if(a$intercept)
+#			tl <- c(names(assign)[1], tl)
+#		asgn <- assign[tl]
+#		poi <- 0
+#		for(i in tl) {
+#			la <- length(asgn[[i]])
+#			asgn[[i]] <- seq(poi + 1, poi + la)
+#			poi <- poi + la
+#		}
+#		asgn
+#	}
 
 	re.arrange <- function(keep)
 	{
@@ -60,7 +59,6 @@ step.lmRob <- function(object, scope, scale, direction =
 		fdrop <- numeric(0)
 		fadd <- NULL
 	}
-
 
 	else {
 		if(is.list(scope)) {
@@ -111,8 +109,8 @@ step.lmRob <- function(object, scope, scale, direction =
 	Asgn <- attr(x, "assign")
   term.labels <- attr(Terms, "term.labels")
 
-  if(!is.list(Asgn))
-    Asgn <- splus.assign(Asgn, term.labels)
+#  if(!is.list(Asgn))
+#    Asgn <- splus.assign(Asgn, term.labels)
 
 	a <- attributes(m)
 	y <- model.extract(m, "response")
@@ -132,6 +130,7 @@ step.lmRob <- function(object, scope, scale, direction =
 	scale <- object$scale
 	fit <- object
 #	cf <- attributes(coef(object))
+
 	#check if any terms have zero df
 #	if(cf$singular) {
 #		TT <- !match(TL <- attr(object$terms, "term.labels"), names(cf$assign), FALSE)
@@ -165,7 +164,7 @@ step.lmRob <- function(object, scope, scale, direction =
 		change <- NULL
 
 		if(backward && (ndrop <- length(scope$drop))) {
-			aod <- drop1.lmRob(fit, scope$drop, scale, fast = fast)
+			aod <- drop1.lmRob(fit, scope$drop, scale)
 			if(trace)
 				print(aod)
 			change <- rep("-", ndrop + 1)
@@ -195,8 +194,8 @@ step.lmRob <- function(object, scope, scale, direction =
 		change <- paste(change[o], dimnames(aod)[[1]][o])
 		Terms <- terms(update(formula(fit), eval(parse(text = paste("~ .", change)))))
 		attr(Terms, "formula") <- new.formula <- formula(Terms)
-		asgn <- sub.assign(Terms, Asgn)
-		tx <- x[, unlist(Asgn[names(asgn)]), drop = FALSE]
+		#asgn <- sub.assign(Terms, Asgn)
+		#tx <- x[, unlist(Asgn[names(asgn)]), drop = FALSE]
 		newfit <- lmRob(new.formula, data = m, control = robust.control)
 		bRFPE <- aod[, "RFPE"][o]
 

@@ -68,9 +68,9 @@ covfmEllipsesPlot <- function(x, ...)
     for(i in 1:length(z))
       polygon(z[[i]], density = 0, lty = i, col = i, lwd = i)
 
-    key(corner = if(x[[1]]$cov[1,2] > 0) c(1,0) else c(0,0),
-      text = names(x),
-      lines = list(col = 1:n.models, lty = 1:n.models, lwd = 1:n.models))
+    pos <- ifelse(x[[1]]$cov[1,2] > 0, "topleft", "topright")
+    legend(x = pos, legend = mod.names, col = 1:n.models, lty = 1:n.models,
+           lwd = 1:n.models, bty = "n")
   }
 
 ## if p > 2 plot matrix of ellipses ##
@@ -115,10 +115,9 @@ covfmEllipsesPlot <- function(x, ...)
     lcy <- cbind(rep(0.5, p), p:1)
     text(lcx, labels = dimnames(X)[[2]], cex = 1, adj = 0, srt = 90)
     text(lcy, labels = dimnames(X)[[1]], cex = 1, adj = 1)
-    key(x = (p + 1) / 2, y = 0, corner = c(0.5, 0),
-      text = mod.names,
-      lines = list(col = 1:n.models, lwd = 1),
-      transparent = TRUE)
+
+    legend(x = "bottom", legend = mod.names, lty = 1, col = 1:n.models,
+           bty = "n")
   }
 
   invisible(x)
