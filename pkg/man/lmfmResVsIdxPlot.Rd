@@ -1,14 +1,14 @@
-\name{lmfmStdResPlot}
-\alias{lmfmStdResPlot}
+\name{lmfmResVsIdxPlot}
+\alias{lmfmResVsIdxPlot}
 
-\title{Standardized Residual Plot}
+\title{Residuals vs. Index (Time) Plot}
 
 \description{
-Produces side-by-side standardized residual plots from an lmfm object.
+Produces a side-by-side plot of the residuals vs. index (time).
 }
 
 \usage{
-lmfmStdResPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, ...)
+lmfmResVsIdxPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -26,11 +26,11 @@ lmfmStdResPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, .
 
   \item{ylab}{a character string specifying the y-axis label.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

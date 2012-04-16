@@ -1,10 +1,10 @@
 \name{lmfmOverlaidQQPlot}
 \alias{lmfmOverlaidQQPlot}
 
-\title{Overlaid QQ Plot}
+\title{Overlaid Normal QQ Plot of Residuals}
 
 \description{
-Overlaid residual qqplots for each of the models in an lmfm object.
+Produces an overlaid plot comparing residuals QQ plots.
 }
 
 \usage{

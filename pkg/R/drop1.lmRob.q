@@ -9,8 +9,8 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
   asgn <- attr(x, "assign")
   term.labels <- attr(object$terms, "term.labels")
 
-  if(!is.list(asgn))
-    asgn  <- splus.assign(asgn, term.labels)
+  dfs <- table(asgn[asgn > 0])
+  names(dfs) <- term.labels
 
   psif <- object$robust.control$weight
 
@@ -19,23 +19,20 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
 
   else {
     if(!is.character(scope))
-      scope <- attr(terms(update.formula(object,scope)), "term.labels")
+      scope <- attr(terms(update.formula(object, scope)), "term.labels")
 
     if(!all(match(scope, term.labels, FALSE)))
       stop("scope is not a subset of term labels")
   }
 
-  p <- length(asgn)  
-  asgn <- asgn[scope]
+  dfs <- dfs[scope]
   k <- length(scope)
 
-  if(missing(scale)) 
+  if(missing(scale))
     scale <- object$scale
 
   if(object$est == "initial")
 		warning("Inference based on initial estimates is not recommended.")
-
-  rfpe.none <- lmRob.RFPE(object, scale)
 
   if(!missing(keep)) {
     max.keep <- c("coefficients", "fitted", "residuals")
@@ -56,10 +53,12 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
   else
     keep <- character(0)
 
-  dfs <- double(k)
   rfpe <- double(k)
 
   if(fast) {
+    warning("The fast algorithm in drop1.lmRob is not very reliable.")
+    stop("The fast algorithm in drop1.lmRob is broken in this version of the Robust Library")
+
     Weights <- object$M.weights
     ipsi <- 1
     xk <- .9440982
@@ -130,7 +129,7 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
 								ipsi = ipsi, xk = xk, beta = beta, wgt = y, tlo = tlo, tua = tua,
 								mxr = mxr)
 
-      rfpe[i] <- rfpe.compute(curobj$rs, scale, ipsi, yc, p - 1)
+      rfpe[i] <- rfpe.compute(curobj$rs, scale, ipsi, yc, ncol(curx) - 1)
 
       if(length(keep)) {
         value[i,1] <- list(curobj$theta)
@@ -142,9 +141,6 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
 
   else {
     for(i in 1:k) {
-      ii <- asgn[[i]]
-      pii <- length(ii)
-      dfs[i] <- pii
       curfrm <- as.formula(paste(".~.-", scope[[i]]))
       curobj <- update(object, curfrm)
       rfpe[i] <- lmRob.RFPE(curobj, scale)
@@ -158,7 +154,7 @@ drop1.lmRob <- function(object, scope, scale, keep, fast = FALSE, ...)
   
   scope <- c("<none>", scope)
   dfs <- c(0, dfs)
-  rfpe <- c(rfpe.none, rfpe)
+  rfpe <- c(lmRob.RFPE(object, scale), rfpe)
   dfs[1] <- NA
   aod <- data.frame(Df=dfs, RFPE=rfpe, row.names=scope, check.names=FALSE)
 

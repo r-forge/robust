@@ -8,7 +8,7 @@ Creates a set plots useful for comparing the fitted linear models in an lmfm obj
 }
 
 \usage{
-\method{plot}{lmfm}(x, which.plots = "ask",  ...)
+\method{plot}{lmfm}(x, which.plots = ifelse(interactive(), "ask", "all"),  ...)
 }
 
 \arguments{
@@ -43,11 +43,11 @@ Atkinson, A. C. (1985).  Plots, Transformations and Regression. New York: Oxford
 \code{\link{lmfmSqrtResVsFittedPlot}},
 \code{\link{lmfmOverlaidQQPlot}},
 \code{\link{lmfmResVsFittedPlot}},
-\code{\link{lmfmStdResPlot}},
+\code{\link{lmfmResVsIdxPlot}},
 \code{\link{lmfmOverlaidResDenPlot}},
 \code{\link{lmfmRespVsFittedPlot}},
 \code{\link{lmfmResKernDenPlot}},
-\code{\link{lmfmSRvsRDPlot}}.
+\code{\link{lmfmResVsRDPlot}}.
 }
 
 \examples{

@@ -8,7 +8,7 @@ Produces side-by-side response versus fitted value plots from an lmfm object.
 }
 
 \usage{
-lmfmRespVsFittedPlot(x, smooths = FALSE, rugplot = FALSE, ...)
+lmfmRespVsFittedPlot(x, smooths = FALSE, rugplot = FALSE, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -18,11 +18,17 @@ lmfmRespVsFittedPlot(x, smooths = FALSE, rugplot = FALSE, ...)
 
   \item{rugplot}{a logical value.  If TRUE then a rugplot is added to each panel of the plot.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{main}{a character string specifying the plot title.}
+
+  \item{xlab}{a character string specifying the x-axis label.}
+
+  \item{ylab}{a character string specifying the y-axis label.}
+
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

@@ -3,9 +3,7 @@ lmRob.RFPE <- function(object, scale = NULL)
   if(object$est == "initial")
     warning("Inference based on initial estimates is not recommended.")
 
-  tmp <- object$robust.control$final.alg
-
-  if(casefold(tmp) == "adaptive")
+  if(casefold(object$robust.control$final.alg) != "mm")
     stop("RFPE is only available for final MM-estimates.")
 
   p <- length(object$coef)
@@ -17,7 +15,7 @@ lmRob.RFPE <- function(object, scale = NULL)
   psif <- object$robust.control$weight
   efficiency <- object$robust.control$efficiency
 
-  if (casefold(psif[2]) == "optimal")
+  if(casefold(psif[2]) == "optimal")
 		ipsi <- 1
 	else
 		ipsi <- 2

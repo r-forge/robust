@@ -7,12 +7,12 @@ lmfm2DRegPlot <- function(x, cutoff = TRUE, main, xlab, ylab, ...)
 
   if(!any(model))
     stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
-          "contain a model frame component")
+         "contain a model frame component")
 
   model <- x[[(1:n.models)[model][1]]]$model
 
   if(ncol(model) != 2)
-    stop("This method is only applicable to simple linear regression models")
+    stop("This method requires a simple linear regression model")
 
   var.names <- attributes(model)$names
 
@@ -53,10 +53,8 @@ lmfm2DRegPlot <- function(x, cutoff = TRUE, main, xlab, ylab, ...)
     }
   }
 
-  key(text = mod.names,
-    lines = list(lty = the.lines, lwd = the.wd),
-    transparent = TRUE,
-    corner = c(.5, 0))
+  pos <- ifelse(coef(x[[1]])[2] > 0, "topleft", "topright")
+  legend(x = pos, legend = mod.names, lty = the.lines, lwd = the.wd, bty = "n")
 
   invisible(x)
 }

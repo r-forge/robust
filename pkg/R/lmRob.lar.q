@@ -8,10 +8,10 @@ lmRob.lar <- function(x, y, tol=1e-6)
   storage.mode(x) <- "double"
   storage.mode(y) <- "double"
   bet0 <- 0.773372647623  ## bet0 = pnorm(0.75)
-  tmpn <- double(n)
-  tmpp <- double(p)
+  #tmpn <- double(n)
+  #tmpp <- double(p)
 
-  z1 <- .Fortran("rllarsbi", ##-> ../src/lmrobbi.f
+  z1 <- .Fortran("rllarsbi",   ##-> ../src/lmrobbi.f
                  x,
                  y,
                  as.integer(n),
@@ -19,24 +19,25 @@ lmRob.lar <- function(x, y, tol=1e-6)
                  as.integer(n),
                  as.integer(n),
                  as.double(tol),
-                 NIT=integer(1),
-                 K=integer(1),
-                 KODE=integer(1),
-                 SIGMA=double(1),
-                 THETA=tmpn,
-                 RS=tmpn,
-                 SC1=tmpn,
-                 SC2=tmpp,
-                 SC3=tmpp,
-                 SC4=tmpp,
-                 BET0=as.double(bet0),
-                 PACKAGE = "robust")[c("THETA","SIGMA","RS","NIT")]
-  names(z1) <- c("coef", "scale","resid","iter")
-  ##           c("THETA","SIGMA", "RS",  "NIT")
+                 NIT = integer(1),
+                 K = integer(1),
+                 KODE = integer(1),
+                 SIGMA = double(1),
+                 THETA = double(n),
+                 RS = double(n),
+                 SC1 = double(n),
+                 SC2 = double(p),
+                 SC3 = double(p),
+                 SC4 = double(p),
+                 BET0 = as.double(bet0),
+                 PACKAGE = "robust")[c("THETA", "SIGMA", "RS", "NIT")]
+
+  names(z1) <- c("coef", "scale", "resid", "iter")
   length(z1$coef) <- p
+
   z1
-  ##list(coef=z1$THETA[1:p], scale=z1$SIGMA, resid=z1$RS)
 }
 
 
-
+  ##           c("THETA","SIGMA", "RS",  "NIT")
+  ##list(coef=z1$THETA[1:p], scale=z1$SIGMA, resid=z1$RS)

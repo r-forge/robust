@@ -1881,34 +1881,6 @@ Degrees of freedom: 21 total; 17 residual
 Residual standard error: 1.837073 
 > 
 > 
-> ## Try the fast procedure ##
-> step.lmRob(stack.rob, scope = my.scope, fast = TRUE)
-Start:  RFPE= 16.032 
- Loss ~ Air.Flow + Water.Temp + Acid.Conc. 
-
-
-Single term deletions
-
-Model:
-Loss ~ Air.Flow + Water.Temp + Acid.Conc.
-
-scale:  1.837073 
-
-           Df    RFPE
-<none>         16.032
-Air.Flow    1 166.599
-Acid.Conc.  1  19.618
-Call:
-lmRob(formula = Loss ~ ., data = stack.dat)
-
-Coefficients:
- (Intercept)     Air.Flow   Water.Temp   Acid.Conc. 
--37.65245890   0.79768556   0.57734046  -0.06706018 
-
-Degrees of freedom: 21 total; 17 residual
-Residual standard error: 1.837073 
-> 
-> 
 > 
 > cleanEx()
 > nameEx("summary.covfm")
@@ -2231,7 +2203,7 @@ LS-estimate  2.640243 0.6197110
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.175 0.079 3.256 0 0 
+Time elapsed:  3.114 0.075 3.191 0 0 
 > grDevices::dev.off()
 null device 
           1 

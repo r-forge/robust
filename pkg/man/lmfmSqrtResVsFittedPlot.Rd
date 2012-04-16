@@ -1,10 +1,10 @@
 \name{lmfmSqrtResVsFittedPlot}
 \alias{lmfmSqrtResVsFittedPlot}
 
-\title{Squared Root of Residuals versus Fitted Values Plot}
+\title{Square Root of Absolute Residuals vs. Fitted Values Plot}
 
 \description{
-Produces side-by-side square root of residuals versus fitted values plots from an lmfm object.
+Produces a side-by-side plot of the square root of the absolute values of the residuals versus the fitted values.
 }
 
 \usage{
@@ -28,11 +28,11 @@ lmfmSqrtResVsFittedPlot(x, type = "response", smooths = FALSE, rugplot = FALSE, 
 
   \item{ylab}{a character string specifying the y-axis label.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

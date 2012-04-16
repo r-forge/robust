@@ -28,7 +28,7 @@ step.lmRob(object, scope, scale,
 
 \item{steps}{an integer value specifying the the maximum number of steps to be considered.  The default is 1000 (essentially as many as required).  It is typically used to stop the process early.}
 
-\item{fast}{a logical value.  If \code{TRUE} the robust initial estimate (used when fitting each of the reduced models) is replaced by a weighted least squares estimate using the robust weights computed for the current fit.}
+\item{fast}{a logical value.  If \code{TRUE} the robust initial estimate (used when fitting each of the reduced models) is replaced by a weighted least squares estimate using the robust weights computed for the current fit.  Note: the fast algorithm does not work in this version of the Robust Library.}
 
 \item{\dots}{additional arguments required by the generic step function.}
 }
@@ -57,10 +57,6 @@ step.lmRob(stack.rob)
 ## Keep Water.Temp in the model ##
 my.scope <- list(lower = . ~ Water.Temp, upper = . ~ .)
 step.lmRob(stack.rob, scope = my.scope)
-
-
-## Try the fast procedure ##
-step.lmRob(stack.rob, scope = my.scope, fast = TRUE)
 }
 
 \keyword{robust}

@@ -14,8 +14,6 @@ anova.glmRob <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 	m <- model.frame(object)
 	x <- model.matrix(Terms, m, contrasts = object$contrasts)
 	asgn <- attr(x, "assign")
-  if(!is.list(asgn))
-    asgn <- splus.assign(asgn, term.labels)
 
 	control <- object$control
 
@@ -59,7 +57,10 @@ anova.glmRob <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 
 	if(nt > 1) {
 		for(iterm in seq(nt, 2)) {
-			x <- x[ , -(asgn[[(term.labels[iterm])]]), drop = FALSE]
+
+      idx <- which(asgn == iterm)
+			x <- x[ , -idx, drop = FALSE]
+      asgn <- asgn[-idx]
 
 			fit.call <- object$call
 			fit.call[[1]] <- as.name(paste('glmRob.', object$method, sep = ''))

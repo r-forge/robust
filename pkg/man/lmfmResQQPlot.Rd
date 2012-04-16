@@ -1,14 +1,14 @@
 \name{lmfmResQQPlot}
 \alias{lmfmResQQPlot}
 
-\title{Residual QQ-Plots with Confidence Envelope}
+\title{Residual QQ Plot}
 
 \description{
-Produces side-by-side residual qq-plots from an lmfm object.  A simulated confidence envelope is provided for each plot.
+Produces a side-by-side QQ plot os the residuals against standard normal quantiles.  A simulated confidence envelope is provided for each plot.
 }
 
 \usage{
-lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 100, level = 0.95, id.n = 3, robustQQline = TRUE, main, xlab, ylab, ...)
+lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 250, level = 0.95, id.n = 3, robustQQline = TRUE, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -34,11 +34,11 @@ lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samp
 
   \item{ylab}{a character string specifying the y-axis label.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

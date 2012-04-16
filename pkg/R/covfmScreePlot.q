@@ -24,12 +24,8 @@ covfmScreePlot <- function(x, variables, ...)
   axis(2)
   axis(1, at = 1:length(variables), labels = paste("Eval.", variables))
 
-  key(text = list(mod.names),
-    lines = list(type = "o",
-                 pch = 1:n.models,
-                 lty = 1:n.models,
-                 col = 1:n.models),
-    transparent = TRUE)
+  legend(x = "topleft", legend = mod.names, pch = 1:n.models, lty = 1:n.models,
+         col = 1:n.models)
 
   invisible(x)
 }

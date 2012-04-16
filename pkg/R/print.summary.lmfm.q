@@ -11,7 +11,6 @@ print.summary.lmfm <- function(x, ...)
 		print(x[[i]]$call, ...)
 	}
 
-
 	resid.qrtls <- t(sapply(x, function(u)
     quantile(residuals(u), na.rm = TRUE)))
 	dimnames(resid.qrtls) <- list(paste(fancy.names, ":", sep = ""),
@@ -19,7 +18,6 @@ print.summary.lmfm <- function(x, ...)
 
 	cat("\nResidual Statistics:\n")
 	print(resid.qrtls, ...)
-
 
   coefs <- lapply(x, function(u) u$coefficients)
   coef.names <- format(dimnames(coefs[[1]])[[1]], justify = "right")
