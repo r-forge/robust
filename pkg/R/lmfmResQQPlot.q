@@ -63,10 +63,15 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
     for(i in 1:n.models) {
       if(!is.null(x[[i]]$scale))
         sigma.hats[i] <- x[[i]]$scale
-      else if(!is.null(summary(x[[i]])$sigma))
-        sigma.hats[i] <- summary(x[[i]])$sigma
-      else
-        stop("unable to determine residual scale")
+      else {
+        x.sum <- summary(x[[i]])
+        if(!is.null(x.sum$dispersion))
+          sigma.hats[i] <- sqrt(x.sum$dispersion)
+        else if(!is.null(x.sum$sigma))
+          sigma.hats[i] <- x.sum$sigma
+        else
+          stop("unable to determine residual scale")
+      }
     }
 
     env <- normal.simulation.envelope(n, n.samples = n.samples, sd = sigma.hats,
@@ -125,7 +130,9 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
     df <- data.frame(
       py = c(as.vector(py), as.vector(env$lower), as.vector(env$upper)),
       px = rep(as.vector(px), 3),
-      grp = c(rep("data", n * n.models), rep("min", n * n.models), rep("max", n * n.models)),
+      grp = c(rep("data", n * n.models),
+              rep("min", n * n.models),
+              rep("max", n * n.models)),
       mod = mod)
 
     panel.special <- function(x, y, id.n, robQQln, ...) {
