@@ -1,4 +1,5 @@
-covfmSqrtMDPlot <- function(x, chisq.percent = 0.975, id.n = 3, ...)
+covfmSqrtMDPlot <- function(x, chisq.percent = 0.975, id.n = 3, main, xlab,
+                            ylab,  ...)
 {
 	n.models <- length(x)
 	mod.names <- names(x)
@@ -12,6 +13,15 @@ covfmSqrtMDPlot <- function(x, chisq.percent = 0.975, id.n = 3, ...)
   vt <- sqrt(qchisq(chisq.percent, df = p))
   y.range <- c(0, max(dists))
   y.range[2] <- max(y.range[2], 1.1 * vt)
+
+  if(missing(main))
+    main <- ""
+
+  if(missing(xlab))
+    xlab <- "Index"
+
+  if(missing(ylab))
+    ylab <- "Square Root of Mahalanobis Distance"
 
   panel.special <- function(x, y, vt = 2.5, id.n = 3) {
     panel.xyplot(x, y, pch = 16)
@@ -27,20 +37,24 @@ covfmSqrtMDPlot <- function(x, chisq.percent = 0.975, id.n = 3, ...)
     invisible()
   }
 
-  tdf <- data.frame(dists = dists, lab = rep(1:n, n.models),
-           mod = rep(mod.names, rep(n, n.models)))
+  mod <- factor(rep(mod.names, each = n), levels = mod.names)
 
-  print(xyplot(dists ~ lab | mod,
-    data = tdf,
-    ylab = "Square Root of Mahalanobis Distance",
-    xlab = "Index",
-    panel = panel.special,
-    strip = function(...)
-      strip.default(..., style = 1),
-    id.n = id.n,
-    vt = vt,
-    ...))
+  tdf <- data.frame(dists = dists,
+                    lab = rep(1:n, n.models),
+                    mod = mod)
 
-  invisible(x)
+  p <- xyplot(dists ~ lab | mod,
+              data = tdf,
+              main = main,
+              xlab = xlab,
+              ylab = ylab,
+              panel = panel.special,
+              strip = function(...) strip.default(..., style = 1),
+              id.n = id.n,
+              vt = vt,
+              ...)
+
+  print(p)
+  invisible(p)
 }
 

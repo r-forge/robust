@@ -8,12 +8,18 @@
 }
 
 \usage{
-  covfmEllipsesPlot(x, ...)
+  covfmEllipsesPlot(x, main, xlab, ylab, ...)
 }
 
 \arguments{
   \item{x}{an object of class \code{"covfm"} containing 2 elements,
     typically the result of \code{\link{fit.models}(..)}.}
+
+  \item{main}{a character string specifying the plot title.}
+
+  \item{xlab}{a character string specifying the x-axis label.}
+
+  \item{ylab}{a character string specifying the y-axis label.}
 
   \item{\dots}{additional arguments are passed to the low-level plotting functions.}
 }

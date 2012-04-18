@@ -14,14 +14,14 @@ plot.cov <- function(x, which.plots = "ask", ...)
 	x.name <- deparse(substitute(x))
 	model.list <- list(x$call)
 	names(model.list) <- x.name
-	x <- list(x = x)
-	names(x) <- x.name
-	attr(x, "model.list") <- model.list
-  oldClass(x) <- "covfm"
+	fm <- list(x = x)
+	names(fm) <- x.name
+	attr(fm, "model.list") <- model.list
+  oldClass(fm) <- "covfm"
 
-  plot(x, which.plots = which.plots, ...)
+  plot(fm, which.plots = which.plots, ...)
 
-	invisible(x[[1]])
+	invisible(x)
 }
 
 

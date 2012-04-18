@@ -46,7 +46,7 @@
 		0E4500160A029C050064D9A4 /* cov.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = cov.q; path = R/cov.q; sourceTree = SOURCE_ROOT; };
 		0E4500170A029C050064D9A4 /* covRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.control.q; path = R/covRob.control.q; sourceTree = SOURCE_ROOT; };
 		0E4500180A029C050064D9A4 /* covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.q; path = R/covRob.q; sourceTree = SOURCE_ROOT; };
-		0E4500190A029C050064D9A4 /* covfmDistance2Plot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistance2Plot.q; path = R/covfmDistance2Plot.q; sourceTree = SOURCE_ROOT; };
+		0E4500190A029C050064D9A4 /* covfmDistancePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; name = covfmDistancePlot.q; path = R/covfmDistancePlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.q; path = R/covfmEllipsesPlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001B0A029C050064D9A4 /* covfmScreePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.q; path = R/covfmScreePlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.q; path = R/covfmSqrtMDPlot.q; sourceTree = SOURCE_ROOT; };
@@ -353,7 +353,7 @@
 		0EBC2E410A2F71CE00C89C9F /* weights.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weights.lmRob.q; path = R/weights.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E440A2F726C00C89C9F /* gen.data.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.q; path = R/gen.data.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E460A2F728F00C89C9F /* Copyright */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = Copyright; path = inst/Copyright; sourceTree = SOURCE_ROOT; };
-		0EBC2E4C0A2F72B600C89C9F /* covfmDistance2Plot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistance2Plot.Rd; path = man/covfmDistance2Plot.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; name = covfmDistancePlot.Rd; path = man/covfmDistancePlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4D0A2F72B600C89C9F /* covfmEllipsesPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.Rd; path = man/covfmEllipsesPlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4E0A2F72B600C89C9F /* covfmScreePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.Rd; path = man/covfmScreePlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4F0A2F72B600C89C9F /* covfmSqrtMDPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.Rd; path = man/covfmSqrtMDPlot.Rd; sourceTree = SOURCE_ROOT; };
@@ -1122,7 +1122,7 @@
 				0E45002F0A029C060064D9A4 /* summary.covfm.q */,
 				0E45002B0A029C050064D9A4 /* print.summary.covfm.q */,
 				0E4500250A029C050064D9A4 /* plot.covfm.q */,
-				0E4500190A029C050064D9A4 /* covfmDistance2Plot.q */,
+				0E4500190A029C050064D9A4 /* covfmDistancePlot.q */,
 				0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */,
 				0E45001B0A029C050064D9A4 /* covfmScreePlot.q */,
 				0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */,
@@ -1174,7 +1174,7 @@
 				0E45000F0A029C050064D9A4 /* summary.covfm.Rd */,
 				0E45000B0A029C050064D9A4 /* print.summary.covfm.Rd */,
 				0E4500090A029C050064D9A4 /* plot.covfm.Rd */,
-				0EBC2E4C0A2F72B600C89C9F /* covfmDistance2Plot.Rd */,
+				0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */,
 				0EBC2E4D0A2F72B600C89C9F /* covfmEllipsesPlot.Rd */,
 				0EBC2E4E0A2F72B600C89C9F /* covfmScreePlot.Rd */,
 				0EBC2E4F0A2F72B600C89C9F /* covfmSqrtMDPlot.Rd */,

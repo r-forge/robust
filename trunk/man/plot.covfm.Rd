@@ -42,7 +42,7 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
   \code{\link{ccov}},
   \code{\link{covRob}},
   \code{\link{fit.models}},
-  \code{\link{covfmDistance2Plot}},
+  \code{\link{covfmDistancePlot}},
   \code{\link{covfmEllipsesPlot}},
   \code{\link{covfmScreePlot}},
   \code{\link{covfmSqrtMDPlot}}.

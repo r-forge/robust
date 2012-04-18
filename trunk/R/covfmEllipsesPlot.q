@@ -1,15 +1,23 @@
-covfmEllipsesPlot <- function(x, ...)
+covfmEllipsesPlot <- function(x, main, xlab, ylab, ...)
 {
 	n.models <- length(x)
 	mod.names <- names(x)
+
+  if(missing(main))
+    main <- "default"
+
+  if(missing(xlab))
+    xlab <- "default"
+
+  if(missing(ylab))
+    ylab <- "default"
 
   p <- dim(x[[1]]$cov)[1]
 
   old.par <- par(pty = "s")
   on.exit(par(old.par))
 
-## if p == 2 plot data with overlaid ellipse ##
-
+  ## if p == 2 plot data with overlaid ellipse ##
   if(p == 2) {
 
     ellipse <- function(loc, A)
@@ -50,20 +58,29 @@ covfmEllipsesPlot <- function(x, ...)
     center <- c(mean(c(x.min, x.max)), mean(c(y.min, y.max)))
 
     s.range <- max(abs(c(center[1] - x.min, x.max - center[1],
-      center[2] - y.min, y.max - center[2])))
+                         center[2] - y.min, y.max - center[2])))
 
     if(n.models == 1)
       header <- "95% Tolerance Ellipse"
     else
       header <- "95% Tolerance Ellipses"
 
+    if(main == "default")
+      main <- header
+
+    if(xlab == "default")
+      xlab <- dimnames(points)[[2]][1]
+
+    if(ylab == "default")
+      ylab <- dimnames(points)[[2]][2]
+
     plot(points[,1], points[,2],
       xlim = c(center[1] - s.range, center[1] + s.range),
       ylim = c(center[2] - s.range, center[2] + s.range),
       pch = 16,
-      xlab = dimnames(points)[[2]][1],
-      ylab = dimnames(points)[[2]][2],
-      main = header)
+      main = main,
+      xlab = xlab,
+      ylab = ylab)
 
     for(i in 1:length(z))
       polygon(z[[i]], density = 0, lty = i, col = i, lwd = i)
@@ -73,15 +90,21 @@ covfmEllipsesPlot <- function(x, ...)
            lwd = 1:n.models, bty = "n")
   }
 
-## if p > 2 plot matrix of ellipses ##
-
+  ## if p > 2 plot matrix of ellipses ##
   else {
-    
+    if(main == "default")
+      main <- ""
+
+    if(xlab == "default")
+      xlab <- ""
+
+    if(ylab == "default")
+      ylab <- ""
+
     plot(0, 0, xlim = c(0, p + 1), ylim = c(0, p + 1), type = "n",
-         axes = FALSE, xlab = "", ylab = "")
+         axes = FALSE, main = main, xlab = xlab, ylab = ylab)
 
     for(k in 1:n.models) {
-
       if(x[[k]]$corr)
         X <- x[[k]]$cov
       else {
@@ -105,8 +128,8 @@ covfmEllipsesPlot <- function(x, ...)
       ys <- y.centers[row(y.centers) > col(y.centers)]
       cors <- X[row(X) > col(X)]
       text(xs, ys + (((shift*(n.models - 1))/2) - shift*(k - 1)),
-        labels = round(cors, digits = max(1, floor(20/p))),
-        col = k, cex = min(1, 90/(p^2)))
+           labels = round(cors, digits = max(1, floor(20/p))),
+           col = k, cex = min(1, 90/(p^2)))
     }
 
     lines(c(1, p), c(p, 1), lwd = 2)
