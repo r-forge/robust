@@ -12,12 +12,10 @@ plot.lmfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"),
     "Overlaid Normal QQ Plot of Residuals", 
     "Overlaid Kernel Density Estimate of Residuals")
 
-  if(length(attr(x[[1]]$terms, "term.labels")) == 1) {
+  if(length(attr(x[[1]]$terms, "term.labels")) == 1)
     choices <- c(choices, "Scatter Plot with Overlaid Fit(s)")
-    all.plots <- 2:11
-  }
-  else
-    all.plots <- 2:10
+
+  all.plots <- 2:length(choices)
 
   tmenu <- paste("plot:", choices)
 

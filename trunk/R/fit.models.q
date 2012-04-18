@@ -120,25 +120,21 @@ fit.models <- function(model.list, formula = NULL, ...)
   ##
 
   else {
+    ans <- list(model.list)
+    if(!is.null(formula))
+      ans <- c(ans, list(formula))
+    dots <- list(...)
+    if(length(dots))
+      ans <- c(ans, dots)
 
-    n.models <- length(the.call) - 1
-    mod.names <- as.character(unlist(the.call))[2:(n.models+1)]
-    ans <- list()
-    model.list <- list()
-    for(i in 1:n.models) {
-      ans[[i]] <- eval(the.call[[i + 1]], sys.parent(1))
-      model.list[[i]] <- ans[[i]]$call
-    }
-    names(ans) <- names(model.list) <- mod.names
-
-    models <- sapply(model.list, function(x) as.character(x[[1]]))
-    if(is.null(models))
-      stop("fit.models error 1")
+    names(ans) <- as.character(as.list(the.call)[-1])
+    model.list <- lapply(ans, function(u) u$call)
+    model.funs <- sapply(model.list, function(x) as.character(x[[1]]))
 
     db.index <- -1
 
     for(i in 1:length(fmdb)) {
-      temp <- match(models, fmdb[[i]]$classes, nomatch = 0)
+      temp <- match(model.funs, fmdb[[i]]$classes, nomatch = 0)
       if(prod(temp) != 0) {
         db.index <- i
         break
@@ -147,6 +143,9 @@ fit.models <- function(model.list, formula = NULL, ...)
 
     if(db.index == -1)
       stop("Specified model is not in the fit.models database.")
+
+    if(!is.null(validate <- fmdb[[db.index]]$validate.function))
+      tt <- validate(model.list)
 
     attr(ans, "model.list") <- model.list
     oldClass(ans) <- fmdb[[db.index]]$object.class
