@@ -1,7 +1,7 @@
 print.summary.glmfm <- function(x, ...)
 {
     stopifnot((n.models <- length(x)) >= 1,
-	      sapply(x, is.list))
+        sapply(x, is.list))
     i.Mod <- seq_len(n.models)
 
     mod.names <- names(x)
@@ -10,16 +10,16 @@ print.summary.glmfm <- function(x, ...)
 
     cat("\nCalls: \n")
     for(i in i.Mod) {
-	cat(fancy.names[i], ": ", sep = "")
-	print(x[[i]]$call, ...)
+  cat(fancy.names[i], ": ", sep = "")
+  print(x[[i]]$call, ...)
     }
 
     resid.qrtls <- t(sapply(x, function(u)
-			    quantile(u$deviance.resid,
-				     na.rm = TRUE, names = FALSE)))
+          quantile(u$deviance.resid,
+             na.rm = TRUE, names = FALSE)))
     dimnames(resid.qrtls) <-
-	list(paste(fancy.names, ":", sep = ""),
-	     c("Min", "1Q", "Median", "3Q", "Max"))
+  list(paste(fancy.names, ":", sep = ""),
+       c("Min", "1Q", "Median", "3Q", "Max"))
 
     cat("\nDeviance Residuals:\n")
     print(resid.qrtls, ...)
@@ -29,9 +29,9 @@ print.summary.glmfm <- function(x, ...)
     p <- length(coef.names)
     coef.matrix <- matrix(as.numeric(NA), n.models * p, 4)
     dimnames(coef.matrix) <-
-	list(paste(fancy.names,
-		   if(n.models > 1) rep(coef.names, each = 2) else coef.names),
-	     c("Value", "Std. Error", "t value", "Pr(>|t|)"))
+  list(paste(fancy.names,
+       if(n.models > 1) rep(coef.names, each = 2) else coef.names),
+       c("Value", "Std. Error", "t value", "Pr(>|t|)"))
 
   for(i in i.Mod) {
     row.indices <- seq(from = i, by = n.models, length = p)

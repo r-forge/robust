@@ -1,8 +1,8 @@
 covfmSqrtMDPlot <- function(x, chisq.percent = 0.975, id.n = 3, main, xlab,
                             ylab,  ...)
 {
-	n.models <- length(x)
-	mod.names <- names(x)
+  n.models <- length(x)
+  mod.names <- names(x)
 
   dist.extractor <- function(u) u$dist
   dists <- sqrt(as.vector(sapply(x, dist.extractor)))

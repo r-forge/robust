@@ -42,13 +42,13 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
 
   resids <- sapply(x, resid, type = type)
 
-	px <- py <- matrix(0.0, n, n.models)
+  px <- py <- matrix(0.0, n, n.models)
 
-	for(i in 1:n.models) {
-		tmp <- qqnorm(resids[, i], plot.it = FALSE)
-		px[, i] <- tmp$x
-		py[, i] <- tmp$y
-	}
+  for(i in 1:n.models) {
+    tmp <- qqnorm(resids[, i], plot.it = FALSE)
+    px[, i] <- tmp$x
+    py[, i] <- tmp$y
+  }
 
   if(half.normal) {
     py <- abs(py)

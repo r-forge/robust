@@ -62,29 +62,29 @@ glmRob.cubif.null <- function(x, y, ni, offset, ics, family, control,
 
   # Iterations #
 
-		nit <- 1
-		repeat {
+    nit <- 1
+    repeat {
 
   # theta-step #
 
-			zt <- glmRob.gytstp(X, y, ci, theta, ai, cov,
+      zt <- glmRob.gytstp(X, y, ci, theta, ai, cov,
         ni, offset, tol = epsilon, icase = ics, maxit = mxt)
 
-			theta  <- zt$theta[1:p]
-			vtheta <- zt$vtheta
-			nitt <- zt$nit
+      theta  <- zt$theta[1:p]
+      vtheta <- zt$vtheta
+      nitt <- zt$nit
 
   # Check convergence #
 
-			if(nit == maxit)
+      if(nit == maxit)
         break
 
-			delta <- theta-theta0
+      delta <- theta-theta0
 
-			if(all(epsilon*sqcov-abs(delta) > 0.0))
+      if(all(epsilon*sqcov-abs(delta) > 0.0))
         break
 
-			theta0 <- theta
+      theta0 <- theta
 
   # c-step #
 
@@ -92,43 +92,43 @@ glmRob.cubif.null <- function(x, y, ni, offset, ics, family, control,
         vtheta = vtheta, ai = ai, oi = offset, tol = epsilon,
         maxit = mxt)
 
-			ci <- zc$ci
-			nit <- nit+1
+      ci <- zc$ci
+      nit <- nit+1
     }
 
   # end of iterations #
 
   # Final covariance matrix of estimated coefficients
-		z <- glmRob.gfedca(vtheta,ci,ai,ni,offset,icase=ics)
-		zc <- glmRob.ktaskw(x = X, d = z$d, e = z$e, f = 1/n, f1 = 1, iainv = 0,
+    z <- glmRob.gfedca(vtheta,ci,ai,ni,offset,icase=ics)
+    zc <- glmRob.ktaskw(x = X, d = z$d, e = z$e, f = 1/n, f1 = 1, iainv = 0,
       ia = ia1, tau = epsilon)
-		covf <- zc$cov
+    covf <- zc$cov
 
-		zf <- list(theta = theta, ai = ai, vtheta = vtheta, ci = ci,
-			cov = covf, nit = nit, delta = delta)
+    zf <- list(theta = theta, ai = ai, vtheta = vtheta, ci = ci,
+      cov = covf, nit = nit, delta = delta)
 
 #          z    <- glmRob.gintac(X, y, ni, offset, icase = ics, 
-#					tolt=10*epsilon,
-#					tola=10*epsilon, b = upar, c = cpar, maxtt=mxt, 
-#					maxta=mxf)
+#         tolt=10*epsilon,
+#         tola=10*epsilon, b = upar, c = cpar, maxtt=mxt, 
+#         maxta=mxf)
 #          t0   <- z$theta[1] 
-#	   	  A0 <- z$a
-#	   	  c0 <- z$ci
+#       A0 <- z$a
+#       c0 <- z$ci
 #          wa   <- upar/pmax(1.e-4,z$dist)
 #          vtheta <- rep(t0,ly)
 #          z    <- glmRob.gfedca(vtheta, c0, wa, ni, offset, ics)
 #          zc   <- glmRob.ktaskw(X, z$d, z$e, f=1/ly, f1=1, iainv=0,
-#				ia = ia1, tau = epsilon)
+#       ia = ia1, tau = epsilon)
 #          covi <- zc$cov
 #          if (icn != 1) covi <- 1/covi
 #          zf   <- glmRob.gymain(X, y, ni, covi, A0, t0, offset, 
-#				b=upar, gam=gma, 
-#				tau=epsilon, icase=ics, iugl=iug, iopt=ipo, 
-#				ialg=ilg, icnvt=icn,
-#				icnva=icv, maxit=maxit, maxtt=mxt, maxta=mxf, 
-#				maxtc=mxt, 
-#				tol=epsilon, tolt=10*epsilon, tola=10*epsilon, tolc=10*epsilon,
-#				trc=trc)
+#       b=upar, gam=gma, 
+#       tau=epsilon, icase=ics, iugl=iug, iopt=ipo, 
+#       ialg=ilg, icnvt=icn,
+#       icnva=icv, maxit=maxit, maxtt=mxt, maxta=mxf, 
+#       maxtc=mxt, 
+#       tol=epsilon, tolt=10*epsilon, tola=10*epsilon, tolc=10*epsilon,
+#       trc=trc)
 #           ai   <- zf$wa
 #           ci   <- zf$ci
 

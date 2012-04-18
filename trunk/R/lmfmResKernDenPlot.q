@@ -12,14 +12,14 @@ lmfmResKernDenPlot <- function(x, n = 512, main, xlab, ylab, ...)
   n.models <- length(x)
   mod.names <- names(x)
 
-	res <- sapply(x, residuals)
-	denx <- deny <- matrix(0, n, n.models)
+  res <- sapply(x, residuals)
+  denx <- deny <- matrix(0, n, n.models)
 
-	for(i in 1:n.models) {
-		den <- density(res[, i], bw = "SJ", n = n, na.rm = TRUE)
-		denx[, i] <- den$x
-		deny[, i] <- den$y
-	}
+  for(i in 1:n.models) {
+    den <- density(res[, i], bw = "SJ", n = n, na.rm = TRUE)
+    denx[, i] <- den$x
+    deny[, i] <- den$y
+  }
 
   panel.special <- function(x, y)
   {

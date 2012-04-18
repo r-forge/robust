@@ -26,15 +26,15 @@ glmRob.Initial.LMS <- function(X, y, ni, dist, offset, icase)
 
   if(all(X[,1] == 1)) {
     if(np == 1) {
-			theta0 <- median(ytild)
-			sigma0 <- mad(ytild)
+      theta0 <- median(ytild)
+      sigma0 <- mad(ytild)
       return(list(theta0 = theta0, sigma0 = sigma0))
-		}
+    }
 
     else {
       XX <- X[,-1]
       itc <- TRUE
-		}
+    }
   }
 
   else {

@@ -14,15 +14,15 @@ lmfmOverlaidQQPlot <- function(x, main, xlab, ylab, ...)
 
   model <- sapply(x, function(u) !is.null(u$model))
 
-	res <- na.omit(sapply(x, residuals))
+  res <- na.omit(sapply(x, residuals))
   n <- length(res)
-	px <- py <- matrix(0, n, n.models)
+  px <- py <- matrix(0, n, n.models)
 
-	for(i in 1:n.models) {
-		tmp <- qqnorm(res[, i], plot.it = FALSE)
-		px[, i] <- tmp$x
-		py[, i] <- tmp$y
-	}
+  for(i in 1:n.models) {
+    tmp <- qqnorm(res[, i], plot.it = FALSE)
+    px[, i] <- tmp$x
+    py[, i] <- tmp$y
+  }
 
   matplot(px, py,
     pch = 1:n.models,

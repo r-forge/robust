@@ -1,8 +1,8 @@
 covfmDistancePlot <- function(x, chisq.percent = 0.975, id.n = 3, main, xlab,
                                ylab, ...)
 {
-	n.models <- length(x)
-	mod.names <- names(x)
+  n.models <- length(x)
+  mod.names <- names(x)
 
   if(n.models == 2) {
 

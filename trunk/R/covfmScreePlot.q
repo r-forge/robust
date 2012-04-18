@@ -1,7 +1,7 @@
 covfmScreePlot <- function(x, variables, main, xlab, ylab, ...)
 {
-	n.models <- length(x)
-	mod.names <- names(x)
+  n.models <- length(x)
+  mod.names <- names(x)
 
   if(missing(main))
     main <- ""
@@ -25,7 +25,7 @@ covfmScreePlot <- function(x, variables, main, xlab, ylab, ...)
           axes = FALSE,
           main = main,
           xlab = xlab,
-          ylab = ylab,	
+          ylab = ylab,  
           lty = 1:n.models,
           pch = 1:n.models,
           col = 1:n.models,

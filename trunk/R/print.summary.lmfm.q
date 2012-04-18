@@ -1,23 +1,23 @@
 print.summary.lmfm <- function(x, ...)
 {
-	n.models <- length(x)
+  n.models <- length(x)
   mod.names <- names(x)
-	fancy.names <- format(mod.names, justify = "right")
-	model.list <- attr(x, "model.list")
+  fancy.names <- format(mod.names, justify = "right")
+  model.list <- attr(x, "model.list")
 
-	cat("\nCalls: \n")
-	for(i in 1:n.models) {
-		cat(fancy.names[i], ": ", sep = "")
-		print(x[[i]]$call, ...)
-	}
+  cat("\nCalls: \n")
+  for(i in 1:n.models) {
+    cat(fancy.names[i], ": ", sep = "")
+    print(x[[i]]$call, ...)
+  }
 
-	resid.qrtls <- t(sapply(x, function(u)
+  resid.qrtls <- t(sapply(x, function(u)
     quantile(residuals(u), na.rm = TRUE)))
-	dimnames(resid.qrtls) <- list(paste(fancy.names, ":", sep = ""),
+  dimnames(resid.qrtls) <- list(paste(fancy.names, ":", sep = ""),
     c("Min", "1Q", "Median", "3Q", "Max"))
 
-	cat("\nResidual Statistics:\n")
-	print(resid.qrtls, ...)
+  cat("\nResidual Statistics:\n")
+  print(resid.qrtls, ...)
 
   coefs <- lapply(x, function(u) u$coefficients)
   coef.names <- format(dimnames(coefs[[1]])[[1]], justify = "right")
@@ -31,7 +31,7 @@ print.summary.lmfm <- function(x, ...)
     coef.matrix[row.indicies, ] <- coefs[[i]]
   }
 
-	cat("\nCoefficients:\n")
+  cat("\nCoefficients:\n")
   print(coef.matrix, ...)
 
   cat("\nResidual Scale Estimates:\n")

@@ -76,8 +76,8 @@ summary.lmRob <- function(object, correlation = FALSE, bootstrap.se = FALSE, ...
   if(testbias)
     biasTest <- test.lmRob(object)
 
-	if(bootstrap.se)
-		bootstrap.se <- rb(object)
+  if(bootstrap.se)
+    bootstrap.se <- rb(object)
 
   int <- attr(object$terms, "intercept")
   object <- object[c("call", "terms", "iter.final.coef", "iter.refinement", 
@@ -87,8 +87,8 @@ summary.lmRob <- function(object, correlation = FALSE, bootstrap.se = FALSE, ...
   object$residuals <- res
   object$coefficients <- coefs
   object$sigma <- stddev
-	if(bootstrap.se[1])
-		object$bootstrap.se <- bootstrap.se
+  if(bootstrap.se[1])
+    object$bootstrap.se <- bootstrap.se
   object$df <- c(p, rdf, ptotal)
   object$cov.unscaled <- cov/stddev^2
   object$correlation <- correl

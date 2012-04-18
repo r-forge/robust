@@ -1,7 +1,7 @@
 covfmEllipsesPlot <- function(x, main, xlab, ylab, ...)
 {
-	n.models <- length(x)
-	mod.names <- names(x)
+  n.models <- length(x)
+  mod.names <- names(x)
 
   if(missing(main))
     main <- "default"

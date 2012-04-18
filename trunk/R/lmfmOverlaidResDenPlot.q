@@ -18,15 +18,15 @@ lmfmOverlaidResDenPlot <- function(x, main, xlab, ylab, ...)
   if(missing(ylab))
     ylab <- "Density"
 
-	res <- sapply(x, residuals)
-	denx <- deny <- matrix(0, 100, n.models)
+  res <- sapply(x, residuals)
+  denx <- deny <- matrix(0, 100, n.models)
 
-	for(i in 1:n.models) {
-		b <- bandwidth.nrd(res[, i])
-		den <- density(res[, i], width = b, n = 100, na.rm = TRUE)
-		denx[, i] <- den$x
-		deny[, i] <- den$y
-	}
+  for(i in 1:n.models) {
+    b <- bandwidth.nrd(res[, i])
+    den <- density(res[, i], width = b, n = 100, na.rm = TRUE)
+    denx[, i] <- den$x
+    deny[, i] <- den$y
+  }
 
   matplot(denx, deny,
     type = "l",

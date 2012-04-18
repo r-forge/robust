@@ -29,7 +29,7 @@ lmRob <- function(formula, data, weights, subset, na.action,
 
   ## Find the columns of the model matrix X arising from coding
   ## factor variables and store their indices in x1.idx.
-  ## Conceptually, the design matrix	X = [ x1 | x2 ].
+  ## Conceptually, the design matrix  X = [ x1 | x2 ].
 
   asgn <- attr(X, "assign")
   factor.vars <- names(m)[sapply(m, is.factor)]
@@ -52,16 +52,16 @@ lmRob <- function(formula, data, weights, subset, na.action,
   x2.idx <- setdiff(1:(dim(X)[2]), x1.idx)
 
   if(intercept == 1) {
-    ##	If there are both factor and numeric variables
-    ##	then put the intercept term in X1
+    ##  If there are both factor and numeric variables
+    ##  then put the intercept term in X1
 
     if(length(x1.idx) > 0 && length(x2.idx) > 1) {
       x1.idx <- c(1, x1.idx)
       x2.idx <- x2.idx[-1]
     }
 
-    ##	If the only column in X2 is the intercept
-    ##	move it to X1 and set X2 to NULL.
+    ##  If the only column in X2 is the intercept
+    ##  move it to X1 and set X2 to NULL.
 
     else if(length(x2.idx) == 1) {
       x1.idx <- c(1, x1.idx)
@@ -69,7 +69,7 @@ lmRob <- function(formula, data, weights, subset, na.action,
     }
   }
 
-  ##	If X1 is empty then set it to NULL.
+  ##  If X1 is empty then set it to NULL.
 
 #  if(length(x1.idx))
 #    X1 <- X[, x1.idx, drop = FALSE]
@@ -78,7 +78,7 @@ lmRob <- function(formula, data, weights, subset, na.action,
 #    X1 <- NULL
 #  }
 
-  ##	If X2 is empty then set it to NULL.
+  ##  If X2 is empty then set it to NULL.
 
 #  if(length(x2.idx))
 #    X2 <- X[, x2.idx, drop = FALSE]

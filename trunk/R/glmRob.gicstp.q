@@ -1,13 +1,13 @@
 glmRob.gicstp <- function(icase, ialg, ni, vtheta, ai, oi, tol, maxit)
 {
-	n <- length(vtheta)
+  n <- length(vtheta)
 
-	if(length(oi) == 1)
+  if(length(oi) == 1)
     oi <- rep(0.0, n)
 
-	ci <- double(n)
+  ci <- double(n)
 
-	f.res <- .Fortran("rlgicstp",
+  f.res <- .Fortran("rlgicstp",
     icase = as.integer(icase),
     ialg = as.integer(ialg),
     nn = as.integer(ni),

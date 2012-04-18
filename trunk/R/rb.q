@@ -11,24 +11,24 @@ rb <- function(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
     return(invisible())
   }
 
-	m <- lmRob.object$coeff
-	s <- lmRob.object$T.coeff
-	scale <- lmRob.object$scale
+  m <- lmRob.object$coeff
+  s <- lmRob.object$T.coeff
+  scale <- lmRob.object$scale
 
-	weight <- lmRob.object$robust.control$weight
+  weight <- lmRob.object$robust.control$weight
 
 # chi.fn = type of weight function for the initial estimate
 # psi.fn = type of weight function for the final   estimate
 
-	if(weight[1] == "bisquare" )
-		chi.fn <- 1
-	else if(weight[1] == "optimal" )
-		chi.fn <- 2
+  if(weight[1] == "bisquare" )
+    chi.fn <- 1
+  else if(weight[1] == "optimal" )
+    chi.fn <- 2
 
-	if(weight[2] == "bisquare")
-		psi.fn <- 1
-	else if(weight[2] == "optimal")
-		psi.fn <- 2
+  if(weight[2] == "bisquare")
+    psi.fn <- 1
+  else if(weight[2] == "optimal")
+    psi.fn <- 2
 
 # tuning.psi = tuning constant for the final estimate
 # tuning.chi = tuning constant for the initial estimate
@@ -42,22 +42,22 @@ rb <- function(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
 # tuning.chi = 1.54764 - beta = 0.5 for "Bisquare", and
 # tuning.chi = 1.060158 - beta = 0.2661 for "Optimal"
 #
-	if(weight[2] == "bisquare" ) {
-		tuning.psi <- 4.685061
-		tuning.chi <- 1.54764
-		beta <- 0.5
-	}
-	else if(weight[2] == "optimal" ) {
-		tuning.psi <- 1.060158
-		tuning.chi <- 0.4047
-		beta <- 0.2661
-	}
+  if(weight[2] == "bisquare" ) {
+    tuning.psi <- 4.685061
+    tuning.chi <- 1.54764
+    beta <- 0.5
+  }
+  else if(weight[2] == "optimal" ) {
+    tuning.psi <- 1.060158
+    tuning.chi <- 0.4047
+    beta <- 0.2661
+  }
 
-	n <- (d <- dim(x))[1]
-	p <- d[2]
+  n <- (d <- dim(x))[1]
+  p <- d[2]
 
-	if(fixed)
-		a <- .C("rl_rb_fixed",
+  if(fixed)
+    a <- .C("rl_rb_fixed",
             as.double(x),
             as.double(y),
             as.integer(n),
@@ -94,7 +94,7 @@ rb <- function(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
             as.double(beta),
             PACKAGE = "robust")
 
-	a$ours <- matrix(a$ours, nrow = M)
+  a$ours <- matrix(a$ours, nrow = M)
   apply(a$ours, 2, function(u) sqrt(var(u)))
 }
 

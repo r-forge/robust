@@ -43,7 +43,7 @@ add1.lmRob <- function(object, scope = . ~ ., scale, keep, ...)
   if(missing(scale)) 
     scale <- object$scale
 
-	rfpe["<none>"] <- lmRob.RFPE(object, scale)
+  rfpe["<none>"] <- lmRob.RFPE(object, scale)
 
   for(i in 1:lscope) {
     add.rhs <- eval(parse(text = paste("~ . +", scope[i])))
