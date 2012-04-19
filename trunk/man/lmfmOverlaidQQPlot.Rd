@@ -8,23 +8,21 @@ Produces an overlaid plot comparing residuals QQ plots.
 }
 
 \usage{
-lmfmOverlaidQQPlot(x, main, xlab, ylab, ...)
+lmfmOverlaidQQPlot(x, pch, col, ...)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
 
-  \item{main}{a character string specifying the plot title.}
+  \item{pch}{a vector with length equal to the number of fitted models in \code{x} specifying the symbols used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
-  \item{xlab}{a character string specifying the x-axis label.}
-
-  \item{ylab}{a character string specifying the y-axis label.}
+  \item{col}{a vector with length equal to the number of fitted models in \code{x} specifying the  colors used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
   \item{\dots}{additional arguments are passed to the low-level plotting functions.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

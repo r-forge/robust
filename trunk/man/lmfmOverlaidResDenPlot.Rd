@@ -8,23 +8,23 @@ Produces an overlaid plot comparing kernel density estimates of the residuals.
 }
 
 \usage{
-lmfmOverlaidResDenPlot(x, main, xlab, ylab, ...)
+lmfmOverlaidResDenPlot(x, lty, lwd, col, ...)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
 
-  \item{main}{a character string specifying the plot title.}
+  \item{lty}{a vector with length equal to the number of fitted models in \code{x} specifying the line styles used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
-  \item{xlab}{a character string specifying the x-axis label.}
+  \item{lwd}{a vector with length equal to the number of fitted models in \code{x} specifying the line widths used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
-  \item{ylab}{a character string specifying the y-axis label.}
+  \item{col}{a vector with length equal to the number of fitted models in \code{x} specifying the line colors used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
   \item{\dots}{additional arguments are passed to the low-level plotting functions.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

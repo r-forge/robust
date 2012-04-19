@@ -8,7 +8,7 @@ Produces a side-by-side plot of the residuals versus the robust distances.
 }
 
 \usage{
-lmfmResVsRDPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, ...)
+lmfmResVsRDPlot(x, type = "response", level = 0.95, id.n = 3, ...)
 }
 
 \arguments{
@@ -19,12 +19,6 @@ lmfmResVsRDPlot(x, type = "response", level = 0.95, id.n = 3, main, xlab, ylab, 
   \item{level}{a numeric value between 0 and 1 giving the confidence level used to draw the threshold for both the distances and residuals axes.}
 
   \item{id.n}{a non-negative integer value specifying the number of extreme points to identify.}
-
-  \item{main}{a character string specifying the plot title.}
-
-  \item{xlab}{a character string specifying the x-axis label.}
-
-  \item{ylab}{a character string specifying the y-axis label.}
 
   \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }

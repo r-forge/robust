@@ -1,47 +1,38 @@
-lmfmOverlaidResDenPlot <- function(x, main, xlab, ylab, ...)
+lmfmOverlaidResDenPlot <- function(x, lty, lwd, col, ...)
 {
-  bandwidth.nrd <- function(x) {
-    r <- quantile(x, c(0.25, 0.75), na.rm = TRUE)
-    h <- (r[2] - r[1])/1.34
-    4 * 1.06 * min(sqrt(var(x, na.rm = TRUE)), h) * length(x)^{-1/5}
-  }
-
   n.models <- length(x)
   mod.names <- names(x)
 
-  if(missing(main))
-    main <- "Kernel Density Estimate of Residuals"
+  if(missing(lty))
+    lty <- 1:n.models
 
-  if(missing(xlab))
-    xlab <- "Residuals"
+  if(missing(lwd))
+    lwd <- 1:n.models
 
-  if(missing(ylab))
-    ylab <- "Density"
+  if(missing(col))
+    col <- 1:n.models
 
-  res <- sapply(x, residuals)
-  denx <- deny <- matrix(0, 100, n.models)
+  settings <- list(superpose.line = list(lty = lty, lwd = lwd, col = col))
 
-  for(i in 1:n.models) {
-    b <- bandwidth.nrd(res[, i])
-    den <- density(res[, i], width = b, n = 100, na.rm = TRUE)
-    denx[, i] <- den$x
-    deny[, i] <- den$y
-  }
+  res <- as.matrix(sapply(x, residuals))
+  mod <- factor(rep(mod.names, each = nrow(res)), levels = mod.names)
 
-  matplot(denx, deny,
-    type = "l",
-    xlab = xlab,
-    ylab = ylab,
-    main = main,
-    lty = 1:n.models,
-    col = 1:n.models,
-    lwd = n.models:1,
-    ...)
+  tdf <- data.frame(res = as.vector(res),
+                    mod = mod)
 
-  legend(x = "topleft", legend = mod.names, col = 1:n.models, lty = 1:n.models,
-         lwd = n.models:1, bty = "n")
+  p <- densityplot(~ res | "",
+                   groups = mod,
+                   data = tdf,
+                   n = 256,
+                   bw = "SJ",
+                   plot.points = FALSE,
+                   strip = function(...) strip.default(..., style = 1),
+                   auto.key = list(corner = c(0.95, 0.95)),
+                   par.settings = settings,
+                   ...)
 
-  invisible(x)
+  print(p)
+  invisible(p)
 }
 
 

@@ -1,18 +1,7 @@
-lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, main,
-                                 xlab, ylab, ...)
+lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, ...)
 {
-  if(missing(main))
-    main <- "Response vs. Fitted Values"
-
-  if(missing(xlab))
-    xlab <- "Fitted Values"
-
-  if(missing(ylab))
-    ylab <- "Response"
-
   n.models <- length(x)
   mod.names <- names(x)
-  n <- length(residuals(x[[1]]))
 
   model <- sapply(x, function(u) !is.null(u$model))
   if(!any(model))
@@ -20,10 +9,11 @@ lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, main,
          "contain a model frame component")
   model <- x[[(1:n.models)[model][1]]]$model
   y <- model.extract(model, "response")
+  n <- length(y)
 
-  panel.special <- function(x, y, smooths = FALSE, rugplot = FALSE)
+  panel.special <- function(x, y, smooths, rugplot, ...)
   {
-    panel.xyplot(x, y, col = 6, pch = 16)
+    panel.xyplot(x, y, ...)
     panel.addons(x, y, smooths = smooths, rugplot = rugplot, id.n = 0)
     panel.abline(0, 1, lty = 2)
     invisible()
@@ -37,9 +27,6 @@ lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, main,
 
   p <- xyplot(y ~ fv | mod,
               data = df,
-              xlab = xlab,
-              ylab = ylab,
-              main = main,
               panel = panel.special,
               smooths = smooths,
               rugplot = rugplot,

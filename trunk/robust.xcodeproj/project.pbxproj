@@ -46,7 +46,7 @@
 		0E4500160A029C050064D9A4 /* cov.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = cov.q; path = R/cov.q; sourceTree = SOURCE_ROOT; };
 		0E4500170A029C050064D9A4 /* covRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.control.q; path = R/covRob.control.q; sourceTree = SOURCE_ROOT; };
 		0E4500180A029C050064D9A4 /* covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.q; path = R/covRob.q; sourceTree = SOURCE_ROOT; };
-		0E4500190A029C050064D9A4 /* covfmDistancePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; name = covfmDistancePlot.q; path = R/covfmDistancePlot.q; sourceTree = SOURCE_ROOT; };
+		0E4500190A029C050064D9A4 /* covfmDistancePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistancePlot.q; path = R/covfmDistancePlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.q; path = R/covfmEllipsesPlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001B0A029C050064D9A4 /* covfmScreePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.q; path = R/covfmScreePlot.q; sourceTree = SOURCE_ROOT; };
 		0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.q; path = R/covfmSqrtMDPlot.q; sourceTree = SOURCE_ROOT; };
@@ -299,7 +299,6 @@
 		0E96A3A30A55C1DC009C18C6 /* print.summary.lmfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.lmfm.Rd; path = man/print.summary.lmfm.Rd; sourceTree = SOURCE_ROOT; };
 		0E96A3A40A55C1DC009C18C6 /* summary.lmfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.lmfm.Rd; path = man/summary.lmfm.Rd; sourceTree = SOURCE_ROOT; };
 		0E96A3A50A55C21F009C18C6 /* gen.data.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.Rd; path = man/gen.data.Rd; sourceTree = SOURCE_ROOT; };
-		0E96A3A60A55C21F009C18C6 /* splus.assign.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = splus.assign.Rd; path = man/splus.assign.Rd; sourceTree = SOURCE_ROOT; };
 		0E9C45050E2129C800DE7FD9 /* compatibility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compatibility.c; path = src/compatibility.c; sourceTree = SOURCE_ROOT; };
 		0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.ga.q; sourceTree = "<group>"; };
 		0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.genetic.control.q; sourceTree = "<group>"; };
@@ -353,7 +352,7 @@
 		0EBC2E410A2F71CE00C89C9F /* weights.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weights.lmRob.q; path = R/weights.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E440A2F726C00C89C9F /* gen.data.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.q; path = R/gen.data.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E460A2F728F00C89C9F /* Copyright */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = Copyright; path = inst/Copyright; sourceTree = SOURCE_ROOT; };
-		0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; name = covfmDistancePlot.Rd; path = man/covfmDistancePlot.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistancePlot.Rd; path = man/covfmDistancePlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4D0A2F72B600C89C9F /* covfmEllipsesPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.Rd; path = man/covfmEllipsesPlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4E0A2F72B600C89C9F /* covfmScreePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.Rd; path = man/covfmScreePlot.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E4F0A2F72B600C89C9F /* covfmSqrtMDPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.Rd; path = man/covfmSqrtMDPlot.Rd; sourceTree = SOURCE_ROOT; };
@@ -979,16 +978,16 @@
 				0E96A3A30A55C1DC009C18C6 /* print.summary.lmfm.Rd */,
 				0E96A3A10A55C1DC009C18C6 /* plot.lmfm.Rd */,
 				0E96A3A00A55C1DC009C18C6 /* panel.addons.Rd */,
-				0E96A3960A55C1DC009C18C6 /* lmfm2DRegPlot.Rd */,
-				0E96A3970A55C1DC009C18C6 /* lmfmOverlaidQQPlot.Rd */,
-				0E96A3980A55C1DC009C18C6 /* lmfmOverlaidResDenPlot.Rd */,
-				0E96A3990A55C1DC009C18C6 /* lmfmResKernDenPlot.Rd */,
-				0E96A39A0A55C1DC009C18C6 /* lmfmRespVsFittedPlot.Rd */,
 				0E96A39B0A55C1DC009C18C6 /* lmfmResQQPlot.Rd */,
+				0E96A3990A55C1DC009C18C6 /* lmfmResKernDenPlot.Rd */,
+				0E96A39E0A55C1DC009C18C6 /* lmfmResVsRDPlot.Rd */,
 				0E96A39C0A55C1DC009C18C6 /* lmfmResVsFittedPlot.Rd */,
 				0E96A39D0A55C1DC009C18C6 /* lmfmSqrtResVsFittedPlot.Rd */,
-				0E96A39E0A55C1DC009C18C6 /* lmfmResVsRDPlot.Rd */,
+				0E96A39A0A55C1DC009C18C6 /* lmfmRespVsFittedPlot.Rd */,
 				0E96A39F0A55C1DC009C18C6 /* lmfmResVsIdxPlot.Rd */,
+				0E96A3970A55C1DC009C18C6 /* lmfmOverlaidQQPlot.Rd */,
+				0E96A3980A55C1DC009C18C6 /* lmfmOverlaidResDenPlot.Rd */,
+				0E96A3960A55C1DC009C18C6 /* lmfm2DRegPlot.Rd */,
 			);
 			name = lmfm;
 			sourceTree = "<group>";
@@ -1199,7 +1198,6 @@
 				0E45FFFE0A029C050064D9A4 /* First.lib.Rd */,
 				0E45FFFF0A029C050064D9A4 /* arg.names.Rd */,
 				0E96A3A50A55C21F009C18C6 /* gen.data.Rd */,
-				0E96A3A60A55C21F009C18C6 /* splus.assign.Rd */,
 			);
 			name = utilities;
 			path = man;
@@ -1265,16 +1263,16 @@
 				0EBC2E270A2F714B00C89C9F /* print.summary.lmfm.q */,
 				0EBC2E250A2F714B00C89C9F /* plot.lmfm.q */,
 				0EBC2E240A2F714B00C89C9F /* panel.addons.q */,
-				0EBC2E190A2F714B00C89C9F /* lmfm2DRegPlot.q */,
-				0EBC2E1A0A2F714B00C89C9F /* lmfmOverlaidQQPlot.q */,
-				0EBC2E1B0A2F714B00C89C9F /* lmfmOverlaidResDenPlot.q */,
-				0EBC2E1D0A2F714B00C89C9F /* lmfmResKernDenPlot.q */,
-				0EBC2E1E0A2F714B00C89C9F /* lmfmRespVsFittedPlot.q */,
 				0EBC2E1F0A2F714B00C89C9F /* lmfmResQQPlot.q */,
+				0EBC2E1D0A2F714B00C89C9F /* lmfmResKernDenPlot.q */,
+				0EBC2E220A2F714B00C89C9F /* lmfmResVsRDPlot.q */,
 				0EBC2E200A2F714B00C89C9F /* lmfmResVsFittedPlot.q */,
 				0EBC2E210A2F714B00C89C9F /* lmfmSqrtResVsFittedPlot.q */,
-				0EBC2E220A2F714B00C89C9F /* lmfmResVsRDPlot.q */,
+				0EBC2E1E0A2F714B00C89C9F /* lmfmRespVsFittedPlot.q */,
 				0EBC2E230A2F714B00C89C9F /* lmfmResVsIdxPlot.q */,
+				0EBC2E1A0A2F714B00C89C9F /* lmfmOverlaidQQPlot.q */,
+				0EBC2E1B0A2F714B00C89C9F /* lmfmOverlaidResDenPlot.q */,
+				0EBC2E190A2F714B00C89C9F /* lmfm2DRegPlot.q */,
 			);
 			name = lmfm;
 			path = R;

@@ -8,25 +8,21 @@ Produces a scatter plot of the data with overlaid fits.
 }
 
 \usage{
-lmfm2DRegPlot(x, cutoff = TRUE, main, xlab, ylab, ...)
+lmfm2DRegPlot(x, lwd, col, ...)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
 
-  \item{cutoff}{a logical value.  If TRUE then the threshold beyond which points receive zero weight is plotted with dashed lines.}
+  \item{lwd}{a vector with length equal to the number of fitted models in \code{x} specifying the line widths used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
-  \item{main}{a character string specifying the plot title.}
+  \item{col}{a vector with length equal to the number of fitted models in \code{x} specifying the line colors used in the plot. See \code{\link[graphics]{par}} for possible values.}
 
-  \item{xlab}{a character string specifying the x-axis label.}
-
-  \item{ylab}{a character string specifying the y-axis label.}
-
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{\dots}{additional arguments are passed to \code{\link[lattice]{xyplot}}.}
 }
 
 \value{
-\code{x} is invisibly returned.
+the \code{trellis} object is invisibly returned.
 }
 
 \keyword{hplot}

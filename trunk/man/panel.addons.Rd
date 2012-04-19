@@ -8,7 +8,7 @@ This is a utility function used by some of the plotting functions in the Robust 
 }
 
 \usage{
-panel.addons(x, y, smooths = FALSE, rugplot = FALSE, id.n = 3, ...)
+panel.addons(x, y, smooths = FALSE, rugplot = FALSE, id.n = 3)
 }
 
 \arguments{

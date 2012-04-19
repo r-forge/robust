@@ -1,62 +1,70 @@
-lmfm2DRegPlot <- function(x, cutoff = TRUE, main, xlab, ylab, ...) 
+lmfm2DRegPlot <- function(x, lwd, col, ...) 
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  model <- sapply(x, function(u) !is.null(u$model))
+  mf <- sapply(x, function(u) !is.null(u$model))
 
-  if(!any(model))
+  if(!any(mf))
     stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
          "contain a model frame component")
 
-  model <- x[[(1:n.models)[model][1]]]$model
+  mf <- x[[(1:n.models)[mf][1]]]$model
 
-  if(ncol(model) != 2)
-    stop("This method requires a simple linear regression model")
+  if(ncol(mf) != 2)
+    stop(sQuote("x"), " is not a simple linear regression model")
 
-  var.names <- attributes(model)$names
+  var.names <- attributes(mf)$names
+  frm <- as.formula(paste(paste(var.names, collapse = " ~ "), " | \"\""))
 
-  if(missing(main))
-    main <- paste(var.names, collapse = " ~ ")
+  if(missing(lwd))
+    lwd <- 1:n.models
 
-  if(missing(xlab))
-    xlab <- var.names[2]
+  if(missing(col))
+    col <- 1:n.models
 
-  if(missing(ylab))
-    ylab <- var.names[1]
+  panel.special <- function(x, y, object, pch, lwd, col)
+  {
+    panel.xyplot(x, y, pch = 16, col = "black")
 
-  plot(model[[2]], model[[1]],
-       type = "p",
-       xlab = xlab,
-       ylab = ylab,
-       main = main,
-       pch = 16,
-       col = 6)
-
-  the.lines <- integer(n.models)
-  the.wd <- integer(n.models)
-
-  for(i in 1:n.models) {
-    if(length(grep("Rob", x[[i]]$call))) {
-      a <- x[[i]]$yc * x[[i]]$scale
-      if(cutoff) abline(coef(x[[i]]) + c(-a, 0), lty = 2)
-      abline(coef(x[[i]]), lwd = 2)
-      if(cutoff) abline(coef(x[[i]]) + c(a, 0), lty = 2)
-      the.lines[i] <- 1
-      the.wd[i] <- 2
+    for(i in 1:length(object)) {
+      if(length(grep("Rob", object[[i]]$call))) {
+        a <- object[[i]]$yc * object[[i]]$scale
+        panel.abline(coef(object[[i]]) + c(-a, 0), lty = 2, col = col[i])
+        panel.abline(coef(object[[i]]), lwd = lwd[i], col = col[i])
+        panel.abline(coef(object[[i]]) + c(a, 0), lty = 2, col = col[i])
+      }
+      else {
+        panel.abline(coef(object[[i]]), lwd = lwd[i], col = col[i])
+      }
     }
-
-    else {
-      abline(coef(x[[i]]), lty = 4)
-      the.lines[i] <- 4
-      the.wd[i] <- 1
-    }
+    invisible()
   }
 
-  pos <- ifelse(coef(x[[1]])[2] > 0, "topleft", "topright")
-  legend(x = pos, legend = mod.names, lty = the.lines, lwd = the.wd, bty = "n")
+  if(coef(x[[1]])[2] > 0)
+    corner <- c(0.05, 0.95)
+  else
+    corner <- c(0.95, 0.95)
 
-  invisible(x)
+  key <- simpleKey(corner = corner,
+                   text = mod.names,
+                   points = FALSE,
+                   lines = TRUE)
+  key$lines$col <- col
+  key$lines$lwd <- lwd
+
+  p <- xyplot(mf[[1]] ~ mf[[2]],
+              panel = panel.special,
+              object = x,
+              col = col,
+              lwd = lwd,
+              xlab = var.names[2],
+              ylab = var.names[1],
+              key = key,
+              ...)
+
+  print(p)
+  invisible(p)
 }
 
 

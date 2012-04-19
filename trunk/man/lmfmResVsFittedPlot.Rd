@@ -8,7 +8,7 @@ Produces a side-by-side plot of the residuals versus the fitted values.
 }
 
 \usage{
-lmfmResVsFittedPlot(x, type = "response", smooths = FALSE, rugplot = FALSE, id.n = 3, main, xlab, ylab, ...)
+lmfmResVsFittedPlot(x, type = "response", smooths = FALSE, rugplot = FALSE, id.n = 3, ...)
 }
 
 \arguments{
@@ -21,12 +21,6 @@ lmfmResVsFittedPlot(x, type = "response", smooths = FALSE, rugplot = FALSE, id.n
   \item{rugplot}{a logical value.  If TRUE then a rugplot is included in each panel of the plot.}
 
   \item{id.n}{a non-negative integer value giving the number of extreme points to identify.}
-
-  \item{main}{a character string specifying the plot title.}
-
-  \item{xlab}{a character string specifying the x-axis label.}
-
-  \item{ylab}{a character string specifying the y-axis label.}
 
   \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }

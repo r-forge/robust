@@ -1,16 +1,7 @@
 lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
                           half.normal = FALSE, n.samples = 250, level = .95,
-                          id.n = 3, robustQQline = TRUE, main, xlab, ylab, ...)
+                          id.n = 3, robustQQline = TRUE, ...)
 {
-  if(missing(main))
-    main <- "Normal QQ Plot of Residuals"
-
-  if(missing(xlab))
-    xlab <- "Standard Normal Quantiles"
-
-  if(missing(ylab))
-    ylab <- "Ordered Residuals"
-
   normal.simulation.envelope <- function(n, sd = 1, n.samples = 250,
                                          level = 0.95, half.normal = FALSE)
   {
@@ -38,14 +29,14 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
 
   n.models <- length(x)
   mod.names <- names(x)
-  n <- length(residuals(x[[1]]))
 
-  resids <- sapply(x, resid, type = type)
+  res <- as.matrix(sapply(x, resid, type = type))
+  n <- nrow(res)
 
   px <- py <- matrix(0.0, n, n.models)
 
   for(i in 1:n.models) {
-    tmp <- qqnorm(resids[, i], plot.it = FALSE)
+    tmp <- qqnorm(res[, i], plot.it = FALSE)
     px[, i] <- tmp$x
     py[, i] <- tmp$y
   }
@@ -101,23 +92,20 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
     panel.special <- function(x, y, id.n, robQQln, ...) {
       dat.idx <- 1:(length(x)/3)
 
-      panel.xyplot(x[dat.idx], y[dat.idx], pch = 16, col = 6, ...)
+      panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
       if(robQQln)
         panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
 
-      panel.addons(x[dat.idx], y[dat.idx], smooths = FALSE, rugplot = FALSE,
-        id.n = id.n)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
-      panel.xyplot(sort(x[dat.idx]), sort(y[dat.idx]), type = "l", col = 1,
-        lty = 2, ...)
+      llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
 
       dat.idx <- (2*(length(x)/3)+1):(length(x))
 
-      panel.xyplot(sort(x[dat.idx]), sort(y[dat.idx]), type = "l", col = 1,
-        lty = 2, ...)
+      llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
 
       invisible()
     }
@@ -127,34 +115,32 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
 
     mod <- factor(rep(rep(mod.names, rep(n, n.models)), 3), levels = mod.names)
 
-    df <- data.frame(
-      py = c(as.vector(py), as.vector(env$lower), as.vector(env$upper)),
-      px = rep(as.vector(px), 3),
-      grp = c(rep("data", n * n.models),
-              rep("min", n * n.models),
-              rep("max", n * n.models)),
-      mod = mod)
+    df <- data.frame(py = c(as.vector(py),
+                            as.vector(env$lower),
+                            as.vector(env$upper)),
+                     px = rep(as.vector(px), 3),
+                     grp = c(rep("data", n * n.models),
+                             rep("min", n * n.models),
+                             rep("max", n * n.models)),
+                     mod = mod)
 
     panel.special <- function(x, y, id.n, robQQln, ...) {
       dat.idx <- 1:(length(x)/3)
 
-      panel.xyplot(x[dat.idx], y[dat.idx], pch = 16, col = 6, ...)
+      panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
-      panel.addons(x[dat.idx], y[dat.idx], smooths = FALSE, rugplot = FALSE,
-        id.n = id.n)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
       if(robQQln)
         panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
-      panel.xyplot(sort(x[dat.idx]), sort(y[dat.idx]), type = "l", col = 1,
-        lty = 2, ...)
+      llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
 
       dat.idx <- (2*(length(x)/3)+1):(length(x))
 
-      panel.xyplot(sort(x[dat.idx]), sort(y[dat.idx]), type = "l", col = 1,
-        lty = 2, ...)
+      llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
 
       invisible()
     }
@@ -169,8 +155,8 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
                      mod = mod)
 
     panel.special <- function(x, y, id.n, robQQln, ...) {
-      panel.xyplot(x, y, pch = 16, col = 6, ...)
-      panel.addons(x, y, smooths = FALSE, rugplot = FALSE, id.n = id.n)
+      panel.xyplot(x, y, ...)
+      panel.addons(x, y, id.n = id.n)
 
       if(robQQln)
         panel.abline(coef(lmRob(y ~ x)))
@@ -181,9 +167,6 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
 
   p <- xyplot(py ~ px | mod,
               data = df,
-              xlab = xlab,
-              ylab = ylab,
-              main = main,
               id.n = id.n,
               robQQln = robustQQline,
               panel = panel.special,

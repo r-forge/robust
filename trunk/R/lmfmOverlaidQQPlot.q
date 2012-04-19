@@ -1,41 +1,33 @@
-lmfmOverlaidQQPlot <- function(x, main, xlab, ylab, ...)
+lmfmOverlaidQQPlot <- function(x, pch, col, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  if(missing(main))
-    main <- "Normal QQ Plot of Residuals"
+  if(missing(pch))
+    pch <- 1:n.models
 
-  if(missing(xlab))
-    xlab <- "Quantiles of Standard Normal"
+  if(missing(col))
+    col <- 1:n.models
 
-  if(missing(ylab))
-    ylab <- "Ordered Residuals"
+  settings <- list(superpose.symbol = list(pch = pch, col = col))
 
-  model <- sapply(x, function(u) !is.null(u$model))
+  res <- as.matrix(sapply(x, residuals))
+  mod <- factor(rep(mod.names, each = nrow(res)), levels = mod.names)
 
-  res <- na.omit(sapply(x, residuals))
-  n <- length(res)
-  px <- py <- matrix(0, n, n.models)
+  tdf <- data.frame(res = as.vector(res),
+                    mod = mod)
 
-  for(i in 1:n.models) {
-    tmp <- qqnorm(res[, i], plot.it = FALSE)
-    px[, i] <- tmp$x
-    py[, i] <- tmp$y
-  }
+  p <- qqmath(~ res | "",
+              groups = mod,
+              data = tdf,
+              distribution = qnorm,
+              strip = function(...) strip.default(..., style = 1),
+              auto.key = list(corner = c(0.05, 0.95)),
+              par.settings = settings,
+              ...)
 
-  matplot(px, py,
-    pch = 1:n.models,
-    col = 1:n.models,
-    xlab = xlab,
-    ylab = ylab,
-    main = main,
-    ...)
-
-  legend(x = "topleft", legend = mod.names, col = 1:n.models, pch = 1:n.models,
-         bty = "n")
-
-  invisible(x)
+  print(p)
+  invisible(p)
 }
 
 
