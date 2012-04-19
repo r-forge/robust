@@ -1,5 +1,5 @@
-\name{covfmDistance2Plot}
-\alias{covfmDistance2Plot}
+\name{covfmDistancePlot}
+\alias{covfmDistancePlot}
 
 \title{Distance - Distance Plot}
 
@@ -8,7 +8,7 @@
 }
 
 \usage{
-  covfmDistance2Plot(x, chisq.percent = 0.975, id.n = 3, ...)
+  covfmDistancePlot(x, chisq.percent = 0.975, id.n = 3, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -19,7 +19,13 @@
 
   \item{id.n}{a positive integer specifying the number of extreme points to label in the plot.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{main}{a character string specifying the plot title.}
+
+  \item{xlab}{a character string specifying the x-axis label.}
+
+  \item{ylab}{a character string specifying the y-axis label.}
+
+  \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }
 
 \details{
@@ -27,7 +33,7 @@
 }
 
 \value{
-  x is invisibly returned.
+if the models can be compared then the plotted \code{trellis} object is invisibly returned, otherwise \code{x} is invisibly returned.
 }
 
 \seealso{
@@ -41,7 +47,7 @@
  data(woodmod.dat)
  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
                           data = woodmod.dat)
- covfmDistance2Plot(woodmod.fm)
+ covfmDistancePlot(woodmod.fm)
 }
 \keyword{hplot}
 

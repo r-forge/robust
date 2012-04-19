@@ -1,6 +1,6 @@
 coef.glmfm <- function(object, ...)
 {
-	coef.lmfm(object, ...)
+  coef.lmfm(object, ...)
 }
 
 

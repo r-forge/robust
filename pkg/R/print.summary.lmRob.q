@@ -4,7 +4,7 @@ print.summary.lmRob <- function(x, ...)
     cat("Initial Estimates.\n")
 
   cat("\nCall: ")
-	dput(x$call)
+  dput(x$call)
   resid <- x$residuals
   attr(resid, ".guiColInfo") <- NULL
   df <- x$df
@@ -37,17 +37,17 @@ print.summary.lmRob <- function(x, ...)
   else 
     cat("\nCoefficients:\n")
 
-	if(!is.null(x$bootstrap)) {
-		coef.names <- dimnames(x$coef)
-		coef.names[[2]] <- c(coef.names[[2]][1:2],
-			"Bootstrap SE", coef.names[[2]][3:4])
-		the.coef <- cbind(x$coef[,1:2], x$bootstrap.se, x$coef[,3:4])
-		dimnames(the.coef) <- coef.names
-	}
-	else
-		the.coef <- x$coef
+  if(!is.null(x$bootstrap)) {
+    coef.names <- dimnames(x$coef)
+    coef.names[[2]] <- c(coef.names[[2]][1:2],
+      "Bootstrap SE", coef.names[[2]][3:4])
+    the.coef <- cbind(x$coef[,1:2], x$bootstrap.se, x$coef[,3:4])
+    dimnames(the.coef) <- coef.names
+  }
+  else
+    the.coef <- x$coef
 
-	print(format(the.coef, ...), quote = FALSE, ...)
+  print(format(the.coef, ...), quote = FALSE, ...)
 
   cat("\nResidual standard error:", format(signif(x$sigma, ...)), 
       "on",rdf, "degrees of freedom\n")

@@ -1,10 +1,10 @@
 covRob.control <- function(estim, ...)
 {
-	estim <- casefold(estim)
+  estim <- casefold(estim)
   control <- list(...)
   control$estim <- estim
 
-	if(estim == "donostah") {
+  if(estim == "donostah") {
 
     if(is.null(control$nresamp))
       control$nresamp <- "auto"
@@ -28,7 +28,7 @@ covRob.control <- function(estim, ...)
                          "tune", "prob", "eps")]
   }
 
-	else if(estim == "mcd" || estim == "weighted") {
+  else if(estim == "mcd" || estim == "weighted") {
 
   ## For backwards compatibility we support the use of quan and ntrial   ##
   ## to specify alpha and nsamp for estim = "mcd", estim = "weighted"    ##
@@ -58,7 +58,7 @@ covRob.control <- function(estim, ...)
                            "use.correction", "tolSolve")]
   }
 
-	else if(estim == "m") {
+  else if(estim == "m") {
 
     if(is.null(control$alpha))
       control$alpha <- ifelse(is.null(control$quan), 0.5, control$quan)
@@ -97,14 +97,14 @@ covRob.control <- function(estim, ...)
     if(is.null(control$maxiter))
       control$maxiter <- 120
 
-		control <- control[c("estim", "r", "arp", "eps", "maxiter",
+    control <- control[c("estim", "r", "arp", "eps", "maxiter",
                           "init.control")]
   }
 
-	else
-		control <- control["estim"]
+  else
+    control <- control["estim"]
 
-	control
+  control
 }
 
 

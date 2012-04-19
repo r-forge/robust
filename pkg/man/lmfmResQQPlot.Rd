@@ -8,7 +8,7 @@ Produces a side-by-side QQ plot os the residuals against standard normal quantil
 }
 
 \usage{
-lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 250, level = 0.95, id.n = 3, robustQQline = TRUE, main, xlab, ylab, ...)
+lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 250, level = 0.95, id.n = 3, robustQQline = TRUE, ...)
 }
 
 \arguments{
@@ -27,12 +27,6 @@ lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samp
   \item{id.n}{a non-negative integer value specifying the number of extreme points to identify.}
 
   \item{robustQQline}{a logical value.  If TRUE then a qq-line computed using \code{\link{lmRob}} is included in the plot.}
-
-  \item{main}{a character string specifying the plot title.}
-
-  \item{xlab}{a character string specifying the x-axis label.}
-
-  \item{ylab}{a character string specifying the y-axis label.}
 
   \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }

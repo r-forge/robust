@@ -158,12 +158,12 @@ qqplot.glmRob <- function(y, par, dist)
   if(dist == 0) {
     par <- pmax(par,.000000000001)
     par <- pmin(par,.999999999999)
-		uu <- glmRob.binom.dev(par)
-		dev <- y * sqrt(-log(par)) - (1 - y) * sqrt(-log(1 - par))
+    uu <- glmRob.binom.dev(par)
+    dev <- y * sqrt(-log(par)) - (1 - y) * sqrt(-log(1 - par))
     dev <- sort(dev)
-	}
+  }
 
-	if(dist > 0) {
+  if(dist > 0) {
     par <- pmax(par, .000000000001)
     uu <- glmRob.poiss.dev(par)
     v1 <- (y == 0)

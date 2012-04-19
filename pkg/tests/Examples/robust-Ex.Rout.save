@@ -310,14 +310,14 @@ Robust Estimate of Location:
 > 
 > 
 > cleanEx()
-> nameEx("covfmDistance2Plot")
-> ### * covfmDistance2Plot
+> nameEx("covfmDistancePlot")
+> ### * covfmDistancePlot
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: covfmDistance2Plot
+> ### Name: covfmDistancePlot
 > ### Title: Distance - Distance Plot
-> ### Aliases: covfmDistance2Plot
+> ### Aliases: covfmDistancePlot
 > ### Keywords: hplot
 > 
 > ### ** Examples
@@ -325,7 +325,7 @@ Robust Estimate of Location:
 >  data(woodmod.dat)
 >  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
 +                           data = woodmod.dat)
->  covfmDistance2Plot(woodmod.fm)
+>  covfmDistancePlot(woodmod.fm)
 > 
 > 
 > 

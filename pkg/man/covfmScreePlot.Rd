@@ -8,7 +8,7 @@
 }
 
 \usage{
-  covfmScreePlot(x, variables, ...)
+  covfmScreePlot(x, variables, main, xlab, ylab, ...)
 }
 
 \arguments{
@@ -17,7 +17,13 @@
 
   \item{variables}{a vector of positive integers specifying which eigenvalues are to be drawn.  By default the 10 largest eigenvalues are plotted.}
 
-  \item{\dots}{additional arguments are passed to the low-level plotting functions.}
+  \item{main}{a character string specifying the plot title.}
+
+  \item{xlab}{a character string specifying the x-axis label.}
+
+  \item{ylab}{a character string specifying the y-axis label.}
+
+  \item{\dots}{any additional arguments are passed to \code{matplot}.}
 }
 
 \details{
@@ -25,7 +31,7 @@
 }
 
 \value{
-  x is invisibly returned.
+  \code{x} is invisibly returned.
 }
 
 \seealso{

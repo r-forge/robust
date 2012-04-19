@@ -1,22 +1,22 @@
 s.logistic.misclass.fit <- function(x, y, mc.gamma, maxit, mc.trc, mc.tol, beta1)
 {
-	#mc.fit = misclassification fit
-	# solves eq 2.4
+  #mc.fit = misclassification fit
+  # solves eq 2.4
 
-	n <- dim(x)[1]
-	p <- dim(x)[2]
+  n <- dim(x)[1]
+  p <- dim(x)[2]
 
   if(mc.trc)
     cat("\n")
 
   v <- 10 * mc.tol
-	j <- 0
+  j <- 0
 
-	# newton raphson
+  # newton raphson
 
-	while((sum(abs(v)) > mc.tol) && (j < maxit)) {
+  while((sum(abs(v)) > mc.tol) && (j < maxit)) {
 
-    j <- j + 1			
+    j <- j + 1      
     beta0 <- beta1
     a <- matrix(0, p, p)
     v <- rep(0, p)
@@ -35,15 +35,15 @@ s.logistic.misclass.fit <- function(x, y, mc.gamma, maxit, mc.trc, mc.tol, beta1
 
     if(mc.trc)
       cat(j, beta1, "\n", sep = " - ")
-	}
+  }
 
-	#fit <- list(coefficients = as.vector(beta0), iter = j,
+  #fit <- list(coefficients = as.vector(beta0), iter = j,
   #  converged = sum(abs(v)) < mc.tol )
 
-	fit <- list(coefficients = as.vector(beta1), iter = j,
+  fit <- list(coefficients = as.vector(beta1), iter = j,
     converged = sum(abs(v)) < mc.tol )
 
-	fit
+  fit
 }
 
 

@@ -3,7 +3,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
 {
   ### This is called from *both* lmRob.fit() and lmRob.wfit()
 
-  ## Conceptually, the design matrix	X = [ x1 | x2 ]	 , where
+  ## Conceptually, the design matrix  X = [ x1 | x2 ]  , where
   ## x1 (n x p1) = "the factors" .. possibly empty
   ## x2 (n x p2) = the continuous variables ..  (possibly empty, too!)
 
@@ -55,7 +55,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
 #    p <- p1+p2
 #    n <- nrow(x1)
 
-#    ## build x := [X1, X2]	{first all factors, then the rest}
+#    ## build x := [X1, X2] {first all factors, then the rest}
 #    x <- matrix(NA_real_, nrow = n, ncol = p)
 #    xnames <- character(p)
 #    x[, x1.idx] <- x1
@@ -224,7 +224,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
   }
   
   ##-- continuous + factor-variables
-	## ===>	  use "alternate M-S"
+  ## ===>   use "alternate M-S"
 
   else if(init.alg == "altms") {
   #else if(!is.null(x1)) {
@@ -303,7 +303,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
     b2 <- z1$T2
     b1 <- t1 + z1$T1 -T2 %*% b2
     coeff0 <- numeric(p)
-    coeff0[x1.idx]	<- b1
+    coeff0[x1.idx]  <- b1
     coeff0[-x1.idx] <- b2
     scale0 <- z1$SMIN
     resid0 <- y - x1 %*% b1 - x2 %*% b2
@@ -648,7 +648,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
             yc <- 3.443689
           else if (eff == 0.8)
             yc <- 3.136909
-          ##else		     yc <- chb(eff)$cb
+          ##else         yc <- chb(eff)$cb
           else
             yc <- lmRob.effvy(eff, ipsi = 2)
         },
@@ -677,12 +677,12 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
       else
         that <- 0
 
-	    ymt <- (y - that) / scale0
-	    sy <- sum(chi.weight(ymt,ipsi2, yc))
-	    ymt <- z1$rs / scale0
-	    s0 <- sum(chi.weight(ymt, ipsi2, yc))
-	    r.squared1 <- (sy - s0) / sy
-	    dev1 <- (scale0^2) * s0
+      ymt <- (y - that) / scale0
+      sy <- sum(chi.weight(ymt,ipsi2, yc))
+      ymt <- z1$rs / scale0
+      s0 <- sum(chi.weight(ymt, ipsi2, yc))
+      r.squared1 <- (sy - s0) / sy
+      dev1 <- (scale0^2) * s0
 
       z2 <- lmRob.ucovcoef(x, y, resid0, scale0, rank, ipsi = ipsi2,
                            xk = yc, tau = tua, tl = tl)
@@ -772,8 +772,8 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
         est <- "initial"
       }
 
-	    scov1 <- scale0*scale0*solve(t(x) %*% x)*z1$f
-	    dimnames(scov1) <- list(xnames, xnames)
+      scov1 <- scale0*scale0*solve(t(x) %*% x)*z1$f
+      dimnames(scov1) <- list(xnames, xnames)
     } ## final.alg == "adaptive"
 
     else

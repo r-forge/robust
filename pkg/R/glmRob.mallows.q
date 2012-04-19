@@ -17,7 +17,7 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
 
   wt.fn <- control$wt.fn
   b <- control$wt.tuning
-			
+      
   x0 <- x
   tmp <- dimnames(x0)[[2]] == "(Intercept)"
 
@@ -31,7 +31,7 @@ glmRob.mallows <- function(x, y, control, offset, null.dev, family, Terms)
   mu <- tmp$center
   V <- tmp$cov
   x1 <- scale(x0, center = mu, scale = rep(1,p))
-			
+      
   #V <- var(x0)
   #x1 <- scale(x0, scale = rep(1,p))
 

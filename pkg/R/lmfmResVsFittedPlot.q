@@ -1,23 +1,13 @@
 lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
-                                rugplot = FALSE, id.n = 3, main, xlab, ylab,
-                                ...)
+                                rugplot = FALSE, id.n = 3, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
   n <- length(residuals(x[[1]]))
 
-  if(missing(main))
-    main <- "Residuals vs. Fitted Values"
-
-  if(missing(xlab))
-    xlab <- "Fitted Values"
-
-  if(missing(ylab))
-    ylab <- "Residuals"
-
-  panel.special <- function(x, y, smooths = FALSE, rugplot = FALSE, id.n = 3)
+  panel.special <- function(x, y, smooths, rugplot, id.n, ...)
   {
-    panel.xyplot(x, y, pch = 16, col = 6)
+    panel.xyplot(x, y, ...)
     panel.addons(x, y, smooths = smooths, rugplot = rugplot, id.n = id.n)
     panel.abline(h = 0, lty = 2)
     invisible()
@@ -31,9 +21,6 @@ lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
 
   p <- xyplot(r ~ f | mod,
               data = df,
-              xlab = xlab,
-              ylab = ylab,
-              main = main,
               panel = panel.special,
               smooths = smooths,
               rugplot = rugplot,
@@ -45,4 +32,5 @@ lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
   print(p)
   invisible(p)
 }
+
 

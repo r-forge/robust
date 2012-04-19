@@ -9,26 +9,26 @@ lmRob.RFPE <- function(object, scale = NULL)
   p <- length(object$coef)
 
   if(is.null(scale))
-		scale <- object$scale
+    scale <- object$scale
 
   res <- residuals(object) / scale
   psif <- object$robust.control$weight
   efficiency <- object$robust.control$efficiency
 
   if(casefold(psif[2]) == "optimal")
-		ipsi <- 1
-	else
-		ipsi <- 2
+    ipsi <- 1
+  else
+    ipsi <- 2
 
-	yc <- object$yc
+  yc <- object$yc
   a <- sum(rho.weight(res, ipsi, yc))
   b <- p*sum(psi.weight(res, ipsi, yc)^2)
-	d <- sum(psp.weight(res, ipsi, yc))
+  d <- sum(psp.weight(res, ipsi, yc))
 
-	if(d <= 0.0)
+  if(d <= 0.0)
     return(NA)
 
-	a + b/d
+  a + b/d
 }
 
 
