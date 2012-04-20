@@ -53,7 +53,7 @@ lmfm2DRegPlot <- function(x, lwd, col, ...)
   key$lines$col <- col
   key$lines$lwd <- lwd
 
-  p <- xyplot(mf[[1]] ~ mf[[2]],
+  p <- xyplot(mf[[1]] ~ mf[[2]] | "",
               panel = panel.special,
               object = x,
               col = col,
