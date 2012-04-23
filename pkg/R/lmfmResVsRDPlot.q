@@ -9,10 +9,15 @@ lmfmResVsRDPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
   if(!any(model))
     stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
          "contain a model frame component")
-  model <- x[[(1:n.models)[model][1]]]$model
-  model <- model[sapply(model, is.numeric)]
+  model.terms <- terms(x[[which(model)[1]]])
+  model <- x[[which(model)[1]]]$model
 
-  if(length(model)) {
+  term.labels <- attr(model.terms, "term.labels")
+  numeric.vars <- names(which(sapply(model, is.numeric)))
+  dist.vars <- intersect(term.labels, numeric.vars)
+
+  if(length(dist.vars) > 1.5) {
+    model <- model[dist.vars]
     p <- dim(model)[2]
     dist <- sqrt(covRob(model, distance = TRUE)$dist)
 
@@ -59,7 +64,7 @@ lmfmResVsRDPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
   }
 
   else {
-    warning("robust distances could not be computed because there are no numeric variables in the model frame")
+    warning("robust distances could not be computed")
     p <- NA
   }
 

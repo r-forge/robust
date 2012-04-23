@@ -46,9 +46,14 @@ plot.covfm <- function(x, which.plots = "ask", ...)
 
   repeat {
     if(ask)
-      which.plots <- menu(tmenu, title = "\nMake plot selections (or 0 to exit):\n")
+      which.plots <- menu(tmenu,
+                          title = "\nMake plot selections (or 0 to exit):\n")
 
-    which.plots <- intersect(which.plots, c(0, all.plots))
+    if(any(which.plots == 1)) {
+      which.plots <- c(all.plots, 0)
+      par.ask <- par(ask = TRUE)
+      on.exit(par(ask = par.ask))
+    }
 
     if(!length(which.plots))
       stop(paste("Invalid choice of plot in \'which.plots\'"))
