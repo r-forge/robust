@@ -9,7 +9,7 @@ plot.glmfm <- function(x, which.plots = "ask",  ...)
                "QQ Plot of Deviance Residuals",
                "Deviance Residuals vs. Robust Distances",
                "Deviance Residuals vs. Index (Time)",
-               "Sqrt of abs(Deviance Residuals) vs. Fitted Values")
+               "Square Root of Absolute Deviance Residuals vs. Fitted Values")
 
   all.plots <- 2:length(choices)
 
@@ -62,16 +62,26 @@ plot.glmfm <- function(x, which.plots = "ask",  ...)
 
         lmfmResVsFittedPlot(x,
                             type = "deviance",
+                            xlab = "Fitted Values",
                             ylab = "Deviance Residuals",
                             main = "Deviance Residuals vs. Fitted Values",
+                            pch = 16,
                             ...),
 
-        lmfmRespVsFittedPlot(x, ...),
+        lmfmRespVsFittedPlot(x, 
+                             xlab = "Fitted Values",
+                             ylab = "Response",
+                             main = "Response vs. Fitted Values",
+                             pch = 16,
+                             ...),
 
         lmfmResQQPlot(x,
                       type = "pearson",
-                      main = "Normal QQ Plot of Pearson Residuals",
+                      xlab = "Standard Normal Quantiles",
                       ylab = "Ordered Pearson Residuals",
+                      main = "Normal QQ Plot of Pearson Residuals",
+                      envelope = FALSE,
+                      pch = 16,
                       ...),
 
         {
@@ -89,11 +99,10 @@ plot.glmfm <- function(x, which.plots = "ask",  ...)
           }
 
           panel.special <- function(x, y, id.n = 3) {
-            panel.xyplot(x, y, col = 6, pch = 16)
+            panel.xyplot(x, y, pch = 16)
             panel.addons(x, y, smooths = FALSE, rugplot = FALSE, id.n = id.n)
             invisible()
           }
-
 
           mod <- factor(rep(mod.names, each = n), levels = mod.names)
 
@@ -103,8 +112,8 @@ plot.glmfm <- function(x, which.plots = "ask",  ...)
 
           p <- xyplot(qq.a ~ qq.b | mod,
                       data = df,
-                      ylab = "Ordered Deviance Residuals",
                       xlab = "Theoretical Quantiles",
+                      ylab = "Ordered Deviance Residuals",
                       main = "QQ Plot of Deviance Residuals",
                       panel = panel.special,
                       strip = function(...) strip.default(..., style = 1),
@@ -116,22 +125,26 @@ plot.glmfm <- function(x, which.plots = "ask",  ...)
 
         lmfmResVsRDPlot(x,
                         type = "deviance",
-                        main = "Deviance Residuals vs. Robust Distances",
                         xlab = "Robust Distances",
                         ylab = "Deviance Residuals",
+                        main = "Deviance Residuals vs. Robust Distances",
+                        pch = 16,
                         ...),
 
         lmfmResVsIdxPlot(x,
                          type = "deviance",
-                         main = "Deviance Residuals vs. Index (Time)",
                          xlab = "Index (Time)",
                          ylab = "Deviance Residuals",
+                         main = "Deviance Residuals vs. Index (Time)",
+                         pch = 16,
                          ...),
 
         lmfmSqrtResVsFittedPlot(x,
                                 type = "deviance",
-                                main = "Square Root of Deviance Residuals vs. Fitted Values",
+                                xlab = "Fitted Values",
                                 ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
+                                main = "Square Root of Deviance Residuals vs. Fitted Values",
+                                pch = 16,
                                 ...)
       ) ## switch(pick, ..)
     } ## end for(...)
