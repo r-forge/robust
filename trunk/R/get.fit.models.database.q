@@ -50,8 +50,8 @@ get.fit.models.database <- function()
   ##  Add asymmetric models
 
   classes <- c("gammaRob", "gammaMLE", "weibullRob", "weibullMLE",
-                     "lognormRob", "lognormMLE")
-  object.class <- "asymfm"
+                     "lognormRob", "lognormMLE", "asmDstn")
+  object.class <- "asmfm"
   validation.function <- NULL
 
   fmdb[["asymfm"]] <- list(classes = classes,
