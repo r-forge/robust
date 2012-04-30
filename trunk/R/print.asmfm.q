@@ -5,7 +5,7 @@ print.asmfm <- function(x, digits = max(3, getOption("digits") - 3), ...)
 
 	cat("Calls: \n")
 	for(i in 1:n.models) {
-		cat(mod.names[i], ": ", sep = "")
+		cat(mod.names[i], ": ")
 		print(x[[i]]$call)
 	}
 

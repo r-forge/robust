@@ -8,6 +8,9 @@
 
 /* Begin PBXFileReference section */
 		0E0536150A41EB220012CF66 /* labels.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = labels.lmRob.q; path = R/labels.lmRob.q; sourceTree = SOURCE_ROOT; };
+		0E09E5D8154C75800004C9C6 /* plot.asmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.asmfm.q; sourceTree = "<group>"; };
+		0E09E5DA154CAD3B0004C9C6 /* asmfmOverlaidDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = asmfmOverlaidDenPlot.q; sourceTree = "<group>"; };
+		0E09E5DE154CEC170004C9C6 /* asmfmQQPlot.q */ = {isa = PBXFileReference; path = asmfmQQPlot.q; sourceTree = "<group>"; };
 		0E0E0E7D0B4AF65F0078D331 /* glmRob.mallows.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.mallows.Rd; path = man/glmRob.mallows.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7E0B4AF6780078D331 /* glmRob.misclass.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.Rd; path = man/glmRob.misclass.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7F0B4AF6780078D331 /* glmRob.misclass.w.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.w.Rd; path = man/glmRob.misclass.w.Rd; sourceTree = SOURCE_ROOT; };
@@ -477,6 +480,9 @@
 				0EE51B3E154B9E570023004C /* print.asmfm.q */,
 				0EE51B40154BA19B0023004C /* summary.asmfm.q */,
 				0EE51B41154BAEF10023004C /* print.summary.asmfm.q */,
+				0E09E5D8154C75800004C9C6 /* plot.asmfm.q */,
+				0E09E5DA154CAD3B0004C9C6 /* asmfmOverlaidDenPlot.q */,
+				0E09E5DE154CEC170004C9C6 /* asmfmQQPlot.q */,
 			);
 			name = asmRob;
 			sourceTree = "<group>";

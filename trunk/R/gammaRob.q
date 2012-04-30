@@ -1,70 +1,40 @@
-gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
+gammaRob <- function(x, estim = c("tdmean", "M"), save.data = TRUE,
                      control = gammaRob.control(estim, ...), ...)
 {
 	estim <- match.arg(estim)
 	the.call <- match.call()
+  data.name <- deparse(substitute(x))
+  data <- if(save.data) x else NULL
 
 	if(estim == "M") {
-		y <- data
-
-		Tabgamma <- function(b1 = 1.5, b2 = 1.7, alpha1 = 0.5, alpha2 = 20.5,
-                         k = 101, A = c(0, 0, 0), maxta = 1, maxtc = 1,
-                         maxit = 100, til = 0.001, tol = 0.001)
-		{
-			tab <- matrix(0.0, nrow = k, ncol = 5)
-      storage.mode(tab) <- "double"
-
-			f.res <- .Fortran("rlcretabi",
-												b1 = as.double(b1),
-												b2 = as.double(b2),
-												kk = as.integer(k),
-												la = as.integer(2),
-												a = as.double(A),
-												maxta = as.integer(maxta),
-												maxtc = as.integer(maxtc),
-												maxit = as.integer(maxit),
-												til = as.double(til),
-												tol = as.double(tol),
-												alpha1 = as.double(alpha1),
-												alpha2 = as.double(alpha2),
-												monit = as.integer(0),
-												tab = tab,
-												tpar = double(6),
-                        PACKAGE = "robust")
-
-			tab <- f.res$tab
-			dimnames(tab) <- list(NULL, c("c1", "c2", "a11", "a21", "a22"))
-			tab
-		}
-
 		maxit <- control$maxit
 		maxta <- control$maxta
 		maxtc <- control$maxtc
 		tol <- control$tol
 		til <- control$til
 		sigma <- control$sigma
-		cov <- control$cov
+		vcov <- control$vcov
 		b1 <- control$b1
 		b2 <- control$b2
 		k <- control$k
 		A <- control$A
-		shape <- median(y)^2 / mad(y)^2
-		scale <- mad(y)^2 / median(y)
+		shape <- median(x)^2 / mad(x)^2
+		scale <- mad(x)^2 / median(x)
 		alpha1 <- max(.2, shape - 2.0 * scale)
 		alpha2 <- shape + 2.0 * scale
 
 		tab <- Tabgamma(b1, b2, alpha1, alpha2, k, A, maxta, maxtc, maxit, til, tol)
 		mdt <- nrow(tab)
-		nobs <- length(y)
+		nobs <- length(x)
 
-		y[y == 0] <- 0.5
-		y <- sort(y)
+		x[x == 0] <- 0.5
+		x <- sort(x)
 
     tpr6 <- ifelse(k <= 1, 0, (alpha2 - alpha1) / (k - 1))
 		tpar <- c(b1, b2, alpha1, alpha2, k, tpr6) 
 
 		f.res <- .Fortran("rlestimp",
-											y = as.double(y),
+											x = as.double(x),
 											nobs = as.integer(nobs),
 											tab = as.double(tab),
 											mdt = as.integer(mdt),
@@ -83,9 +53,9 @@ gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
 
     alpha <- f.res$alpha
 		sigma <- f.res$sigma 
-		zl <- list(alpha = alpha, sigma = sigma, mu = alpha*sigma, ok = f.res$nit)
+		zl <- list(shape = alpha, scale = sigma, mu = alpha*sigma, ok = f.res$nit)
 
-		if(cov) {
+		if(vcov) {
 			f.cov <- .Fortran("rlvargam",
 												mdt = as.integer(mdt),
 												alpha = as.double(alpha),
@@ -102,28 +72,23 @@ gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
 												message = as.integer(0),
                         PACKAGE = "robust")
 
-			zc <- f.cov$vsiga
-			cov <- matrix(f.cov$vsiga, nrow = 2)
+			vcov <- matrix(f.cov$vsiga, 2, 2)
 			V.mu <- f.cov$vmoy
-			dimnames(cov) <- list(c("sigma", "alpha"), c("sigma", "alpha"))
-			#zl$cov <- cov
-			#zl$V.mu <- V.mu
-			zl$cov <- cov / length(y)
-			zl$V.mu <- V.mu / length(y)
+			dimnames(vcov) <- list(c("scale", "shape"), c("scale", "shape"))
+			zl$vcov <- vcov / nobs
+			zl$V.mu <- V.mu / nobs
 		}
 	}
 
 	else if(estim == "tdmean") {
-		x <- data
-
 		alpha1 <- control$alpha1
 		alpha2 <- control$alpha2
 		beta <- control$beta
 		gam <- control$gam
-		cov <- control$cov
+		vcov <- control$vcov
 
-		if(is.null(cov))
-			cov <- FALSE
+		if(is.null(vcov))
+			vcov <- FALSE
 
 		tol <- control$tol
 
@@ -180,8 +145,6 @@ gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
     if(abs(Scal) <= 1e-6)
       ok <- 0
 
-		zl <- list(alpha = alpha, sigma = sigma, mu = mu, m = Pos, s = Scal, ok= ok)
-
 		u <- control$u
 		Dq <- .Fortran("rlquqldg",
                    u = as.double(u),
@@ -205,10 +168,10 @@ gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
       mu <- mean(mnu)
     }
 
-		zl <- list(mu = mu, alpha = alpha, sigma = sigma, Tl = Dq$ql, Tu = Dq$qu,
+		zl <- list(shape = alpha, scale = sigma, mu = mu, Tl = Dq$ql, Tu = Dq$qu,
                ok = ok)
 
-		if(cov) {
+		if(vcov) {
 			est <- 0
 			tl <- 1e-10
 			stl <- sigma*tl
@@ -262,14 +225,12 @@ gammaRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
 	else
 		stop("Invalid Estimator")
 
-	if(save.data)
-		zl$data <- data
-
+  zl$data <- data
 	zl$call <- the.call
 	zl$header <- "Robust estimate of gamma distribution parameters"
-	zl$plot.header <- "Robust Estimate of Gamma Density"
-	zl$density.fn <- substitute(dgamma)
-	zl$quantile.fn <- substitute(qgamma)
+	zl$distribution <- "gamma"
+  zl$parameter.names <- c("shape", "scale")
+  zl$data.name <- data.name
 	oldClass(zl) <- c("gammaRob", "asmDstn")
 	zl
 }

@@ -5,14 +5,20 @@ print.summary.asmDstn <- function(x, digits = max(3, getOption("digits") - 3), .
 	print(x$call)
 	cat("\nParameter Estimates:\n")
 	print(x$coefficients, digits = digits)
-  cat("\nvar(mu): ")
-  cat(format(x$V.mu, digits = digits))
-  cat("\n")
 
-  if(!is.null(x$cov)) {
-    cat("\nCovariance matrix estimate for alpha and sigma:\n")
-    print(x$cov, digits = digits)
+  if(!is.null(x$mu) && !is.null(x$V.mu)) {
+    tab <- c(x$mu, x$V.mu)
+    names(tab) <- c("mean", "var(mean)")
+    cat("\nEstimated Mean:\n")
+    print(tab, digits = digits)
+  }
+
+  if(!is.null(x$vcov)) {
+    cat("\nParameter covariance matrix estimate:\n")
+    print(x$vcov, digits = digits)
   }
 
 	invisible(x)
 }
+
+

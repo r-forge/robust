@@ -3,6 +3,7 @@ lognormRob <- function(data, estim = c("tdmean"), save.data = TRUE,
 {
 	the.call <- match.call()
 	estim <- match.arg(estim)
+  data.name <- deparse(substitute(data))
 	x <- data
 
 	beta <- control$beta
@@ -118,9 +119,8 @@ lognormRob <- function(data, estim = c("tdmean"), save.data = TRUE,
 
 	zl$call <- the.call
 	zl$header <- "Robust estimate of lognormal distribution parameters"
-	zl$plot.header <- "Robust Estimate of Lognormal Density"
-	zl$density.fn <- dlnorm
-	zl$quantile.fn <- qlnorm
+	zl$distribution <- "lognormal"
+  zl$data.name <- data.name
 	oldClass(zl) <- c("lognormRob", "asmDstn")
 	zl
 }

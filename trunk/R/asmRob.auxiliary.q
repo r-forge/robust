@@ -1,3 +1,34 @@
+Tabgamma <- function(b1 = 1.5, b2 = 1.7, alpha1 = 0.5, alpha2 = 20.5,
+                     k = 101, A = c(0, 0, 0), maxta = 1, maxtc = 1,
+                     maxit = 100, til = 0.001, tol = 0.001)
+{
+  tab <- matrix(0.0, nrow = k, ncol = 5)
+  storage.mode(tab) <- "double"
+
+  f.res <- .Fortran("rlcretabi",
+                    b1 = as.double(b1),
+                    b2 = as.double(b2),
+                    kk = as.integer(k),
+                    la = as.integer(2),
+                    a = as.double(A),
+                    maxta = as.integer(maxta),
+                    maxtc = as.integer(maxtc),
+                    maxit = as.integer(maxit),
+                    til = as.double(til),
+                    tol = as.double(tol),
+                    alpha1 = as.double(alpha1),
+                    alpha2 = as.double(alpha2),
+                    monit = as.integer(0),
+                    tab = tab,
+                    tpar = double(6),
+                    PACKAGE = "robust")
+
+  tab <- f.res$tab
+  dimnames(tab) <- list(NULL, c("c1", "c2", "a11", "a21", "a22"))
+  tab
+}
+
+
 S.Theta.gamma <- function(alF, sigF, u = 0.99, beta = 0.4, gam = 0.4)
 {
   if(abs(beta - 0.5) <= 1e-4) {

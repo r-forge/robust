@@ -3,6 +3,8 @@ lognormMLE <- function(data, save.data = TRUE)
   # Estimate parameters of a lognormal distribution.
   # Take a log transform and estimate parameters for that normal distn
 
+  the.call <- match.call()
+  data.name <- deparse(substitute(data))
   y <- log(data)
   meany <- mean(y)
   sigma2 <- var(y)
@@ -25,10 +27,10 @@ lognormMLE <- function(data, save.data = TRUE)
   if(save.data)
     ans$data <- data
 
+  ans$call <- the.call
 	ans$header <- "MLE lognormal distribution parameter estimate"
-	ans$plot.header <- "MLE Estimate of Lognormal Density"
-	ans$density.fn <- dlnorm
-	ans$quantile.fn <- qlnorm
+	ans$distribution <- "lognormal"
+  ans$data.name <- data.name
   oldClass(ans) <- c("lognormMLE", "asmDstn")
   ans
 }

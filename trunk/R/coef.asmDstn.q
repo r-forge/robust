@@ -1,7 +1,8 @@
 coef.asmDstn <- function(object, ...)
 {
-  coefs <- c(object$alpha, object$sigma, object$mu)
-	names(coefs) <- c("alpha", "sigma", "mu")
+  coef.names <- object$parameter.names
+  coefs <- unlist(object[coef.names])
+	names(coefs) <- coef.names
   coefs
 }
 
