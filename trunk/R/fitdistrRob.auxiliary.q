@@ -703,3 +703,486 @@ S.K2.l <- function(t, sigma)
 
 
 
+################################################################################
+##
+## Auxilliary functions for robust estimation of weibull distribution
+## parameters.
+##
+################################################################################
+
+S.Theta.weibull <- function(shape, scale, u = 0.99, beta = 0.4, gam = 0.4)
+{
+  #Theta <- S.Theta.D.w(shape,scale,u)
+  if(abs(beta - 0.5) <= 1e-4) {
+
+    mu1F <- gamma(1 + 1 / shape)
+    muF <- scale * gamma(1 + 1 / shape)
+
+    #S.med.w(shape,scale)
+    medF <- scale * qweibull(0.5, shape)
+
+    tmp <- S.qad1.w(shape, 0.5, 0.5)$qad1
+
+    #S.mad.w(shape,scale)
+    madF <- scale * tmp
+
+    #S.med.w(shape,1)
+    M1F <- qweibull(0.5, shape)
+
+    #S.mad.w(shape,1)
+    D1F <- tmp
+
+    #S.K1.w(medF/scale,shape)/scale
+    fmed <- dweibull(medF / scale, shape) / scale
+
+    #S.K1.w(M1F+D1F,shape)/scale
+    fMpD <- dweibull(M1F + D1F, shape) / scale
+
+    #S.K1.w(M1F-D1F,shape)/scale
+    fMmD <- dweibull(M1F - D1F, shape) / scale
+
+    MpF <- -S.K2.w(M1F, shape) / dgamma(M1F, shape)  
+    A <- M1F + D1F
+    B <- M1F - D1F
+    DpF <- S.K2.w(B, shape) - S.K2.w(A, shape) -
+             MpF * (dweibull(A, shape) - dweibull(B, shape))
+    DpF <- DpF / (dweibull(A, shape) + dweibull(B, shape))     
+
+    #S.quql.w(u,shape,1)
+    z <- S.quql.w(u, shape, 1.0)
+
+    qu1F <- z$qu
+    ql1F <- z$ql
+
+    #S.quql.w(u,shape,scale)
+    z <- S.quql.w(u, shape, scale)
+
+    quF <- z$qu
+    qlF <- z$ql
+    fquF <- dweibull(quF / scale, shape) / scale
+    fqlF <- dweibull(qlF / scale, shape) / scale
+
+    #S.K.w(ql1F,shape)
+    FqlF <- pweibull(ql1F, shape)
+
+    #S.H0.w(u,shape,scale)
+    H0 <- u
+    tmp <- qweibull(u, shape, 1.0)
+
+    #S.H1.w(u,shape,scale)
+    H1 <- scale * S.G.w(tmp, shape)
+
+    #S.J0.w(u,shape,scale)
+    J0 <- pweibull(ql1F, shape)
+
+    #S.J1.w(u,shape,scale)
+    J1 <- scale * S.G.w(ql1F, shape)
+
+    #S.K.w(ql1F,shape)
+    Kl1 <- pweibull(ql1F, shape)
+
+    K1l1 <- dweibull(ql1F, shape)
+    K1u1 <- dweibull(qu1F, shape)
+
+    #S.K2.w(qu1F,shape)
+    K2u1 <- S.K2.w(qu1F, shape)
+
+    K2l1 <- S.K2.w(ql1F, shape)
+
+    #S.G1.w(qu1F,shape)
+    G1u1 <- qu1F * dweibull(qu1F, shape)
+
+    #S.G1.w(ql1F,shape)
+    G1l1 <- ql1F * dweibull(ql1F, shape)
+
+    #S.G2.w(qu1F,shape)
+    G2u1 <- S.G2.w(qu1F, shape)
+
+    #S.G2.w(ql1F,shape)
+    G2l1 <- S.G2.w(ql1F, shape)
+
+    Theta <- list(iopt = 2, u = u, mu1F = mu1F, muF = muF, qu1F = qu1F,
+                  quF = quF, ql1F = ql1F, qlF = qlF, fquF = fquF,
+                  fqlF = fqlF, FqlF = FqlF, H0 = H0, H1 = H1, J0 = J0,
+                  J1 = J1, Kl1 = Kl1, K1l1 = K1l1, K1u1 = K1u1, K2u1 = K2u1,
+                  K2l1 = K2l1, G1u1 = G1u1, G1l1 = G1l1, G2u1 = G2u1,
+                  G2l1 = G2l1, alF = shape, sigF = scale, M1F = M1F,
+                  D1F = D1F, MpF = MpF, DpF = DpF, medF = medF, madF = madF,
+                  fmed = fmed, fMpD = fMpD, fMmD = fMmD)
+  }
+
+  #Theta <- S.Theta.Dsm.w(shape,scale,u,beta,gam)
+  else {
+
+    tau <- log(scale)
+    v <- 1/shape
+    tol <- 1e-4
+
+    mF <- .Fortran("rltrmnlw",
+                   alpha = as.double(shape),
+                   sigma = as.double(scale),
+                   beta = as.double(beta),
+                   mf = double(1),
+                   PACKAGE = "robust")$mf
+
+    #z <- S.trmadv.lw(1,beta,gam)
+    z <- .Fortran("rltrmadlw",
+                  alpha = as.double(1.0),
+                  beta = as.double(beta),
+                  gam = as.double(gam),
+                  tol = as.double(tol),
+                  mf = double(1),
+                  sf = double(1),
+                  isol = integer(1),
+                  PACKAGE = "robust")
+
+    m1F <- z$mf
+    s1F <- z$sf
+
+    #S.K1.lw(m1F)/v
+    fm <- S.dlweib(m1F, 1.0, 1.0) / v
+
+    #S.qad1.lw(beta,gam)$qad1/shape
+    D2 <- .Fortran("rlqad1lw",
+                   beta = as.double(beta),
+                   gam = as.double(gam),
+                   tol=  as.double(tol),
+                   qad1 = double(1),
+                   isol = integer(1),
+                   PACKAGE = "robust")$qad1/shape
+
+    #S.qad1.lw(beta,1-gam)$qad1/shape
+    D1 <- .Fortran("rlqad1lw",
+                   beta = as.double(beta),
+                   gam = as.double(1-gam),
+                   tol = as.double(tol),
+                   qad1 = double(1),
+                   isol = integer(1),
+                   PACKAGE = "robust")$qad1/shape
+
+    QGup1 <- D1+mF
+    QGlow1 <- -D1+mF
+    tmp <- (QGup1 - tau) / v
+    fQGup1 <- S.dlweib(tmp, 1.0, 1.0) / v #S.K1.lw((QGup1-tau)/v)/v
+    tmp <- (QGlow1 - tau) / v
+    fQGlow1 <- S.dlweib(tmp, 1.0, 1.0) / v #S.K1.lw((QGlow1-tau)/v)/v
+    QGup2 <- D2 + mF
+    QGlow2 <- -D2 + mF
+    tmp <- (QGup2 - tau) / v
+    fQGup2 <- S.dlweib(tmp, 1.0, 1.0) / v #S.K1.lw((QGup2-tau)/v)/v
+    tmp <- (QGlow2 - tau) / v
+    fQGlow2 <- S.dlweib(tmp, 1.0, 1.0) / v #S.K1.lw((QGlow2-tau)/v)/v  
+
+    #S.K.lw((QGup2-tau)/v)
+    B1 <- S.K.lw((QGup2 - tau) / v)
+
+    #S.K.lw((QGlow2-tau)/v)
+    B2 <- S.K.lw((QGlow2 - tau) / v)
+
+    #S.K.lw((QGup1-tau)/v)
+    B3 <- S.K.lw((QGup1 - tau) / v)
+
+    #S.K.lw((QGlow1-tau)/v)
+    B4 <- S.K.lw((QGlow1 - tau) / v)
+
+    #S.G.lw((QGup2-tau)/v)+tau*B1/v)*v
+    A1  <-  (S.G.lw((QGup2 - tau) / v) + tau * B1 / v) * v
+    A2 <- (S.G.lw((QGlow2 - tau) / v) + tau * B2 / v) * v
+    A3 <- (S.G.lw((QGup1 - tau) / v) + tau * B3 / v) * v
+    A4 <- (S.G.lw((QGlow1 - tau) / v) + tau * B4 / v ) * v
+
+    #S.trmadv.lw(shape,beta,gam)$sF
+    sF <- .Fortran("rltrmadlw",
+                   alpha = as.double(shape),
+                   beta = as.double(beta),
+                   gam = as.double(gam),
+                   tol = as.double(tol),
+                   mf = double(1),
+                   sf = double(1),
+                   isol = integer(1),
+                   PACKAGE = "robust")$sf
+
+    uF <- log(qweibull(1.0 - beta, 1.0)) * v + tau
+    lF <- log(qweibull(beta, 1.0)) * v + tau
+    W2beta <- (1.0 - 2.0 * beta) * mF + beta * lF + beta * uF
+
+    mu1F <- gamma(1.0 + 1.0 / shape)
+    muF <- scale * gamma(1.0 + 1.0 / shape) 
+
+    #S.quql.w(u,shape,1)
+    z <- S.quql.w(u, shape, 1.0)
+    qu1F <- z$qu
+    ql1F <- z$ql
+
+    #S.quql.w(u,shape,scale)
+    z <- S.quql.w(u, shape, scale)
+    quF <- z$qu
+    qlF <- z$ql
+
+    #S.K1.w(qu1F,shape)/scale
+    fquF <- dweibull(qu1F, shape) / scale
+
+    #S.K1.w(ql1F,shape)/scale
+    fqlF <- dweibull(ql1F, shape) / scale
+
+    #S.K.w(ql1F,shape)
+    FqlF  <- pweibull(ql1F, shape)
+
+    #S.H0.w(u, shape, scale)
+    H0 <- u
+    tmp <- qweibull(u, shape, 1.0)
+
+    #S.H1.w(u,shape,scale)
+    H1 <- scale * S.G.w(tmp, shape)
+
+    #S.J0.w(u,shape,scale)
+    J0 <- pweibull(ql1F,shape)
+
+    #S.J1.w(u,shape,scale)
+    J1 <- scale * S.G.w(ql1F, shape)
+
+    #S.K.w(ql1F,shape)
+    Kl1 <- pweibull(ql1F, shape)
+
+    #S.K1.w(ql1F,shape)
+    K1l1 <- fqlF * scale
+
+    #S.K1.w(qu1F,shape)
+    K1u1 <- fquF * scale
+
+    #S.K2.w(qu1F,shape)
+    K2u1 <- S.K2.w(qu1F, shape)
+
+    #S.K2.w(ql1F,shape)
+    K2l1 <- S.K2.w(ql1F, shape)
+
+    #S.G1.w(qu1F,shape)
+    G1u1 <- qu1F * dweibull(qu1F, shape)
+
+    #S.G1.w(ql1F,shape)
+    G1l1 <- ql1F * dweibull(ql1F, shape)
+
+    #S.G2.w(qu1F,shape)
+    G2u1 <- S.G2.w(qu1F, shape)
+
+    #S.G2.w(ql1F,shape)
+    G2l1 <- S.G2.w(ql1F, shape)
+
+    MpF <- 0
+    SpF <- 0
+
+    Theta <- list(iopt = 1, alF = shape, sigF = scale, beta = beta,
+                  gam = gam, mF = mF, m1F = m1F, D1 = D1, D2 = D2,
+                  sF = sF, s1F = s1F, uF = uF, lF = lF, W2beta = W2beta,
+                  A1 = A1, A2 = A2, A3 = A3, A4 = A4, B1 = B1, B2 = B2,
+                  B3 = B3, B4 = B4, QGup1 = QGup1, QGlow1 = QGlow1,
+                  QGup2 = QGup2, QGlow2 = QGlow2, fm = fm, fQGup1 = fQGup1,
+                  fQGlow1 = fQGlow1, fQGup2 = fQGup2, fQGlow2 = fQGlow2,
+                  MpF = MpF, SpF = SpF, u = u, mu1F = mu1F, muF = muF,
+                  qu1F = qu1F, quF = quF, ql1F = ql1F, qlF = qlF,
+                  fquF = fquF, fqlF = fqlF, FqlF = FqlF, H0 = H0, H1 = H1,
+                  J0 = J0, J1 = J1, Kl1 = Kl1, K1l1 = K1l1, K1u1 = K1u1,
+                  K2u1 = K2u1, K2l1 = K2l1, G1u1 = G1u1, G1l1 = G1l1,
+                  G2u1 = G2u1, G2l1 = G2l1)
+  }
+
+  Theta
+}
+
+
+#S.TD.fun.w(1, ...)
+S.quql.w <- function(u, alpha, sigma, tol = 1e-4)
+{
+  z <- .Fortran("rlquqldw",
+                u = as.double(u),
+                alpha = as.double(alpha),
+                sigma = as.double(sigma),
+                tol = as.double(tol),
+                ql = double(1),
+                qu = double(1),
+                isol = integer(1),
+                PACKAGE = "robust")
+
+  list(ql = z$ql, qu = z$qu, ok = z$isol)
+}
+
+
+#S.TD.fun.w(2, ...)
+S.qad1.w <- function(alpha, beta, gam, tol = 1e-4)
+{
+  z <- .Fortran("rlqad1w",
+                alpha = as.double(alpha),
+                beta = as.double(beta),
+                gam = as.double(gam),
+                tol = as.double(tol),
+                qad1 = double(1),
+                isol = integer(1),
+                PACKAGE = "robust")
+
+  list( qad1 = z$qad1, ok = z$isol)
+}
+
+
+#S.TD.fun.w(3, ...)
+S.dlweib <- function(y, sigma = 1.0, alpha = 1.0)
+{
+  tau <- log(sigma)
+  v <- 1.0 / alpha
+  t <- (y - tau) / v
+
+  (1 / v) * exp(t - exp(t))
+}
+
+
+#S.TD.fun.w(4, ...)
+S.K.lw <- function(t, sigma = 1.0, alpha = 1.0)
+{
+  y <- exp(t)
+  pweibull(y, alpha, sigma)
+}
+
+
+#S.TD.fun.w(5, ...)
+S.G.w <- function(t, alpha)
+{
+  a1 <- 1.0 + 1.0 / alpha
+  a2 <- 2.0 + 1.0 / alpha
+  ga1 <- gamma(a1)
+  p <- pweibull(t, alpha)
+  mup <- p * ga1
+  lp <- log(1.0 / (1.0 - p))
+
+  for(k in 1:length(p)) {
+    if(p[k] == 1)
+      break
+
+    pa <- 1.0 / alpha[k] + 1.0
+    ig <- .Fortran("rlingama",
+                   x = as.double(lp[k]),
+                   p = as.double(pa),
+                   g = double(1),
+                   PACKAGE = "robust")$g
+
+    mup[k] <- ga1[k] * ig
+  }
+
+  mup
+}
+
+
+#S.TD.fun.w(6, ...)
+S.K2.w <- function(t, alpha)
+{
+  z0 <- t^alpha
+  one <- 1
+  two <- 2
+
+  #S.Intlgam(t, alpha)
+  tmp1 <- .Fortran("rlsumlgm",
+                   hi = as.double(z0),
+                   alpha = as.double(one),
+                   gl = double(1),
+                   PACKAGE = "robust")$gl
+
+  #S.Intlgam(t, alpha)
+  tmp2 <- .Fortran("rlsumlgm",
+                   hi = as.double(z0),
+                   alpha = as.double(two),
+                   gl = double(1),
+                   PACKAGE = "robust")$gl
+
+  (1.0 / alpha) * (pweibull(t, alpha) + tmp1 - gamma(2) * tmp2)
+}
+
+
+#S.TD.fun.w(7, ...)
+S.G2.w <- function(t, alpha)
+{
+  z0 <- t^alpha
+  a1 <- 1.0 + 1.0 / alpha
+  a2 <- 2.0 + 1.0 / alpha
+  ga1 <- gamma(a1)
+  p <- pweibull(t, alpha)
+  mup <- p * ga1
+  lp <- log(1.0 / (1.0 - p))
+
+  for(k in 1:length(p)){
+    if(p[k]==1)
+      break
+
+    pa <- 1.0 / alpha[k] + 1.0
+
+    ig <- .Fortran("rlingama",
+                    x = as.double(lp[k]),
+                    p = as.double(pa),
+                    g = double(1),
+                    PACKAGE = "robust")$g
+
+    mup[k] <- ga1[k] * ig
+  }
+
+  tmp1 <- .Fortran("rlsumlgm",
+                    hi = as.double(z0),
+                    alpha = as.double(a1),
+                    gl = double(1),
+                    PACKAGE = "robust")$gl
+
+  tmp2 <- .Fortran("rlsumlgm",
+                    hi = as.double(z0),
+                    alpha = as.double(a2),
+                    gl = double(1),
+                    PACKAGE = "robust")$gl
+
+  (1.0 / alpha) * (mup + ga1 * tmp1 - gamma(a2) * tmp2)
+}
+
+
+#S.TD.fun.w(8, ...)
+S.G.lw <- function(t, sigma = 1.0)
+{
+  lsg <- log(sigma)
+  et <- exp(t - lsg)
+
+  #S.Intlgam(et, 1)
+  z <- .Fortran("rlsumlgm",
+                hi = as.double(et),
+                alpha = as.double(1.0),
+                gl = double(1),
+                PACKAGE = "robust")$gl
+
+  z + lsg * (1.0 - exp(-et))
+}
+
+
+Tab.weibull <- function(b1 = 1.5, b2 = 1.7, A = c(0, 0, 0), monit = 0,
+                        maxta = 1, maxtc = 1, maxit = 30, til = 0.001,
+                        tol = 0.001)
+{
+  if(abs(b1 - b2) < 1e-5 && b1 < 1.075)
+    warning("Solution for b1 = b2 & b1 < 1.075 might not exist!")
+
+  if(monit != 0) {
+    cat("Alfa,  Nit,  f(c1),  f(c2), fa(1),  fa(2), fa(3) \n")
+    cat("nsol,  x2(1),  x2(2),  x2(3),  x2(4):\n")
+  }
+
+  f.res <- .Fortran("rlcretabw",
+                    b1 = as.double(b1),
+                    b2 = as.double(b2),
+                    a = as.double(A),
+                    maxta = as.integer(maxta),
+                    maxtc = as.integer(maxtc),
+                    maxit = as.integer(maxit),
+                    til = as.double(til),
+                    tol = as.double(tol),
+                    monit = as.integer(monit),
+                    tab = double(5),
+                    tpar = double(6),
+                    PACKAGE = "robust")
+
+  f.res$tab <- array(f.res$tab, c(NULL,5))
+  dimnames(f.res$tab) <- list(c("c1*v", "c2*v", "a11/v", "a21/v", "a22/v"))
+  list(Table = f.res$tab)
+}
+
+

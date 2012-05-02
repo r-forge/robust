@@ -1,39 +1,25 @@
-lognormMLE <- function(data, save.data = TRUE)
+lognormMLE <- function(x, save.data = TRUE)
 {
-  # Estimate parameters of a lognormal distribution.
-  # Take a log transform and estimate parameters for that normal distn
+	the.call <- match.call()
+  data.name <- deparse(substitute(x))
+  data <- if(save.data) x else NULL
 
-  the.call <- match.call()
-  data.name <- deparse(substitute(data))
-  y <- log(data)
-  meany <- mean(y)
-  sigma2 <- var(y)
+  mle <- fitdistr(x, "lognormal")
+  meanlog <- mle$estimate[1]
+  sdlog <- mle$estimate[2]
+  vcov <- mle$vcov
 
-  # Calculate mu = estimated mean of the lognormal distn
+  mu <- exp(meanlog + sdlog^2 / 2)
+  V.mu <- (meanlog^2 * sdlog^2 * (1 + sdlog^2 / 2)) / (length(x) - 1)
 
-  mu <- exp(meany + 0.5 * sigma2)
+  header <- "Maximum likelihood lognormal distribution parameter estimate"
 
-  # V.mu is the variance of estimate "mu"
-
-	V.mu <- (mu^2 * sigma2 * (1 + sigma2/2)) / (length(y) - 1)
-
-  ans <- list(call = match.call(),
-              alpha = meany,
-              sigma = sqrt(sigma2),
-              mu = mu,
-              n = length(data),
-              V.mu = V.mu)
-
-  if(save.data)
-    ans$data <- data
-
-  ans$call <- the.call
-	ans$header <- "MLE lognormal distribution parameter estimate"
-	ans$distribution <- "lognormal"
-  ans$data.name <- data.name
-  oldClass(ans) <- c("lognormMLE", "asmDstn")
-  ans
+  z <- list(meanlog = meanlog, sdlog = sdlog, mu = mu, V.mu = V.mu, vcov = vcov,
+            call = the.call, header = header, distribution = "lognormal",
+            parameter.names = c("meanlog", "sdlog"), data.name = data.name,
+            data = data)
+  oldClass(z) <- c("lognormMLE", "asmDstn")
+  z
 }
-
 
 

@@ -1,10 +1,10 @@
-lognormRob <- function(data, estim = c("tdmean"), save.data = TRUE,
+lognormRob <- function(x, estim = c("tdmean"), save.data = TRUE,
                        control = lognormRob.control(estim, ...), ...)
 {
 	the.call <- match.call()
 	estim <- match.arg(estim)
   data.name <- deparse(substitute(data))
-	x <- data
+  data <- if(save.data) x else NULL
 
 	beta <- control$beta
 	gam <- control$gam
@@ -114,19 +114,17 @@ lognormRob <- function(data, estim = c("tdmean"), save.data = TRUE,
 		}
 	}
 
-	if(save.data)
-		zl$data <- data
+  estimate <- c(zl$alpha, zl$sigma)
+  names(estimate) <- c("meanlog", "sdlog")
+  sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
-	zl$call <- the.call
-	zl$header <- "Robust estimate of lognormal distribution parameters"
-	zl$distribution <- "lognormal"
-  zl$data.name <- data.name
-	oldClass(zl) <- c("lognormRob", "asmDstn")
-	zl
+  z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
+            mu = zl$mu, V.mu = zl$V.mu, call = the.call, data.name = data.name,
+            data = data)
+
+  oldClass(z) <- c("lognormRob", "fitdistr")
+  z
+
 }
-
-
-
-
 
 

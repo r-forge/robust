@@ -1,4 +1,4 @@
-asmfmOverlaidDenPlot <- function(x, truncate = 0.999, ...)
+asmfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -13,7 +13,15 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.999, ...)
     b <- numeric(n.models)
     for(i in 1:n.models) {
       b[i] <- switch(x[[i]]$distribution,
-        gamma = qgamma(truncate, shape = x[[i]]$alpha, scale = x[[i]]$sigma)
+        gamma = {
+          efmi <- coef(x[[i]])
+          qgamma(truncate, shape = efmi[1], scale = efmi[2])
+        },
+        lognormal = {
+          efmi <- coef(x[[i]])
+          qlnorm(truncate, meanlog = efmi[1], sdlog = efmi[2])
+        },
+        weibull = 1
       )
     }
     b <- max(b)
@@ -27,9 +35,18 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.999, ...)
     for(i in 1:n.models) {
       switch(fm[[i]]$distribution,
         gamma = {
-          a <- fm[[i]]$alpha
-          s <- fm[[i]]$sigma
+          efmi <- coef(fm[[i]])
+          a <- efmi[1]
+          s <- efmi[2]
           u <- dgamma((a - 1.0) * s, shape = a, scale = s)
+          if(u > pp$ylim[2])
+            pp$ylim[2] <- u
+        },
+        lognormal = {
+          efmi <- coef(fm[[i]])
+          m <- efmi[1]
+          s <- efmi[2]
+          u <- dlnorm(exp(m - s^2), meanlog = m, sdlog = s)
           if(u > pp$ylim[2])
             pp$ylim[2] <- u
         }
@@ -61,23 +78,16 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.999, ...)
     lty <- rep(lty, n.models)
 
     for(i in 1:n.models) {
-      switch(fm[[i]]$distribution,
-        gamma = {
-          dist.fun <- dgamma
-          dist.args <- list(shape = fm[[i]]$alpha, scale = fm[[i]]$sigma)
-        },
-        lognormal = {
-          dist.fun <- dlnorm
-          dist.args <- list()
-        },
-        weibull = {
-          dist.fun <- dweibull
-          dist.args <- list()
-        }
+      den.fun <- switch(fm[[i]]$distribution,
+        gamma = dgamma,
+        lognormal = dlnorm,
+        weibull = dweibull
       )
 
-      panel.mathdensity(dmath = dist.fun,
-                        args = dist.args,
+      den.args <- as.list(coef(fm[[i]]))
+
+      panel.mathdensity(dmath = den.fun,
+                        args = den.args,
                         n = 250,
                         col = col[i],
                         lwd = lwd[i],

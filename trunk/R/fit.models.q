@@ -18,7 +18,7 @@ fit.models <- function(model.list, formula = NULL, ...)
 
   the.call <- match.call()
 
-  if(class(model.list) == "list") {
+  if(class(model.list)[1] == "list") {
 
     n.models <- length(model.list)
 

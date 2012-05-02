@@ -10,7 +10,7 @@ print.summary.asmfm <- function(x, digits = max(3, getOption("digits") - 3),
 		print(x[[i]]$call)
 	}
 
-	coefs <- lapply(x, coef)
+	coefs <- lapply(x, function(u) u$estimate)
 	coef.names <- names(coefs[[1]])
 	n.coefs <- length(coef.names)
   coefs <- matrix(unlist(coefs), n.models, n.coefs, byrow = TRUE)

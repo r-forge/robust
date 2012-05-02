@@ -8,9 +8,9 @@ gammaMLE <- function(x, save.data = TRUE, ...)
   mle <- fitdistr(x, dgamma, start, lower = 0.0)
   shape <- mle$estimate[1]
   scale <- mle$estimate[2]
-  mu <- shape * scale
   vcov <- mle$vcov
 
+  mu <- shape * scale
   theta <- matrix(c(scale, shape), ncol = 1)
   V.mu <- as.vector(t(theta) %*% vcov %*% theta)
 
@@ -21,10 +21,9 @@ gammaMLE <- function(x, save.data = TRUE, ...)
 
   header <- "MLE gamma distribution parameter estimate"
 
-  z <- list(shape = shape, scale = scale, mu = mu, V.mu = V.mu, vcov = vcov,
+  z <- list(estimate = mle$estimate, mu = mu, V.mu = V.mu, vcov = vcov,
             call = the.call, header = header, distribution = "gamma",
-            parameter.names = c("shape", "scale"), data.name = data.name,
-            data = data)
+            data.name = data.name, data = data)
   oldClass(z) <- c("gammaMLE", "asmDstn")
   z
 }

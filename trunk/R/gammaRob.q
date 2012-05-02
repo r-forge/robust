@@ -225,14 +225,16 @@ gammaRob <- function(x, estim = c("tdmean", "M"), save.data = TRUE,
 	else
 		stop("Invalid Estimator")
 
-  zl$data <- data
-	zl$call <- the.call
-	zl$header <- "Robust estimate of gamma distribution parameters"
-	zl$distribution <- "gamma"
-  zl$parameter.names <- c("shape", "scale")
-  zl$data.name <- data.name
-	oldClass(zl) <- c("gammaRob", "asmDstn")
-	zl
+  estimate <- c(zl$shape, zl$scale)
+  names(estimate) <- c("shape", "scale")
+  sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
+
+  z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
+            mu = zl$mu, V.mu = zl$V.mu, call = the.call, data.name = data.name,
+            data = data)
+
+  oldClass(z) <- c("gammaRob", "fitdistr")
+  z
 }
 
 
