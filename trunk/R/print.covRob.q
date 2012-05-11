@@ -1,4 +1,4 @@
-print.covRob <- function(x, ...)
+print.covRob <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   cat("Call:\n")
   dput(x$call)
@@ -7,10 +7,10 @@ print.covRob <- function(x, ...)
     cat("\nRobust Estimate of Correlation: \n")
   else
     cat("\nRobust Estimate of Covariance: \n")
-  print(x$cov, ...)
+  print(x$cov, digits = digits, ...)
 
   cat("\nRobust Estimate of Location: \n")
-  print(x$center, ...) 
+  print(x$center, digits = digits, ...) 
 
   invisible(x)
 }

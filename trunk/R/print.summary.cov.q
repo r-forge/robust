@@ -1,4 +1,5 @@
-print.summary.cov <- function(x, print.distance = TRUE, ...)
+print.summary.cov <- function(x, digits = max(3, getOption("digits") - 3),
+                              print.distance = TRUE, ...)
 {
   cat("Call:\n")
   dput(x$call)
@@ -7,17 +8,17 @@ print.summary.cov <- function(x, print.distance = TRUE, ...)
     cat("\nClassical Estimate of Correlation: \n")
   else 
     cat("\nClassical Estimate of Covariance: \n")
-  print(x$cov, ...)
+  print(x$cov, digits = digits, ...)
 
   cat("\nClassical Estimate of Location: \n")
-  print(x$center,...)
+  print(x$center, digits = digits, ...)
 
   cat("\nEigenvalues: \n")
-  print(x$evals, ...)
+  print(x$evals, digits = digits, ...)
 
   if(print.distance && !is.null(x$dist)) {
     cat("\nClassical Mahalanobis Distances: \n")
-    print(x$dist, ...)
+    print(x$dist, digits = digits, ...)
   }
 
   invisible(x)

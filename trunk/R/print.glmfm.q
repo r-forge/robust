@@ -1,4 +1,4 @@
-print.glmfm <- function(x, ...)
+print.glmfm <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -19,12 +19,12 @@ print.glmfm <- function(x, ...)
     tmp[match(names(mod.coefs[[i]]), coef.names), i] <- mod.coefs[[i]]
 
   cat("\nCoefficients:\n")
-  print(tmp, ...)
+  print(tmp, digits = digits, ...)
   cat("\n")
 
   cat("Residual Deviance Estimates:\n")
   for(i in 1:n.models)
-    cat(mod.names[i], ":", format(signif(x[[i]]$deviance)),
+    cat(mod.names[i], ":", format(x[[i]]$deviance, digits = digits),
       "on", x[[i]]$df.resid, "degrees of freedom\n")
 
   invisible(x)

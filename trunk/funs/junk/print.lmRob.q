@@ -1,4 +1,4 @@
-print.lmRob <- function(x, ...) 
+print.lmRob <- function(x, digits = max(3, getOption("digits") - 3), ...) 
 {
   if(x$est == "initial")
     cat("Initial Estimates.\n\n")
@@ -15,7 +15,7 @@ print.lmRob <- function(x, ...)
 #  else 
     cat("\nCoefficients:\n")
 
-  print(coefs, ...)
+  print(coefs, digits = digits, ...)
 
   rdf <- x$df.resid
   n <- length(x$residuals)
@@ -27,11 +27,12 @@ print.lmRob <- function(x, ...)
 
   if(rdf > 0) {
     if(is.null(x$weights))
-      cat("Residual standard error:", format(x$scale, ...), "\n")
+      cat("Residual standard error:", format(x$scale, digits = digits, ...),
+          "\n")
 
     else 
       cat("Residual standard error (on weighted scale):", 
-          format(x$scale, ...), "\n")
+          format(x$scale, digits = digits, ...), "\n")
   }
 
   invisible(x)

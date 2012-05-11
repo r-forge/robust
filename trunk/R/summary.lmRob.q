@@ -1,3 +1,5 @@
+## Todo: test with weighted lmRob model
+
 summary.lmRob <- function(object, correlation = FALSE, bootstrap.se = FALSE, ...)
 {
   wt <- object$M.weights
@@ -37,66 +39,47 @@ summary.lmRob <- function(object, correlation = FALSE, bootstrap.se = FALSE, ...
     }
   }
 
-  stddev <- object$scale
-  cov <- object$cov
-  var <- diag(cov)
-
-  if(p < ptotal)
-    R <- R[1:p, 1:p, drop = FALSE]
-
-  stdev.coef <- sqrt(var)
-
-  if(correlation) {
-    std <- stdev.coef %o% stdev.coef
-    correl <- cov / std
-  }
-  else 
-    correl <- NULL
-
-  coefs <- matrix(coefs, p, 4)
-  dimnames(coefs) <- list(coef.names, 
-                          c("Value", "Std. Error", "t value", "Pr(>|t|)"))
-  coefs[, 2] <- stdev.coef
-  coefs[, 3] <- coefs[, 1] / coefs[, 2]
-  coefs[, 4] <- if(rdf > 0) 2 * (1 - pt(abs(coefs[, 3]), rdf)) else NA
+  stderr.coefs <- sqrt(diag(object$cov))
+  tval <- coefs / stderr.coefs
+  pval <- 2.0 * pt(abs(tval), rdf, lower.tail = FALSE)
 
   if(is.null(object$robust.control))
     testbias <- TRUE
 
   else {
-    est <- object$est
-    fnl <- object$robust.control$final.alg
-    if ((casefold(est) == "final") && 
-        (casefold(fnl) == "mm" || casefold(fnl) == "m"))
-      testbias <- TRUE
-    else
-      testbias <- FALSE
+    est <- casefold(object$est)
+    fnl <- casefold(object$robust.control$final.alg)
+    testbias <- ((est == "final") && (fnl %in% c("m", "mm")))
   }
 
+  ans <- object[c("call", "terms")]
+  ans$residuals <- res
+  ans$coefficients <- cbind(coefs, stderr.coefs, tval, pval)
+  dimnames(ans$coefficients) <- list(coef.names, c("Estimate", "Std. Error",
+                                                   "t value", "Pr(>|t|)"))
+  ans$aliased <- is.na(coef(object))
+  ans$sigma <- object$scale
+  ans$df <- c(p, rdf, p)
+  ans$r.squared <- object$r.squared
+  ans$cov.unscaled <- object$cov / (object$scale)^2
+  dimnames(ans$cov.unscaled) <- dimnames(ans$coefficients)[c(1, 1)]
+
+  if(correlation) {
+    ans$correlation <- object$cov / (stderr.coefs %o% stderr.coefs)
+    dimnames(ans$correlation) <- dimnames(ans$cov.unscaled)
+  }
+
+  if(!is.null(object$na.action)) 
+    ans$na.action <- object$na.action
+
+  ans$est <- object$est
+
   if(testbias)
-    biasTest <- test.lmRob(object)
+    ans$biasTest <- test.lmRob(object)
 
   if(bootstrap.se)
-    bootstrap.se <- rb(object)
+    ans$bootstrap.se <- rb.lmRob(object)
 
-  int <- attr(object$terms, "intercept")
-  object <- object[c("call", "terms", "iter.final.coef", "iter.refinement", 
-                     "M.weights", "r.squared", "est","robust.control",
-                     "genetic.control","na.action")]
-
-  object$residuals <- res
-  object$coefficients <- coefs
-  object$sigma <- stddev
-  if(bootstrap.se[1])
-    object$bootstrap.se <- bootstrap.se
-  object$df <- c(p, rdf, ptotal)
-  object$cov.unscaled <- cov/stddev^2
-  object$correlation <- correl
-
-  if(testbias)
-    object$biasTest <- biasTest
-  oldClass(object) <- "summary.lmRob"
-
-  object
+  class(ans) <- "summary.lmRob"
+  ans
 }
-

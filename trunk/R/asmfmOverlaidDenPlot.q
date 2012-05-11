@@ -2,24 +2,17 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
-  data <- sapply(x, function(u) !is.null(u$data))
-
-  if(!any(data))
-    stop("data is not available")
-
-  data <- x[[(1:n.models)[data][1]]]$data
+  data <- attributes(x)$x
 
   if(!is.null(truncate)) {
     b <- numeric(n.models)
     for(i in 1:n.models) {
-      b[i] <- switch(x[[i]]$distribution,
+      b[i] <- switch(attributes(x)$distribution,
         gamma = {
-          efmi <- coef(x[[i]])
-          qgamma(truncate, shape = efmi[1], scale = efmi[2])
+          do.call("qgamma", as.list(c(p = truncate, x[[i]]$estimate)))
         },
         lognormal = {
-          efmi <- coef(x[[i]])
-          qlnorm(truncate, meanlog = efmi[1], sdlog = efmi[2])
+          do.call("qlnorm", as.list(c(p = truncate, x[[i]]$estimate)))
         },
         weibull = 1
       )
@@ -33,24 +26,24 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
     pp <- prepanel.default.histogram(x, breaks = "FD")
 
     for(i in 1:n.models) {
-      switch(fm[[i]]$distribution,
+      u <- switch(attributes(fm)$distribution,
         gamma = {
-          efmi <- coef(fm[[i]])
-          a <- efmi[1]
-          s <- efmi[2]
-          u <- dgamma((a - 1.0) * s, shape = a, scale = s)
-          if(u > pp$ylim[2])
-            pp$ylim[2] <- u
+          est <- fm[[i]]$estimate
+          a <- est[[1]]
+          s <- est[[2]]
+          m <- ifelse(names(est)[2] == "scale", (a - 1.0) * s, (a - 1.0) / s)
+          do.call("dgamma", as.list(c(x = m, est)))
         },
         lognormal = {
-          efmi <- coef(fm[[i]])
-          m <- efmi[1]
-          s <- efmi[2]
-          u <- dlnorm(exp(m - s^2), meanlog = m, sdlog = s)
-          if(u > pp$ylim[2])
-            pp$ylim[2] <- u
+          est <- fm[[i]]$estimate
+          m <- est[[1]]
+          s <- est[[2]]
+          do.call("dlnorm", as.list(c(x = exp(m - s^2), est)))
         }
       )#end switch
+
+      if(u > pp$ylim[2])
+        pp$ylim[2] <- u
     }
     pp
   }
@@ -78,13 +71,13 @@ asmfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
     lty <- rep(lty, n.models)
 
     for(i in 1:n.models) {
-      den.fun <- switch(fm[[i]]$distribution,
+      den.fun <- switch(attributes(fm)$distribution,
         gamma = dgamma,
         lognormal = dlnorm,
         weibull = dweibull
       )
 
-      den.args <- as.list(coef(fm[[i]]))
+      den.args <- as.list(fm[[i]]$estimate)
 
       panel.mathdensity(dmath = den.fun,
                         args = den.args,

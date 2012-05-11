@@ -1,4 +1,4 @@
-rb <- function(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
+rb.lmRob <- function(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
 {
   x <- model.matrix(lmRob.object)
   y <- model.extract(model.frame(lmRob.object), "response")

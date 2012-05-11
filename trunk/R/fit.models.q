@@ -1,159 +1,90 @@
-fit.models <- function(model.list, formula = NULL, ...)
+fit.models <- function(model.list, ..., attributes = NULL)
 {
+  fm.call <- match.call()
+  fm.call$attributes <- NULL
+  dots <- list(...)
 
+  ## get database of camparable models - eventually this should reside in
+  ## its own environment and be user-modifiable
   fmdb <- get.fit.models.database()
 
-  ##
-  ##  model.list should be either a list of function names, (in
-  ##  which case you must also provide additional arguments in 
-  ##  the ... field), or a list of calls.  If there is an entry
-  ##  in .fit.models.database for the supplied models then
-  ##  fit.models will return a "fit.models" class object
-  ##  containing the models.
-  ##
-  ##  Additionally, if fit.models is called on a single object,
-  ##  that object will be coerced to a fit.models object if there
-  ##  is an entry for it in .fit.models.database.
-  ##
+  comparables <- lapply(fmdb, function(u) u$classes)
+  supported.classes <- unique(unlist(comparables))
+  vclass <- NULL
 
-  the.call <- match.call()
 
-  if(class(model.list)[1] == "list") {
+  ## If model.list is missing, assume that dots contains a named "list" of
+  ## fitted models.
 
-    n.models <- length(model.list)
+  if(missing(model.list))
+    model.list <- dots
 
-    if(is.character(model.list[[1]])) {
 
-      fun.call <- the.call
-      fun.call$model.list <- NULL
+  ## If model.list is a fitted model, assume any remaining arguments are also
+  ## fitted models: try to combine them into a fit.models object.
 
-  ##  construct model.list
-  ##  it will be evaluated in the next if(...)
-
-      ans <- list()
-      for(i in 1:n.models) {
-        temp <- model.list[[i]]
-        model.list[[i]] <- fun.call
-        model.list[[i]][[1]] <- as.name(temp)
-      }
-    }
-
-  ##  a list of calls to be evaulated and stored in a fit.models
-  ##  object
-
-    if(is.call(model.list[[1]])) {
-      models <- sapply(model.list, function(u) as.character(u[[1]]))
-      db.index <- -1
-
-      for(i in 1:length(fmdb)) {
-        temp <- match(models, fmdb[[i]]$classes, nomatch = 0)
-        if(prod(temp) != 0) {
-          db.index <- i
-          break
-        }
-      }
-
-      if(db.index == -1)
-        stop("Specified models are not comparable.")
-  
-      if(is.null(names(model.list)))
-        list.names <- paste("Model", 1:n.models, sep = ".")
-      else
-        list.names <- names(model.list)
-
-  ##  check the validity of model comparison
-
-      if(!is.null(fmdb[[db.index]]$validate.function)) {
-        tt <- call(fmdb[[db.index]]$validate.function, x = model.list)
-        tt <- eval(tt, sys.parent())
-      }
-
-      ans <- list()
-      for(i in 1:n.models) {
-        ans[[i]] <- try(eval(model.list[[i]], sys.parent()))
-        model.list[[i]] <- ans[[i]]$call
-      }
-  
-      names(ans) <- list.names
-      attr(ans, "model.list") <- model.list
-      oldClass(ans) <- fmdb[[db.index]]$object.class
-    }
-
-  ##  a list of already fitted models to be combined into a
-  ##  fit.models object
-
-    else {
-
-      models <- as.character(lapply(model.list, function(u) u$call[[1]]))
-      db.index <- -1
-
-      for(i in 1:length(fmdb)) {
-        temp <- match(models, fmdb[[i]]$classes, nomatch = 0)
-        if(prod(temp) != 0) {
-          db.index <- i
-          break
-        }
-      }
-
-      if(db.index == -1)
-        stop("Specified models are not comparable.")
-  
-      if(is.null(names(model.list)))
-        names(model.list) <- paste("Model", 1:n.models, sep = ".")
-      
-      ans <- model.list
-      model.list <- lapply(ans, function(u) u$call)
-      attr(ans, "model.list") <- model.list
-      oldClass(ans) <- fmdb[[db.index]]$object.class
-
-  ##  validate model comparison
-
-      if(!is.null(fmdb[[db.index]]$validate.function)) {
-        tt <- call(fmdb[[db.index]]$validate.function, x = model.list)
-        tt <- eval(tt, sys.parent())
-      }
-    }
+  else if(class(model.list)[1] %in% supported.classes) {
+    model.list <- fit.models(".temp-name" = model.list, ...)
+    mod.names <- c("", names(fm.call)[-(1:2)])
+    name.lengths <- nchar(mod.names)
+    no.names <- which(name.lengths == 0)
+    model.funs <- as.character(fm.call)[-1]
+    mod.names[no.names] <- model.funs[no.names]
+    names(model.list) <- mod.names
   }
 
-  ##
-  ##  take arguments and put them in fit.models object
-  ##
+
+  # If model.list contains a list of comparable functions
 
   else {
-    ans <- list(model.list)
-    if(!is.null(formula))
-      ans <- c(ans, list(formula))
-    dots <- list(...)
-    if(length(dots))
-      ans <- c(ans, dots)
+    n.models <- length(model.list)
 
-    names(ans) <- as.character(as.list(the.call)[-1])
-    model.list <- lapply(ans, function(u) u$call)
-    model.funs <- sapply(model.list, function(x) as.character(x[[1]]))
+    if(is.null(names(model.list)))
+      names(model.list) <- sapply(model.list, function(u) as.character(u[[1]]))
 
-    db.index <- -1
+    mod.names <- names(model.list)
+    name.lengths <- nchar(mod.names)
+    no.names <- which(name.lengths == 0)
+    model.funs <- as.character(model.list)
 
-    for(i in 1:length(fmdb)) {
-      temp <- match(model.funs, fmdb[[i]]$classes, nomatch = 0)
-      if(prod(temp) != 0) {
-        db.index <- i
-        break
-      }
+    if(length(no.names)) {
+      mod.names[no.names] <- model.funs[no.names]
+      names(model.list) <- mod.names
     }
 
-    if(db.index == -1)
-      stop("Specified model is not in the fit.models database.")
+    #extract model functions and check comparability
+    idx <- sapply(comparables, function(u, w) all(w %in% u), w = model.funs)
 
-    if(!is.null(validate <- fmdb[[db.index]]$validate.function))
-      tt <- validate(model.list)
+    if(!any(idx))
+      stop("models are not comparable")
 
-    attr(ans, "model.list") <- model.list
-    oldClass(ans) <- fmdb[[db.index]]$object.class
+    # we get the virtual class here for free
+    vclass <- (names(comparables)[idx])[1]
+
+    # replace each element of model.list with a function call
+    model.args <- as.list(fm.call)[-(1:2)]
+    for(i in 1:n.models)
+      model.list[[i]] <- do.call(model.list[[i]], model.args)
   }
 
-  ans
+  if(is.null(vclass)) {
+    model.funs <- sapply(model.list, function(u) as.character(u$call[[1]]))
+    idx <- sapply(comparables, function(u, w) all(w %in% u), w = model.funs)
+
+    if(!any(idx))
+      stop("models are not comparable")
+
+    vclass <- (names(comparables)[idx])[1]
+  }
+
+  if(!is.null(is.valid <- fmdb[[vclass]]$validation.function))
+    is.valid(model.list)
+
+  if(!is.null(add.attributes <- fmdb[[vclass]]$attributes.function))
+    model.list <- add.attributes(model.list, fm.call, attributes)
+
+  oldClass(model.list) <- vclass
+  model.list
 }
-
-
 
 

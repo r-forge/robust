@@ -1,8 +1,8 @@
-print.summary.covfm <- function(x, print.distance = FALSE, ...)
+print.summary.covfm <- function(x, digits = max(3, getOption("digits") - 3),
+                                print.distance = FALSE, ...)
 {
   n.models <- length(x)
-  mod.names <- format(names(x))
-  model.list <- attr(x, "model.list")
+  mod.names <- names(x)
 
   cat("\nCalls: \n")
   for(i in 1:n.models) {
@@ -23,28 +23,28 @@ print.summary.covfm <- function(x, print.distance = FALSE, ...)
 
   cat("\nComparison of Covariance/Correlation Estimates:\n")
   cat(" (unique correlation terms) \n")
-  print(cov.unique, ...)
+  print(cov.unique, digits = digits, ...)
 
   center <- t(sapply(x, function(u) u$center))
   center.names <- names(x[[1]]$center)
   dimnames(center) <- list(mod.names, center.names)
 
   cat("\nComparison of Location Estimates: \n")
-  print(center, ...)
+  print(center, digits = digits, ...)
 
   evals <- t(sapply(x, function(u) u$evals))
   eval.names <- names(x[[1]]$evals)
   dimnames(evals) <- list(mod.names, eval.names)
 
   cat("\nComparison of Eigenvalues: \n")
-  print(evals, ...)
+  print(evals, digits = digits, ...)
 
   have.dist <- sapply(x, function(u) !is.null(u$dist))
   if(print.distance && all(have.dist)) {
     dists <- t(sapply(x, function(u) u$dist))
     dimnames(dists) <- list(mod.names, names(x[[1]]$dist))
     cat("\nComparison of Mahalanobis Distances: \n")
-    print(dists, ...)
+    print(dists, digits = digits, ...)
   }
 
   invisible(x)

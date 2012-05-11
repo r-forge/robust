@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		0E0536150A41EB220012CF66 /* labels.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = labels.lmRob.q; path = R/labels.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0E09E5D8154C75800004C9C6 /* plot.asmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.asmfm.q; sourceTree = "<group>"; };
 		0E09E5DA154CAD3B0004C9C6 /* asmfmOverlaidDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = asmfmOverlaidDenPlot.q; sourceTree = "<group>"; };
 		0E09E5DE154CEC170004C9C6 /* asmfmQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = asmfmQQPlot.q; sourceTree = "<group>"; };
+		0E0ACBCF155A1A1F002E0744 /* labels.lmRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.lmRob.q; sourceTree = "<group>"; };
 		0E0E0E7D0B4AF65F0078D331 /* glmRob.mallows.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.mallows.Rd; path = man/glmRob.mallows.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7E0B4AF6780078D331 /* glmRob.misclass.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.Rd; path = man/glmRob.misclass.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7F0B4AF6780078D331 /* glmRob.misclass.w.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.w.Rd; path = man/glmRob.misclass.w.Rd; sourceTree = SOURCE_ROOT; };
@@ -252,11 +251,9 @@
 		0E45FFFF0A029C050064D9A4 /* arg.names.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = arg.names.Rd; path = man/arg.names.Rd; sourceTree = SOURCE_ROOT; };
 		0E4C09B21549CFF30080765A /* lognormRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lognormRob.q; sourceTree = "<group>"; };
 		0E4C09B31549D0450080765A /* lognormRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lognormRob.control.q; sourceTree = "<group>"; };
-		0E4C09B41549D7370080765A /* lognormMLE.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lognormMLE.q; sourceTree = "<group>"; };
 		0E61FA2E152A70D5005596B3 /* NAMESPACE */ = {isa = PBXFileReference; lastKnownFileType = text; path = NAMESPACE; sourceTree = "<group>"; };
-		0E636229154B4A4A00D3F31F /* print.asmDstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.asmDstn.q; sourceTree = "<group>"; };
-		0E63622D154B4DD500D3F31F /* coef.asmDstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = coef.asmDstn.q; sourceTree = "<group>"; };
-		0E63622F154B53DA00D3F31F /* summary.asmDstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.asmDstn.q; sourceTree = "<group>"; };
+		0E636229154B4A4A00D3F31F /* print.fitdistrRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.fitdistrRob.q; sourceTree = "<group>"; };
+		0E63622F154B53DA00D3F31F /* summary.fitdistrRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.fitdistrRob.q; sourceTree = "<group>"; };
 		0E636230154B57F100D3F31F /* print.summary.asmDstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.summary.asmDstn.q; sourceTree = "<group>"; };
 		0E67A7650B8266E60044A84B /* methods.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = methods.glmRob.Rd; path = man/methods.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0E67A7850B8270DD0044A84B /* plot.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.glmRob.Rd; path = man/plot.glmRob.Rd; sourceTree = SOURCE_ROOT; };
@@ -310,7 +307,7 @@
 		0E9C45050E2129C800DE7FD9 /* compatibility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compatibility.c; path = src/compatibility.c; sourceTree = SOURCE_ROOT; };
 		0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.ga.q; sourceTree = "<group>"; };
 		0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.genetic.control.q; sourceTree = "<group>"; };
-		0EBB2D93154E5BD70053C2A7 /* plot.asmDstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.asmDstn.q; sourceTree = "<group>"; };
+		0EBB2D93154E5BD70053C2A7 /* plot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.fdfm.q; sourceTree = "<group>"; };
 		0EBC2E0A0A2F70E300C89C9F /* lmRob.const.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.const.q; path = R/lmRob.const.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E0B0A2F70E300C89C9F /* lmRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.control.q; path = R/lmRob.control.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E0C0A2F70E300C89C9F /* lmRob.eff0.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.eff0.q; path = R/lmRob.eff0.q; sourceTree = SOURCE_ROOT; };
@@ -340,25 +337,16 @@
 		0EBC2E270A2F714B00C89C9F /* print.summary.lmfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.lmfm.q; path = R/print.summary.lmfm.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E280A2F714B00C89C9F /* summary.lmfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.lmfm.q; path = R/summary.lmfm.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E2D0A2F718D00C89C9F /* weight.funs.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = weight.funs.q; sourceTree = "<group>"; };
-		0EBC2E2E0A2F71CE00C89C9F /* add1.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = add1.lmRob.q; path = R/add1.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E300A2F71CE00C89C9F /* anova.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = anova.lmRob.q; path = R/anova.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E310A2F71CE00C89C9F /* coef.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = coef.lmRob.q; path = R/coef.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E320A2F71CE00C89C9F /* deviance.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = deviance.lmRob.q; path = R/deviance.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E330A2F71CE00C89C9F /* drop1.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = drop1.lmRob.q; path = R/drop1.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E340A2F71CE00C89C9F /* formula.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = formula.lmRob.q; path = R/formula.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E350A2F71CE00C89C9F /* model.frame.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = model.frame.lmRob.q; path = R/model.frame.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E360A2F71CE00C89C9F /* model.matrix.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = model.matrix.lmRob.q; path = R/model.matrix.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E370A2F71CE00C89C9F /* plot.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.lmRob.q; path = R/plot.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E380A2F71CE00C89C9F /* predict.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = predict.lmRob.q; path = R/predict.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E390A2F71CE00C89C9F /* print.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.lmRob.q; path = R/print.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E3A0A2F71CE00C89C9F /* print.summary.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = print.summary.lmRob.q; path = R/print.summary.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E3B0A2F71CE00C89C9F /* rb.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = rb.q; path = R/rb.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E3C0A2F71CE00C89C9F /* residuals.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = residuals.lmRob.q; path = R/residuals.lmRob.q; sourceTree = SOURCE_ROOT; };
+		0EBC2E3B0A2F71CE00C89C9F /* rb.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; name = rb.lmRob.q; path = R/rb.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E3D0A2F71CE00C89C9F /* step.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = step.lmRob.q; path = R/step.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E3E0A2F71CE00C89C9F /* summary.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.lmRob.q; path = R/summary.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E3F0A2F71CE00C89C9F /* test.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = test.lmRob.q; path = R/test.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E400A2F71CE00C89C9F /* update.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = update.lmRob.q; path = R/update.lmRob.q; sourceTree = SOURCE_ROOT; };
-		0EBC2E410A2F71CE00C89C9F /* weights.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weights.lmRob.q; path = R/weights.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E440A2F726C00C89C9F /* gen.data.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.q; path = R/gen.data.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E460A2F728F00C89C9F /* Copyright */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = Copyright; path = inst/Copyright; sourceTree = SOURCE_ROOT; };
 		0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistancePlot.Rd; path = man/covfmDistancePlot.Rd; sourceTree = SOURCE_ROOT; };
@@ -384,14 +372,12 @@
 		0EBDE6851550EED4002B561F /* weibullRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = weibullRob.control.q; sourceTree = "<group>"; };
 		0EC212FD0B850BAA00C049F7 /* predict.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = predict.glmRob.Rd; path = man/predict.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0EC212FE0B850BAA00C049F7 /* qqplot.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = qqplot.glmRob.Rd; path = man/qqplot.glmRob.Rd; sourceTree = SOURCE_ROOT; };
-		0ECC5F481547852700833ABD /* fitdistrRob.auxiliary.q */ = {isa = PBXFileReference; path = fitdistrRob.auxiliary.q; sourceTree = "<group>"; };
+		0ECC5F481547852700833ABD /* fitdistrRob.auxiliary.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fitdistrRob.auxiliary.q; sourceTree = "<group>"; };
 		0EDE357E15473A46000FAEE6 /* gammaRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = gammaRob.control.q; sourceTree = "<group>"; };
-		0EDE358115473B32000FAEE6 /* gammaMLE.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = gammaMLE.q; sourceTree = "<group>"; };
 		0EE4DC9F0B83A90000BA046A /* anova.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = anova.glmRob.Rd; path = man/anova.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0EE4DCC90B83BBFD00BA046A /* anova.lmRoblist.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = anova.lmRoblist.q; path = R/anova.lmRoblist.q; sourceTree = SOURCE_ROOT; };
-		0EE51B3E154B9E570023004C /* print.asmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.asmfm.q; sourceTree = "<group>"; };
-		0EE51B40154BA19B0023004C /* summary.asmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.asmfm.q; sourceTree = "<group>"; };
-		0EE51B41154BAEF10023004C /* print.summary.asmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.summary.asmfm.q; sourceTree = "<group>"; };
+		0EE51B3E154B9E570023004C /* print.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.fdfm.q; sourceTree = "<group>"; };
+		0EFC04641551AD8600143807 /* fitdistrRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fitdistrRob.q; sourceTree = "<group>"; };
 		0EFE1A9C0B97693C0022F697 /* leuk.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = leuk.dat.Rd; path = man/leuk.dat.Rd; sourceTree = SOURCE_ROOT; };
 		DA0C9F680E225E9300973220 /* leuk.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = leuk.dat.txt; path = data/leuk.dat.txt; sourceTree = SOURCE_ROOT; };
 		DA0C9F690E225E9300973220 /* mallows.dat.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = mallows.dat.txt; path = data/mallows.dat.txt; sourceTree = SOURCE_ROOT; };
@@ -469,24 +455,19 @@
 		0E13EB471547221F00786D46 /* asmRob */ = {
 			isa = PBXGroup;
 			children = (
+				0EFC04641551AD8600143807 /* fitdistrRob.q */,
 				0E13EB481547225800786D46 /* gammaRob.q */,
 				0EDE357E15473A46000FAEE6 /* gammaRob.control.q */,
-				0EDE358115473B32000FAEE6 /* gammaMLE.q */,
 				0E4C09B21549CFF30080765A /* lognormRob.q */,
 				0E4C09B31549D0450080765A /* lognormRob.control.q */,
-				0E4C09B41549D7370080765A /* lognormMLE.q */,
 				0EBDE6841550EA0F002B561F /* weibullRob.q */,
 				0EBDE6851550EED4002B561F /* weibullRob.control.q */,
 				0ECC5F481547852700833ABD /* fitdistrRob.auxiliary.q */,
-				0E636229154B4A4A00D3F31F /* print.asmDstn.q */,
-				0E63622D154B4DD500D3F31F /* coef.asmDstn.q */,
-				0E63622F154B53DA00D3F31F /* summary.asmDstn.q */,
+				0E636229154B4A4A00D3F31F /* print.fitdistrRob.q */,
+				0E63622F154B53DA00D3F31F /* summary.fitdistrRob.q */,
 				0E636230154B57F100D3F31F /* print.summary.asmDstn.q */,
-				0EE51B3E154B9E570023004C /* print.asmfm.q */,
-				0EE51B40154BA19B0023004C /* summary.asmfm.q */,
-				0EE51B41154BAEF10023004C /* print.summary.asmfm.q */,
-				0EBB2D93154E5BD70053C2A7 /* plot.asmDstn.q */,
-				0E09E5D8154C75800004C9C6 /* plot.asmfm.q */,
+				0EE51B3E154B9E570023004C /* print.fdfm.q */,
+				0EBB2D93154E5BD70053C2A7 /* plot.fdfm.q */,
 				0E09E5DA154CAD3B0004C9C6 /* asmfmOverlaidDenPlot.q */,
 				0E09E5DE154CEC170004C9C6 /* asmfmQQPlot.q */,
 			);
@@ -1269,28 +1250,19 @@
 		DA490C7E0A21E0180092C673 /* methods */ = {
 			isa = PBXGroup;
 			children = (
-				0EBC2E390A2F71CE00C89C9F /* print.lmRob.q */,
 				0EBC2E3E0A2F71CE00C89C9F /* summary.lmRob.q */,
 				0EBC2E3A0A2F71CE00C89C9F /* print.summary.lmRob.q */,
 				0EBC2E370A2F71CE00C89C9F /* plot.lmRob.q */,
-				0EBC2E2E0A2F71CE00C89C9F /* add1.lmRob.q */,
 				0EBC2E330A2F71CE00C89C9F /* drop1.lmRob.q */,
 				0EBC2E3D0A2F71CE00C89C9F /* step.lmRob.q */,
 				0EBC2E300A2F71CE00C89C9F /* anova.lmRob.q */,
 				0EE4DCC90B83BBFD00BA046A /* anova.lmRoblist.q */,
 				0EBC2E380A2F71CE00C89C9F /* predict.lmRob.q */,
-				0EBC2E3B0A2F71CE00C89C9F /* rb.q */,
+				0EBC2E3B0A2F71CE00C89C9F /* rb.lmRob.q */,
 				DAB89EB30A1CA95600F2C64D /* lmRob.RFPE.q */,
 				0EBC2E3F0A2F71CE00C89C9F /* test.lmRob.q */,
 				0EBC2E400A2F71CE00C89C9F /* update.lmRob.q */,
-				0EBC2E310A2F71CE00C89C9F /* coef.lmRob.q */,
-				0EBC2E320A2F71CE00C89C9F /* deviance.lmRob.q */,
-				0EBC2E340A2F71CE00C89C9F /* formula.lmRob.q */,
-				0E0536150A41EB220012CF66 /* labels.lmRob.q */,
-				0EBC2E350A2F71CE00C89C9F /* model.frame.lmRob.q */,
-				0EBC2E360A2F71CE00C89C9F /* model.matrix.lmRob.q */,
-				0EBC2E3C0A2F71CE00C89C9F /* residuals.lmRob.q */,
-				0EBC2E410A2F71CE00C89C9F /* weights.lmRob.q */,
+				0E0ACBCF155A1A1F002E0744 /* labels.lmRob.q */,
 			);
 			name = methods;
 			path = R;

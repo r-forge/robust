@@ -2,25 +2,19 @@ asmfmQQPlot <- function(x, robustQQline = TRUE, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
-  data <- sapply(x, function(u) !is.null(u$data))
+  data <- attributes(x)$x
 
-  if(!any(data))
-    stop("data is not available")
-
-  data <- x[[(1:n.models)[data][1]]]$data
   n <- length(data)
   p <- (1:n) / (1 + n)
   quantiles <- matrix(0.0, n, n.models)
 
   for(j in 1:n.models) {
-    quantiles[,j] <- switch(x[[j]]$distribution,
+    quantiles[,j] <- switch(attributes(x)$distribution,
       gamma = {
-        efmj <- coef(x[[j]])
-        qgamma(p, shape = efmj[1], scale = efmj[2])
+        do.call("qgamma", c(list(p = p), as.list(x[[j]]$estimate)))
       },
       lognormal = {
-        efmj <- coef(x[[j]])
-        qlnorm(p, meanlog = efmj[1], sdlog = efmj[2])
+        do.call("qlnorm", c(list(p = p), as.list(x[[j]]$estimate)))
       },
       weibull = {}
     )

@@ -1,22 +1,21 @@
-print.summary.asmDstn <- function(x, digits = max(3, getOption("digits") - 3), ...)
+print.summary.fitdistrRob <- function(x, digits = getOption("digits"), ...)
 {
-	cat(x$header)
-	cat("\nCall: ")
+	cat("Call: ")
 	print(x$call)
-	cat("\nParameter Estimates:\n")
-	print(x$estimate, digits = digits)
+	cat("\nParameter Estimates (Std. Error):\n")
+	print.fitdistrRob(x, digits = digits, ...)
 
-  if(!is.null(x$mu) && !is.null(x$V.mu)) {
-    tab <- c(x$mu, x$V.mu)
-    names(tab) <- c("mean", "var(mean)")
-    cat("\nEstimated Mean:\n")
-    print(tab, digits = digits)
-  }
+  tab <- format(c(x$mu, sqrt(x$V.mu)), digits = digits, ...)
+  tab[1] <- paste("", tab[1], "")
+  tab[2] <- paste("(", tab[2], ")", sep = "")
+  tab <- matrix(tab, 2, 1)
+  dn <- list(rep("", 2), "mean")
+  dn[[2]] <- paste(substring("      ", 1, (nchar(tab[2, ]) - 4) %/% 2), "mean")
+  dn[[2]] <- paste(dn[[2]], substring("      ", 1, (nchar(tab[2, ]) - nchar(dn[[2]])) %/% 2))
+  dimnames(tab) <- dn
 
-  if(!is.null(x$vcov)) {
-    cat("\nParameter covariance matrix estimate:\n")
-    print(x$vcov, digits = digits)
-  }
+  cat("\nEstimated Mean (Std. Error):\n")
+  print(tab, quote = FALSE)
 
 	invisible(x)
 }

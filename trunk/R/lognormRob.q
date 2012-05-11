@@ -1,10 +1,8 @@
-lognormRob <- function(x, estim = c("tdmean"), save.data = TRUE,
+lognormRob <- function(x, estim = c("tdmean"),
                        control = lognormRob.control(estim, ...), ...)
 {
 	the.call <- match.call()
 	estim <- match.arg(estim)
-  data.name <- deparse(substitute(data))
-  data <- if(save.data) x else NULL
 
 	beta <- control$beta
 	gam <- control$gam
@@ -119,10 +117,9 @@ lognormRob <- function(x, estim = c("tdmean"), save.data = TRUE,
   sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
   z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
-            mu = zl$mu, V.mu = zl$V.mu, call = the.call, data.name = data.name,
-            data = data)
+            mu = zl$mu, V.mu = zl$V.mu, call = the.call, control = control)
 
-  oldClass(z) <- c("lognormRob", "fitdistr")
+  oldClass(z) <- "fitdistrRob"
   z
 
 }

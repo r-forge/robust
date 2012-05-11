@@ -1,6 +1,6 @@
-plot.asmfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
+plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
 {
-  data.name <- x[[1]]$data.name
+  data.name <- attributes(x)$data.name
 
   choices <- c("All",
                "Overlaid Density Estimates", 

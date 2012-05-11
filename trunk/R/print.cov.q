@@ -1,4 +1,4 @@
-print.cov <- function(x, ...)
+print.cov <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   cat("Call:\n")
   dput(x$call)
@@ -7,10 +7,10 @@ print.cov <- function(x, ...)
     cat("\nClassical Estimate of Correlation: \n")
   else 
     cat("\nClassical Estimate of Covariance: \n")
-  print(x$cov, ...)
+  print(x$cov, digits = digits, ...)
 
   cat("\nClassical Estimate of Location: \n")
-  print(x$center,...)
+  print(x$center, digits = digits, ...)
 
   invisible(x)
 }

@@ -1,13 +1,10 @@
-weibullRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
+weibullRob <- function(x, estim = c("M", "tdmean"),
                        control = weibullRob.control(estim, ...), ...)
 {
 	estim <- match.arg(estim)
 	the.call <- match.call()
-  data.name <- deparse(substitute(data))
-  data <- if(save.data) data else NULL
 
   if(estim == "M") {
-    y <- data
     maxit <- control$maxit
     tol <- control$tol
     til <- control$til
@@ -20,9 +17,9 @@ weibullRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
     Table <- Tab.weibull(b1 = b1, b2 = b2, A = A, maxit = maxit,
                          til = til, tol = tol)
 
-    nobs <- length(y)
-    y[y == 0] <- 0.5
-    y <- sort(y)
+    nobs <- length(x)
+    x[x == 0] <- 0.5
+    x <- sort(x)
 
     tab <- Table$Table
 
@@ -34,10 +31,10 @@ weibullRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
     k <- 1
 
     tpar <- c(b1, b2, alf1, alf2, k, alf2 - alf1)
-    y <- log(y)
+    x <- log(x)
 
     f.res <- .Fortran("rlwestim",
-                      y = as.double(y),
+                      x = as.double(x),
                       nobs = as.integer(nobs),
                       tab = as.double(tab),
                       maxit = as.integer(maxit),
@@ -76,14 +73,12 @@ weibullRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
       V.mu <- f.cov$vmoy
       dimnames(vcov) <- list(c("scale", "shape"), c("scale", "shape"))
       vcov <- vcov[2:1, 2:1]
-      zl$vcov <- vcov / length(y)
-      zl$V.mu <- V.mu / length(y)
+      zl$vcov <- vcov / nobs
+      zl$V.mu <- V.mu / nobs
     }
   }
 
   else if(estim == "tdmean") {
-    x <- data
-
     u <- control$u
     beta <- control$beta
     gam <- control$gam
@@ -233,9 +228,8 @@ weibullRob <- function(data, estim = c("tdmean", "M"), save.data = TRUE,
   sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
   z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
-            mu = zl$mu, V.mu = zl$V.mu, call = the.call, data.name = data.name,
-            data = data)
+            mu = zl$mu, V.mu = zl$V.mu, call = the.call, control = control)
 
-  oldClass(z) <- c("weibullRob", "fitdistr")
+  oldClass(z) <- "fitdistrRob"
   z
 }

@@ -1,10 +1,8 @@
-gammaRob <- function(x, estim = c("tdmean", "M"), save.data = TRUE,
+gammaRob <- function(x, estim = c("M", "tdmean"),
                      control = gammaRob.control(estim, ...), ...)
 {
 	estim <- match.arg(estim)
 	the.call <- match.call()
-  data.name <- deparse(substitute(x))
-  data <- if(save.data) x else NULL
 
 	if(estim == "M") {
 		maxit <- control$maxit
@@ -75,6 +73,7 @@ gammaRob <- function(x, estim = c("tdmean", "M"), save.data = TRUE,
 			vcov <- matrix(f.cov$vsiga, 2, 2)
 			V.mu <- f.cov$vmoy
 			dimnames(vcov) <- list(c("scale", "shape"), c("scale", "shape"))
+      vcov <- vcov[2:1, 2:1]
 			zl$vcov <- vcov / nobs
 			zl$V.mu <- V.mu / nobs
 		}
@@ -230,10 +229,9 @@ gammaRob <- function(x, estim = c("tdmean", "M"), save.data = TRUE,
   sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
   z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
-            mu = zl$mu, V.mu = zl$V.mu, call = the.call, data.name = data.name,
-            data = data)
+            mu = zl$mu, V.mu = zl$V.mu, call = the.call, control = control)
 
-  oldClass(z) <- c("gammaRob", "fitdistr")
+  oldClass(z) <- "fitdistrRob"
   z
 }
 
