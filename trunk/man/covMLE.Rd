@@ -1,6 +1,6 @@
-%% --- NOTA BENE:  Renamed function  from  cov() to ccov()
-\name{ccov}
-\alias{ccov}
+%% --- NOTA BENE:  Renamed function  from  cov() to ccov() to covMLE()
+\name{covMLE}
+\alias{covMLE}
 \alias{cov}% for now, backcompatibility
 
 \title{Classical Covariance Estimation}
@@ -14,8 +14,8 @@
 }
 
 \usage{
-ccov(data, corr = FALSE, center = TRUE, distance = TRUE,
-    na.action = na.fail, unbiased = TRUE, control = list())
+covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
+       na.action = na.fail, unbiased = TRUE, control = list())
 }
 
 \arguments{
@@ -66,9 +66,9 @@ ccov(data, corr = FALSE, center = TRUE, distance = TRUE,
 
 \examples{
   data(stack.dat)
-  ccov(stack.dat)
+  covMLE(stack.dat)
 }
 
-%\keyword{librobust}
+\keyword{robust}
 \keyword{multivariate}
 

@@ -1,4 +1,4 @@
-summary.cov <- function(object, ...)
+summary.covMLE <- function(object, ...)
 {
   evals <- eigen(object$cov, symmetric = TRUE, only.values = TRUE)$values
   names(evals) <- paste("Eval.", 1:length(evals))
@@ -8,4 +8,5 @@ summary.cov <- function(object, ...)
   oldClass(object) <- "summary.cov"
   object
 }
+
 

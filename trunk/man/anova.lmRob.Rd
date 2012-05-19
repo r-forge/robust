@@ -18,11 +18,11 @@ Compute an analysis of variance table for one or more robust linear model fits.
 
 \item{\dots}{additional arguments required by the generic anova function.  If \code{\dots} contains additional robustly fitted linear models then the function \code{\link{anova.lmRoblist}} is dispatched.}
 
-\item{const}{a numeric value containing the tuning constant computed by \code{\link{lmRob.const}}.}
+\item{const}{a numeric value containing the tuning constant.}
 
 \item{ipsi}{an integer value specifying the psi-function.}
 
-\item{yc}{a numeric value containing the tuning constant computed by \code{\link{lmRob.effvy}}.}
+\item{yc}{a numeric value containing the tuning constant.}
 
 \item{test}{a single character value specifying which test should be computed in the Anova table.  The possible choices are "RWald" and "RF".}
 }

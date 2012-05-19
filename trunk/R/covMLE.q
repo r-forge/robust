@@ -1,6 +1,6 @@
-ccov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
-                 na.action = na.fail, unbiased = TRUE,
-                 control = list())# <- silently ignored
+covMLE <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
+                   na.action = na.fail, unbiased = TRUE,
+                   control = list())# <- silently ignored
 {
     the.call <- match.call()
     if(any(isc <- names(the.call) == "control"))
@@ -42,17 +42,8 @@ ccov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
         names(dist) <- rowNames
 
     ans <- list(call = the.call, cov = covmat, center = center, dist = dist, corr = corr)
-    oldClass(ans) <- c("cov")
+    oldClass(ans) <- c("covMLE")
     ans
 }
 
-## For now
-cov <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
-                na.action = na.fail, unbiased = TRUE)
-{
-    .Deprecated("ccov")
-    ##          ------
-    ccov(data, corr=corr, center=center, distance=distance,
-         na.action=na.action, unbiased=unbiased)
-}
 

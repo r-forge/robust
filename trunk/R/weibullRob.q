@@ -213,7 +213,8 @@ weibullRob <- function(x, estim = c("M", "tdmean"),
                       til = as.double(til),
                       sum = double(1),
                       iwork = integer(80),
-                      work = double(320))
+                      work = double(320),
+                      PACKAGE = "robust")
 
         zl$V.mu  <- z$sum / length(x)
       }

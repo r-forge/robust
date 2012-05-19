@@ -1,4 +1,4 @@
-asmfmQQPlot <- function(x, robustQQline = TRUE, ...)
+fdfmQQPlot <- function(x, robustQQline = TRUE, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)

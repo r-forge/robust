@@ -43,9 +43,6 @@ chi.weight(x, ips = 1, xk = 1.06)
   a numeric vector, say \code{r} of the same length as \code{x},
   containing the function values \eqn{r_i = f(x_i)}{r[i] = f(x[i])}.
 }
-\seealso{
-  \code{\link{wt.carroll}}
-}
 
 \examples{
 x <- seq(-4,4, length=401)

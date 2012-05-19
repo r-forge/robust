@@ -1,5 +1,5 @@
-print.summary.cov <- function(x, digits = max(3, getOption("digits") - 3),
-                              print.distance = TRUE, ...)
+print.summary.covMLE <- function(x, digits = max(3, getOption("digits") - 3),
+                                 print.distance = TRUE, ...)
 {
   cat("Call:\n")
   dput(x$call)

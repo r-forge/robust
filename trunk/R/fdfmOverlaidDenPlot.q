@@ -1,4 +1,4 @@
-asmfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
+fdfmOverlaidDenPlot <- function(x, truncate = 0.99, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)

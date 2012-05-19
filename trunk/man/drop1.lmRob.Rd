@@ -35,7 +35,6 @@ This function is a method for the generic function \code{\link{drop1}} for class
 }
 
 \seealso{
-\code{\link{add1}},
 \code{\link{anova}},
 \code{\link{drop1}},
 \code{\link{lmRob.object}}.

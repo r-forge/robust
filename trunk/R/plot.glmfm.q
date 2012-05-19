@@ -1,4 +1,5 @@
-plot.glmfm <- function(x, which.plots = "ask",  ...)
+plot.glmfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"),
+                       ...)
 {
   n.models <- length(x)
 

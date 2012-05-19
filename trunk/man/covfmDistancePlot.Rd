@@ -40,12 +40,12 @@ if the models can be compared then the plotted \code{trellis} object is invisibl
   \code{\link{plot.covfm}},
   \code{\link{fit.models}},
   \code{\link{covRob}},
-  \code{\link{ccov}}.
+  \code{\link{covMLE}}.
 }
 
 \examples{
  data(woodmod.dat)
- woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+ woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
                           data = woodmod.dat)
  covfmDistancePlot(woodmod.fm)
 }

@@ -52,6 +52,9 @@ fit.models <- function(model.list, ..., attributes = NULL)
       names(model.list) <- mod.names
     }
 
+    ## Quick fix for R ##
+    model.list[model.list == "cov"] <- "covMLE"
+
     #extract model functions and check comparability
     idx <- sapply(comparables, function(u, w) all(w %in% u), w = model.funs)
 

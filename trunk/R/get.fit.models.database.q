@@ -47,7 +47,7 @@ get.fit.models.database <- function()
   ##  Add covariance models
 
   fmdb[["covfm"]] <-
-            list(classes = c("covRob", "cov", "ccov"),# renamed cov() to ccov()
+            list(classes = c("covRob", "cov", "covMLE"),
                  object.class = "covfm",
                  validation.function = NULL,
                  attributes.function = NULL)

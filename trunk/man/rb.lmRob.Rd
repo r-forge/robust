@@ -1,5 +1,5 @@
-\name{rb}
-\alias{rb}
+\name{rb.lmRob}
+\alias{rb.lmRob}
 
 \title{Robust Bootstrap Standard Errors}
 
@@ -8,7 +8,7 @@ Computes a robust bootstrap estimate of the standard error for each coefficient 
 }
 
 \usage{
-rb(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
+rb.lmRob(lmRob.object, M = 1000, seed = 99, fixed = TRUE)
 }
 
 \arguments{

@@ -60,7 +60,7 @@ S.Theta.gamma <- function(alF, sigF, u = 0.99, beta = 0.4, gam = 0.4)
     fMmD <- dgamma(M1F - D1F, alF) / sigF
 
     # -S.K2.g(M1F,alF)/S.K1.g(M1F,alF)
-    MpF <- -S.K2n.g(M1F, alF) / dgamma(M1F, alF)
+    MpF <- -S.K2.g(M1F, alF) / dgamma(M1F, alF)
     A <- M1F + D1F
     B <- M1F - D1F
 

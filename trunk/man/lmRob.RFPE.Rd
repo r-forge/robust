@@ -25,7 +25,6 @@ a single numeric value giving the robust final prediction error.
 \seealso{
 \code{\link{lmRob}},  
 \code{\link{step.lmRob}},  
-\code{\link{add1.lmRob}},  
 \code{\link{drop1.lmRob}}.
 }
 
