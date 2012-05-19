@@ -1,80 +1,78 @@
-print.summary.lmRob <- function(x, ...) 
+print.summary.lmRob <- function(x, digits = max(3, getOption("digits") - 3),
+                                signif.stars = getOption("show.signif.stars"),
+                                ...) 
 {
-  if (x$est == "initial") 
+  if(x$est == "initial") 
     cat("Initial Estimates.\n")
 
-  cat("\nCall: ")
-  dput(x$call)
-  resid <- x$residuals
-  attr(resid, ".guiColInfo") <- NULL
-  df <- x$df
-  rdf <- df[2]
+  cat("\nCall:\n")
+  cat(paste(deparse(x$call), sep = "\n", collapse = "\n"), "\n\n", sep = "")
+
+  rdf <- x$df[2]
 
   if(rdf > 5) {
-    cat("\nResiduals:\n")
-    if(length(dim(resid)) == 2) {
-      rq <- apply(t(resid), 1, quantile)
-      dimnames(rq) <- list(c("Min", "1Q", "Median", "3Q", "Max"), 
-                           dimnames(resid)[[2]])
-    }
-
-    else {
-      rq <- quantile(resid)
-      names(rq) <- c("Min", "1Q", "Median", "3Q", "Max")
-    }
-    print(rq, ...)
+    cat("Residuals:\n")
+    rq <- quantile(x$residuals)
+    names(rq) <- c("Min", "1Q", "Median", "3Q", "Max")
+    print(rq, digits = digits, ...)
   }
 
   else if(rdf > 0) {
     cat("\nResiduals:\n")
-    print(resid, ...)
+    print(x$residuals, digits = digits, ...)
   }
 
-  if(nsingular <- df[3] - df[1])
+  if(nsingular <- x$df[3] - x$df[1])
     cat("\nCoefficients: (", nsingular, 
         " not defined because of singularities)\n", sep = "")
 
   else 
     cat("\nCoefficients:\n")
 
-  if(!is.null(x$bootstrap)) {
-    coef.names <- dimnames(x$coef)
-    coef.names[[2]] <- c(coef.names[[2]][1:2],
-      "Bootstrap SE", coef.names[[2]][3:4])
-    the.coef <- cbind(x$coef[,1:2], x$bootstrap.se, x$coef[,3:4])
-    dimnames(the.coef) <- coef.names
+  coefs <- x$coefficients
+  if(!is.null(aliased <- x$aliased) && any(aliased)) {
+    cn <- names(aliased)
+    coefs <- matrix(NA, length(aliased), 4)
+    dimnames(coefs) <- list(cn, colnames(coefs))
+    coefs[!aliased, ] <- x$coefficients
   }
-  else
-    the.coef <- x$coef
 
-  print(format(the.coef, ...), quote = FALSE, ...)
+  if(!is.null(x$bootstrap.se)) {
+    dn <- dimnames(coefs)
+    dn[[2]] <- c(dn[[2]][1:2], "Bootstrap SE", dn[[2]][3:4])
+    coefs <- cbind(coefs[, 1:2, drop = FALSE], x$bootstrap.se,
+                   coefs[, 3:4, drop = FALSE])
+    dimnames(coefs) <- dn
+  }
 
-  cat("\nResidual standard error:", format(signif(x$sigma, ...)), 
-      "on",rdf, "degrees of freedom\n")
+  printCoefmat(coefs, digits = digits, signif.stars = signif.stars,
+               na.print = "NA", ...)
 
-  if (!is.null(x$na.action))
-    cat(naprint(x$na.action),"\n")
+  cat("\nResidual standard error:", format(signif(x$sigma, digits = digits, ...)), 
+      "on", rdf, "degrees of freedom\n")
 
   if(!is.null(x$r.squared))
-    cat("Multiple R-Squared:", 
-        format(signif(x$r.squared, ...)),"\n")
+    cat("Multiple R-Squared:", format(x$r.squared, digits = digits, ...), "\n")
 
   correl <- x$correlation
-
   if(!is.null(correl)) {
-    p <- dim(correl)[2]
+    p <- NCOL(correl)
     if(p > 1) {
       cat("\nCorrelation of Coefficients:\n")
-      correl <- format(round(correl, ...), ...)
-      correl[col(correl) > row(correl)] <- ""
-      print(correl, quote = FALSE, ...)
+        correl <- format(round(correl, 2), nsmall = 2, digits = digits)
+        correl[!lower.tri(correl)] <- ""
+        print(correl[-1, -p, drop = FALSE], quote = FALSE)
     }
   }
+  cat("\n")
 
   if(!is.null(x$biasTest)) {
-    cat("\nTest for Bias:\n")
-    print(x$biasTest)
+    cat("Test for Bias:\n")
+    print(x$biasTest, digits = digits, ...)
   }
+
+  if(!is.null(x$na.action))
+    cat(naprint(x$na.action),"\n")
 
   invisible(x)
 }

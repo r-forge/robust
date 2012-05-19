@@ -3,7 +3,9 @@ lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
 {
   n.models <- length(x)
   mod.names <- names(x)
-  n <- length(residuals(x[[1]]))
+  fit <- lapply(x, fitted)
+  res <- lapply(x, resid)
+  n.res <- sapply(res, length)
 
   panel.special <- function(x, y, smooths, rugplot, id.n, ...)
   {
@@ -13,14 +15,11 @@ lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
     invisible()
   }
 
-  mod <- factor(rep(mod.names, each = n), levels = mod.names)
-
-  df <- data.frame(r = as.vector(sapply(x, residuals, type = type)),
-                   f = as.vector(sapply(x, fitted)),
-                   mod = mod)
+  mod <- factor(rep(mod.names, n.res), levels = mod.names)
+  tdf <- data.frame(r = unlist(res), f = unlist(fit), mod = mod)
 
   p <- xyplot(r ~ f | mod,
-              data = df,
+              data = tdf,
               panel = panel.special,
               smooths = smooths,
               rugplot = rugplot,

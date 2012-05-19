@@ -1,8 +1,7 @@
-print.covfm <- function(x, ...)
+print.covfm <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   n.models <- length(x)
-  model.list <- attr(x, "model.list")
-  mod.names <- format(names(model.list))
+  mod.names <- names(x)
 
   cat("\nCalls: \n")
   for(i in 1:n.models) {
@@ -23,14 +22,14 @@ print.covfm <- function(x, ...)
 
   cat("\nComparison of Covariance/Correlation Estimates:\n")
   cat(" (unique covariance terms) \n")
-  print(cov.unique, ...)
+  print(cov.unique, digits = digits, ...)
 
   center <- t(sapply(x, function(u) u$center))
   center.names <- names(x[[1]]$center)
   dimnames(center) <- list(mod.names, center.names)
 
   cat("\nComparison of Location Estimates: \n")
-  print(center, ...)
+  print(center, digits = digits, ...)
 
   invisible(x)
 }

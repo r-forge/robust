@@ -1,8 +1,8 @@
-print.glmRob <- function(x, ...)
+print.glmRob <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
-  if(!is.null(cl <- x$call)) {
+  if(!is.null(x$call)) {
     cat("Call:\n")
-    dput(cl)
+    dput(x$call)
   }
 
   coef <- x$coef
@@ -16,7 +16,7 @@ print.glmRob <- function(x, ...)
   else
     cat("\nCoefficients:\n")
 
-  print(coef, ...)
+  print(coef, digits = digits, ...)
 
   rank <- x$rank
   if(is.null(rank))
@@ -29,7 +29,7 @@ print.glmRob <- function(x, ...)
     rdf <- nobs - rank
 
   cat("\nDegrees of Freedom:", nobs, "Total;", rdf, "Residual\n")
-  cat("Residual Deviance:", format(x$deviance), "\n")
+  cat("Residual Deviance:", format(x$deviance, digits = digits), "\n")
 
   invisible(x)
 }

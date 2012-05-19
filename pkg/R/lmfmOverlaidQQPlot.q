@@ -11,11 +11,10 @@ lmfmOverlaidQQPlot <- function(x, pch, col, ...)
 
   settings <- list(superpose.symbol = list(pch = pch, col = col))
 
-  res <- as.matrix(sapply(x, residuals))
-  mod <- factor(rep(mod.names, each = nrow(res)), levels = mod.names)
-
-  tdf <- data.frame(res = as.vector(res),
-                    mod = mod)
+  res <- lapply(x, resid)
+  n.res <- sapply(res, length)
+  mod <- factor(rep(mod.names, n.res), levels = mod.names)
+  tdf <- data.frame(res = unlist(res), mod = mod)
 
   p <- qqmath(~ res | "",
               groups = mod,

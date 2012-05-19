@@ -148,7 +148,7 @@ C
       SUBROUTINE RLIEQTA2(AA,Fa,A11,C1,B1,XLOWER,XUPPER,TIL,alfa,
      *		sigm,a21,a22,b2,c2,yb,digam,x2,nsol,beta)
       implicit double precision(a-h, o-z)
-      DIMENSION X(7),Z0(7),X2(4)
+      DIMENSION X(7),Z0(7),X2(4),yb(8,2)
       DATA Z0/7*0.D0/
 C
       DO 10 I=1,NSOL
@@ -630,7 +630,7 @@ C
      1 A11,A21,A22,C1,C2,B1,B2)
       implicit double precision (a-h, o-z)
       double precision lamda
-      dimension CALF(2),ZERO(2)
+      dimension CALF(2),ZERO(2),X(4),Y(0:4)
       DATA TIL/1.D-6/
 C
 C  STEP 0.   INITIALIZATIONS
@@ -769,7 +769,7 @@ C------------------------------------------------------------------------
 C
       DOUBLE PRECISION FUNCTION RLSEQTN10(SIGMA,Y,NOBS,PARAM)
       implicit double precision (a-h, o-z)
-      DIMENSION Y(NOBS),PARAM(3)
+      DIMENSION Y(NOBS),PARAM(5)
       EXTERNAL RLPSI1
 
 	  A11 = PARAM(1)
@@ -817,7 +817,7 @@ C
 C PARAM is a vector of parameters for F
 C
       implicit double precision (a-h, o-z)
-      DIMENSION V(NOBS)
+      DIMENSION V(NOBS),PARAM(5)
       EXTERNAL F
       DATA TL/1.D-10/
 C

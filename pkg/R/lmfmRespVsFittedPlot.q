@@ -3,13 +3,9 @@ lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, ...)
   n.models <- length(x)
   mod.names <- names(x)
 
-  model <- sapply(x, function(u) !is.null(u$model))
-  if(!any(model))
-    stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
-         "contain a model frame component")
-  model <- x[[(1:n.models)[model][1]]]$model
-  y <- model.extract(model, "response")
-  n <- length(y)
+  fit <- lapply(x, fitted)
+  resp <- lapply(x, function(u) model.extract(model.frame(u), "response"))
+  n.resp <- sapply(resp, length)
 
   panel.special <- function(x, y, smooths, rugplot, ...)
   {
@@ -19,14 +15,11 @@ lmfmRespVsFittedPlot <- function(x, smooths = FALSE, rugplot = FALSE, ...)
     invisible()
   }
 
-  mod <- factor(rep(mod.names, each = n), levels = mod.names)
+  mod <- factor(rep(mod.names, n.resp), levels = mod.names)
+  tdf <- data.frame(y = unlist(resp), f = unlist(fit), mod = mod)
 
-  df <- data.frame(y = rep(y, n.models),
-                   fv = as.vector(sapply(x, fitted)),
-                   mod = mod)
-
-  p <- xyplot(y ~ fv | mod,
-              data = df,
+  p <- xyplot(y ~ f | mod,
+              data = tdf,
               panel = panel.special,
               smooths = smooths,
               rugplot = rugplot,

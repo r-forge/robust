@@ -1,5 +1,5 @@
 lmfmSqrtResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
-  rugplot = FALSE, id.n = 3, ...)
+                                    rugplot = FALSE, id.n = 3, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -11,16 +11,15 @@ lmfmSqrtResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
     invisible()
   }
 
-  res <- as.matrix(sqrt(abs(sapply(x, resid, type = type))))
-  fit <- as.matrix(sapply(x, fitted))
-  mod <- factor(rep(mod.names, each = nrow(res)), levels = mod.names)
+  fit <- lapply(x, fitted)
+  res <- lapply(x, function(u) sqrt(abs(resid(u))))
+  n.res <- sapply(res, length)
 
-  df <- data.frame(res = as.vector(res),
-                   fit = as.vector(fit),
-                   mod = mod)
+  mod <- factor(rep(mod.names, n.res), levels = mod.names)
+  tdf <- data.frame(res = unlist(res), fit = unlist(fit), mod = mod)
 
   p <- xyplot(res ~ fit | mod,
-              data = df,
+              data = tdf,
               panel = panel.special,
               smooths = smooths,
               rugplot = rugplot,

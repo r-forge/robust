@@ -42,12 +42,12 @@ the plotted \code{trellis} object is invisibly returned.
   \code{\link{plot.covfm}},
   \code{\link{fit.models}},
   \code{\link{covRob}},
-  \code{\link{ccov}}.
+  \code{\link{covMLE}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
                          data = woodmod.dat)
   covfmSqrtMDPlot(woodm.fm)
 }

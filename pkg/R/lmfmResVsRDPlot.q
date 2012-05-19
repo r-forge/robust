@@ -3,71 +3,93 @@ lmfmResVsRDPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- as.matrix(sapply(x, resid, type = type))
+  res <- lapply(x, resid, type = type)
+  n.res <- sapply(res, length)
 
-  model <- sapply(x, function(u) !is.null(u$model))
-  if(!any(model))
-    stop("none of the fitted models in ", sQuote(deparse(substitute(x))),
-         "contain a model frame component")
-  model.terms <- terms(x[[which(model)[1]]])
-  model <- x[[which(model)[1]]]$model
+  compute.distances <- function(obj, fun = covRob)
+  {
+    mf <- model.frame(obj)
+    mm <- model.matrix(obj)
 
-  term.labels <- attr(model.terms, "term.labels")
-  numeric.vars <- names(which(sapply(model, is.numeric)))
-  dist.vars <- intersect(term.labels, numeric.vars)
+    if(is.null(mf) || is.null(mm))
+      return(NA)
 
-  if(length(dist.vars) > 1.5) {
-    model <- model[dist.vars]
-    p <- dim(model)[2]
-    dist <- sqrt(covRob(model, distance = TRUE)$dist)
+    numeric.vars <- sapply(mf, is.numeric)
+    numeric.vars <- names(numeric.vars)[numeric.vars]
+    keep <- intersect(numeric.vars, colnames(mm))
+    p <- length(keep)
 
-    res.thresh <- qnorm(level)
-    dist.thresh <- qchisq(level, df = p)
-
-    y.range <- range(res)
-    y.range[1] <- 1.05 * min(y.range[1], -res.thresh)
-    y.range[2] <- 1.05 * max(y.range[2], res.thresh)
-
-    x.range <- c(0.0, max(dist))
-    x.range[2] <- 1.05 * max(x.range[2], res.thresh)
-
-    panel.special <- function(x, y, res.thresh = 1.0, dist.thresh = 1.0,
-                              id.n = 3, ...)
-    {
-      panel.xyplot(x, y, ...)
-      panel.addons(x, y, id.n = id.n)
-      panel.abline(v = dist.thresh, lty = 2)
-      panel.abline(h = res.thresh, lty = 2)
-      panel.abline(h = -res.thresh, lty = 2)
-      invisible()
+    if(p < 1) {
+      warning("could not compute robust distances")
+      return(NA)
     }
 
-    mod <- factor(rep(mod.names, each = nrow(res)), levels = mod.names)
+    if(p == 1) {
+      x <- mm[, keep]
+      d <- abs((x - median(x)) / mad(x))
+    }
+    else
+      d <- try(sqrt(fun(mm[, keep, drop = FALSE], distance = TRUE)$dist))
+    
+    if(class(d) == "try-error") {
+      warning("could not compute robust distances")
+      return(NA)
+    }
 
-    tdf <- data.frame(res = as.vector(res),
-                      dist = rep(dist, n.models),
-                      mod = mod)
-
-    p <- xyplot(res ~ dist | mod,
-                data = tdf,
-                panel = panel.special,
-                xlim = x.range,
-                ylim = y.range,
-                strip = function(...) strip.default(..., style = 1),
-                res.thresh = res.thresh,
-                dist.thresh = dist.thresh,
-                id.n = id.n,
-                layout = c(n.models, 1, 1),
-                ...)
-
-    print(p)
+    c(p, d)
   }
 
-  else {
-    warning("robust distances could not be computed")
-    p <- NA
+  dists <- lapply(x, compute.distances)
+  idx <- which(sapply(dists, length) != 1 + n.res)
+  for(i in idx)
+    dists[[idx]] <- rep(NA, 1 + n.res[idx])
+
+  for(i in 1:n.models) {
+    dists[[i]][1] <- qchisq(level, df = dists[[i]][1])
+
+    if(is.null(x[[i]]$scale))
+      s <- sqrt(sum(res[[i]]^2) / x[[i]]$df.residual)
+    else
+      s <- x[[i]]$scale
+
+    res[[i]] <- c(s, res[[i]])
   }
 
+  x.range <- max(unlist(dists))
+  x.range <- c(-0.025 * x.range, 1.05 * x.range)
+  y.range <- 1.05 * max(abs(range(unlist(res))))
+  y.range <- c(-y.range, y.range)
+
+  panel.special <- function(x, y, id.n, ...)
+  {
+    a <- x[1]
+    b <- y[1]
+    x <- x[-1]
+    y <- y[-1]
+    if(!is.na(a)) {
+      panel.xyplot(x, y, ...)
+      panel.addons(x, y, id.n = id.n)
+      panel.abline(v = a, lty = 2)
+      panel.abline(h = b, lty = 2)
+      panel.abline(h = -b, lty = 2)
+    }
+    invisible()
+  }
+
+  mod <- factor(rep(mod.names, 1 + n.res), levels = mod.names)
+  tdf <- data.frame(res = unlist(res), dist = unlist(dists), mod = mod)
+
+  p <- xyplot(res ~ dist | mod,
+              data = tdf,
+              panel = panel.special,
+              xlim = x.range,
+              ylim = y.range,
+              strip = function(...) strip.default(..., style = 1),
+              id.n = id.n,
+              layout = c(n.models, 1, 1),
+              ...)
+
+  print(p)
   invisible(p)
 }
 

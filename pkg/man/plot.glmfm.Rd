@@ -18,7 +18,7 @@
 }
 
 \usage{
-\method{plot}{glmfm}(x, which.plots = "ask", ...)
+\method{plot}{glmfm}(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
 }
 
 \arguments{

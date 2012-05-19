@@ -1,5 +1,5 @@
 \name{plot.covfm}
-\alias{plot.cov}
+\alias{plot.covMLE}
 \alias{plot.covRob}
 \alias{plot.covfm}
 
@@ -8,11 +8,11 @@
 }
 
 \description{
-  The generic plot method for objects of class "cov", "covRob", and "covfm".
+  The generic plot method for objects of class "covMLE", "covRob", and "covfm".
 }
 
 \usage{
-\method{plot}{cov}(x, which.plots = "ask", ...)
+\method{plot}{covMLE}(x, which.plots = "ask", ...)
 \method{plot}{covRob}(x, which.plots = "ask", ...)
 \method{plot}{covfm}(x, which.plots = "ask", ...)
 }
@@ -39,7 +39,7 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 
 \seealso{
   \code{\link{plot}},
-  \code{\link{ccov}},
+  \code{\link{covMLE}},
   \code{\link{covRob}},
   \code{\link{fit.models}},
   \code{\link{covfmDistancePlot}},
@@ -50,12 +50,12 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 
 \examples{
 data(woodmod.dat)
-woodmod.cov    <- ccov   (woodmod.dat)
+woodmod.cov <- covMLE(woodmod.dat)
 woodmod.covRob <- covRob(woodmod.dat)
 plot(woodmod.cov, which.plots = 1)
 plot(woodmod.covRob, which = 1)
 
-woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "ccov"),
+woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
                          data = woodmod.dat)
 plot(woodmod.fm, which = 1)
 }

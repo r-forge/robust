@@ -15,58 +15,84 @@ get.fit.models.database <- function()
   ##  Add linear models
 
   fmdb[["lmfm"]] <-
-            list(classes = c("lmRob", "lm"),
+            list(classes = c("lmRob", "lmrob", "lm"),
                  object.class = "lmfm",
-                 validation.function = NULL)
+                 validation.function = NULL,
+                 attributes.function = NULL)
 
   ##  Add generalized linear models
 
   fmdb[["glmfm"]] <-
             list(classes = c("glmRob", "glm"),
                  object.class = "glmfm",
-                 validation.function = NULL)
+                 validation.function = NULL,
+                 attributes.function = NULL)
 
   ##  Add AOV models
 
   fmdb[["aovfm"]] <-
             list(classes = c("aovRob", "aov"),
                  object.class = "aovfm",
-                 validation.function = NULL)
+                 validation.function = NULL,
+                 attributes.function = NULL)
 
   ##  Add AOV models
 
   fmdb[["discfm"]] <-
             list(classes = c("discRob", "discrim"),
                  object.class = "discfm",
-                 validation.function = NULL)
+                 validation.function = NULL,
+                 attributes.function = NULL)
 
   ##  Add covariance models
 
   fmdb[["covfm"]] <-
-            list(classes = c("covRob", "cov", "ccov"),# renamed cov() to ccov()
+            list(classes = c("covRob", "cov", "covMLE"),
                  object.class = "covfm",
-                 validation.function = NULL)
+                 validation.function = NULL,
+                 attributes.function = NULL)
 
-  ##  Add asymmetric models
+  ##  Add fitdistr-like models
 
-  classes <- c("gammaRob", "gammaMLE", "weibullRob", "weibullMLE",
-                     "lognormRob", "lognormMLE")
-  object.class <- "asymfm"
-  validation.function <- NULL
+  classes <- c("fitdistrRob", "fitdistr")
+  object.class <- "fdfm"
 
-  fmdb[["asymfm"]] <- list(classes = classes,
-                          object.class = object.class,
-                          validation.function = validation.function)
+  attributes.function <- function(model.list, fm.call, attributes) {
+    if(is.null(fm.call[["densfun"]]))
+      distribution <- as.character(fm.call[[4]])
+    else
+      distribution <- as.character(fm.call[["densfun"]])
+
+    if(is.null(fm.call[["x"]]))
+      data.name <- as.character(fm.call[[3]])
+    else
+      data.name <- as.character(fm.call[["x"]])
+
+    x <- get(data.name)
+
+    attrs <- attributes(model.list)
+    attrs[["distribution"]] <- distribution
+    attrs[["data.name"]] <- data.name
+    attrs[["x"]] <- x
+    attributes(model.list) <- attrs
+
+    model.list
+  }
+
+  fmdb[["fdfm"]] <- list(classes = classes,
+                         object.class = "fdfm",
+                         validation.function = NULL,
+                         attributes.function = attributes.function)
 
   ##  Add principal components models
 
-  classes <- c( "princompRob", "princomp")
+  classes <- c("princompRob", "princomp")
   object.class <- "pcompfm"
-  validation.function <- NULL
 
   fmdb[["pcompfm"]] <- list(classes = classes,
                           object.class = object.class,
-                          validation.function = validation.function)
+                          validation.function = NULL,
+                          attributes.function = NULL)
 
   fmdb
 }

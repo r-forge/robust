@@ -44,7 +44,7 @@ the model with the lowest Robust Final Prediction Error encountered during the s
 \seealso{
   \code{\link{lmRob}},
   \code{\link{lmRob.RFPE}},
-  \code{\link{add1.lmRob}}, \code{\link{drop1.lmRob}}.
+  \code{\link{drop1.lmRob}}.
 }
 
 \examples{
