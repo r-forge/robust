@@ -1,6 +1,6 @@
 lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
                           half.normal = FALSE, n.samples = 250, level = .95,
-                          id.n = 3, robustQQline = TRUE, ...)
+                          id.n = 3, qqline = TRUE, ...)
 {
   confidence.envelope <- function(n, sd = 1, n.samples = 250, level = 0.95,
                                   half.normal = FALSE)
@@ -81,13 +81,21 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
                       px = rep(unlist(px), 3),
                       mod = mod)
 
-    panel.special <- function(x, y, id.n, robQQln, ...) {
+    panel.special <- function(x, y, id.n, qqline, ...) {
       dat.idx <- 1:(length(x)/3)
 
       panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
-      if(robQQln)
-        panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
+      if(qqline) {
+        u <- quantile(x[!is.na(x)], c(0.25, 0.75))
+        v <- quantile(y[!is.na(y)], c(0.25, 0.75))
+        slope <- diff(v) / diff(u)
+        int <- v[1] - slope * u[1]
+        panel.abline(int, slope)
+      }
+
+      #if(robQQln)
+      #  panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
 
       panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
@@ -112,15 +120,23 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
                       px = rep(unlist(px), 3),
                       mod = mod)
 
-    panel.special <- function(x, y, id.n, robQQln, ...) {
+    panel.special <- function(x, y, id.n, qqline, ...) {
       dat.idx <- 1:(length(x)/3)
 
       panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
       panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
-      if(robQQln)
-        panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
+      if(qqline) {
+        u <- quantile(x[!is.na(x)], c(0.25, 0.75))
+        v <- quantile(y[!is.na(y)], c(0.25, 0.75))
+        slope <- diff(v) / diff(u)
+        int <- v[1] - slope * u[1]
+        panel.abline(int, slope)
+      }
+
+      #if(robQQln)
+      #  panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
@@ -138,12 +154,20 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
     mod <- factor(rep(mod.names, n.res), levels = mod.names)
     tdf <- data.frame(px = unlist(px), py = unlist(py), mod = mod)
 
-    panel.special <- function(x, y, id.n, robQQln, ...) {
+    panel.special <- function(x, y, id.n, qqline, ...) {
       panel.xyplot(x, y, ...)
       panel.addons(x, y, id.n = id.n)
 
-      if(robQQln)
-        panel.abline(coef(lmRob(y ~ x)))
+      if(qqline) {
+        u <- quantile(x[!is.na(x)], c(0.25, 0.75))
+        v <- quantile(y[!is.na(y)], c(0.25, 0.75))
+        slope <- diff(v) / diff(u)
+        int <- v[1] - slope * u[1]
+        panel.abline(int, slope)
+      }
+
+      #if(robQQln)
+      #  panel.abline(coef(lmRob(y ~ x)))
 
       invisible()
     }
@@ -152,7 +176,7 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
   p <- xyplot(py ~ px | mod,
               data = tdf,
               id.n = id.n,
-              robQQln = robustQQline,
+              qqline = qqline,
               panel = panel.special,
               strip = function(...) strip.default(..., style = 1),
               layout = c(n.models, 1, 1),

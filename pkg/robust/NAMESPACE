@@ -2,25 +2,8 @@ export(
 
   ## fit.models ##
 
-  fit.models,
-
   # Linear Model Comparison
-  summary.lmfm,
-  plot.lmfm,
-  lmfm2DRegPlot,
-  lmfmOverlaidQQPlot,
-  lmfmOverlaidResDenPlot,
-  lmfmResKernDenPlot,
-  lmfmRespVsFittedPlot,
-  lmfmResQQPlot,
-  lmfmResVsFittedPlot,
-  lmfmResVsIdxPlot,
   lmfmResVsRDPlot,
-  lmfmSqrtResVsFittedPlot,
-
-  # Generalized Linear Model Comparison
-  summary.glmfm,
-  plot.glmfm,
 
   # Covariance Comparison
   summary.covfm,
@@ -117,6 +100,7 @@ S3method(plot, lmRob)
 S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
+S3method(hatvalues, lmRob)
 
 S3method(print, summary.lmRob)
 
@@ -129,6 +113,7 @@ S3method(summary, glmRob)
 S3method(labels, glmRob)
 S3method(predict, glmRob)
 S3method(residuals, glmRob)
+S3method(hatvalues, glmRob)
 
 S3method(print, summary.glmRob)
 
@@ -147,23 +132,10 @@ S3method(summary, covMLE)
 S3method(print, summary.covMLE)
 
 
+## S3 methods for fitdistrRob ##
+
+
 ## S3 methods for fit.models ##
-
-S3method(coef, lmfm)
-S3method(plot, lmfm)
-S3method(print, lmfm)
-S3method(summary, lmfm)
-
-S3method(print, summary.lmfm)
-
-
-S3method(coef, glmfm)
-S3method(plot, glmfm)
-S3method(print, glmfm)
-S3method(summary, glmfm)
-
-S3method(print, summary.glmfm)
-
 
 S3method(plot, covfm)
 S3method(print, covfm)
@@ -182,3 +154,8 @@ S3method(print, fitdistrRob)
 S3method(summary, fitdistrRob)
 
 S3method(print, summary.fitdistrRob)
+
+## Imports ##
+
+importFrom(stats, hatvalues)
+

@@ -35,9 +35,9 @@ To be comparable the specified models must all belong to one of the supported cl
 }
 
 \examples{
-  data(woodmod.dat)
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
-                           data = woodmod.dat)
+  #data(woodmod.dat)
+  #woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
+  #                         data = woodmod.dat)
 
   ## This way doesn't work in R yet :
   #woodmod.cls <- covMLE(woodmod.dat)

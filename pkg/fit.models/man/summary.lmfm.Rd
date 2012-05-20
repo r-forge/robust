@@ -26,19 +26,17 @@ a list with class summary.lmfm whose elements are summaries of each model in \co
 \seealso{
 \code{\link{fit.models}},
 \code{\link{summary}},
-\code{\link{summary.lmRob}},
 \code{\link{summary.lm}}.
 }
 
 \examples{
-data(stack.dat)
-stack.fm <- fit.models(list(Robust = "lmRob", LS = "lm"), Loss ~ ., data = stack.dat)
-stack.sum <- summary(stack.fm)
-stack.sum
+#data(stack.dat)
+#stack.fm <- fit.models(list(Robust = "lmRob", LS = "lm"), Loss ~ ., data = stack.dat)
+#stack.sum <- summary(stack.fm)
+#stack.sum
 }
 
 \keyword{methods}
-\keyword{robust}
 \keyword{regression}
 
 

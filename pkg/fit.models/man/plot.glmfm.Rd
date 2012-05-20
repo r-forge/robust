@@ -18,7 +18,7 @@
 }
 
 \usage{
-\method{plot}{glmfm}(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
+\method{plot}{glmfm}(x, which.plots = c(2, 5, 8, 6), ...)
 }
 
 \arguments{
@@ -57,7 +57,6 @@ The selected plots are drawn on a graphics device.
   \code{\link{lmfmResVsFittedPlot}},
   \code{\link{lmfmRespVsFittedPlot}},
   \code{\link{lmfmResQQPlot}},
-  \code{\link{lmfmResVsRDPlot}}.
   \code{\link{lmfmResVsIdxPlot}},
   \code{\link{lmfmSqrtResVsFittedPlot}}.
 }

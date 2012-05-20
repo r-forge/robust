@@ -26,20 +26,18 @@ a list with class summary.glmfm whose elements are summaries of each model in \c
 \seealso{
 \code{\link{fit.models}},
 \code{\link{summary}},
-\code{\link{summary.glmRob}},
 \code{\link{summary.glm}}.
 }
 
 \examples{
-data(breslow.dat)
-bres.fm <- fit.models(list(Robust = "glmRob", Classical = "glm"),
-                      formula = sumY ~ Age10 + Base4*Trt,
-                      family = poisson(), data = breslow.dat)
-bres.sum <- summary(bres.fm)
-bres.sum
+#data(breslow.dat)
+#bres.fm <- fit.models(list(Robust = "glmRob", Classical = "glm"),
+#                      formula = sumY ~ Age10 + Base4*Trt,
+#                      family = poisson(), data = breslow.dat)
+#bres.sum <- summary(bres.fm)
+#bres.sum
 }
 
 \keyword{methods}
-\keyword{robust}
 \keyword{regression}
 

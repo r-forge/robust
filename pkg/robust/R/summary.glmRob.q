@@ -28,10 +28,11 @@ summary.glmRob <- function(object, correlation = TRUE, ...)
   var <- diag(covun)
   nas <- is.na(coef)
   cnames <- names(coef[!nas])
-  coef <- matrix(rep(coef[!nas], 3), ncol = 3)
-  dimnames(coef) <- list(cnames, c("Value", "Std. Error", "t value"))
+  coef <- matrix(rep(coef[!nas], 4), ncol = 4)
+  dimnames(coef) <- list(cnames, c("Estimate", "Std. Error", "z value", "Pr(>|z|)"))
   coef[, 2] <- sqrt(var)
   coef[, 3] <- coef[, 1]/coef[, 2]
+  coef[, 4] <- 2 * pnorm(-abs(coef[, 3]))
 
   if(correlation) {
     cor <- covun

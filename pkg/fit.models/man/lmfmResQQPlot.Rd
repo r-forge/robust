@@ -4,11 +4,11 @@
 \title{Residual QQ Plot}
 
 \description{
-Produces a side-by-side QQ plot os the residuals against standard normal quantiles.  A simulated confidence envelope is provided for each plot.
+Produces a side-by-side QQ plot of the residuals against standard normal quantiles.  A simulated confidence envelope is provided for each plot.
 }
 
 \usage{
-lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 250, level = 0.95, id.n = 3, robustQQline = TRUE, ...)
+lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samples = 250, level = 0.95, id.n = 3, qqline = TRUE, ...)
 }
 
 \arguments{
@@ -26,7 +26,7 @@ lmfmResQQPlot(x, type = "response", envelope = TRUE, half.normal = FALSE, n.samp
 
   \item{id.n}{a non-negative integer value specifying the number of extreme points to identify.}
 
-  \item{robustQQline}{a logical value.  If TRUE then a qq-line computed using \code{\link{lmRob}} is included in the plot.}
+  \item{qqline}{a logical value.  If TRUE then a qq-line computed using \code{lmRob} is included in the plot.}
 
   \item{\dots}{any additional arguments are passed to \code{xyplot}.}
 }

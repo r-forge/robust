@@ -22,8 +22,9 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('robust')
-Loading required package: MASS
+Loading required package: fit.models
 Loading required package: lattice
+Loading required package: MASS
 Loading required package: robustbase
 Loading required package: rrcov
 Loading required package: pcaPP
@@ -321,30 +322,6 @@ Acid.Conc.  1 16.049
 > 
 > 
 > cleanEx()
-> nameEx("fit.models")
-> ### * fit.models
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: fit.models
-> ### Title: Model Comparison
-> ### Aliases: fit.models
-> ### Keywords: models
-> 
-> ### ** Examples
-> 
->   data(woodmod.dat)
->   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
-+                            data = woodmod.dat)
-> 
->   ## This way doesn't work in R yet :
->   #woodmod.cls <- covMLE(woodmod.dat)
->   #woodmod.rob <- covRob(woodmod.dat)
->   #woodmod.fm <- fit.models(Robust = woodmod.rob, Classical = woodmod.cls)
-> 
-> 
-> 
-> cleanEx()
 > nameEx("glmRob")
 > ### * glmRob
 > 
@@ -568,25 +545,6 @@ Residual Deviance: 29.59
 > data(stack.dat)
 > stack.rob <- lmRob(Loss ~ ., data = stack.dat)
 > plot(stack.rob, which.plots = 6)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("plot.lmfm")
-> ### * plot.lmfm
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: plot.lmfm
-> ### Title: Comparison Plots for Linear Regression Models
-> ### Aliases: plot.lmfm
-> ### Keywords: methods hplot
-> 
-> ### ** Examples
-> 
-> data(stack.dat)
-> stack.fm <- fit.models(list(Robust = "lmRob", LS = "lm"), Loss ~ ., data = stack.dat)
-> plot(stack.fm, which.plots = 2)
 > 
 > 
 > 
@@ -828,12 +786,12 @@ Deviance Residuals:
 -54.31624  -1.48734   0.04103   0.87948   8.92507 
 
 Coefficients:
-                      Value Std. Error t value
-(Intercept)         1.83516    0.28542  6.4296
-Age10               0.12081    0.07495  1.6118
-Base4               0.13915    0.03541  3.9298
-Trtprogabide       -0.39279    0.22101 -1.7772
-Base4:Trtprogabide  0.02182    0.04003  0.5451
+                   Estimate Std. Error z value  Pr(>|z|)
+(Intercept)         1.83516    0.28542  6.4296 1.279e-10
+Age10               0.12081    0.07495  1.6118 1.070e-01
+Base4               0.13915    0.03541  3.9298 8.501e-05
+Trtprogabide       -0.39279    0.22101 -1.7772 7.554e-02
+Base4:Trtprogabide  0.02182    0.04003  0.5451 5.857e-01
 
 (Dispersion Parameter for poisson family taken to be 1 )
 
@@ -849,56 +807,6 @@ Age10              -0.80956
 Base4              -0.62030     0.10855                      
 Trtprogabide       -0.46447     0.02404  0.69012             
 Base4:Trtprogabide  0.52264    -0.06402 -0.88082 -0.89436    
-> 
-> 
-> 
-> cleanEx()
-> nameEx("summary.glmfm")
-> ### * summary.glmfm
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: summary.glmfm
-> ### Title: Summary Method for glmfm Objects
-> ### Aliases: summary.glmfm
-> ### Keywords: methods robust regression
-> 
-> ### ** Examples
-> 
-> data(breslow.dat)
-> bres.fm <- fit.models(list(Robust = "glmRob", Classical = "glm"),
-+                       formula = sumY ~ Age10 + Base4*Trt,
-+                       family = poisson(), data = breslow.dat)
-> bres.sum <- summary(bres.fm)
-> bres.sum
-
-Calls: 
-   Robust: glmRob(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(), 
-    data = breslow.dat)
-Classical: glm(formula = sumY ~ Age10 + Base4 * Trt, family = poisson(), 
-    data = breslow.dat)
-
-Deviance Residuals:
-               Min     1Q   Median     3Q    Max
-   Robust: -54.316 -1.487  0.04103 0.8795  8.925
-Classical:  -6.003 -2.074 -1.08033 0.8202 11.039
-
-Coefficients:
-                                 Value Std. Error t value   Pr(>|t|)
-   Robust        (Intercept)  1.835157   0.285424  6.4296         NA
-Classical        (Intercept)  1.968014   0.135929 14.4782  1.664e-47
-   Robust              Age10  0.120813   0.074954  1.6118         NA
-Classical              Age10  0.243490   0.041297  5.8961  3.723e-09
-   Robust              Base4  0.139150   0.035409  3.9298         NA
-Classical              Base4  0.085426   0.003666 23.3047 3.971e-120
-   Robust       Trtprogabide -0.392787   0.221015 -1.7772         NA
-Classical       Trtprogabide -0.255257   0.076525 -3.3356  8.512e-04
-   Robust Base4:Trtprogabide  0.021818   0.040026  0.5451         NA
-Classical Base4:Trtprogabide  0.007534   0.004409  1.7089  8.748e-02
-
-Residual Deviance:
-   Robust: 3888 on 54 degrees of freedom
-Classical: 556.5 on 54 degrees of freedom
 > 
 > 
 > 
@@ -966,65 +874,6 @@ Residual standard error: 1.837 on 17 degrees of freedom
 Multiple R-Squared: 0.6205 
 
 Test for Bias:
-            statistic p-value
-M-estimate      2.751  0.6004
-LS-estimate     2.640  0.6197
-> 
-> 
-> 
-> cleanEx()
-> nameEx("summary.lmfm")
-> ### * summary.lmfm
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: summary.lmfm
-> ### Title: Summary Method for lmfm Objects
-> ### Aliases: summary.lmfm
-> ### Keywords: methods robust regression
-> 
-> ### ** Examples
-> 
-> data(stack.dat)
-> stack.fm <- fit.models(list(Robust = "lmRob", LS = "lm"), Loss ~ ., data = stack.dat)
-> stack.sum <- summary(stack.fm)
-> stack.sum
-
-Calls:
-Robust: lmRob(formula = Loss ~ ., data = stack.dat)
-    LS: lm(formula = Loss ~ ., data = stack.dat)
-
-Residual Statistics:
-           Min      1Q  Median    3Q   Max
-Robust: -8.630 -0.6713  0.3594 1.151 8.174
-    LS: -7.238 -1.7117 -0.4551 2.361 5.698
-
-Coefficients:
-                      Estimate Std. Error t value Pr(>|t|)    
-(Intercept): Robust: -37.65246    5.00256  -7.527 8.29e-07 ***
-                 LS: -39.91967   11.89600  -3.356  0.00375 ** 
-                                                              
-   Air.Flow: Robust:   0.79769    0.07129  11.189 2.91e-09 ***
-                 LS:   0.71564    0.13486   5.307 5.80e-05 ***
-                                                              
- Water.Temp: Robust:   0.57734    0.17546   3.291  0.00432 ** 
-                 LS:   1.29529    0.36802   3.520  0.00263 ** 
-                                                              
- Acid.Conc.: Robust:  -0.06706    0.06512  -1.030  0.31757    
-                 LS:  -0.15212    0.15629  -0.973  0.34405    
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
-
-Residual Scale Estimates:
-Robust: 1.837 on 17 degrees of freedom
-    LS: 3.243 on 17 degrees of freedom
-
-Multiple R-squared:
-Robust: 0.6205 
-    LS: 0.9136 
-
-Bias Tests for Robust Models:
-Robust:
             statistic p-value
 M-estimate      2.751  0.6004
 LS-estimate     2.640  0.6197
@@ -1104,7 +953,7 @@ LS-estimate     2.640  0.6197
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.179 0.06 2.286 0 0 
+Time elapsed:  1.892 0.055 1.948 0 0 
 > grDevices::dev.off()
 null device 
           1 

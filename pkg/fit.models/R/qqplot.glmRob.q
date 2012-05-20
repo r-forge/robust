@@ -1,4 +1,4 @@
-qqplot.glmRob <- function(y, par, dist)
+qqplot.glmRob <- function(y, par, family)
 {
 
 ## First some helper functions ##
@@ -155,7 +155,7 @@ qqplot.glmRob <- function(y, par, dist)
   n <- length(y)
   dev <- double(n)
 
-  if(dist == 0) {
+  if(family == "binomial") {
     par <- pmax(par,.000000000001)
     par <- pmin(par,.999999999999)
     uu <- glmRob.binom.dev(par)
@@ -163,7 +163,7 @@ qqplot.glmRob <- function(y, par, dist)
     dev <- sort(dev)
   }
 
-  if(dist > 0) {
+  if(family == "poisson") {
     par <- pmax(par, .000000000001)
     uu <- glmRob.poiss.dev(par)
     v1 <- (y == 0)
@@ -179,7 +179,7 @@ qqplot.glmRob <- function(y, par, dist)
 
   uu <- glmRob.group.values(uu[[1]], uu[[2]])
 
-  list(quantiles = glmRob.quant(uu[[1]], uu[[2]],n),
+  list(quantiles = glmRob.quant(uu[[1]], uu[[2]], n),
        deviance.residuals = sqrt(2)*dev)
 }
  

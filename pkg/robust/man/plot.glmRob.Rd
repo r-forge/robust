@@ -8,7 +8,7 @@ Creates a set plots useful for assessing a robustly fitted generalized linear mo
 }
 
 \usage{
-\method{plot}{glmRob}(x, which.plots = "ask", ...)
+\method{plot}{glmRob}(x, which.plots = c(2, 5, 8, 6), ...)
 }
 
 \arguments{

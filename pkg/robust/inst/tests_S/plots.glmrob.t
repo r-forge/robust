@@ -31,7 +31,7 @@
 
 {
     ## All
-    class(try(plot(temp, which = "all"))) != "Error"
+    all(class(try(plot(temp, which = "all"))) != "try-error")
 }
 
 {
@@ -57,12 +57,12 @@
 {
     ## Each of the 7 kinds of plots  which =  2 .. 8 :
     all(sapply(2:8, function(wh)
-               class(try(plot(temp, which = wh))) != "Error"))
+               class(try(plot(temp, which = wh))) != "try-error"))
 }
 
 {
     ## All
-    class(try(plot(temp, which = "all"))) != "Error"
+    class(try(plot(temp, which = "all"))) != "try-error"
 }
 
 

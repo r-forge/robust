@@ -68,7 +68,7 @@ lmfmResVsRDPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
     y <- y[-1]
     if(!is.na(a)) {
       panel.xyplot(x, y, ...)
-      panel.addons(x, y, id.n = id.n)
+      #panel.addons(x, y, id.n = id.n)
       panel.abline(v = a, lty = 2)
       panel.abline(h = b, lty = 2)
       panel.abline(h = -b, lty = 2)
