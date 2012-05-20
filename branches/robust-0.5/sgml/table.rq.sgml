@@ -1,0 +1,65 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic>table.rq</s-topic>
+</s-topics>
+<s-title>
+Table of Quantile Regression Results
+</s-title>
+<s-description>
+Function to produce a table of quantile regression results for a group
+of specified quantiles.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+table.rq(formula, taus=c(0.05, 0.25, 0.5, 0.75, 0.95), method="br", ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+</s-args-required>
+<s-args-optional>
+<!--move the above two lines to just above the first optional argument-->
+<s-arg name= formula >
+formula for the linear model, see rq()
+</s-arg>
+<s-arg name= taus >
+quantiles of interest
+</s-arg>
+<s-arg name= method >
+algorithmic method, for large problems method="fn" would be preferred.
+</s-arg>
+<s-arg name= ... >
+other optional arguments passed to rq()
+</s-arg>
+</s-args-optional>
+<s-value>
+The function returns an array with dimensions (p,m,3), where p is the dimension
+of the parameter vector of the model specified by formula, m is the number
+of quantiles specified by tau.  For each coefficient at each tau there
+is a point estimate and lower and upper limits of a confidence interval.
+The object returned is of class table.rq and can be plotted, or formatted
+into a latex style table.
+</s-value>
+<s-details>
+This is only implemented for method="br", but modifications for "fn"
+would be quite straightforward.
+</s-details>
+<s-see>
+rq, rq.fit.br, plot.table.rq, latex.table.rq
+</s-see>
+<s-examples>
+<s-example>
+plot(table.rq(stack.loss~stack.x)#plot results of a quantile regression
+latex.table.rq(table.rq(stack.loss~stack.x))#make latex table 
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

@@ -1,0 +1,82 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>plot.fit.models</s-topic>
+</s-topics>
+<s-title>
+Generate Comparison Plots for a <s-expression>fit.models</s-expression> Object 
+</s-title>
+<s-description>
+Creates a set of plots comparing different models fitted by <s-expression>fit.models</s-expression>.  
+</s-description>
+<s-usage>
+<s-old-style-usage>
+plot.fit.models(x, models=NULL, ask=T, which.plots=NULL, n.density=50,
+method="covRob", seed=1313, type="pearson", chisq.percent=0.975,
+vertical.outlier=2.5, variables=NULL, spcomps="Auto", max.outliers=25,
+smooths=F, rugplot=F, id.n=3, lower.q=0.999, plot.data=T, envelope=T,
+half.normal=F, robustQQline=T, mc.samples=100, level=0.95, cutoff=T, ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="object">
+a <s-expression>fit.models</s-expression> object.  
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name="models">
+a numeric vector. If <s-expression>models</s-expression> is missing, then the plots are based on  
+all the models; otherwise, only chosen models will be used. However, 
+if <s-expression>models</s-expression> is of length 1, the <s-expression>plot</s-expression> method of <s-expression>x[[models]]</s-expression> will be  
+called. 
+</s-arg>
+<s-arg name="ask">
+logical flag: if <s-expression>TRUE</s-expression>, <s-expression>plot.fit.models</s-expression> operates in interactive mode. 
+</s-arg>
+<s-arg name="chisq.percent">
+the percentile of the chi-square distribution to determine leverage points. 
+</s-arg>
+<s-arg name="vertical.outlier">
+values that are greater than <s-expression>vertical.outlier</s-expression> are considered outliers. 
+</s-arg>
+<s-arg name="method">
+character vector specifying the estimate of robust covariance matrix. 
+</s-arg>
+<s-arg name="seed">
+the random seed used. 
+<br><br>
+</s-arg>
+</s-args-optional>
+
+<s-section name="Other Arguments">
+the remaining arguments to plot.fit.models are not presently intended for
+end users and may disapear in later versions of the Robust Library.
+</s-section>
+
+<s-side-effects>
+Comparison plots are generated on a graphics device.
+</s-side-effects>
+
+<s-details>
+This function is a method for the generic function <s-function name="plot.sgm">plot</s-function> for class <s-class>fit.models</s-class>.
+It can be invoked by calling<s-function name="plot.sgm">plot</s-function> for an object <s-object>x</s-object> of the appropriate class, or directly by calling <s-function name="plot.fit.models.sgm">plot.fit.models</s-function> regardless of the class of the object.
+<br><br>
+When <s-expression>ask=T</s-expression>, rather than produce each plot sequentially, <s-expression>plot.fit.models</s-expression> 
+displays a menu listing all the plots that can be produced. If the menu is  
+not desired but a pause between plots is still wanted one must set 
+<s-expression>par(ask=T)</s-expression> before invoking this command with argument <s-expression>ask=F</s-expression>. 
+<br><br>
+</s-details>
+
+<s-see>
+<s-function name="fit.models1.sgm">fit.models</s-function>,
+<s-function name="plot.sgm">plot</s-function>.
+</s-see>
+
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

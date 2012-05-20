@@ -1,0 +1,46 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> summary.aovRob </s-topic>
+</s-topics>
+<s-title>
+Summary Method for class "aovRob"
+</s-title>
+<s-description>
+Displays the AOV table for a class <s-expression>aovRob</s-expression> object.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+summary.aovRob(object, ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" object ">
+an <s-expression>aovRob</s-expression> object.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=" ... ">
+additional arguments for summary.
+</s-arg>
+</s-args-optional>
+<s-value>
+a list containing the degrees of freedom, the robust F statistics, and the
+p-values for the robust F statistics.
+</s-value>
+
+<s-examples>
+<s-example>
+aovRob.sum <- summary(aovRob(y~. , data = lawson.dat))
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

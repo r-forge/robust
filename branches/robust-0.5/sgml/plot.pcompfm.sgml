@@ -1,0 +1,66 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> plot.pcompfm </s-topic>
+</s-topics>
+<s-title>
+Comparison Plots for Principal Components Models
+</s-title>
+<s-description>
+Creates a set plots useful for comparing fitted principal components models
+stored in a class fit.models object belonging to virtual class pcompfm.
+The plot options are (2) scatterplot of components, (3) loadings, and (4)
+variances.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+plot.pcompfm(x, which.plots="ask", spcomps="Auto", ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" x ">
+a fit.models object belonging to virtual class pcompfm.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=" which.plots ">
+either "ask", "all", or an integer vector specifying which plots to
+draw.  If <s-expression>which.plots</s-expression> is an integer vector,
+use the plot numbers given in the description above (or in the "ask" menu).
+</s-arg>
+<s-arg name=" spcomps ">
+an integer vector specifying which componets to include in the Scatter
+Plot.  The default ("Auto") is to display the components with the 5 largest
+standard deviations (or all the components if there are less than 5).
+</s-arg>
+</s-args-optional>
+<s-value>
+x is returned invisibly.
+</s-value>
+<s-side-effects>
+The selected plots are drawn on a graphics device.
+</s-side-effects>
+<s-see>
+<s-function name="plot.sgm">plot</s-function>,
+<s-function name="fit.models1.sgm">fit.models</s-function>.
+</s-see>
+<s-examples>
+<s-example>
+wood.pc <- princomp(woodmod.dat)
+wood.rob <- princompRob(woodmod.dat)
+# wood.fm is a fit.models object with virtual class pcompfm:
+wood.fm <- fit.models(wood.rob, wood.pc)
+plot(wood.fm)
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>hplot</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

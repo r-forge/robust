@@ -1,0 +1,293 @@
+#
+#
+#	This will be taken care of in libfncts.ssc
+#
+#
+#property.file <- "dummy.file"
+#funcinfo.file <- "dummy.file"
+#
+# Create new menu item for DiscRob()
+#
+#if ( is.loaded("s_guiAreCustomMenusEnabled") ) {
+#	if ( .Call("s_guiAreCustomMenusEnabled") ) {
+#guiCreate("MenuItem", Name = "SPlusMenuBar$DiscRob", Type = "Menu",
+#           MenuItemText = "&DiscRob", Index = 11, OverWrite = F)
+#
+#
+#guiCreate("MenuItem", Name = "SPlusMenuBar$DiscRob$MenuDiscRob",
+#           Type = "MenuItem", Action = "Function", 
+#           Command = "menuDiscRob", 
+#           MenuItemText = " &Robust Discriminant Analysis")
+#
+#	}
+#}
+#######################################################################
+#
+# 								Model page
+#
+########################################################################
+
+# Create individual properties for the Data group
+
+	# Data Set --> default: SPropDataFrameList 
+	# Weights --> default: SPropWeights
+	# Frequencies --> default: SPropFrequencies
+	# Subset Rows with --> deafult: SPropSubset
+	# Omit Rows with Missing Values --> default: SPropOmitMissing
+
+# Create the Data group
+	
+	guiCreate("Property", Name = "DiscRobDataGroup", Type = "Group",
+	          SavePathName = property.file, 
+	          DialogPrompt = "Data",
+	          PropertyList = c("SPropDataFrameList", "SPropWeights", 
+	                           "SPropFrequencies", "SPropSubset",
+	                           "SPropOmitMissing"))
+	
+# Create the individual properties for the Variables group
+
+	# Dependent --> default: SPropDependent
+	# Independent --> default: SPropIndependent
+	# CreateFormula --> default: SPropPFButton and SPropPFEnableButton
+
+# Create the Variables group
+
+	guiCreate("Property", Name = "DiscRobVariablesGroup",
+	          SavePathName = property.file, Type = "Group",
+	          DialogPrompt = "Variables",
+	          PropertyList = c("SPropDependent", "SPropIndependent",
+	                           "SPropPFButton", "SPropPFEnableButton"))
+
+# Create the Formula bar --> default : SPropPFFormula 
+
+   
+# Create the individual properties for the Fitting Method group
+
+	
+	# MLE + Robust, MLE and Robust
+
+	guiCreate("Property", Name = "DiscRobFittingMethodBox", 
+	          SavePathName = property.file,
+	          #DialogPrompt = "FittingMethod", 
+	          DialogControl = "Radio Buttons",
+	          OptionList = "MLE + Robust, MLE, Robust",
+	          OptionListDelimiter = ",",
+	          UseQuotes = T)
+	
+	# Options
+	
+	#guiCreate("Property", Name = "DiscRobOptions",
+	#          SavePathName = property.file,
+	#          Type = "Normal",
+	#          DialogControl = "Button",
+	#          DialogPrompt = "&Options")
+	
+# Create the Fitting Method group
+
+	guiCreate("Property", Name = "DiscRobFittingMethodGroup",
+	          SavePathName = property.file, Type = "Group",
+	          DialogPrompt = "Fitting Method",
+	          PropertyList = "DiscRobFittingMethodBox")		
+	
+# Create the individual properties for the Model group
+
+	# Family 
+	
+	guiCreate("Property", Name = "DiscRobFamily",
+	          DialogPrompt = "&Family",
+	          SavePathName = property.file,
+	          DialogControl = "List Box",
+	          OptionList = "classical",  
+	          UseQuotes = T,
+		       DefaultValue = "classical")
+	
+	# Covariance Struct
+	
+	guiCreate("Property", Name = "DiscRobCovStruct",
+	          DialogPrompt = "&Covariance Struct",
+	          SavePathName = property.file,
+	          DialogControl = "List Box",
+	          OptionList = c("homoscedastic", "heteroscedastic"),
+	          UseQuotes = T,
+	          DefaultValue = "homoscedastic")
+	
+	# Group Prior --> default: SPropGroupPrior
+	
+# Create the Model group	
+
+	guiCreate("Property", Name = "DiscRobModelGroup",
+	          SavePathName = property.file, Type = "Group",
+	          DialogPrompt = "Model",
+	          PropertyList = c("DiscRobFamily","DiscRobCovStruct",
+	                           "SPropGroupPrior"))	
+	
+# Create the individual properties for the Save Model Object group
+
+   # Save As --> default: SPropReturnObject
+
+   guiCreate("Property", Name = "DiscRobSaveModelObjectGroup",
+             SavePathName = property.file, Type = "Group",
+             DialogPrompt = "Save Model Object",
+             PropertyList = "SPropReturnObject")
+
+	# Space1 and Space2  
+	
+	guiCopy("Property", Name = "SPropFSpace1",
+	        SavePathName = property.file,
+	        NewName = "DiscRobSpace1")
+	
+	guiCopy("Property", Name = "SPropFSpace1",
+	        SavePathName = property.file,
+	        NewName = "DiscRobSpace2")
+
+	# Formula Group
+
+	guiCreate("Property", Name = "SPropPFFormulaGroup",
+             SavePathName = property.file, Type = "WideGroup",
+             DialogPrompt = "Formula",
+             PropertyList = "SPropPFFormula")
+
+# Create the Model page
+
+	guiCreate("Property", Name = "DiscRobModelPage",
+	          SavePathName = property.file, Type = "Page",
+	          DialogPrompt = "Model", 	  		
+	          PropertyList = c("DiscRobDataGroup", 
+                              "DiscRobVariablesGroup",
+                              "SPropPFFormulaGroup",
+	                           "DiscRobFittingMethodGroup", 
+	                           "DiscRobModelGroup",
+	                           "DiscRobSaveModelObjectGroup",
+	                           "DiscRobSpace1",
+	                           "DiscRobSpace2"))    
+		      
+	
+#############################################################################
+#
+#							Results page
+#
+##############################################################################		
+		
+# Create the individual properties for the Printed/Graphic Results
+
+	# Short Output --> default: SPropPrintShort
+	
+	# Long Output --> deafult: SPropPrintLong
+	
+	# Plot
+	
+	guiCreate("Property", Name = "DiscRobPlot",
+	          SavePathName = property.file,
+	          DialogPrompt = "P&lot",
+	          DialogControl = "Check Box", DefaultValue = F)
+	
+# Create the Printed/Graphic Results group
+
+	guiCreate("Property", Name = "DiscRobPrintedGraphicResultsGroup",
+	          SavePathName = property.file, Type = "Group",
+	        	DialogPrompt = "Printed/Graphic Results",
+	          PropertyList = c("SPropPrintShort", "SPropPrintLong",
+	                           "DiscRobPlot"))
+		
+# Create the individual properties for the Saved Results group
+
+	# Save In --> default: SPropSaveResultsObject
+	
+	# Plug-in
+	
+	guiCreate("Property", Name = "DiscRobPlugIn",
+	          SavePathName = property.file, 
+	          DialogPrompt = "&Plug-in",
+	          DialogControl="Check Box")
+	
+	# Predictive
+	
+	guiCreate("Property", Name = "DiscRobPredictive",
+	          SavePathName = property.file,
+	          DialogPrompt = "P&redictive",
+	          DialogControl = "Check Box")
+	
+	# Unbiased
+	
+	guiCreate("Property", Name = "DiscRobUnbiased",
+	          SavePathName = property.file,
+	          DialogPrompt = "&Unbiased",
+	          DialogControl = "Check Box")
+	
+	# Cross-Validate
+	
+	guiCreate("Property", Name = "DiscRobCrossValidate",
+	          SavePathName = property.file,
+	          DialogPrompt = "&Cross-Validate",
+	          DialogControl = "Check Box")
+
+# Create the Saved Results group
+				
+	guiCreate("Property", Name = "DiscRobSavedResultsGroup",
+	          SavePathName = property.file,
+	          Type = "Group",
+	          DialogPrompt = "Saved Results",
+	          PropertyList = c("SPropSaveResultsObject",
+	                           "DiscRobPlugIn", "DiscRobPredictive",
+	                           "DiscRobUnbiased","DiscRobCrossValidate"))
+	
+# Create the Results page
+
+	guiCreate("Property", Name = "DiscRobResultsPage",
+	          SavePathName = property.file,
+	          Type = "Page", DialogPrompt = "Results",
+	          PropertyList = c("DiscRobPrintedGraphicResultsGroup",
+	                           "DiscRobSavedResultsGroup"))				
+	
+
+################################################################################
+#
+#              Overall Dialog
+#
+################################################################################
+	
+	
+	
+	guiCreate("FunctionInfo",
+				Name = "menuDiscRob",
+				DialogHeader = "Robust Discriminant Analysis",
+				PropertyList = c(	"DiscRobModelPage",
+									"DiscRobResultsPage",
+									"gui_covRob_advanced"),
+				ArgumentList = c("#0 = SPropReturnObject",
+									"#1 = SPropPFFormula",
+									"#2 = SPropDataFrameList",
+									"#3 = SPropWeights",
+									"#4 = SPropFrequencies",
+									"#5 = SPropSubset",
+									"#6 = SPropOmitMissing",
+									"#7 = DiscRobFamily",
+									"#8 = DiscRobCovStruct",
+									"#9 = SPropGroupPrior",
+									"#10 = SPropPrintShort",
+									"#11 = SPropPrintLong",
+									"#12 = DiscRobPlugIn",
+									"#13 = DiscRobPredictive",
+									"#14 = DiscRobUnbiased",
+									"#15 = DiscRobCrossValidate",
+									"#16 = SPropSaveResultsObject",
+									"#17 = DiscRobPlot",
+									"#18 = DiscRobFittingMethodBox",
+									"#19 = SPropCovRobMCD",
+									"#20 = SPropCovRobQun",
+									"#21 = SPropCovRobTrl",
+									"#22 = SPropCovRobAutoIntOne",
+									"#23 = SPropCovRobAutoIntTwo",
+									"#24 = SPropCovRobDSRandom",
+									"#25 = SPropCovRobStrOne",
+									"#26 = SPropCovRobStrTwo",
+									"#27 = SPropCovRobStrThree",
+									"#28 = SPropCovRobStrFour",
+									"#29 = SPropCovRobInt"),
+				CallBackFunction = "backDiscRob",
+				SavePathName = funcinfo.file)
+
+
+
+				
+				

@@ -1,0 +1,48 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> print.princompRob </s-topic>
+</s-topics>
+<s-title>
+Print Method for Robust Principal Components Objects
+</s-title>
+<s-description>
+Prints a brief description of an object of class <s-expression>"princompRob"</s-expression>.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+print.princompRob(x, ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=x>
+an object of class <s-expression>"princompRob"</s-expression>.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=...>
+additional arguments to <s-expression>print</s-expression>.
+</s-arg>
+</s-args-optional>
+<s-value>
+<s-return-component name=x>
+invisble.
+</s-return-component>
+</s-value>
+<s-side-effects>
+prints the standard deviations of the components, the size of the data, the names of the components in <s-expression>x</s-expression>, and the call that created <s-expression>x</s-expression>.
+</s-side-effects>
+<s-details>
+This is the <s-expression>princompRob</s-expression> method for the generic function print.
+</s-details>
+<s-see>
+<s-function name="princompRob.sgm">princompRob</s-function>,
+<s-function name="print.sgm">print</s-function>.
+</s-see>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

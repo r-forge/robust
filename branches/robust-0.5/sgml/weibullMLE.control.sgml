@@ -1,0 +1,57 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+
+<s-topics>
+<s-topic>weibullMLE.control</s-topic>
+</s-topics>
+
+<s-title>
+Control for the MLE of a Weibull Distribution
+</s-title>
+
+<s-description>
+Allows users to set parameters for <s-expression>weibullMLE</s-expression>.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+weibullMLE.control(maxit=100, tol=0.001, cov=T)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-optional>
+<s-arg name="maxit">
+the maximum number of iterations allowed.
+</s-arg>
+
+<s-arg name="tol">
+tolerance to declare convergence of the iterations.
+</s-arg>
+
+<s-arg name="cov">
+if TRUE the covariance of alpha and sigma is computed.
+</s-arg>
+</s-args-optional>
+
+<s-value>
+a list containing these three parameters.
+<s-value>
+
+<s-examples>
+<s-example type = text>
+weibullMLE(los, control = weibullMLE.control(tol=1e-6))
+</s-example>
+</s-examples>
+
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+
+<s-docclass>
+function
+</s-docclass>
+
+</s-function-doc>

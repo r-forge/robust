@@ -1,0 +1,59 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> summary.asymfm </s-topic>
+</s-topics>
+<s-title>
+Summary Method for Asymmetric Distribution Models
+</s-title>
+<s-description>
+Returns a summary of the asymmetric distribution models stored in a
+fit.models object with virtual class asymfm.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+summary.asymfm(object, ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" object ">
+a fit.models object with virtual class asymfm that contains the fitted
+models.
+</s-arg>
+</s-args-required>
+<s-value>
+a summary.asymfm object with the following components:
+<s-return-component name="mod.names">
+the names of the models in object.
+</s-return-component>
+<s-return-component name="calls">
+a list containing the call of each model in object.
+</s-return-component>
+<s-return-component name="coefs">
+a 3-dimensional array.  For each level of the 3rd index (one for each model
+in object), the 2-dimensional slice is a 3 by 2 matrix containing the 3
+parameter estimates and their standard errors.
+</s-return-component>
+</s-value>
+<s-see>
+<s-function name="fit.models1.sgm">fit.models</s-function>,
+<s-function name="summary1.sgm">summary</s-function>.
+</s-see>
+<s-examples>
+<s-example>
+los.mle <- gammaMLE(los)
+los.rob <- gammaRob(los)
+los.fm <- fit.models(los.rob, los.mle)
+los.sum <- summary(los.fm)
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust </s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

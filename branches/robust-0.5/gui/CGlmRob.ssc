@@ -1,0 +1,602 @@
+#
+# create Gui objects
+#
+
+#
+# Model Page
+#
+
+	guiCopy("Property",
+	Name = "SPropFamily",
+	SavePathName = property.file,
+	NewName = "SPropGlmrobFamily",
+	UseQuotes=T)
+
+	guiCreate("Property",
+	Name = "glmrobVarFunction",
+	DialogPrompt = "Variance Function",
+	SavePathName = property.file,
+	DialogControl = "String")
+
+	guiCreate("Property",
+	Name = "glmrobLink",
+	DialogPrompt = "Link",
+	SavePathName = property.file,
+	DialogControl = "String",
+	DefaultValue = "logit")
+
+	guiCreate("Property",
+	Name = "glmrobDataGroup",
+	Type = "Group",
+	SavePathName = property.file,
+	DialogPrompt = "Data", 
+	PropertyList = c(
+		"SPropDataFrameList",
+##		"SPropWeights", 
+		"SPropSubset",
+		"SPropOmitMissing"))
+
+	guiCreate("Property",
+	Name = "glmRobVariablesGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Variables",
+	PropertyList = c(
+		"SPropDependent",
+		"SPropIndependent", 
+		"SPropPFButton", 
+		"SPropPFEnableButton"))
+
+	guiCreate("Property",
+	Name = "glmrobMethodBox",
+	SavePathName = property.file,
+	#DialogPrompt = "Fitting Method",
+	DialogControl = "Radio Buttons",
+	OptionList = "MLE + Robust, MLE, Robust",
+	OptionListDelimiter = ",",
+	UseQuotes = T)
+
+	guiCreate("Property",
+	Name ="SPropGlmRobOptButton",
+	Type="Normal",
+	DialogControl="Button",
+	DialogPrompt="&Options",
+	SavePathName=property.file)
+
+	guiCreate("Property",
+	Name = "glmrobMethodGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Fitting Method",
+	PropertyList = "glmrobMethodBox")
+
+	guiCreate("Property",
+	Name="glmrobModelGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Model",
+	PropertyList = c(
+		"SPropGlmrobFamily", 
+		"SPropModelLink", 
+		"SPropModelVariance")) 
+
+	guiCreate("Property",
+	Name = "glmrobSaveGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Save Model Object",
+	PropertyList = "SPropReturnObject")
+
+	guiCreate("Property",
+	Name = "glmrobMethod",
+	SavePathName = property.file,
+	Type = "Normal",
+	DialogPrompt = "Method",
+	DialogControl = "List Box",
+	OptionList = "MLE, Robust, MLE + Robust",
+	OptionListDelimiter = ",",
+	DefaultValue = "MLE + Robust")
+
+	guiCopy("Property",
+	Name = "SPropFSpace1",
+	SavePathName = property.file,
+	NewName = "glmrobSpace1")
+
+	guiCopy("Property",
+	Name = "SPropFSpace1",
+	SavePathName = property.file,
+	NewName = "glmrobSpace2")
+
+	guiCreate("Property",
+	Name = "SPropGlmRobControl",
+	Type = "Normal",
+	DialogControl = "Invisible",
+	UseQuotes = T,
+	SavePathName = property.file)
+
+	guiCreate("Property",
+	Name = "SPropGlmRobMCControl",
+	Type = "Normal",
+	DialogControl = "Invisible",
+	UseQuotes = T,
+	SavePathName = property.file)
+
+	guiCreate("Property",
+	Name = "SPropGlmRobMallowsControl",
+	Type = "Normal",
+	DialogControl = "Invisible",
+	UseQuotes = T,
+	SavePathName = property.file)
+
+	guiCreate("Property",
+	Name="glmRobFormulaGroup",
+	SavePathName = property.file,
+	Type = "WideGroup",
+	DialogPrompt = "Formula",
+	PropertyList = "SPropPFFormula")
+
+	guiCreate("Property",
+	Name = "glmrobModelPage",
+	SavePathName = property.file,
+	Type = "Page",
+	DialogPrompt = "Model",
+	PropertyList = c(
+		"glmrobDataGroup", 
+		"glmRobVariablesGroup",
+		"glmRobFormulaGroup",
+		"glmrobMethodGroup",
+		"glmrobModelGroup",
+		"glmrobSaveGroup",
+		"glmrobSpace1",
+		"glmrobSpace2"))
+		#"SPropPFFormula")) # , "SPropPFEnableButton"))
+
+#
+# Options Page
+#
+
+	guiCreate("Property",
+	Name = "glmrobOptOptionsGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "MLE fit Parameters",
+	PropertyList = c(
+		"SPropMaxiter",
+		"SPropTolerance",
+		"SPropTrace"))
+	
+	guiCreate("Property",
+	Name = "glmrobTrace",
+	SavePathName = property.file,
+	DialogPrompt = "Print Iteration Trace",
+	DialogControl = "Check Box")
+
+	guiCreate("Property",
+	Name = "glmrobCConst",
+	SavePathName = property.file,
+	DialogPrompt = "Initial Estimate Tunning Constant:",
+	DialogControl = "Float",
+	DefaultValue = 1.5)
+
+	guiCreate("Property",
+	Name = "glmrobUfact",
+	SavePathName = property.file,
+	DialogPrompt = "Final Estimate Tunning Constant:",
+	DialogControl = "Float",
+	DefaultValue = 2,
+	Range = "1.1:10")
+
+	guiCreate("Property",
+	Name = "glmrobTolerance",
+	SavePathName = property.file,
+	DialogControl = "Float",
+	DialogPrompt = "Convergence Tolerance:")
+	
+	guiCreate("Property",
+	Name = "glmrobMaxiter",
+	SavePathName = property.file,
+	DialogControl = "Integer",
+	DefaultValue = 20,
+	DialogPrompt = "Max Iterations:")
+
+	guiCreate("Property",
+	Name = "glmrobEstOptionsGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Cubif Parameters",
+	DialogControl = "Invisible",
+	PropertyList = c(
+		"glmrobMaxiter",
+		"glmrobTolerance", 
+		"glmrobTrace",
+		"glmrobCConst",
+		"glmrobUfact"))
+
+	guiCreate("Property",
+	Name = "glmrobMCgamma",
+	SavePathName = property.file,
+	DialogControl = "Float",
+	DialogPrompt = "Misclassification Prob")
+
+	guiCreate("Property",
+	Name = "glmrobMCmaxit",
+	SavePathName = property.file,
+	DialogControl = "Integer",
+	DialogPrompt = "Max Iterations")
+
+	guiCreate("Property",
+	Name = "glmrobMCtrace",
+	SavePathName = property.file,
+	DialogPrompt = "Print Iteration Trace",
+	DialogControl = "Check Box")
+
+	guiCreate("Property",
+	Name = "glmrobMCtol",
+	SavePathName = property.file,
+	DialogControl = "Float",
+	DialogPrompt = "Convergence Tolerance:")
+	
+	guiCreate("Property",
+	Name = "glmrobMCinitial",
+	SavePathName = property.file,
+	DialogControl = "Invisible")
+#	DialogPrompt = "Convergence Tolerance:")
+
+	guiCreate("Property",
+	Name = "glmrobMCOptionsGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Misclassification Parameters",
+	DialogControl = "Invisible",
+	PropertyList = c(
+		"glmrobMCinitial",
+		"glmrobMCgamma",
+		"glmrobMCmaxit",
+		"glmrobMCtol",
+		"glmrobMCtrace"))
+
+	guiCreate("Property",
+	Name = "glmrobMallowsFn",
+	DialogPrompt = "Weight Function",
+	SavePathName = property.file,
+	DialogControl = "List Box",
+	UseQuotes = T)
+
+	guiCreate("Property",
+	Name = "glmrobMallowsTuning",
+	DialogPrompt = "Tuning constant",
+	SavePathName = property.file,
+	DialogControl = "Float")
+
+	guiCreate("Property",
+	Name = "glmrobMallowsOptionsGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Mallows Parameters",
+	PropertyList = c(
+		"glmrobMallowsFn",
+		"glmrobMallowsTuning"))
+
+	guiCreate("Property",
+	Name = "glmrobFitMethod",
+	SavePathName = property.file,
+	DialogControl = "List Box",
+	UseQuotes = T)
+
+	guiCreate("Property",
+	Name = "SPropGlmRobFitMethodStore",
+	Type = "Normal",
+	DialogControl = "Invisible",
+	UseQuotes = T,
+	SavePathName = property.file)
+
+	guiCreate("Property",
+	Name = "glmrobFitMethodGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Fit Method",
+	PropertyList = c("glmrobFitMethod"))
+
+	guiCreate("Property",
+	Name="SPropGlmRobOptParent", 
+	Type="Normal",
+	DialogControl="Invisible",
+	SavePathName=property.file)
+
+#	guiCreate("FunctionInfo", Name = "menuGlmRobOptions",
+#		CallBackFunction = "backGlmRobOptions",
+#		Function = "menuGlmRobOptions",
+#		DialogHeader = "Robust Control Parameters",
+#		PropertyList = c("glmrobFitMethodGroup",
+#			"glmrobEstOptionsGroup",
+#			"glmrobMCOptionsGroup",
+#			"glmrobMallowsOptionsGroup",
+#			"SPropGlmRobOptParent",
+#			"SPropDummy0"),
+#		ArgumentList = c(
+#		"#0 = SPropDummy0",
+#		"#1 = glmrobMaxiter",
+#		"#2 = glmrobTolerance",
+#		"#3 = glmrobTrace",
+#		"#4 = glmrobCConst",
+#		"#5 = glmrobUfact",
+#		"#6 = glmrobMCgamma",
+#		"#7 = glmrobMCmaxit",
+#		"#8 = glmrobMCtol",
+#		"#9 = glmrobMCtrace",
+#		"#10 = glmrobMallowsFn",
+#		"#11 = glmrobMallowsTuning",
+#		"#12 = glmrobFitMethod",
+#		"#13 = SPropGlmRobOptParent"),
+#		SavePathName = funcinfo.file)
+
+	guiCreate("Property",
+	Name = "glmRobAdvancedPage",
+	SavePathName = property.file,
+	Type = "Page",
+	DialogPrompt = "Advanced",
+	PropertyList = c(
+#		"SPropGlmRobControl", 
+#		"SPropGlmRobMCControl",
+#		"SPropGlmRobMallowsControl",
+#		"SPropGlmRobFitMethodStore",
+		"glmrobFitMethodGroup",
+		"glmrobOptOptionsGroup",
+		"glmrobMCOptionsGroup",
+		"glmrobMallowsOptionsGroup",
+		"glmrobEstOptionsGroup"
+#		"SPropGlmRobOptParent",
+#		"SPropDummy0"
+		))
+
+#
+# Results Page
+#
+
+
+	guiCreate("Property", Name = "glmrobAnovaOutput",
+	SavePathName = property.file,
+	DialogPrompt = "ANOVA Table",
+	DialogControl = "Check Box",
+	DefaultValue = F)
+
+	guiCreate("Property", Name = "glmrobPRGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Printed Results",
+	PropertyList = c("SPropPrintShort", "SPropPrintLong", 
+		"glmrobAnovaOutput", 
+		"SPropPrintCor"))
+
+	guiCreate("Property", Name = "glmrobWorkResid",
+	SavePathName = property.file,
+	DialogPrompt = "&Working Residuals",
+	DialogControl = "Check Box")
+
+	guiCreate("Property", Name = "glmrobPearsonResid",
+	SavePathName = property.file,
+	DialogPrompt = "&Pearson Residuals",
+	DialogControl = "Check Box")
+
+	guiCreate("Property", Name = "glmrobDevianceResid",
+	SavePathName = property.file,
+	DialogPrompt = "&Deviance Residuals",
+	DialogControl = "Check Box")
+
+	guiCreate("Property", Name = "glmrobResponseResid",
+	SavePathName = property.file,
+	DialogPrompt = "&Response Residuals",
+	DialogControl = "Check Box")
+
+	guiCreate("Property", Name = "glmrobSRGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Saved Results",
+	PropertyList = c("SPropSaveResultsObject", "SPropSaveFit", 
+		"glmrobWorkResid", "glmrobPearsonResid", 
+		"glmrobDevianceResid", "glmrobResponseResid"))
+
+	guiCreate("Property", Name = "glmrobResultsPage",
+	SavePathName = property.file,
+	Type = "Page",
+	DialogPrompt = "Results",
+	PropertyList = c("glmrobPRGroup", "glmrobSRGroup"))
+
+#
+# Plots Page
+#
+
+	guiCreate("Property", Name = "SPropPlotCompGlmFitsRRvsRD",
+	SavePathName = property.file,
+	DialogPrompt = "Deviances vs Robust Distances",
+	DefaultValue = T,
+	DialogControl = "Check Box")
+
+	guiCreate("Property", Name = "gui_glmrob_Pearson_QQ",
+	SavePathName = property.file,
+	DialogPrompt = "Pearson Residuals Normal QQ",
+	DialogControl = "Check Box")
+	
+	guiCreate("Property", Name = "gui_glmrob_deviance_QQ",
+	SavePathName = property.file,
+	DialogPrompt = "Deviances QQ-Plot",
+	DefaultValue = T,
+	DialogControl = "Check Box")
+
+	guiCreate("Property",
+	Name = "SPropPlotDevVsIndex",
+	Type = "Normal",
+	DialogControl = "Check Box",
+	DefaultValue = T,
+	DialogPrompt = "Deviances vs Index",
+	SavePathName = property.file)
+
+	guiCreate("Property", Name = "gui_glmrob_plot_group",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Plots",
+	PropertyList = c("SPropPlotResidVsFit",
+						"SPropPlotResponseVsFit",
+						"gui_glmrob_Pearson_QQ",
+						"gui_glmrob_deviance_QQ",
+						"SPropPlotCompGlmFitsRRvsRD",
+						"SPropPlotDevVsIndex"))
+						
+	#guiCreate("Property", Name = "gui_glmrob_overlaid_group",
+	#SavePathName = property.file,
+	#Type = "Group",
+	#DialogPrompt = "Overlaid Plots",
+	#PropertyList = c("gui_glmrob_overlaid_QQ"))
+
+	guiCreate("Property", Name = "glmrob_plot",
+	SavePathName = property.file,
+	Type = "Page",
+	DialogPrompt = "Plots",
+	PropertyList = c("gui_glmrob_plot_group", 
+			"gui_glm_plot_options_group",
+			"gui_lmRob_plot_presid_group"))
+			
+#
+# Predict Page
+#
+
+	guiCreate("Property",
+	Name = "glmrobPredNewData",
+	SavePathName = property.file,
+	DialogPrompt = "New Data",
+	DialogControl = "String")
+
+	guiCreate("Property",
+	Name = "glmrobPredSaveIn",
+	SavePathName = property.file,
+	DialogPrompt = "Save In",
+	DialogControl = "String",
+	UseQuotes = T)
+	
+	guiCreate("Property",
+	Name = "glmrobPredSavePred",
+	SavePathName = property.file,
+	DialogPrompt = "Predictions",
+	DialogControl = "Check Box",
+	DefaultValue = F)
+
+	guiCreate("Property",
+	Name = "glmrobPredSaveSE",
+	SavePathName = property.file,
+	DialogPrompt = "Standard Errors",
+	DialogControl = "Check Box",
+	DefaultValue = F)
+
+	guiCreate("Property",
+	Name = "glmrobPredSaveGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Save",
+	PropertyList = c(
+		"glmrobPredSaveIn",
+		"glmrobPredSavePred", 
+		"glmrobPredSaveSE"))
+
+	guiCreate("Property",
+	Name = "glmrobPredType",
+	SavePathName = property.file,
+	DialogPrompt = "Prediction Type",
+	DialogControl = "List Box",
+	OptionList = c("link", "response", "terms"),
+	DefaultValue = "link",
+	UseQuotes = T)	
+
+	guiCreate("Property",
+	Name = "glmrobPredOptionsGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Options",
+	PropertyList = "glmrobPredType")
+	
+	guiCreate("Property",
+	Name = "glmrobPredNewDataGroup",
+	SavePathName = property.file,
+	Type = "Group",
+	DialogPrompt = "Data",
+	PropertyList = "glmrobPredNewData")
+
+	guiCreate("Property",
+	Name = "glmrobPredPage",
+	SavePathName = property.file,
+	Type = "Page",
+	DialogPrompt = "Predict",
+	PropertyList = c(
+		"glmrobPredNewDataGroup",
+		"glmrobPredSaveGroup",
+		"glmrobPredOptionsGroup"))
+
+
+#
+# Overall Dialog
+#
+
+	guiCreate("FunctionInfo", Name = "menuGlmRob", 
+	Function = "menuGlmRob", 
+	SavePathName = funcinfo.file,
+	DialogHeader = "Robust Generalized Linear Models",
+	CallBackFunction = "backGlmRob",
+	PropertyList = c(
+		"glmrobModelPage",
+		"glmrobResultsPage", 
+		"glmrob_plot", 
+		"glmrobPredPage",
+		"glmRobAdvancedPage"), 
+	ArgumentList = c(
+		"#0 = SPropReturnObject", 
+		"#1 = SPropPFFormula", 
+		"#2 = SPropGlmrobFamily", 
+		"#3 = SPropModelLink",
+		"#4 = SPropModelVariance",
+		"#5 = SPropDataFrameList", 
+		"#6 = SPropSubset", 
+		"#7 = SPropOmitMissing", 
+		"#8 = SPropTolerance", 
+		"#9 = SPropMaxiter", 
+		"#10 = SPropTrace",
+		"#11 = SPropPrintShort", 
+		"#12 = SPropPrintLong", 
+		"#13 = glmrobAnovaOutput", 
+		"#14 = SPropPrintCor", 
+		"#15 = SPropSaveResultsObject", 
+		"#16 = SPropSaveFit", 
+		"#17 = glmrobWorkResid", 
+		"#18 = glmrobPearsonResid", 
+		"#19 = glmrobDevianceResid", 
+		"#20 = glmrobResponseResid", 
+		"#21 = SPropPlotResidVsFit", 
+		"#22 = SPropPlotResponseVsFit", 
+		"#23 = SPropPlotDevVsIndex", 
+		"#24 = SPropPlotSmooths", 
+		"#25 = SPropPlotRugplot", 
+		"#26 = SPropPlotIdN", 
+		"#27 = SPropPlotPartialResid",
+		"#28 = SPropPlotPartialFit",
+		"#29 = SPropPlotPartialRugplot",
+		"#30 = SPropPlotPartialScale",
+		"#31 = glmrobPredNewData",
+		"#32 = glmrobPredSaveIn",
+		"#33 = glmrobPredType",
+		"#34 = glmrobPredSavePred",
+		"#35 = glmrobPredSaveSE",
+		"#36 = glmrobMethodBox",
+		"#37 = SPropPlotCompGlmFitsRRvsRD",
+		"#38 = gui_glmrob_Pearson_QQ",
+		"#39 = gui_glmrob_deviance_QQ",
+		"#40 = glmrobFitMethod",
+		"#41 = glmrobMallowsFn",
+		"#42 = glmrobMallowsTuning",
+		"#43= glmrobMCgamma",
+		"#44 = glmrobMCmaxit",
+		"#45 = glmrobMCtrace",
+		"#46 = glmrobMCtol",
+		"#47 = glmrobMCinitial",
+		"#48 = glmrobTolerance",
+		"#49 = glmrobMaxiter",
+		"#50 = glmrobUfact",
+		"#51 = glmrobCConst",
+		"#52 = glmrobTrace"))

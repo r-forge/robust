@@ -1,0 +1,71 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>summary.lmRobBI</s-topic>
+</s-topics>
+<s-title>
+Summary Method for class <s-expression>"lmRobBI"</s-expression> 
+</s-title>
+<s-description>
+Returns a summary list for a robust linear model object of class  
+<s-expression>lmRobBI</s-expression>. A null value is returned if printing is invoked. 
+</s-description>
+<s-usage>
+<s-old-style-usage>
+summary.lmRobBI(object, correlation=T) 
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name="object">
+an object of class <s-expression>"lmRobMM"</s-expression>. 
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name="correlation">
+logical flag: if <s-expression>TRUE</s-expression>, then the correlation matrix for the coefficients  
+is included in the summary. 
+</s-arg>
+</s-args-optional>
+<s-value>
+a list is returned with the following components: 
+<s-return-component name="sigma">
+the residual scale estimate. 
+</s-return-component>
+<s-return-component name="df">
+the number of degrees of freedom for the model and for the residuals. 
+</s-return-component>
+<s-return-component name="cov.unscaled">
+the unscaled covariance matrix; i.e, a matrix such that multiplying it by  
+an estimate of the error variance produces an estimated covariance matrix  
+for the coefficients. 
+</s-return-component>
+<s-return-component name="correlation">
+the correlation coefficient matrix for the coefficients in the model. 
+</s-return-component>
+<s-return-component name="...">
+other components are the same as the corresponding components of an  
+<s-expression>lmRobMM</s-expression> object. Use <s-expression>names()</s-expression> function to obtain a list of the components. 
+</s-return-component>
+</s-value>
+<s-details>
+This function is a method for the generic function <s-expression>summary</s-expression> for class  
+<s-expression>"lmRobMM"</s-expression>. It can be invoked by calling <s-expression>summary()</s-expression> for an object of  
+class <s-expression>"lmRobMM"</s-expression>, or directly by calling <s-expression>summary.lmRobMM()</s-expression>, regardless 
+of the class of the object. 
+</s-details>
+<s-examples>
+<s-example type = text>
+tht.mm <- lmRobMM(THT~market,data=tht.dat) 
+summary(tht.mm) 
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

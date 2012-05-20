@@ -1,0 +1,85 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic> summary.pcompfm </s-topic>
+</s-topics>
+<s-title>
+Summary Method for Principal Components Models
+</s-title>
+<s-description>
+Returns a summary of the principal components models stored in a fit.models
+object with virtual class pcompfm.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+summary.pcompfm(object, loadings=T, cutoff=0.1, ...)
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name=" object ">
+a fit.models object with virtual class pcompfm that contains the fitted
+models.
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name=" loadings ">
+if TRUE, the loadings are included in the summary.
+</s-arg>
+<s-arg name=" cutoff ">
+the cutoff value used by print.loadings.  Entries smaller than
+<s-expression>cutoff</s-expression> are not printed.
+</s-arg>
+</s-args-optional>
+<s-value>
+a summary.pcompfm object with the following components:
+<s-return-component name="mod.names">
+the names of the models in object.
+</s-return-component>
+<s-return-component name="calls">
+a list containing the call of each model in object.
+</s-return-component>
+<s-return-component name="qvar">
+a matrix with one row for each model in object.  The columns contain the
+cumulative sum of the fraction of the variance attributed to each
+component.
+</s-return-component>
+<s-return-component name="pvar">
+a matrix with one row for each model in object.  The columns contain the
+fraction of the variance attributed to each component.
+</s-return-component>
+<s-return-component name="sdev">
+a matrix with one row for each model in object.  The columns contain the
+standard deviation of each component.
+</s-return-component>
+<s-return-component name="loadings">
+if <s-expression>loadings = T</s-expression>, a list containing the
+loadings for each model in object.
+</s-return-component>
+<s-return-component name="cutoff">
+the cutoff specified in the call, by default 0.1.
+</s-return-component>
+</s-value>
+<s-see>
+<s-function name="fit.models1.sgm">fit.models</s-function>,
+<s-function name="summary1.sgm">summary</s-function>,
+<s-function name="summary.princompRob.sgm">summary.princompRob</s-function>,
+<s-function name="summary_pc.sgm">summary.princomp</s-function>.
+</s-see>
+<s-examples>
+<s-example>
+wood.pc <- princomp(woodmod.dat)
+wood.rob <- princompRob(woodmod.dat)
+wood.fm <- fit.models(wood.rob, wood.pc)
+summary(wood.fm)
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

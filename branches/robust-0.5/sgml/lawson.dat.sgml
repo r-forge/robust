@@ -1,0 +1,25 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lawson.dat</s-topic>
+</s-topics>
+<s-title>
+Lawson and Gold Data Set 
+</s-title>
+<s-section name=" SUMMARY">
+
+The <s-expression>lawson.dat</s-expression> data set is a data frame with 16 observations. The  
+columns <s-expression>C1</s-expression>, <s-expression>C2</s-expression>, <s-expression>C3</s-expression> and <s-expression>C4</s-expression> represent four factors, and the 
+column <s-expression>y</s-expression> represents the response variable. 
+</s-section>
+<s-keywords>
+<s-keyword>sysdata</s-keyword>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

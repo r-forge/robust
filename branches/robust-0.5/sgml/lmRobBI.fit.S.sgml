@@ -1,0 +1,26 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+   <s-topic>lmRobBI.bRobust</s-topic>
+   <s-topic>lmRobBI.cov0</s-topic>
+   <s-topic>lmRobBI.cov1</s-topic>
+   <s-topic>lmRobBI.fit.S</s-topic>
+   <s-topic>lmRobBI.ts1</s-topic>
+</s-topics>
+<s-title>
+Utility Functions for Bounded Influence Robust Regression 
+</s-title>
+<s-description>
+These functions are used by <s-expression>lmRobBI</s-expression>,
+not supposed to be called by the  users directly. 
+</s-description>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

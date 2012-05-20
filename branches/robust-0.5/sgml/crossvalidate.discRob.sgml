@@ -1,0 +1,80 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic>crossvalidate.discRob</s-topic>
+</s-topics>
+
+<s-title>
+Crossvalidation Method for class <s-expression>discRob</s-expression>
+</s-title>
+
+<s-description>
+Compute leave-one-out crossvalidation of a
+<s-expression>discRob</s-expression> object.
+</s-description>
+
+<s-usage>
+<s-old-style-usage>
+crossvalidate.discRob(object, doubt=0, digits=.Options$digits, 
+                      trace=T, subset)
+</s-old-style-usage>
+</s-usage>
+
+<s-args-required>
+<s-arg name="object">
+the <s-expression>discRob</s-expression> object constructed by the
+<s-expression>discRob</s-expression> function.
+</s-arg>
+</s-args-required>
+
+<s-args-optional>
+<s-arg name="doubt">
+a numerical variable, 0 <= <s-expression>doubt</s-expression>
+< <s-expression>(g-1) / g</s-expression>, where
+<s-expression>g</s-expression> is the number of groups,
+defining the minimum difference the maximum posterior
+probability of group membership must exceed all others
+before assigning the observation to that group. If there
+does not exist a posterior probability of a group
+membership for an observation that exceeds
+<s-expression>doubt + 1/g</s-expression>, the observation
+is assigned to an "unknown" group.
+</s-arg>
+<s-arg name="digits">
+the number of significant digits to retain in the posterior
+probability. Rounding the posterior probabilities is odne
+mostly for printing purposes.
+</s-arg>
+<s-arg name="trace">
+a logical flag for printing trace information. A classification
+table is printed for every 10 iterations.
+</s-arg>
+<s-arg name="subset">
+an integer or logical vector specifying which observations
+to crossvalidate.
+</s-arg>
+</s-args-optional>
+<s-value>
+an n x (g+1) data frame, where n is the number of observations and g is the
+number of groups, containing a <s-expression>group</s-expression> factor
+column followed by the posterior probability of group membership for each
+observation in the <s-expression>newdata</s-expression> data frame or the
+training data.
+</s-value>
+<s-details>
+Performs crossvalidation of the discriminant function contained in
+<s-expression>object</s-expression>. This function may take a considerable
+amount of time to compute the leave-one-out error rate.
+</s-details>
+<s-keywords>
+<s-keyword>librobust</s-keyword>
+<s-keyword>robust</s-keyword>
+<s-keyword>multivariate</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

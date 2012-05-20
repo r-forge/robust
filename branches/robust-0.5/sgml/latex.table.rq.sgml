@@ -1,0 +1,59 @@
+<!doctype s-function-doc system "s-function-doc.dtd" [
+<!entity % S-OLD "INCLUDE">
+]
+>
+<s-function-doc>
+<s-topics>
+<s-topic>latex.table.rq</s-topic>
+</s-topics>
+<s-title>
+Latex Table of Quantile Regression Results 
+</s-title>
+<s-description>
+This function converts the output of table.rq to a latex table.
+</s-description>
+<s-usage>
+<s-old-style-usage>
+latex.table.rq(object, caption="caption goes here.", digits=3, file="a")
+</s-old-style-usage>
+</s-usage>
+<s-args-required>
+<s-arg name= object >
+an object of class table.rq
+</s-arg>
+</s-args-required>
+<s-args-optional>
+<s-arg name= caption >
+caption for the table
+</s-arg>
+<s-arg name= digits >
+significant digits for table entries
+</s-arg>
+<s-arg name= file >
+name of the latex file
+</s-arg>
+</s-args-optional>
+<s-value>
+NULL
+</s-value>
+<s-side-effects>
+generates table in  specified file
+</s-side-effects>
+<s-details>
+Uses Frank Harrell's function latex.table.
+</s-details>
+<s-see>
+table.rq, latex.table
+</s-see>
+<s-examples>
+<s-example>
+</s-example>
+</s-examples>
+<s-keywords>
+<s-keyword>print</s-keyword>
+<s-keyword>librobust</s-keyword>
+</s-keywords>
+<s-docclass>
+function
+</s-docclass>
+</s-function-doc>

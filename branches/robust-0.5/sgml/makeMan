@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for file in *.sgml
+  do
+	  R CMD Sd2Rd $file > temp.Rd
+    if [ $? -ne 0 ]
+		  then
+			  echo $file >> borked.log
+    fi
+    /bin/mv temp.Rd ${file%.sgml}.Rd
+	done
+/bin/rm *.sgml
+/bin/mv borked.log ..
+
