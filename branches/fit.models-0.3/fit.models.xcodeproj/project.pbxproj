@@ -1,0 +1,172 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
+		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
+		0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfm2DRegPlot.Rd; sourceTree = "<group>"; };
+		0EF220FF15675D7900CFD1EF /* lmfmOverlaidQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidQQPlot.Rd; sourceTree = "<group>"; };
+		0EF2210015675D7900CFD1EF /* lmfmOverlaidResDenPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidResDenPlot.Rd; sourceTree = "<group>"; };
+		0EF2210115675D7900CFD1EF /* lmfmResKernDenPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResKernDenPlot.Rd; sourceTree = "<group>"; };
+		0EF2210215675D7900CFD1EF /* lmfmRespVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmRespVsFittedPlot.Rd; sourceTree = "<group>"; };
+		0EF2210315675D7900CFD1EF /* lmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResQQPlot.Rd; sourceTree = "<group>"; };
+		0EF2210415675D7900CFD1EF /* lmfmResVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsFittedPlot.Rd; sourceTree = "<group>"; };
+		0EF2210515675D7900CFD1EF /* lmfmResVsIdxPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsIdxPlot.Rd; sourceTree = "<group>"; };
+		0EF2210615675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmSqrtResVsFittedPlot.Rd; sourceTree = "<group>"; };
+		0EF2210715675D7900CFD1EF /* plot.glmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.Rd; sourceTree = "<group>"; };
+		0EF2210815675D7900CFD1EF /* plot.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.lmfm.Rd; sourceTree = "<group>"; };
+		0EF2210915675D7900CFD1EF /* summary.glmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.glmfm.Rd; sourceTree = "<group>"; };
+		0EF2210A15675D7900CFD1EF /* summary.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.lmfm.Rd; sourceTree = "<group>"; };
+		0EF2210B15675D7900CFD1EF /* NAMESPACE */ = {isa = PBXFileReference; lastKnownFileType = text; path = NAMESPACE; sourceTree = "<group>"; };
+		0EF2210D15675D7900CFD1EF /* coef.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = coef.glmfm.q; sourceTree = "<group>"; };
+		0EF2210E15675D7900CFD1EF /* coef.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = coef.lmfm.q; sourceTree = "<group>"; };
+		0EF2210F15675D7900CFD1EF /* fit.models.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.q; sourceTree = "<group>"; };
+		0EF2211015675D7900CFD1EF /* get.fit.models.database.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = get.fit.models.database.q; sourceTree = "<group>"; };
+		0EF2211115675D7900CFD1EF /* lmfm2DRegPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfm2DRegPlot.q; sourceTree = "<group>"; };
+		0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidQQPlot.q; sourceTree = "<group>"; };
+		0EF2211315675D7900CFD1EF /* lmfmOverlaidResDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidResDenPlot.q; sourceTree = "<group>"; };
+		0EF2211415675D7900CFD1EF /* lmfmResKernDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResKernDenPlot.q; sourceTree = "<group>"; };
+		0EF2211515675D7900CFD1EF /* lmfmRespVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmRespVsFittedPlot.q; sourceTree = "<group>"; };
+		0EF2211615675D7900CFD1EF /* lmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResQQPlot.q; sourceTree = "<group>"; };
+		0EF2211715675D7900CFD1EF /* lmfmResVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsFittedPlot.q; sourceTree = "<group>"; };
+		0EF2211815675D7900CFD1EF /* lmfmResVsIdxPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsIdxPlot.q; sourceTree = "<group>"; };
+		0EF2211915675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmSqrtResVsFittedPlot.q; sourceTree = "<group>"; };
+		0EF2211A15675D7900CFD1EF /* panel.addons.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = panel.addons.q; sourceTree = "<group>"; };
+		0EF2211B15675D7900CFD1EF /* plot.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.q; sourceTree = "<group>"; };
+		0EF2211C15675D7900CFD1EF /* plot.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.lmfm.q; sourceTree = "<group>"; };
+		0EF2211D15675D7900CFD1EF /* print.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.glmfm.q; sourceTree = "<group>"; };
+		0EF2211E15675D7900CFD1EF /* print.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.lmfm.q; sourceTree = "<group>"; };
+		0EF2211F15675D7900CFD1EF /* print.summary.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.summary.glmfm.q; sourceTree = "<group>"; };
+		0EF2212015675D7900CFD1EF /* print.summary.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.summary.lmfm.q; sourceTree = "<group>"; };
+		0EF2212115675D7900CFD1EF /* qqplot.glmRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = qqplot.glmRob.q; sourceTree = "<group>"; };
+		0EF2212215675D7900CFD1EF /* summary.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.glmfm.q; sourceTree = "<group>"; };
+		0EF2212315675D7900CFD1EF /* summary.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.lmfm.q; sourceTree = "<group>"; };
+		0EF3FF9415685FBD003D6485 /* lmfmResVsLevPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsLevPlot.q; sourceTree = "<group>"; };
+		0EF3FF9615685FCC003D6485 /* lmfmResVsLevPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsLevPlot.Rd; sourceTree = "<group>"; };
+		0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.q; sourceTree = "<group>"; };
+		0EF3FF981568722B003D6485 /* glmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.Rd; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0EF220EC15675CD200CFD1EF = {
+			isa = PBXGroup;
+			children = (
+				0EF220FB15675D7900CFD1EF /* DESCRIPTION */,
+				0EF2210B15675D7900CFD1EF /* NAMESPACE */,
+				0EF2210C15675D7900CFD1EF /* R */,
+				0EF220FC15675D7900CFD1EF /* man */,
+			);
+			sourceTree = "<group>";
+		};
+		0EF220FC15675D7900CFD1EF /* man */ = {
+			isa = PBXGroup;
+			children = (
+				0EF220FD15675D7900CFD1EF /* fit.models.Rd */,
+				0EF3FF981568722B003D6485 /* glmfmResQQPlot.Rd */,
+				0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */,
+				0EF220FF15675D7900CFD1EF /* lmfmOverlaidQQPlot.Rd */,
+				0EF2210015675D7900CFD1EF /* lmfmOverlaidResDenPlot.Rd */,
+				0EF2210115675D7900CFD1EF /* lmfmResKernDenPlot.Rd */,
+				0EF2210215675D7900CFD1EF /* lmfmRespVsFittedPlot.Rd */,
+				0EF2210315675D7900CFD1EF /* lmfmResQQPlot.Rd */,
+				0EF2210415675D7900CFD1EF /* lmfmResVsFittedPlot.Rd */,
+				0EF2210515675D7900CFD1EF /* lmfmResVsIdxPlot.Rd */,
+				0EF3FF9615685FCC003D6485 /* lmfmResVsLevPlot.Rd */,
+				0EF2210615675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.Rd */,
+				0EF2210715675D7900CFD1EF /* plot.glmfm.Rd */,
+				0EF2210815675D7900CFD1EF /* plot.lmfm.Rd */,
+				0EF2210915675D7900CFD1EF /* summary.glmfm.Rd */,
+				0EF2210A15675D7900CFD1EF /* summary.lmfm.Rd */,
+			);
+			path = man;
+			sourceTree = "<group>";
+		};
+		0EF2210C15675D7900CFD1EF /* R */ = {
+			isa = PBXGroup;
+			children = (
+				0EF2210D15675D7900CFD1EF /* coef.glmfm.q */,
+				0EF2210E15675D7900CFD1EF /* coef.lmfm.q */,
+				0EF2210F15675D7900CFD1EF /* fit.models.q */,
+				0EF2211015675D7900CFD1EF /* get.fit.models.database.q */,
+				0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */,
+				0EF2211115675D7900CFD1EF /* lmfm2DRegPlot.q */,
+				0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */,
+				0EF2211315675D7900CFD1EF /* lmfmOverlaidResDenPlot.q */,
+				0EF2211415675D7900CFD1EF /* lmfmResKernDenPlot.q */,
+				0EF2211515675D7900CFD1EF /* lmfmRespVsFittedPlot.q */,
+				0EF2211615675D7900CFD1EF /* lmfmResQQPlot.q */,
+				0EF2211715675D7900CFD1EF /* lmfmResVsFittedPlot.q */,
+				0EF2211815675D7900CFD1EF /* lmfmResVsIdxPlot.q */,
+				0EF3FF9415685FBD003D6485 /* lmfmResVsLevPlot.q */,
+				0EF2211915675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.q */,
+				0EF2211A15675D7900CFD1EF /* panel.addons.q */,
+				0EF2211B15675D7900CFD1EF /* plot.glmfm.q */,
+				0EF2211C15675D7900CFD1EF /* plot.lmfm.q */,
+				0EF2211D15675D7900CFD1EF /* print.glmfm.q */,
+				0EF2211E15675D7900CFD1EF /* print.lmfm.q */,
+				0EF2211F15675D7900CFD1EF /* print.summary.glmfm.q */,
+				0EF2212015675D7900CFD1EF /* print.summary.lmfm.q */,
+				0EF2212115675D7900CFD1EF /* qqplot.glmRob.q */,
+				0EF2212215675D7900CFD1EF /* summary.glmfm.q */,
+				0EF2212315675D7900CFD1EF /* summary.lmfm.q */,
+			);
+			path = R;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		0EF220EE15675CD200CFD1EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 0EF220F115675CD200CFD1EF /* Build configuration list for PBXProject "fit.models" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0EF220EC15675CD200CFD1EF;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		0EF220F315675CD300CFD1EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		0EF220F415675CD300CFD1EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0EF220F115675CD200CFD1EF /* Build configuration list for PBXProject "fit.models" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EF220F315675CD300CFD1EF /* Debug */,
+				0EF220F415675CD300CFD1EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0EF220EE15675CD200CFD1EF /* Project object */;
+}
