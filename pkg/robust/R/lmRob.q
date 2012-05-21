@@ -20,7 +20,7 @@ lmRob <- function(formula, data, weights, subset, na.action,
   m <- eval(m.call, parent.frame())
 
   Terms <- attr(m, "terms")
-  weights <- model.extract(m, weights)
+  weights <- model.extract(m, "weights")
   Y <- model.extract(m, "response")
   X <- model.matrix(Terms, m, contrasts)
 
@@ -68,22 +68,6 @@ lmRob <- function(formula, data, weights, subset, na.action,
       x2.idx <- x2.idx[-1]
     }
   }
-
-  ##  If X1 is empty then set it to NULL.
-
-#  if(length(x1.idx))
-#    X1 <- X[, x1.idx, drop = FALSE]
-#  else {
-#    x1.idx <- NULL
-#    X1 <- NULL
-#  }
-
-  ##  If X2 is empty then set it to NULL.
-
-#  if(length(x2.idx))
-#    X2 <- X[, x2.idx, drop = FALSE]
-#  else
-#    X2 <- NULL
 
   if(length(weights))
     fit <- lmRob.wfit(X, Y, weights, x1.idx = x1.idx, nrep = nrep,
