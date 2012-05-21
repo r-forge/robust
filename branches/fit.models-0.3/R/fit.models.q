@@ -4,11 +4,9 @@ fit.models <- function(model.list, ..., attributes = NULL)
   fm.call$attributes <- NULL
   dots <- list(...)
 
-  ## get database of camparable models - eventually this should reside in
-  ## its own environment and be user-modifiable
-  fmdb <- get.fit.models.database()
+  fm.reg <- get("fit.models.registry", as.environment("package:fit.models"))
 
-  comparables <- lapply(fmdb, function(u) u$classes)
+  comparables <- lapply(fm.reg, function(u) u$classes)
   supported.classes <- unique(unlist(comparables))
   vclass <- NULL
 
@@ -80,10 +78,10 @@ fit.models <- function(model.list, ..., attributes = NULL)
     vclass <- (names(comparables)[idx])[1]
   }
 
-  if(!is.null(is.valid <- fmdb[[vclass]]$validation.function))
+  if(!is.null(is.valid <- fm.reg[[vclass]]$validation.function))
     is.valid(model.list)
 
-  if(!is.null(add.attributes <- fmdb[[vclass]]$attributes.function))
+  if(!is.null(add.attributes <- fm.reg[[vclass]]$attributes.function))
     model.list <- add.attributes(model.list, fm.call, attributes)
 
   oldClass(model.list) <- vclass
