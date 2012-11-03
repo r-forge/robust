@@ -1,3 +1,0 @@
-fit.models.registry <- list()
-
-
