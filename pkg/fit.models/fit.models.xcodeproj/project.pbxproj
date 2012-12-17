@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		0E405277156ABF9A00867444 /* fm.register.vclass.q */ = {isa = PBXFileReference; path = fm.register.vclass.q; sourceTree = "<group>"; };
-		0E405279156ABFB000867444 /* fm.register.class.in.vclass.q */ = {isa = PBXFileReference; path = fm.register.class.in.vclass.q; sourceTree = "<group>"; };
-		0E40527A156AC0A000867444 /* fm.registry.Rd */ = {isa = PBXFileReference; path = fm.registry.Rd; sourceTree = "<group>"; };
+		0E405277156ABF9A00867444 /* registerFMclass.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = registerFMclass.q; sourceTree = "<group>"; };
+		0E405279156ABFB000867444 /* fm.register.class.in.vclass.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.register.class.in.vclass.q; sourceTree = "<group>"; };
+		0E40527A156AC0A000867444 /* fm.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.Rd; sourceTree = "<group>"; };
 		0E40527B156AEED200867444 /* fit.models.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.registry.Rd; sourceTree = "<group>"; };
+		0E7E1A3D164F7DDB00D6F0D7 /* get.fit.models.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = get.fit.models.registry.q; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
 		0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfm2DRegPlot.Rd; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		0EF3FF9615685FCC003D6485 /* lmfmResVsLevPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsLevPlot.Rd; sourceTree = "<group>"; };
 		0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.q; sourceTree = "<group>"; };
 		0EF3FF981568722B003D6485 /* glmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.Rd; sourceTree = "<group>"; };
-		0EF3FFA51568A65F003D6485 /* fit.models.registry.q */ = {isa = PBXFileReference; path = fit.models.registry.q; sourceTree = "<group>"; };
 		0EF3FFA71568B39C003D6485 /* library.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = library.q; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,9 +99,8 @@
 				0EF2210D15675D7900CFD1EF /* coef.glmfm.q */,
 				0EF2210E15675D7900CFD1EF /* coef.lmfm.q */,
 				0EF2210F15675D7900CFD1EF /* fit.models.q */,
-				0EF3FFA51568A65F003D6485 /* fit.models.registry.q */,
 				0E405279156ABFB000867444 /* fm.register.class.in.vclass.q */,
-				0E405277156ABF9A00867444 /* fm.register.vclass.q */,
+				0E405277156ABF9A00867444 /* registerFMclass.q */,
 				0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */,
 				0EF2211115675D7900CFD1EF /* lmfm2DRegPlot.q */,
 				0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */,
@@ -124,6 +123,7 @@
 				0EF2212215675D7900CFD1EF /* summary.glmfm.q */,
 				0EF2212315675D7900CFD1EF /* summary.lmfm.q */,
 				0EF3FFA71568B39C003D6485 /* library.q */,
+				0E7E1A3D164F7DDB00D6F0D7 /* get.fit.models.registry.q */,
 			);
 			path = R;
 			sourceTree = "<group>";
