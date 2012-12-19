@@ -1,9 +1,9 @@
-lmfmResKernDenPlot <- function(x, ...)
+lmfmResKernDenPlot <- function(x, residuals.fun, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, resid)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
 
   panel.special <- function(x, y, ...)

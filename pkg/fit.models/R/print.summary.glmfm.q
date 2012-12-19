@@ -27,7 +27,7 @@ print.summary.glmfm <- function(x, digits = max(3, getOption("digits") - 3),
   r.names[idx] <- paste(paste(cnames, ":", sep = ""), r.names[idx])
   rownames(coefmat) <- format(r.names, justify = "right")
   colnames(coefmat) <- c("Estimate", "Std. Error", "z value", "Pr(>|z|)")
-browser()
+
   for(i in 1:n.models)
     coefmat[idx + (i-1), ][cnames %in% row.names(coefs[[i]]), ] <- coefs[[i]]
 

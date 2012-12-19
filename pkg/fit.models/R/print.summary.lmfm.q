@@ -29,8 +29,10 @@ print.summary.lmfm <- function(x, digits = max(3, getOption("digits") - 3),
   rownames(coefmat) <- format(r.names, justify = "right")
   colnames(coefmat) <- c("Estimate", "Std. Error", "t value", "Pr(>|t|)")
 
-  for(i in 1:n.models)
-    coefmat[idx + (i-1), ][cnames %in% row.names(coefs[[i]]), ] <- coefs[[i]]
+  for(i in 1:n.models) {
+    mc <- coefs[[i]]
+    coefmat[idx + (i-1), ][cnames %in% row.names(mc), 1:ncol(mc)] <- mc
+  }
 
   cat("\nCoefficients:\n")
   printCoefmat(coefmat, digits = digits, signif.stars = signif.stars,
@@ -43,7 +45,8 @@ print.summary.lmfm <- function(x, digits = max(3, getOption("digits") - 3),
 
   cat("\nMultiple R-squared:\n")
   for(i in 1:n.models)
-    cat(fancy.names[i], format(x[[i]]$r.squared, digits = digits, ...), "\n")
+    if(!is.null(x[[i]]$r.squared) && !is.na(x[[i]]$r.squared))
+      cat(fancy.names[i], format(x[[i]]$r.squared, digits = digits, ...), "\n")
 
   correlations <- lapply(x, function(u) u$correlation)
   if(all(!sapply(correlations, is.null))) {    

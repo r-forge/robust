@@ -10,7 +10,7 @@ print.lmfm <- function(x, digits = max(3, getOption("digits") - 3), ...)
   }
 
   cat("\nCoefficients:\n")
-  printCoefmat(t(coef(x)), digits = digits, P.values = FALSE, na.print = "",
+  printCoefmat(coef(x), digits = digits, P.values = FALSE, na.print = "",
                signif.stars = FALSE, ...)
   cat("\n")
 

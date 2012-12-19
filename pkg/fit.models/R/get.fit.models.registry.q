@@ -1,4 +1,7 @@
 get.fit.models.registry <- function()
-  get("fit.models.registry", envir = as.environment("package:fit.models"))
+{
+  fmreg.pos <- which(search() == "data:fit.models.registry")
+  get("fit.models.registry", pos = fmreg.pos)
+}
 
 

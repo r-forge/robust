@@ -1,4 +1,4 @@
-lmfmOverlaidResDenPlot <- function(x, lty, lwd, col, ...)
+lmfmOverlaidResDenPlot <- function(x, residuals.fun, lty, lwd, col, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -14,7 +14,7 @@ lmfmOverlaidResDenPlot <- function(x, lty, lwd, col, ...)
 
   settings <- list(superpose.line = list(lty = lty, lwd = lwd, col = col))
 
-  res <- lapply(x, resid)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
   mod <- factor(rep(mod.names, n.res), levels = mod.names)
   tdf <- data.frame(res = unlist(res), mod = mod)

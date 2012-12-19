@@ -1,4 +1,4 @@
-lmfmSqrtResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
+lmfmSqrtResVsFittedPlot <- function(x, residuals.fun, smooths = FALSE,
                                     rugplot = FALSE, id.n = 3, ...)
 {
   n.models <- length(x)
@@ -12,7 +12,7 @@ lmfmSqrtResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
   }
 
   fit <- lapply(x, fitted)
-  res <- lapply(x, function(u) sqrt(abs(resid(u))))
+  res <- lapply(x, function(u) sqrt(abs(residuals.fun(u))))
   n.res <- sapply(res, length)
 
   mod <- factor(rep(mod.names, n.res), levels = mod.names)

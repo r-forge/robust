@@ -1,4 +1,4 @@
-lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
+lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
                           half.normal = FALSE, n.samples = 250, level = .95,
                           id.n = 3, qqline = TRUE, ...)
 {
@@ -24,7 +24,7 @@ lmfmResQQPlot <- function(x, type = "response", envelope = TRUE,
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, resid, type = type)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
 
   px <- py <- list()

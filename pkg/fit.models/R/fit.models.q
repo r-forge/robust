@@ -12,8 +12,8 @@ fit.models <- function(model.list, ...)   #, attributes = NULL)
   if(is.null(dots.names))
     dots.names <- character(length(dots))
 
-  fmreg <- get.fit.models.registry()
-  supported.classes <- sapply(fmreg, function(u) u$classes)
+  fmreg <- fit.models:::get.fit.models.registry()
+  supported.classes <- unlist(sapply(fmreg, function(u) u$classes))
 
 
   ## The only way model list can be missing is if all the arguments in the call
@@ -29,7 +29,7 @@ fit.models <- function(model.list, ...)   #, attributes = NULL)
   ## Otherwise model.list is either an unnamed (in the call) fitted model or
   ## a list of function names.
 
-  else if(any(class(model.list)[1] %in% supported.classes)) {
+  else if(class(model.list)[1] %in% supported.classes) {
     model.list <- c(list(model.list), dots)
     model.names <- c("", dots.names)
 

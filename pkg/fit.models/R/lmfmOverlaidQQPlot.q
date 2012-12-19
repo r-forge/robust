@@ -1,4 +1,4 @@
-lmfmOverlaidQQPlot <- function(x, pch, col, ...)
+lmfmOverlaidQQPlot <- function(x, residuals.fun, pch, col, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -11,7 +11,7 @@ lmfmOverlaidQQPlot <- function(x, pch, col, ...)
 
   settings <- list(superpose.symbol = list(pch = pch, col = col))
 
-  res <- lapply(x, resid)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
   mod <- factor(rep(mod.names, n.res), levels = mod.names)
   tdf <- data.frame(res = unlist(res), mod = mod)

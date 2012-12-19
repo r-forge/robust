@@ -1,15 +1,15 @@
 plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
 {
   choices <- c("All",
-    "Normal QQ Plot of Residuals", 
-    "Kernel Density Estimate of Residuals", 
-    "Residuals vs. Leverage", 
-    "Residuals vs. Fitted Values", 
+    "Normal QQ Plot of Modified Residuals", 
+    "Kernel Density Estimate of Modified Residuals", 
+    "Modified Residuals vs. Design Distance", 
+    "Modified Residuals vs. Fitted Values", 
     "Scale-Location", 
     "Response vs. Fitted Values", 
-    "Residuals vs. Index (Time)", 
-    "Overlaid Normal QQ Plot of Residuals", 
-    "Overlaid Kernel Density Estimate of Residuals")
+    "Modified Residuals vs. Index (Time)", 
+    "Overlaid Normal QQ Plot of Modified Residuals", 
+    "Overlaid Kernel Density Estimate of Modified Residuals")
 
   if(length(attr(x[[1]]$terms, "term.labels")) == 1)
     choices <- c(choices, "Scatter Plot with Overlaid Fit(s)")
@@ -19,7 +19,8 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
   tmenu <- paste("plot:", choices)
 
   if(is.numeric(which.plots)) {
-    which.plots <- intersect(which.plots, all.plots)
+    if(!all(which.plots %in% all.plots))
+      stop(sQuote("which"), " must be in 2:", length(choices))
 
     if(length(which.plots) == 0)
       return(invisible(x))
@@ -70,36 +71,41 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
         place.holder <- 1,
 
         lmfmResQQPlot(x,
-                      main = "Normal QQ Plot of Residuals",
+                      residuals.fun = rmodified,
+                      main = "Normal QQ Plot of Modified Residuals",
                       xlab = "Standard Normal Quantiles",
-                      ylab = "Ordered Residuals",
+                      ylab = "Empirical Quantiles of Modified Residuals",
                       pch = 16,
                       ...),
 
         lmfmResKernDenPlot(x,
-                           main = "Kernel Density Estimate of Residuals",
-                           xlab = "Residuals",
+                           residuals.fun = rmodified,
+                           main = "Kernel Density Estimate of Modified Residuals",
+                           xlab = "Modified Residuals",
                            ylab = "Density",
                            ...),
 
-        lmfmResVsLevPlot(x,
-                         main = "Residuals vs. Leverage",
-                         xlab = "Leverage",
-                         ylab = "Residuals",
-                         pch = 16,
-                         ...),
+        lmfmResVsDistPlot(x,
+                          residuals.fun = rmodified,
+                          main = "Modified Residuals vs. Design Distance",
+                          xlab = "Design Distance",
+                          ylab = "Modified Residuals",
+                          pch = 16,
+                          ...),
 
         lmfmResVsFittedPlot(x,
-                            main = "Residuals vs. Fitted Values",
+                            residuals.fun = rmodified,
+                            main = "Modified Residuals vs. Fitted Values",
                             xlab = "Fitted Values",
-                            ylab = "Residuals",
+                            ylab = "Modified Residuals",
                             pch = 16,
                             ...),
 
         lmfmSqrtResVsFittedPlot(x,
+                                residuals.fun = rmodified,
                                 main = "Scale-Location",
                                 xlab = "Fitted Values",
-                                ylab = expression(sqrt(abs(plain(Residuals)))),
+                                ylab = expression(sqrt(abs(plain("Modified Residuals")))),
                                 pch = 16,
                                 ...),
 
@@ -111,23 +117,26 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                              ...),
 
         lmfmResVsIdxPlot(x,
-                         main = "Residuals vs. Index (Time)",
+                         residuals.fun = rmodified,
+                         main = "Modified Residuals vs. Index (Time)",
                          xlab = "Index (Time)",
-                         ylab = "Residuals",
+                         ylab = "Modified Residuals",
                          pch = 16,
                          ...),
 
         lmfmOverlaidQQPlot(x,
-                           main = "Normal QQ Plot of Residuals",
-                           xlab = "Quantiles of Standard Normal",
-                           ylab = "Ordered Residuals",
+                           residuals.fun = rmodified,
+                           main = "Normal QQ Plot of ModifiedResiduals",
+                           xlab = "Standard Normal Quantiles",
+                           ylab = "Empirical Quantiles of Modified Residuals",
                            pch = rep(16, n.models),
                            col = colors,
                            ...),
 
         lmfmOverlaidResDenPlot(x,
-                               main = "Kernel Density Estimate of Residuals",
-                               xlab = "Residuals",
+                               residuals.fun = rmodified,
+                               main = "Kernel Density Estimate of Modified Residuals",
+                               xlab = "Modified Residuals",
                                ylab = "Density",
                                lwd = n.models:1,
                                col = colors,

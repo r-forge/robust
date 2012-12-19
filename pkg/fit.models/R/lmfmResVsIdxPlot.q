@@ -1,9 +1,9 @@
-lmfmResVsIdxPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
+lmfmResVsIdxPlot <- function(x, residuals.fun, level = 0.95, id.n = 3, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, resid, type = type)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
 
   s <- numeric(n.models)
@@ -12,17 +12,28 @@ lmfmResVsIdxPlot <- function(x, type = "response", level = 0.95, id.n = 3, ...)
       s[i] <- sqrt(sum(res[[i]]^2) / x[[i]]$df.residual)
     else
       s[i] <- x[[i]]$scale
-
-    res[[i]] <- c(s[i], res[[i]])
   }
 
   indices <- lapply(x, function(u) attributes(model.frame(u))$row.names)
 
+  if(all(sapply(indices, class) == "integer")) {
+    for(i in 1:n.models) {
+      newx <- min(indices[[i]]):max(indices[[i]])
+      newy <- rep(as.numeric(NA), length(newx))
+      newy[indices[[i]]] <- res[[i]]
+      indices[[i]] <- newx
+      res[[i]] <- newy
+    }
+  }
+
+  else
+    indices <- lapply(indices, function(u) 1:length(u))
+
+  n.res <- sapply(res, length)
+
   for(i in 1:n.models) {
-    if(class(indices[[i]]) != "integer")
-      indices[[i]] <- 0:n.res[i]
-    else
-      indices[[i]] <- c(0, indices[[i]])
+    res[[i]] <- c(s[i], res[[i]])
+    indices[[i]] <- c(NA, indices[[i]])
   }
 
   y.range <- max(c(abs(range(unlist(res)))), s * qnorm(0.5 + level / 2.0))

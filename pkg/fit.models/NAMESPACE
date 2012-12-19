@@ -1,6 +1,7 @@
 export(
   fit.models,
-  registerFMclass,
+  fmclass.register,
+  fmclass.add.class,
 
   # Linear Model Comparison
   summary.lmfm,
@@ -14,6 +15,11 @@ export(
   lmfmResVsIdxPlot,
   lmfmRespVsFittedPlot,
   lmfmSqrtResVsFittedPlot,
+  
+  design.distance,
+  design.distance.default,
+  rmodified,
+  rmodified.default,
 
   # Generalized Linear Model Comparison
   summary.glmfm,

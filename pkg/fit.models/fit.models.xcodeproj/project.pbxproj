@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		0E405277156ABF9A00867444 /* registerFMclass.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = registerFMclass.q; sourceTree = "<group>"; };
-		0E405279156ABFB000867444 /* fm.register.class.in.vclass.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.register.class.in.vclass.q; sourceTree = "<group>"; };
+		0E405277156ABF9A00867444 /* fmclass.register.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmclass.register.q; sourceTree = "<group>"; };
+		0E405279156ABFB000867444 /* fmclass.add.class.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmclass.add.class.q; sourceTree = "<group>"; };
 		0E40527A156AC0A000867444 /* fm.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.Rd; sourceTree = "<group>"; };
 		0E40527B156AEED200867444 /* fit.models.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.registry.Rd; sourceTree = "<group>"; };
+		0E54A40C1681265A00A8D64E /* rmodified.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.q; sourceTree = "<group>"; };
+		0E54A40D1681267100A8D64E /* design.distance.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = design.distance.q; sourceTree = "<group>"; };
 		0E7E1A3D164F7DDB00D6F0D7 /* get.fit.models.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = get.fit.models.registry.q; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		0EF2212115675D7900CFD1EF /* qqplot.glmRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = qqplot.glmRob.q; sourceTree = "<group>"; };
 		0EF2212215675D7900CFD1EF /* summary.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.glmfm.q; sourceTree = "<group>"; };
 		0EF2212315675D7900CFD1EF /* summary.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.lmfm.q; sourceTree = "<group>"; };
-		0EF3FF9415685FBD003D6485 /* lmfmResVsLevPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsLevPlot.q; sourceTree = "<group>"; };
+		0EF3FF9415685FBD003D6485 /* lmfmResVsDistPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsDistPlot.q; sourceTree = "<group>"; };
 		0EF3FF9615685FCC003D6485 /* lmfmResVsLevPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsLevPlot.Rd; sourceTree = "<group>"; };
 		0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.q; sourceTree = "<group>"; };
 		0EF3FF981568722B003D6485 /* glmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.Rd; sourceTree = "<group>"; };
@@ -99,8 +101,8 @@
 				0EF2210D15675D7900CFD1EF /* coef.glmfm.q */,
 				0EF2210E15675D7900CFD1EF /* coef.lmfm.q */,
 				0EF2210F15675D7900CFD1EF /* fit.models.q */,
-				0E405279156ABFB000867444 /* fm.register.class.in.vclass.q */,
-				0E405277156ABF9A00867444 /* registerFMclass.q */,
+				0E405277156ABF9A00867444 /* fmclass.register.q */,
+				0E405279156ABFB000867444 /* fmclass.add.class.q */,
 				0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */,
 				0EF2211115675D7900CFD1EF /* lmfm2DRegPlot.q */,
 				0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */,
@@ -110,7 +112,7 @@
 				0EF2211615675D7900CFD1EF /* lmfmResQQPlot.q */,
 				0EF2211715675D7900CFD1EF /* lmfmResVsFittedPlot.q */,
 				0EF2211815675D7900CFD1EF /* lmfmResVsIdxPlot.q */,
-				0EF3FF9415685FBD003D6485 /* lmfmResVsLevPlot.q */,
+				0EF3FF9415685FBD003D6485 /* lmfmResVsDistPlot.q */,
 				0EF2211915675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.q */,
 				0EF2211A15675D7900CFD1EF /* panel.addons.q */,
 				0EF2211B15675D7900CFD1EF /* plot.glmfm.q */,
@@ -124,6 +126,8 @@
 				0EF2212315675D7900CFD1EF /* summary.lmfm.q */,
 				0EF3FFA71568B39C003D6485 /* library.q */,
 				0E7E1A3D164F7DDB00D6F0D7 /* get.fit.models.registry.q */,
+				0E54A40C1681265A00A8D64E /* rmodified.q */,
+				0E54A40D1681267100A8D64E /* design.distance.q */,
 			);
 			path = R;
 			sourceTree = "<group>";

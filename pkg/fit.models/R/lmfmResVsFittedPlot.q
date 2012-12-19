@@ -1,10 +1,10 @@
-lmfmResVsFittedPlot <- function(x, type = "response", smooths = FALSE,
+lmfmResVsFittedPlot <- function(x, residuals.fun, smooths = FALSE,
                                 rugplot = FALSE, id.n = 3, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
   fit <- lapply(x, fitted)
-  res <- lapply(x, resid)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
 
   panel.special <- function(x, y, smooths, rugplot, id.n, ...)
