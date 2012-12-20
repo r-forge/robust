@@ -43,15 +43,20 @@ print.summary.lmfm <- function(x, digits = max(3, getOption("digits") - 3),
     cat(fancy.names[i], format(x[[i]]$sigma, digits = digits, ...), "on",
         x[[i]]$df[2], "degrees of freedom\n")
 
-  cat("\nMultiple R-squared:\n")
-  for(i in 1:n.models)
-    if(!is.null(x[[i]]$r.squared) && !is.na(x[[i]]$r.squared))
-      cat(fancy.names[i], format(x[[i]]$r.squared, digits = digits, ...), "\n")
+  rsq <- sapply(x, function(u) u$r.squared)
+  has.rsq <- which(!sapply(rsq, function(u) is.null(u) || is.na(u)))
+  if(length(has.rsq)) {
+    cat("\nMultiple R-squared:\n")
+    for(i in has.rsq)
+      cat(fancy.names[i], format(rsq[[i]], digits = digits, ...), "\n")
+  }
+
+  cat("\n")
 
   correlations <- lapply(x, function(u) u$correlation)
   if(all(!sapply(correlations, is.null))) {    
     if(any(sapply(correlations, NCOL) > 1)) {
-      cat("\nCorrelations:\n")
+      cat("Correlations:\n")
       for(i in 1:n.models) {
         if((p <- NCOL(correlations[[i]])) > 1) {        
           correl <- format(round(correlations[[i]], 2), nsmall = 2,
@@ -62,16 +67,6 @@ print.summary.lmfm <- function(x, digits = max(3, getOption("digits") - 3),
         }
         cat("\n")
       }
-    }
-  }
-
-  bias.test <- sapply(x, function(u) !is.null(u$biasTest))
-  if(any(bias.test)) {
-    cat("\nBias Tests for Robust Models:\n")
-    bias.test <- (1:n.models)[bias.test]
-    for(i in bias.test) {
-      cat(mod.names[i], ":\n", sep = "")
-      print(x[[i]]$biasTest, digits = digits, ...)
     }
   }
 

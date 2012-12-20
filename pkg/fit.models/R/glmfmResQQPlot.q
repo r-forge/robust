@@ -46,3 +46,5 @@ glmfmResQQPlot <- function(x, type = "deviance", id.n = 3, qqline = TRUE, ...)
   print(p)
   invisible(p)
 }
+
+

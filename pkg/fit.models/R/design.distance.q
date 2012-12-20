@@ -10,8 +10,8 @@ design.distance.default <- function(object, ...)
     return(rep(as.numeric(NA), length(fitted(object))))
 
   m.terms <- terms(m)
-  attr(m.terms, "intercept") <- 0
-  X <- model.matrix(m.terms, m)
+  attr(m.terms, "intercept") <- 1
+  X <- model.matrix(m.terms, m)[, -1]
   sqrt(mahalanobis(X, center = apply(X, 2, mean), cov = var(X)))
 }
 

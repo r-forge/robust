@@ -12,11 +12,16 @@ print.summary.glmfm <- function(x, digits = max(3, getOption("digits") - 3),
     print(x[[i]]$call, ...)
   }
 
-  resq <- t(sapply(x, function(u) quantile(u$deviance.resid, na.rm = TRUE)))
-  dimnames(resq) <- list(fancy.names, c("Min", "1Q", "Median", "3Q", "Max"))
+  dev.res <- lapply(x, function(u) u$deviance.resid)
+  has.dev.res <- which(!sapply(dev.res, is.null))
 
-  cat("\nDeviance Residuals:\n")
-  print(resq, digits = digits, ...)
+  if(length(has.dev.res)) {
+    dev.res <- t(sapply(dev.res[has.dev.res], quantile))
+    dimnames(dev.res) <- list(fancy.names[has.dev.res],
+                              c("Min", "1Q", "Median", "3Q", "Max"))
+    cat("\nDeviance Residuals:\n")
+    print(dev.res, digits = digits, ...)
+  }
 
   coefs <- lapply(x, coef)
   cnames <- unique(unlist(lapply(coefs, rownames)))
@@ -35,24 +40,37 @@ print.summary.glmfm <- function(x, digits = max(3, getOption("digits") - 3),
   printCoefmat(coefmat, digits = digits, signif.stars = signif.stars,
                na.print = "", ...)
 
-  devs <- format(sapply(x, function(u) u$null.deviance), digits = digits, ...)
-  dfs <- format(sapply(x, function(u) u$df.null), digits = digits, ...)
+  null.devs <- sapply(x, function(u) u$null.deviance)
+  has.null.dev <- which(!sapply(null.devs, is.null))
+  null.df <- sapply(x, function(u) u$df.null)
+  null.devs <- format(null.devs, digits = digits, ...)
+  null.df <- format(null.df, digits = digits, ...)
 
-  cat("\nNull deviance:\n")
-  for(i in 1:n.models)
-    cat(" ", fancy.names[i], devs[i], "on", dfs[i], "degrees of freedom\n")
+  if(length(has.null.dev)) {
+    cat("\nNull deviance:\n")
+    for(i in has.null.dev)
+      cat(" ", fancy.names[i], null.devs[i], "on", null.df[i],
+          "degrees of freedom\n")
+  }
 
-  devs <- format(sapply(x, function(u) u$deviance), digits = digits, ...)
-  dfs <- format(sapply(x, function(u) u$df[2]), digits = digits, ...)
+  devs <- sapply(x, function(u) u$deviance)
+  has.dev <- which(!sapply(devs, is.null))
+  df <- sapply(x, function(u) u$df[2])
+  devs <- format(devs, digits = digits, ...)
+  df <- format(df, digits = digits, ...)
 
-  cat("\nResidual deviance:\n")
-  for(i in 1:n.models)
-    cat(" ", fancy.names[i], devs[i], "on", dfs[i], "degrees of freedom\n")
+  if(length(has.dev)) {
+    cat("\nResidual deviance:\n")
+    for(i in has.null.dev)
+      cat(" ", fancy.names[i], devs[i], "on", df[i], "degrees of freedom\n")
+  }
+
+  cat("\n")
 
   correlations <- lapply(x, function(u) u$correlation)
   if(all(!sapply(correlations, is.null))) {    
     if(any(sapply(correlations, NCOL) > 1)) {
-      cat("\nCorrelations:\n")
+      cat("Correlations:\n")
       for(i in 1:n.models) {
         if((p <- NCOL(correlations[[i]])) > 1) {        
           correl <- format(round(correlations[[i]], 2), nsmall = 2,

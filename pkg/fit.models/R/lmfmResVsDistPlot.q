@@ -3,7 +3,7 @@ lmfmResVsDistPlot <- function(x, residuals.fun, id.n = 3, ...)
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, residuals.fun, type = type)
+  res <- lapply(x, residuals.fun)
   n.res <- sapply(res, length)
 
   dists <- lapply(x, design.distance)

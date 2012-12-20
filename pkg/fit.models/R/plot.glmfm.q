@@ -1,14 +1,19 @@
-plot.glmfm <- function(x, which.plots = c(2, 5, 8, 6), ...)
+plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
 {
   n.models <- length(x)
+
+  dev.res.fun <- function(u)
+    residuals(u, type = "deviance")
+
+  pear.res.fun <- function(u)
+    residuals(u, type = "pearson")
 
   choices <- c("All",
                "Deviance Residuals vs. Fitted Values",
                "Response vs. Fitted Values",
                "Normal QQ Plot of Pearson Residuals",
                "QQ Plot of Deviance Residuals",
-               "Deviance Residuals vs. Leverage",
-               "Deviance Residuals vs. Index (Time)",
+               "Deviance Residuals vs. Design Distance",
                "Scale-Location")
 
   all.plots <- 2:length(choices)
@@ -16,7 +21,8 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 8, 6), ...)
   tmenu <- paste("plot:", choices)
 
   if(is.numeric(which.plots)) {
-    which.plots <- intersect(which.plots, all.plots)
+    if(!all(which.plots %in% all.plots))
+      stop(sQuote("which"), " must be in 2:", length(choices))
 
     if(length(which.plots) == 0)
       return(invisible(x))
@@ -61,7 +67,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 8, 6), ...)
         place.holder <- 1,
 
         lmfmResVsFittedPlot(x,
-                            type = "deviance",
+                            residuals.fun = dev.res.fun,
                             xlab = "Fitted Values",
                             ylab = "Deviance Residuals",
                             main = "Deviance Residuals vs. Fitted Values",
@@ -76,40 +82,32 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 8, 6), ...)
                              ...),
 
         lmfmResQQPlot(x,
-                      type = "pearson",
+                      residuals.fun = pear.res.fun,
                       xlab = "Standard Normal Quantiles",
-                      ylab = "Ordered Pearson Residuals",
+                      ylab = "Empirical Quantiles of Pearson Residuals",
                       main = "Normal QQ Plot of Pearson Residuals",
                       envelope = FALSE,
                       pch = 16,
                       ...),
 
         glmfmResQQPlot(x,
-                      type = "deviance",
+                      residuals.fun = dev.res.fun,
                       xlab = "Theoretical Quantiles",
                       ylab = "Ordered Deviance Residuals",
                       main = "QQ Plot of Deviance Residuals",
                       pch = 16,
                       ...),
 
-        lmfmResVsLevPlot(x,
-                         type = "deviance",
-                         xlab = "Leverage",
-                         ylab = "Deviance Residuals",
-                         main = "Deviance Residuals vs. Leverage",
-                         pch = 16,
-                         ...),
-
-        lmfmResVsIdxPlot(x,
-                         type = "deviance",
-                         xlab = "Index (Time)",
-                         ylab = "Deviance Residuals",
-                         main = "Deviance Residuals vs. Index (Time)",
-                         pch = 16,
-                         ...),
+        lmfmResVsDistPlot(x,
+                          residuals.fun = dev.res.fun,
+                          xlab = "Design Distance",
+                          ylab = "Deviance Residuals",
+                          main = "Deviance Residuals vs. Design Distance",
+                          pch = 16,
+                          ...),
 
         lmfmSqrtResVsFittedPlot(x,
-                                type = "deviance",
+                                residuals.fun = dev.res.fun,
                                 xlab = "Fitted Values",
                                 ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
                                 main = "Scale-Location",
