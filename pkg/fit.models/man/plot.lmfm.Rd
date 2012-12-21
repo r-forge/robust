@@ -8,7 +8,7 @@ Creates a set plots useful for comparing the fitted linear models in an lmfm obj
 }
 
 \usage{
-\method{plot}{lmfm}(x, which.plots = c(5, 2, 6, 4),  ...)
+\method{plot}{lmfm}(x, which.plots = c(5, 2, 6, 4),  \dots)
 }
 
 \arguments{
@@ -16,7 +16,7 @@ Creates a set plots useful for comparing the fitted linear models in an lmfm obj
 
 \item{which.plots}{either "ask", "all", or an integer vector specifying which plots to draw.  If \code{which.plots} is an integer vector, use the plot numbers given in the description above (or in the "ask" menu).}
 
-\item{...}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
+\item{\dots}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
 }
 
 \value{
@@ -50,12 +50,14 @@ Atkinson, A. C. (1985).  Plots, Transformations and Regression. New York: Oxford
 }
 
 \examples{
-#data(stack.dat)
-#stack.fm <- fit.models(list(Robust = "lmRob", LS = "lm"), Loss ~ ., data = stack.dat)
-#plot(stack.fm, which.plots = 2)
+data(stackloss)
+stack.lm <- lm(stack.loss ~ ., data = stackloss)
+stack.clean <- lm(stack.loss ~ ., data = stackloss, subset = 5:20)
+fm <- fit.models(stack.clean, stack.lm)
+plot(fm, which.plots = 2)
 }
 
-\keyword{methods}
 \keyword{hplot}
+\keyword{methods}
 
 

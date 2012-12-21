@@ -1,26 +1,24 @@
 \name{fit.models}
 \alias{fit.models}
 
-\title{Side-By-Side Model Comparison}
+\title{Fit dot Models}
 
 \description{
   Combines comparable models into single object.  Generic methods produce side-by-side comparisons of the parameter estimates and disagnostic plots.
 }
 
 \usage{
-  fit.models(model.list, ..., attributes = NULL)
+  fit.models(model.list, \dots)
 }
 
 \arguments{
   \item{model.list}{either a list of calls or a list of function names.  This argument is not required when combining one or more fitted models into a fit.models object.}
 
   \item{\dots}{additional arguments to be passed to the functions in \code{model.list}.}
-
-  \item{attributes}{attributes to be attached to the \code{fit.models} object.}
 }
 
 \value{
-  The returned object is a list containing the fitted models.  The class of the retuned object depends on the classes of the model objects it contains.  Returned objects containing class "cov" and "covRob" objects have class "covfm".
+  The returned object is a list containing the fitted models.  The class of the retuned object depends on the classes of the model objects it contains.
 }
 
 \details{

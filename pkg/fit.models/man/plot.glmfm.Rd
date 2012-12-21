@@ -18,7 +18,7 @@
 }
 
 \usage{
-\method{plot}{glmfm}(x, which.plots = c(2, 5, 8, 6), ...)
+\method{plot}{glmfm}(x, which.plots = c(2, 5, 7, 6), \dots)
 }
 
 \arguments{
@@ -30,7 +30,7 @@
     numbers given in the description above (or in the "ask" menu).
   }
 
-\item{...}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
+\item{\dots}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
 }
 
 \section{Side Effects}{
@@ -61,7 +61,7 @@ The selected plots are drawn on a graphics device.
   \code{\link{lmfmSqrtResVsFittedPlot}}.
 }
 
-\keyword{methods}
 \keyword{hplot}
+\keyword{methods}
 
 

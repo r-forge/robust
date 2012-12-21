@@ -8,7 +8,7 @@ Produces a scatter plot of the data with overlaid fits.
 }
 
 \usage{
-lmfm2DRegPlot(x, lwd, col, ...)
+lmfm2DRegPlot(x, lwd, col, \dots)
 }
 
 \arguments{

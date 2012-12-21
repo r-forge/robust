@@ -8,11 +8,13 @@ Produces an overlaid plot comparing residuals QQ plots.
 }
 
 \usage{
-lmfmOverlaidQQPlot(x, pch, col, ...)
+lmfmOverlaidQQPlot(x, residuals.fun, pch, col, \dots)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
+
+  \item{residuals.fun}{a function to extract the residuals from \code{x}.}
 
   \item{pch}{a vector with length equal to the number of fitted models in \code{x} specifying the symbols used in the plot. See \code{\link[graphics]{par}} for possible values.}
 

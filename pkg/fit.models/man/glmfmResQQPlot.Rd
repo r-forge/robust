@@ -8,7 +8,7 @@ Produces a side-by-side QQ plot of the residuals versus the appropriate theoreti
 }
 
 \usage{
-glmfmResQQPlot(x, type = "deviance", id.n = 3, qqline = TRUE, ...)
+glmfmResQQPlot(x, type = "deviance", id.n = 3, qqline = TRUE, \dots)
 }
 
 \arguments{

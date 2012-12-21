@@ -8,11 +8,13 @@ Produces an overlaid plot comparing kernel density estimates of the residuals.
 }
 
 \usage{
-lmfmOverlaidResDenPlot(x, lty, lwd, col, ...)
+lmfmOverlaidResDenPlot(x, residuals.fun, lty, lwd, col, \dots)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
+
+  \item{residuals.fun}{a function to extract the residuals from \code{x}.}
 
   \item{lty}{a vector with length equal to the number of fitted models in \code{x} specifying the line styles used in the plot. See \code{\link[graphics]{par}} for possible values.}
 

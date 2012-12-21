@@ -9,11 +9,12 @@
 /* Begin PBXFileReference section */
 		0E405277156ABF9A00867444 /* fmclass.register.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmclass.register.q; sourceTree = "<group>"; };
 		0E405279156ABFB000867444 /* fmclass.add.class.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmclass.add.class.q; sourceTree = "<group>"; };
-		0E40527A156AC0A000867444 /* fm.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.Rd; sourceTree = "<group>"; };
-		0E40527B156AEED200867444 /* fit.models.registry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.registry.Rd; sourceTree = "<group>"; };
+		0E40527A156AC0A000867444 /* fmregistry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmregistry.Rd; sourceTree = "<group>"; };
 		0E54A40C1681265A00A8D64E /* rmodified.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.q; sourceTree = "<group>"; };
 		0E54A40D1681267100A8D64E /* design.distance.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = design.distance.q; sourceTree = "<group>"; };
 		0E7E1A3D164F7DDB00D6F0D7 /* get.fit.models.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = get.fit.models.registry.q; sourceTree = "<group>"; };
+		0EB18F251683A8170025E93E /* design.distance.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = design.distance.Rd; sourceTree = "<group>"; };
+		0EB18F261683A8170025E93E /* rmodified.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.Rd; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
 		0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfm2DRegPlot.Rd; sourceTree = "<group>"; };
@@ -139,8 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				0EF220FD15675D7900CFD1EF /* fit.models.Rd */,
-				0E40527A156AC0A000867444 /* fm.registry.Rd */,
-				0E40527B156AEED200867444 /* fit.models.registry.Rd */,
+				0E40527A156AC0A000867444 /* fmregistry.Rd */,
+				0EB18F261683A8170025E93E /* rmodified.Rd */,
+				0EB18F251683A8170025E93E /* design.distance.Rd */,
 				0E19AF3D16829A3900B12ACC /* glmfm */,
 				0E19AF3B16829A3100B12ACC /* lmfm */,
 			);

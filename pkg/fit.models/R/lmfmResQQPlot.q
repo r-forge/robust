@@ -94,9 +94,6 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
         panel.abline(int, slope)
       }
 
-      #if(robQQln)
-      #  panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
-
       panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)

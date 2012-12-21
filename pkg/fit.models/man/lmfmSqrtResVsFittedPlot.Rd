@@ -8,13 +8,14 @@ Produces a side-by-side plot of the square root of the absolute values of the re
 }
 
 \usage{
-lmfmSqrtResVsFittedPlot(x, type = "response", smooths = FALSE, rugplot = FALSE, id.n = 3, ...)
+lmfmSqrtResVsFittedPlot(x, residuals.fun, smooths = FALSE, rugplot = FALSE,
+                        id.n = 3, ...)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
 
-  \item{type}{a character string specifying the type of residuals used in the plot.  This argument is passed to the generic residuals function when extracting the residuals from \code{x}.}
+  \item{residuals.fun}{a function to extract the residuals from \code{x}.}
 
   \item{smooths}{a logical value.  If TRUE then a smooth curve computed using \code{\link{loess}} is included in each panel of the plot.}
 

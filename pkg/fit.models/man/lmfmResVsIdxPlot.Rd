@@ -8,13 +8,13 @@ Produces a side-by-side plot of the residuals vs. index (time).
 }
 
 \usage{
-lmfmResVsIdxPlot(x, type = "response", level = 0.95, id.n = 3, ...)
+lmfmResVsIdxPlot(x, residuals.fun, level = 0.95, id.n = 3, \dots)
 }
 
 \arguments{
   \item{x}{an lmfm object.}
 
-  \item{type}{a character string specifying the type of residuals used in the plot.  This argument is passed to the generic residuals function when extracting the residuals from \code{x}.}
+  \item{residuals.fun}{a function to extract the residuals from \code{x}.}
 
   \item{level}{a numeric value between 0 and 1 specifying the confidence level used to draw the threshold in the plot.}
 

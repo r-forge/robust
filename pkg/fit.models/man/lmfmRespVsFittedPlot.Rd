@@ -8,7 +8,7 @@ Produces side-by-side response versus fitted value plots from an lmfm object.
 }
 
 \usage{
-lmfmRespVsFittedPlot(x, smooths = FALSE, rugplot = FALSE, ...)
+lmfmRespVsFittedPlot(x, smooths = FALSE, rugplot = FALSE, \dots)
 }
 
 \arguments{
