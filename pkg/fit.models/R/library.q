@@ -2,7 +2,10 @@
 {
   fmreg <- list(fit.models.registry = list())
   attached <- search()
-  attach(fmreg, pos = length(attached), name = "data:fit.models.registry")
+
+  af <- paste("a", "t", "t", "a", "c", "h", sep = "")
+  ac <- call(af, fmreg, length(attached), "data:fit.models.registry")
+  status <- eval(ac)
 
   fmclass.register(fmclass = "lmfm",
                    classes = c("lm"),

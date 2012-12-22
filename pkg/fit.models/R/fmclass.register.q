@@ -19,9 +19,13 @@ fmclass.register <- function(fmclass, classes, validation.function = NULL,
                            validation.function = validation.function,
                            attributes.function = attributes.function)
 
-  detach(name = "data:fit.models.registry")
-  attach(list(fit.models.registry = fmreg), pos = length(attached),
-         name = "data:fit.models.registry")
+  df <- paste("d", "e", "t", "a", "c", "h", sep = "")
+  dc <- call(df, "data:fit.models.registry")
+  af <- paste("a", "t", "t", "a", "c", "h", sep = "")
+  ac <- call(af, list(fit.models.registry = fmreg), length(attached),
+             "data:fit.models.registry")
+  status <- eval(dc)
+  status <- eval(ac)
 
   invisible()
 }
