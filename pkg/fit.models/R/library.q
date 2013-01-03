@@ -1,11 +1,6 @@
 .onAttach <- function(libname, pkgname)
 {
-  fmreg <- list(fit.models.registry = list())
-  attached <- search()
-
-  af <- paste("a", "t", "t", "a", "c", "h", sep = "")
-  ac <- call(af, fmreg, length(attached), "data:fit.models.registry")
-  status <- eval(ac)
+  options(fit.models.registry = list())
 
   fmclass.register(fmclass = "lmfm",
                    classes = c("lm"),
