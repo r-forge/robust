@@ -12,7 +12,7 @@ fit.models <- function(model.list, ...)   #, attributes = NULL)
   if(is.null(dots.names))
     dots.names <- character(length(dots))
 
-  fmreg <- fit.models:::get.fit.models.registry()
+  fmreg <- get("fmreg", pos = fit.models:::fm.registry)
   supported.classes <- unlist(sapply(fmreg, function(u) u$classes))
 
 

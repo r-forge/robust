@@ -1,6 +1,6 @@
 fmclass.add.class <- function(fmclass, class, warn = TRUE)
 {
-  fmreg <- getOption("fit.models.registry")
+  fmreg <- get("fmreg", pos = fit.models:::fm.registry)
 
   if(class %in% fmreg[[fmclass]]$classes && warn) {
     warning(class, " is already registered in the fit.models registry")
@@ -9,7 +9,7 @@ fmclass.add.class <- function(fmclass, class, warn = TRUE)
 
   fmreg[[fmclass]]$classes <- union(fmreg[[fmclass]]$classes, class)
 
-  options(fit.models.registry = fmreg)
+  assign("fmreg", fmreg, pos = fit.models:::fm.registry)
 
   invisible()
 }
