@@ -11,15 +11,14 @@ export(
   lmfmOverlaidResDenPlot,
   lmfmResKernDenPlot,
   lmfmResQQPlot,
-  lmfmResVsFittedPlot,
   lmfmResVsIdxPlot,
-  lmfmRespVsFittedPlot,
-  lmfmSqrtResVsFittedPlot,
-  
-  design.distance,
-  design.distance.default,
+  scatterPlot.lmfm,
+
   rmodified,
   rmodified.default,
+  leverage,
+  leverage.default,
+  leverage.lm,
 
   # Generalized Linear Model Comparison
   summary.glmfm,

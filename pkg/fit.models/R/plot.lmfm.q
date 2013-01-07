@@ -85,36 +85,37 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                            ylab = "Density",
                            ...),
 
-        lmfmResVsDistPlot(x,
-                          residuals.fun = rmodified,
-                          main = "Modified Residuals vs. Design Distance",
-                          xlab = "Design Distance",
-                          ylab = "Modified Residuals",
-                          pch = 16,
-                          ...),
+        scatterPlot.lmfm(x,
+                         x.fun = leverage,
+                         y.fun = rmodified,
+                         main = "Modified Residuals vs. Leverage",
+                         xlab = "Leverage",
+                         ylab = "Modified Residuals",
+                         ...),
 
-        lmfmResVsFittedPlot(x,
-                            residuals.fun = rmodified,
-                            main = "Modified Residuals vs. Fitted Values",
-                            xlab = "Fitted Values",
-                            ylab = "Modified Residuals",
-                            pch = 16,
-                            ...),
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = resid,
+                         main = "Residuals vs. Fitted Values",
+                         xlab = "Fitted Values",
+                         ylab = "Residuals",
+                         ...),
 
-        lmfmSqrtResVsFittedPlot(x,
-                                residuals.fun = rmodified,
-                                main = "Scale-Location",
-                                xlab = "Fitted Values",
-                                ylab = expression(sqrt(abs(plain("Modified Residuals")))),
-                                pch = 16,
-                                ...),
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = function(u) sqrt(abs(rmodified(u))),
+                         main = "Scale-Location",
+                         xlab = "Fitted Values",
+                         ylab = expression(sqrt(abs(plain("Modified Residuals")))),
+                         ...),
 
-        lmfmRespVsFittedPlot(x,
-                             main = "Response vs. Fitted Values",
-                             xlab = "Fitted Values",
-                             ylab = "Response",
-                             pch = 16,
-                             ...),
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = function(u) model.response(model.frame(u)),
+                         main = "Response vs. Fitted Values",
+                         xlab = "Fitted Values",
+                         ylab = "Response",
+                         ...),
 
         lmfmResVsIdxPlot(x,
                          residuals.fun = rmodified,
@@ -152,5 +153,8 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
   }
   invisible(x)
 }
+
+
+
 
 

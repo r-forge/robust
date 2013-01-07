@@ -53,12 +53,10 @@ The selected plots are drawn on a graphics device.
 }
 
 \seealso{
-  \code{\link{plot}}, \code{\link{fit.models}},
-  \code{\link{lmfmResVsFittedPlot}},
-  \code{\link{lmfmRespVsFittedPlot}},
+  \code{\link{plot}},
+  \code{\link{fit.models}},
   \code{\link{lmfmResQQPlot}},
-  \code{\link{lmfmResVsIdxPlot}},
-  \code{\link{lmfmSqrtResVsFittedPlot}}.
+  \code{\link{lmfmResVsIdxPlot}},.
 }
 
 \keyword{hplot}

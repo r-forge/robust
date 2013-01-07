@@ -2,12 +2,6 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
 {
   n.models <- length(x)
 
-  dev.res.fun <- function(u)
-    residuals(u, type = "deviance")
-
-  pear.res.fun <- function(u)
-    residuals(u, type = "pearson")
-
   choices <- c("All",
                "Deviance Residuals vs. Fitted Values",
                "Response vs. Fitted Values",
@@ -66,23 +60,24 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
 
         place.holder <- 1,
 
-        lmfmResVsFittedPlot(x,
-                            residuals.fun = dev.res.fun,
-                            xlab = "Fitted Values",
-                            ylab = "Deviance Residuals",
-                            main = "Deviance Residuals vs. Fitted Values",
-                            pch = 16,
-                            ...),
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = function(u) residuals(u, type = "deviance"),
+                         xlab = "Fitted Values",
+                         ylab = "Deviance Residuals",
+                         main = "Deviance Residuals vs. Fitted Values",
+                         ...),
 
-        lmfmRespVsFittedPlot(x, 
-                             xlab = "Fitted Values",
-                             ylab = "Response",
-                             main = "Response vs. Fitted Values",
-                             pch = 16,
-                             ...),
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = function(u) model.response(model.frame(u)),
+                         xlab = "Fitted Values",
+                         ylab = "Response",
+                         main = "Response vs. Fitted Values",
+                         ...),
 
         lmfmResQQPlot(x,
-                      residuals.fun = pear.res.fun,
+                      residuals.fun = function(u) residuals(u, type = "pearson"),
                       xlab = "Standard Normal Quantiles",
                       ylab = "Empirical Quantiles of Pearson Residuals",
                       main = "Normal QQ Plot of Pearson Residuals",
@@ -91,28 +86,28 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                       ...),
 
         glmfmResQQPlot(x,
-                      residuals.fun = dev.res.fun,
+                      residuals.fun = function(u) residuals(u, type = "deviance"),
                       xlab = "Theoretical Quantiles",
                       ylab = "Ordered Deviance Residuals",
                       main = "QQ Plot of Deviance Residuals",
                       pch = 16,
                       ...),
 
-        lmfmResVsDistPlot(x,
-                          residuals.fun = dev.res.fun,
-                          xlab = "Design Distance",
-                          ylab = "Deviance Residuals",
-                          main = "Deviance Residuals vs. Design Distance",
-                          pch = 16,
-                          ...),
+        scatterPlot.lmfm(x,
+                         x.fun = leverage,
+                         y.fun = function(u) residuals(u, type = "deviance"),
+                         xlab = "Leverage",
+                         ylab = "Deviance Residuals",
+                         main = "Deviance Residuals vs. Leverage",
+                         ...),
 
-        lmfmSqrtResVsFittedPlot(x,
-                                residuals.fun = dev.res.fun,
-                                xlab = "Fitted Values",
-                                ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
-                                main = "Scale-Location",
-                                pch = 16,
-                                ...)
+        scatterPlot.lmfm(x,
+                         x.fun = fitted,
+                         y.fun = function(u) sqrt(abs(residuals(u, type = "deviance"))),
+                         xlab = "Fitted Values",
+                         ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
+                         main = "Scale-Location",
+                         ...)
       ) ## switch(pick, ..)
     } ## end for(...)
   } ## repeat {...}

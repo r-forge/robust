@@ -11,21 +11,19 @@
 		0E405279156ABFB000867444 /* fmclass.add.class.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmclass.add.class.q; sourceTree = "<group>"; };
 		0E40527A156AC0A000867444 /* fmregistry.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fmregistry.Rd; sourceTree = "<group>"; };
 		0E54A40C1681265A00A8D64E /* rmodified.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.q; sourceTree = "<group>"; };
-		0E54A40D1681267100A8D64E /* design.distance.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = design.distance.q; sourceTree = "<group>"; };
+		0E54A40D1681267100A8D64E /* leverage.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.q; sourceTree = "<group>"; };
 		0E60E515169608F000464611 /* fm.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.q; sourceTree = "<group>"; };
-		0EB18F251683A8170025E93E /* design.distance.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = design.distance.Rd; sourceTree = "<group>"; };
+		0EB18F251683A8170025E93E /* leverage.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.Rd; sourceTree = "<group>"; };
 		0EB18F261683A8170025E93E /* rmodified.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.Rd; sourceTree = "<group>"; };
+		0EE45B2D169AA2D4007CC8C7 /* scatterPlot.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scatterPlot.lmfm.Rd; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
 		0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfm2DRegPlot.Rd; sourceTree = "<group>"; };
 		0EF220FF15675D7900CFD1EF /* lmfmOverlaidQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidQQPlot.Rd; sourceTree = "<group>"; };
 		0EF2210015675D7900CFD1EF /* lmfmOverlaidResDenPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidResDenPlot.Rd; sourceTree = "<group>"; };
 		0EF2210115675D7900CFD1EF /* lmfmResKernDenPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResKernDenPlot.Rd; sourceTree = "<group>"; };
-		0EF2210215675D7900CFD1EF /* lmfmRespVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmRespVsFittedPlot.Rd; sourceTree = "<group>"; };
 		0EF2210315675D7900CFD1EF /* lmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResQQPlot.Rd; sourceTree = "<group>"; };
-		0EF2210415675D7900CFD1EF /* lmfmResVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsFittedPlot.Rd; sourceTree = "<group>"; };
 		0EF2210515675D7900CFD1EF /* lmfmResVsIdxPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsIdxPlot.Rd; sourceTree = "<group>"; };
-		0EF2210615675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmSqrtResVsFittedPlot.Rd; sourceTree = "<group>"; };
 		0EF2210715675D7900CFD1EF /* plot.glmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.Rd; sourceTree = "<group>"; };
 		0EF2210815675D7900CFD1EF /* plot.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.lmfm.Rd; sourceTree = "<group>"; };
 		0EF2210915675D7900CFD1EF /* summary.glmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.glmfm.Rd; sourceTree = "<group>"; };
@@ -38,11 +36,8 @@
 		0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidQQPlot.q; sourceTree = "<group>"; };
 		0EF2211315675D7900CFD1EF /* lmfmOverlaidResDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmOverlaidResDenPlot.q; sourceTree = "<group>"; };
 		0EF2211415675D7900CFD1EF /* lmfmResKernDenPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResKernDenPlot.q; sourceTree = "<group>"; };
-		0EF2211515675D7900CFD1EF /* lmfmRespVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmRespVsFittedPlot.q; sourceTree = "<group>"; };
 		0EF2211615675D7900CFD1EF /* lmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResQQPlot.q; sourceTree = "<group>"; };
-		0EF2211715675D7900CFD1EF /* lmfmResVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsFittedPlot.q; sourceTree = "<group>"; };
 		0EF2211815675D7900CFD1EF /* lmfmResVsIdxPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsIdxPlot.q; sourceTree = "<group>"; };
-		0EF2211915675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmSqrtResVsFittedPlot.q; sourceTree = "<group>"; };
 		0EF2211A15675D7900CFD1EF /* panel.addons.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = panel.addons.q; sourceTree = "<group>"; };
 		0EF2211B15675D7900CFD1EF /* plot.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.q; sourceTree = "<group>"; };
 		0EF2211C15675D7900CFD1EF /* plot.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.lmfm.q; sourceTree = "<group>"; };
@@ -53,8 +48,7 @@
 		0EF2212115675D7900CFD1EF /* qqplot.glmRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = qqplot.glmRob.q; sourceTree = "<group>"; };
 		0EF2212215675D7900CFD1EF /* summary.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.glmfm.q; sourceTree = "<group>"; };
 		0EF2212315675D7900CFD1EF /* summary.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.lmfm.q; sourceTree = "<group>"; };
-		0EF3FF9415685FBD003D6485 /* lmfmResVsDistPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsDistPlot.q; sourceTree = "<group>"; };
-		0EF3FF9615685FCC003D6485 /* lmfmResVsDistPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = lmfmResVsDistPlot.Rd; sourceTree = "<group>"; };
+		0EF3FF9415685FBD003D6485 /* scatterPlot.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = scatterPlot.lmfm.q; sourceTree = "<group>"; };
 		0EF3FF9715686AD5003D6485 /* glmfmResQQPlot.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.q; sourceTree = "<group>"; };
 		0EF3FF981568722B003D6485 /* glmfmResQQPlot.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = glmfmResQQPlot.Rd; sourceTree = "<group>"; };
 		0EF3FFA71568B39C003D6485 /* library.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = library.q; sourceTree = "<group>"; };
@@ -71,10 +65,7 @@
 				0EF2211C15675D7900CFD1EF /* plot.lmfm.q */,
 				0EF2211615675D7900CFD1EF /* lmfmResQQPlot.q */,
 				0EF2211415675D7900CFD1EF /* lmfmResKernDenPlot.q */,
-				0EF3FF9415685FBD003D6485 /* lmfmResVsDistPlot.q */,
-				0EF2211715675D7900CFD1EF /* lmfmResVsFittedPlot.q */,
-				0EF2211915675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.q */,
-				0EF2211515675D7900CFD1EF /* lmfmRespVsFittedPlot.q */,
+				0EF3FF9415685FBD003D6485 /* scatterPlot.lmfm.q */,
 				0EF2211815675D7900CFD1EF /* lmfmResVsIdxPlot.q */,
 				0EF2211215675D7900CFD1EF /* lmfmOverlaidQQPlot.q */,
 				0EF2211315675D7900CFD1EF /* lmfmOverlaidResDenPlot.q */,
@@ -104,14 +95,11 @@
 				0EF2210815675D7900CFD1EF /* plot.lmfm.Rd */,
 				0EF2210315675D7900CFD1EF /* lmfmResQQPlot.Rd */,
 				0EF2210115675D7900CFD1EF /* lmfmResKernDenPlot.Rd */,
-				0EF3FF9615685FCC003D6485 /* lmfmResVsDistPlot.Rd */,
-				0EF2210415675D7900CFD1EF /* lmfmResVsFittedPlot.Rd */,
-				0EF2210615675D7900CFD1EF /* lmfmSqrtResVsFittedPlot.Rd */,
-				0EF2210215675D7900CFD1EF /* lmfmRespVsFittedPlot.Rd */,
 				0EF2210515675D7900CFD1EF /* lmfmResVsIdxPlot.Rd */,
 				0EF220FF15675D7900CFD1EF /* lmfmOverlaidQQPlot.Rd */,
 				0EF2210015675D7900CFD1EF /* lmfmOverlaidResDenPlot.Rd */,
 				0EF220FE15675D7900CFD1EF /* lmfm2DRegPlot.Rd */,
+				0EE45B2D169AA2D4007CC8C7 /* scatterPlot.lmfm.Rd */,
 			);
 			name = lmfm;
 			sourceTree = "<group>";
@@ -142,7 +130,7 @@
 				0EF220FD15675D7900CFD1EF /* fit.models.Rd */,
 				0E40527A156AC0A000867444 /* fmregistry.Rd */,
 				0EB18F261683A8170025E93E /* rmodified.Rd */,
-				0EB18F251683A8170025E93E /* design.distance.Rd */,
+				0EB18F251683A8170025E93E /* leverage.Rd */,
 				0E19AF3D16829A3900B12ACC /* glmfm */,
 				0E19AF3B16829A3100B12ACC /* lmfm */,
 			);
@@ -158,7 +146,7 @@
 				0E405279156ABFB000867444 /* fmclass.add.class.q */,
 				0EF3FFA71568B39C003D6485 /* library.q */,
 				0E54A40C1681265A00A8D64E /* rmodified.q */,
-				0E54A40D1681267100A8D64E /* design.distance.q */,
+				0E54A40D1681267100A8D64E /* leverage.q */,
 				0EF2211A15675D7900CFD1EF /* panel.addons.q */,
 				0E19AF351682535B00B12ACC /* lmfm */,
 				0E19AF371682546400B12ACC /* glmfm */,

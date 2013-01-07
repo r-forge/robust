@@ -40,12 +40,9 @@ Atkinson, A. C. (1985).  Plots, Transformations and Regression. New York: Oxford
 \code{\link{fit.models}},
 \code{\link{lmfm2DRegPlot}},
 \code{\link{lmfmResQQPlot}},
-\code{\link{lmfmSqrtResVsFittedPlot}},
 \code{\link{lmfmOverlaidQQPlot}},
-\code{\link{lmfmResVsFittedPlot}},
 \code{\link{lmfmResVsIdxPlot}},
 \code{\link{lmfmOverlaidResDenPlot}},
-\code{\link{lmfmRespVsFittedPlot}},
 \code{\link{lmfmResKernDenPlot}}.
 }
 
