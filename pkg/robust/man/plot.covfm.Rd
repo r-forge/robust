@@ -55,12 +55,11 @@ woodmod.covRob <- covRob(woodmod.dat)
 plot(woodmod.cov, which.plots = 1)
 plot(woodmod.covRob, which = 1)
 
-woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
+woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
                          data = woodmod.dat)
 plot(woodmod.fm, which = 1)
 }
 
-%\keyword{librobust}
 \keyword{methods}
 \keyword{hplot}
 

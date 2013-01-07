@@ -24,8 +24,8 @@
 
 
 {
-    ## Each of the 7 kinds of plots  which =  2 .. 8 :
-    all(sapply(2:8, function(wh)
+    ## Each of the 7 kinds of plots  which =  2 .. 7 :
+    all(sapply(2:7, function(wh)
                class(try(plot(temp, which = wh))) != "Error"))
 }
 
@@ -55,8 +55,8 @@
 }
 
 {
-    ## Each of the 7 kinds of plots  which =  2 .. 8 :
-    all(sapply(2:8, function(wh)
+    ## Each of the 7 kinds of plots  which =  2 .. 7 :
+    all(sapply(2:7, function(wh)
                class(try(plot(temp, which = wh))) != "try-error"))
 }
 
@@ -91,8 +91,8 @@
 }
 
 {
-    ## Each of the 7 kinds of plots  which =  2 .. 8 :
-    all(sapply(2:8, function(wh)
+    ## Each of the 7 kinds of plots  which =  2 .. 7 :
+    all(sapply(2:7, function(wh)
                class(try(plot(temp, which = wh))) != "Error"))
 }
 
@@ -120,8 +120,8 @@
 }
 
 {
-    ## Each of the 7 kinds of plots  which =  2 .. 8 :
-    all(sapply(2:8, function(wh)
+    ## Each of the 7 kinds of plots  which =  2 .. 7 :
+    all(sapply(2:7, function(wh)
                class(try(plot(temp, which = wh))) != "Error"))
 }
 

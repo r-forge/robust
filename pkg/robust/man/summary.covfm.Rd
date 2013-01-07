@@ -54,7 +54,7 @@
   woodmod.covRob <- covRob(woodmod.dat)
   woodmod.scr <- summary(woodmod.covRob)
 
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
+  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
                            data = woodmod.dat)
   woodmod.sfm <- summary(woodmod.fm)
 }

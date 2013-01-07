@@ -1,8 +1,8 @@
 
-R version 2.15.0 (2012-03-30)
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
 Copyright (C) 2012 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
-Platform: x86_64-apple-darwin11.3.0/x86_64 (64-bit)
+Platform: x86_64-apple-darwin12.2.0/x86_64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -29,7 +29,8 @@ Loading required package: robustbase
 Loading required package: rrcov
 Loading required package: pcaPP
 Loading required package: mvtnorm
-Scalable Robust Estimators with High Breakdown Point (version 1.3-01)
+Scalable Robust Estimators with High Breakdown Point (version 1.3-02)
+
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
 > cleanEx()
@@ -523,7 +524,7 @@ Residual Deviance: 29.59
 > plot(woodmod.cov, which.plots = 1)
 > plot(woodmod.covRob, which = 1)
 > 
-> woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
+> woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
 +                          data = woodmod.dat)
 > plot(woodmod.fm, which = 1)
 > 
@@ -755,7 +756,7 @@ Coefficients:
 >   woodmod.covRob <- covRob(woodmod.dat)
 >   woodmod.scr <- summary(woodmod.covRob)
 > 
->   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "cov"),
+>   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
 +                            data = woodmod.dat)
 >   woodmod.sfm <- summary(woodmod.fm)
 > 
@@ -953,7 +954,7 @@ LS-estimate     2.640  0.6197
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.892 0.055 1.948 0 0 
+Time elapsed:  1.21 0.062 1.274 0 0 
 > grDevices::dev.off()
 null device 
           1 
