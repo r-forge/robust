@@ -1,4 +1,4 @@
-lmfm2DRegPlot <- function(x, lwd, col, ...) 
+simpleRegPlot.lmfm <- function(x, lwd.reg, col.reg, ...) 
 {
   n.models <- length(x)
   mod.names <- names(x)
@@ -17,26 +17,26 @@ lmfm2DRegPlot <- function(x, lwd, col, ...)
   var.names <- attributes(mf)$names
   frm <- as.formula(paste(paste(var.names, collapse = " ~ "), " | \"\""))
 
-  if(missing(lwd))
-    lwd <- 1:n.models
+  if(missing(lwd.reg))
+    lwd.reg <- 1:n.models
 
-  if(missing(col))
-    col <- 1:n.models
+  if(missing(col.reg))
+    col.reg <- 1:n.models
 
-  panel.special <- function(x, y, object, pch, lwd, col)
+  panel.special <- function(x, y, object, lwd.reg, col.reg, ...)
   {
-    panel.xyplot(x, y, pch = 16, col = "black")
+    panel.xyplot(x, y, ...)
 
     for(i in 1:length(object)) {
-      if(length(grep("Rob", object[[i]]$call))) {
-        a <- object[[i]]$yc * object[[i]]$scale
-        panel.abline(coef(object[[i]]) + c(-a, 0), lty = 2, col = col[i])
-        panel.abline(coef(object[[i]]), lwd = lwd[i], col = col[i])
-        panel.abline(coef(object[[i]]) + c(a, 0), lty = 2, col = col[i])
-      }
-      else {
-        panel.abline(coef(object[[i]]), lwd = lwd[i], col = col[i])
-      }
+#      if(length(grep("Rob", object[[i]]$call))) {
+#        a <- object[[i]]$yc * object[[i]]$scale
+#        panel.abline(coef(object[[i]]) + c(-a, 0), lty = 2, col = col[i])
+#        panel.abline(coef(object[[i]]), lwd = lwd[i], col = col[i])
+#        panel.abline(coef(object[[i]]) + c(a, 0), lty = 2, col = col[i])
+#      }
+#      else {
+        panel.abline(coef(object[[i]]), lwd = lwd.reg[i], col = col.reg[i])
+#      }
     }
     invisible()
   }
@@ -50,14 +50,16 @@ lmfm2DRegPlot <- function(x, lwd, col, ...)
                    text = mod.names,
                    points = FALSE,
                    lines = TRUE)
-  key$lines$col <- col
-  key$lines$lwd <- lwd
+  key$lines$col <- col.reg
+  key$lines$lwd <- lwd.reg
 
-  p <- xyplot(mf[[1]] ~ mf[[2]] | "",
+  mod <- rep(format(formula(x[[1]])), dim(mf)[1])
+
+  p <- xyplot(mf[[1]] ~ mf[[2]] | mod,
               panel = panel.special,
               object = x,
-              col = col,
-              lwd = lwd,
+              col.reg = col.reg,
+              lwd.reg = lwd.reg,
               xlab = var.names[2],
               ylab = var.names[1],
               key = key,

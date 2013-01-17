@@ -1,7 +1,7 @@
 \name{summary.lmfm}
 \alias{summary.lmfm}
 
-\title{Summary Method for Linear Model Comparisons}
+\title{Comparison Summaries for Linear Regression Models}
 
 \description{
 Compute a summary of each model in an \code{lmfm} object.
@@ -21,11 +21,6 @@ Compute a summary of each model in an \code{lmfm} object.
 
 \value{
 a list with class summary.lmfm whose elements are summaries of each model in \code{object}.  
-}
-
-\seealso{
-\code{\link{fit.models}},
-\code{\link{summary}}.
 }
 
 \examples{

@@ -1,15 +1,15 @@
-lmfmResVsIdxPlot <- function(x, residuals.fun, level = 0.95, id.n = 3, ...)
+indexPlot.lmfm <- function(x, fun, level = 0.95, id.n = 3, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, residuals.fun)
-  n.res <- sapply(res, length)
+  y <- lapply(x, fun)
+  n.y <- sapply(y, length)
 
   s <- numeric(n.models)
   for(i in 1:n.models) {
     if(is.null(x[[i]]$scale))
-      s[i] <- sqrt(sum(res[[i]]^2) / x[[i]]$df.residual)
+      s[i] <- sqrt(sum(y[[i]]^2) / x[[i]]$df.residual)
     else
       s[i] <- x[[i]]$scale
   }
@@ -20,23 +20,23 @@ lmfmResVsIdxPlot <- function(x, residuals.fun, level = 0.95, id.n = 3, ...)
     for(i in 1:n.models) {
       newx <- min(indices[[i]]):max(indices[[i]])
       newy <- rep(as.numeric(NA), length(newx))
-      newy[indices[[i]]] <- res[[i]]
+      newy[indices[[i]]] <- y[[i]]
       indices[[i]] <- newx
-      res[[i]] <- newy
+      y[[i]] <- newy
     }
   }
 
   else
     indices <- lapply(indices, function(u) 1:length(u))
 
-  n.res <- sapply(res, length)
+  n.y <- sapply(y, length)
 
   for(i in 1:n.models) {
-    res[[i]] <- c(s[i], res[[i]])
+    y[[i]] <- c(s[i], y[[i]])
     indices[[i]] <- c(NA, indices[[i]])
   }
 
-  y.range <- max(c(abs(range(unlist(res)))), s * qnorm(0.5 + level / 2.0))
+  y.range <- max(c(abs(range(unlist(y)))), s * qnorm(0.5 + level / 2.0))
   y.range <- 1.05 * c(-y.range, y.range)
 
   panel.special <- function(x, y, level = level, id.n = 3, ...)
@@ -51,17 +51,17 @@ lmfmResVsIdxPlot <- function(x, residuals.fun, level = 0.95, id.n = 3, ...)
       n <- length(y)
       out <- order(abs(y))[(n - id.n + 1):n]
       out <- out[abs(y)[out] >= s]
-      panel.text(x[out], y[out], paste(" ", x[out], sep = ""), adj = 0)
+      panel.text(x[out], y[out], paste(" ", x[out], sep = ""), adj = 0, ...)
     }
     panel.abline(h = s, lty = 2)
     panel.abline(h = -s, lty = 2)
     invisible()
   }
 
-  mod <- factor(rep(mod.names, 1 + n.res), levels = mod.names)
-  tdf <- data.frame(t = unlist(indices), res = unlist(res), mod = mod)
+  mod <- factor(rep(mod.names, 1 + n.y), levels = mod.names)
+  tdf <- data.frame(t = unlist(indices), y = unlist(y), mod = mod)
 
-  p <- xyplot(res ~ t | mod,
+  p <- xyplot(y ~ t | mod,
               data = tdf,
               ylim = y.range,
               panel = panel.special,

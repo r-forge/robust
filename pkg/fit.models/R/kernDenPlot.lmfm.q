@@ -1,10 +1,10 @@
-lmfmResKernDenPlot <- function(x, residuals.fun, ...)
+kernDenPlot.lmfm <- function(x, fun, ...)
 {
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, residuals.fun)
-  n.res <- sapply(res, length)
+  y <- lapply(x, fun)
+  n.y <- sapply(y, length)
 
   panel.special <- function(x, y, ...)
   {
@@ -13,10 +13,10 @@ lmfmResKernDenPlot <- function(x, residuals.fun, ...)
     invisible()
   }
 
-  mod <- factor(rep(mod.names, n.res), levels = mod.names)
-  tdf <- data.frame(res = unlist(res), mod = mod)
+  mod <- factor(rep(mod.names, n.y), levels = mod.names)
+  tdf <- data.frame(y = unlist(y), mod = mod)
 
-  p <- densityplot(~ res | mod,
+  p <- densityplot(~ y | mod,
                    data = tdf,
                    n = 256,
                    bw = "SJ",

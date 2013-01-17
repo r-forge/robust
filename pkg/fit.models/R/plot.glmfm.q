@@ -76,21 +76,19 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          main = "Response vs. Fitted Values",
                          ...),
 
-        lmfmResQQPlot(x,
-                      residuals.fun = function(u) residuals(u, type = "pearson"),
-                      xlab = "Standard Normal Quantiles",
-                      ylab = "Empirical Quantiles of Pearson Residuals",
-                      main = "Normal QQ Plot of Pearson Residuals",
-                      envelope = FALSE,
-                      pch = 16,
-                      ...),
+        qqPlot.lmfm(x,
+                    fun = function(u) residuals(u, type = "pearson"),
+                    xlab = "Standard Normal Quantiles",
+                    ylab = "Empirical Quantiles of Pearson Residuals",
+                    main = "Normal QQ Plot of Pearson Residuals",
+                    envelope = FALSE,
+                    ...),
 
         glmfmResQQPlot(x,
                       residuals.fun = function(u) residuals(u, type = "deviance"),
                       xlab = "Theoretical Quantiles",
                       ylab = "Ordered Deviance Residuals",
                       main = "QQ Plot of Deviance Residuals",
-                      pch = 16,
                       ...),
 
         scatterPlot.lmfm(x,
@@ -108,9 +106,11 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
                          main = "Scale-Location",
                          ...)
+
       ) ## switch(pick, ..)
     } ## end for(...)
   } ## repeat {...}
+
   invisible(x)
 }
 

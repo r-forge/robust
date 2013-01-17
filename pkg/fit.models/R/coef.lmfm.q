@@ -3,7 +3,6 @@ coef.lmfm <- function(object, ...)
   n.models <- length(object)
   mod.names <- names(object)
   coefs <- lapply(object, coef)
-  ## perhaps add an attibute to the fm object with names in data order ##
   coef.names <- unique(unlist(lapply(coefs, names)))
 
   coefmat <- matrix(NA, n.models, length(coef.names))

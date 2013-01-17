@@ -4,17 +4,16 @@
 \title{Comparison Plots for Generalized Linear Models}
 
 \description{
-  Create a set plots useful for comparing the fitted generalized linear
-  models in a glmfm object.  The plot options are
-  \describe{
-    \item{(2)}{Deviance Residuals vs. Fitted Values,}
-    \item{(3)}{Response vs. Fitted Values,}
-    \item{(4)}{Normal QQ Plot of Pearson Residuals,}
-    \item{(5)}{QQ Plot of Deviance Residuals,}
-    \item{(6)}{Standardized Deviance Residuals vs. Robust Distances,}
-    \item{(7)}{Standardized Deviance Residuals vs. Index (Time),}
-    \item{(8)}{Sqrt of abs(Deviance Residuals) vs. Fitted Values.}
-    }
+Produces a set of comparison diagnostic plots.  The plot options are
+\describe{
+  \item{(2)}{Deviance Residuals vs. Fitted Values,}
+  \item{(3)}{Response vs. Fitted Values,}
+  \item{(4)}{Normal QQ Plot of Pearson Residuals,}
+  \item{(5)}{QQ Plot of Deviance Residuals,}
+  \item{(6)}{Deviance Residuals vs. Leverage,}
+  \item{(7)}{Deviance Residuals vs. Index (Time),}
+  \item{(8)}{Scale-Location.}
+}
 }
 
 \usage{
@@ -22,41 +21,23 @@
 }
 
 \arguments{
-  \item{x}{a \code{"glmfm"} object, i.e., typically produced from
-    \code{\link{fit.models}(<glmRob>, etc)}.}
+  \item{x}{a \code{"glmfm"} object.}
 
-  \item{which.plots}{either "ask", "all", or an integer vector
-    specifying which plots to draw.  In the latter case, use the plot
-    numbers given in the description above (or in the "ask" menu).
-  }
+\item{which.plots}{either \code{"ask"}, \code{"all"}, or a vector of integer values specifying which plots to draw.  In the latter case, use the plot numbers given in the description above (or in the "ask" menu).  Any other values will be silently ignored.}
 
-\item{\dots}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
+\item{\dots}{other parameters to be passed through to plotting functions.}
 }
 
 \section{Side Effects}{
 The selected plots are drawn on a graphics device.
 }
 
-\details{
-  This function is a wrapper for the \code{lmfm*} plot functions listed in
-  the section \sQuote{See also}.  For finer control you may wish to call these
-  functions directly.
-}
-
 \value{
 \code{x} is invisibly returned.
 }
 
-\references{
-  Atkinson, A. C. (1985).
-  Plots, Transformations and Regression. New York: Oxford University Press.
-}
-
 \seealso{
-  \code{\link{plot}},
-  \code{\link{fit.models}},
-  \code{\link{lmfmResQQPlot}},
-  \code{\link{lmfmResVsIdxPlot}},.
+See \code{\link{glmfmResQQPlot}} for (2), \code{\link{qqPlot.lmfm}} for (4), and \code{\link{scatterPlot.lmfm}} for the others.
 }
 
 \keyword{hplot}

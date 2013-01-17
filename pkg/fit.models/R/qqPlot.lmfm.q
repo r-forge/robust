@@ -1,6 +1,6 @@
-lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
-                          half.normal = FALSE, n.samples = 250, level = .95,
-                          id.n = 3, qqline = TRUE, ...)
+qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
+                        n.samples = 250, level = .95, id.n = 3, qqline = TRUE,
+                        ...)
 {
   confidence.envelope <- function(n, sd = 1, n.samples = 250, level = 0.95,
                                   half.normal = FALSE)
@@ -24,7 +24,7 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
   n.models <- length(x)
   mod.names <- names(x)
 
-  res <- lapply(x, residuals.fun)
+  res <- lapply(x, fun)
   n.res <- sapply(res, length)
 
   px <- py <- list()
@@ -94,7 +94,7 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
         panel.abline(int, slope)
       }
 
-      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n, ...)
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
@@ -122,7 +122,7 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
 
       panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
-      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n, ...)
 
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
@@ -131,9 +131,6 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
         int <- v[1] - slope * u[1]
         panel.abline(int, slope)
       }
-
-      #if(robQQln)
-      #  panel.abline(coef(lmRob(y[dat.idx] ~ x[dat.idx])))
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
@@ -153,7 +150,7 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
 
     panel.special <- function(x, y, id.n, qqline, ...) {
       panel.xyplot(x, y, ...)
-      panel.addons(x, y, id.n = id.n)
+      panel.addons(x, y, id.n = id.n, ...)
 
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
@@ -162,9 +159,6 @@ lmfmResQQPlot <- function(x, residuals.fun, envelope = TRUE,
         int <- v[1] - slope * u[1]
         panel.abline(int, slope)
       }
-
-      #if(robQQln)
-      #  panel.abline(coef(lmRob(y ~ x)))
 
       invisible()
     }

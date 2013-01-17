@@ -1,10 +1,23 @@
 \name{plot.lmfm}
 \alias{plot.lmfm}
 
-\title{Comparison Plots for Linear Regression Models}
+\title{Comparison Diagnostic Plots for Linear Regression Models}
 
 \description{
-Creates a set plots useful for comparing the fitted linear models in an lmfm object.  The plot options are (2) Normal QQ-Plot of Residuals, (3) Estimated Kernel Density of Residuals, (4) Robust Residuals vs Robust Distances, (5) Residuals vs Fitted Values, (6) Sqrt of abs(Residuals) vs Fitted Values, (7) Response vs Fitted Values, (8) Standardized Residuals vs Index (Time), (9) Overlaid Normal QQ-Plot of Residuals, and (10) Overlaid Estimated Density of Residuals.  For simple linear regression models there is also the option to have a side-by-side plots of the the fit over a scatter plot of the data.
+Produces a set of comparison diagnostic plots.  The plot options are 
+
+\describe{
+  \item{(2)}{Normal QQ Plot of Modified Residuals,}
+  \item{(3)}{Kernel Density Estimate of Modified Residuals,}
+  \item{(4)}{Modified Residuals vs. Leverage,}
+  \item{(5)}{Modified Residuals vs. Fitted Values,}
+  \item{(6)}{Scale-Location,}
+  \item{(7)}{Response vs. Fitted Values,}
+  \item{(8)}{Modified Residuals vs. Index (Time),}
+  \item{(9)}{Overlaid Normal QQ Plot of Modified Residuals,}
+  \item{(10)}{Overlaid Kernel Density Estimate of Modified Residuals,}
+  \item{(11)}{Scatter Plot with Overlaid Fits (for simple linear regression models).}
+}
 }
 
 \usage{
@@ -12,11 +25,11 @@ Creates a set plots useful for comparing the fitted linear models in an lmfm obj
 }
 
 \arguments{
-\item{x}{an lmfm object.}
+\item{x}{an \code{lmfm} object.}
 
-\item{which.plots}{either "ask", "all", or an integer vector specifying which plots to draw.  If \code{which.plots} is an integer vector, use the plot numbers given in the description above (or in the "ask" menu).}
+\item{which.plots}{either \code{"ask"}, \code{"all"}, or a vector of integer values specifying which plots to draw.  In the latter case, use the plot numbers given in the description above (or in the "ask" menu).  Any other values will be silently ignored.}
 
-\item{\dots}{additional arguments are passed to the ploting subfunctions which are listed in the see also section.}
+\item{\dots}{other parameters to be passed through to plotting functions.}
 }
 
 \value{
@@ -28,22 +41,19 @@ The selected plots are drawn on a graphics device.
 }
 
 \details{
-This function is a wrapper for the lmfm*Plot functions listed in the see also section.  For finer control you may wish to call these functions directly.
+The \emph{modified residuals} are defined to be
+
+\deqn{r_{i} = \frac{e_{i}}{\sqrt{1 - h_{i}}}}
+
+where \eqn{h_{i} = H_{ii}} is the \eqn{i^{th}} diagonal element of the hat matrix.  The modified residuals are identically distributed with variance \eqn{\sigma^{2}}.  The modified residuals are used instead of the standardized residuals (which are identically distributed with variance 1) so that the comparison plots emphasize differences in the variance estimates.
 }
 
 \section{References}{
-Atkinson, A. C. (1985).  Plots, Transformations and Regression. New York: Oxford University Press.
+Atkinson, A. C. 1985. \emph{Plots, transformations, and regression: an introduction to graphical methods of diagnostic regression analysis}. Oxford: Clarendon Press.
 }
 
 \seealso{
-\code{\link{plot}},
-\code{\link{fit.models}},
-\code{\link{lmfm2DRegPlot}},
-\code{\link{lmfmResQQPlot}},
-\code{\link{lmfmOverlaidQQPlot}},
-\code{\link{lmfmResVsIdxPlot}},
-\code{\link{lmfmOverlaidResDenPlot}},
-\code{\link{lmfmResKernDenPlot}}.
+See \code{\link{qqPlot.lmfm}} for (2), \code{\link{kernDenPlot.lmfm}} for (3), \code{\link{indexPlot.lmfm}} for (8), \code{\link{overlaidQQPlot.lmfm}} for (9), \code{\link{overlaidKernDenPlot.lmfm}} for (10), \code{\link{simpleRegPlot.lmfm}} for (11), and \code{\link{scatterPlot.lmfm}} for the others.  See \code{\link{rmodified}} for modified residuals.
 }
 
 \examples{
