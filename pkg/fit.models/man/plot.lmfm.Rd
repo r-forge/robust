@@ -9,7 +9,7 @@ Produces a set of comparison diagnostic plots.  The plot options are
 \describe{
   \item{(2)}{Normal QQ Plot of Modified Residuals,}
   \item{(3)}{Kernel Density Estimate of Modified Residuals,}
-  \item{(4)}{Modified Residuals vs. Leverage,}
+  \item{(4)}{Modified Residuals vs. sqrt(Leverage),}
   \item{(5)}{Modified Residuals vs. Fitted Values,}
   \item{(6)}{Scale-Location,}
   \item{(7)}{Response vs. Fitted Values,}
@@ -61,7 +61,7 @@ data(stackloss)
 stack.lm <- lm(stack.loss ~ ., data = stackloss)
 stack.clean <- lm(stack.loss ~ ., data = stackloss, subset = 5:20)
 fm <- fit.models(stack.clean, stack.lm)
-plot(fm, which.plots = 2)
+plot(fm)
 }
 
 \keyword{hplot}

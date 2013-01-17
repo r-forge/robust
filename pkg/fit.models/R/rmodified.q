@@ -11,7 +11,7 @@ rmodified.default <- function(object, ...)
   else
     hii <- apply(qr.Q(qrx)^2, 1, sum)
 
-  resid(object) / sqrt(1.0 - hii)
+  residuals(object, ...) / sqrt(1.0 - hii)
 }
 
 

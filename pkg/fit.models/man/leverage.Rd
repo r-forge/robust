@@ -16,16 +16,16 @@ leverage(object, \dots)
 }
 
 \arguments{
-  \item{object}{a fitted model object containing a model frame component.}
+  \item{object}{a fitted model object.}
   \item{\dots}{additional arguments are passed to the dispatched method.}
 }
 
 \value{
-a numeric vactor containing the leverages.
+a numeric vector containing the leverages.
 }
 
 \details{
-For least-squares linear models the leverages are the diagonal elements of the hat matrix.  This function is generic.  The default method assigns a leverage of zero to every sample point.
+For least-squares linear models the leverages are the diagonal elements of the hat matrix.  This function is generic.  The default method assigns a leverage of \eqn{p/n} to every sample point.
 }
 
 \examples{

@@ -3,9 +3,6 @@ overlaidKernDenPlot.lmfm <- function(x, fun, ...)
   n.models <- length(x)
   mod.names <- names(x)
 
-  settings <- list(superpose.line = list(lty = 1:n.models, lwd = n.models:1,
-                                         col = 1:n.models))
-
   y <- lapply(x, fun)
   n.y <- sapply(y, length)
   mod <- factor(rep(mod.names, n.y), levels = mod.names)
@@ -19,7 +16,6 @@ overlaidKernDenPlot.lmfm <- function(x, fun, ...)
                    plot.points = FALSE,
                    strip = function(...) strip.default(..., style = 1),
                    auto.key = list(corner = c(0.95, 0.95)),
-                   par.settings = settings,
                    ...)
 
   print(p)

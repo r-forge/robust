@@ -3,11 +3,11 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
   n.models <- length(x)
 
   choices <- c("All",
-               "Deviance Residuals vs. Fitted Values",
+               "Deviance Residuals vs. Predicted Values",
                "Response vs. Fitted Values",
-               "Normal QQ Plot of Pearson Residuals",
-               "QQ Plot of Deviance Residuals",
-               "Deviance Residuals vs. Design Distance",
+               "Normal QQ Plot of Modified Pearson Residuals",
+               "Normal QQ Plot of Modified Deviance Residuals",
+               "Pearson Residuals vs. sqrt(Leverage)",
                "Scale-Location")
 
   all.plots <- 2:length(choices)
@@ -61,11 +61,11 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
         place.holder <- 1,
 
         scatterPlot.lmfm(x,
-                         x.fun = fitted,
+                         x.fun = predict,
                          y.fun = function(u) residuals(u, type = "deviance"),
-                         xlab = "Fitted Values",
+                         xlab = "Predicted Values",
                          ylab = "Deviance Residuals",
-                         main = "Deviance Residuals vs. Fitted Values",
+                         main = "Deviance Residuals vs. Predicted Values",
                          ...),
 
         scatterPlot.lmfm(x,
@@ -77,39 +77,40 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          ...),
 
         qqPlot.lmfm(x,
-                    fun = function(u) residuals(u, type = "pearson"),
+                    fun = function(u) rmodified(u, type = "pearson"),
                     xlab = "Standard Normal Quantiles",
-                    ylab = "Empirical Quantiles of Pearson Residuals",
-                    main = "Normal QQ Plot of Pearson Residuals",
+                    ylab = "Empirical Quantiles of Modified Pearson Residuals",
+                    main = "Normal QQ Plot of Modified Pearson Residuals",
                     envelope = FALSE,
                     ...),
 
-        glmfmResQQPlot(x,
-                      residuals.fun = function(u) residuals(u, type = "deviance"),
-                      xlab = "Theoretical Quantiles",
-                      ylab = "Ordered Deviance Residuals",
-                      main = "QQ Plot of Deviance Residuals",
-                      ...),
+        qqPlot.lmfm(x,
+                    fun = function(u) rmodified(u, type = "deviance"),
+                    xlab = "Standard Normal Quantiles",
+                    ylab = "Empirical Quantiles of Modified Deviance Residuals",
+                    main = "Normal QQ Plot of Modified Deviance Residuals",
+                    envelope = FALSE,
+                    ...),
 
         scatterPlot.lmfm(x,
-                         x.fun = leverage,
-                         y.fun = function(u) residuals(u, type = "deviance"),
-                         xlab = "Leverage",
-                         ylab = "Deviance Residuals",
-                         main = "Deviance Residuals vs. Leverage",
+                         x.fun = function(u) sqrt(leverage(u)),
+                         y.fun = function(v) rmodified(v, type = "pearson"),
+                         xlab = expression(sqrt(plain("Leverage"))),
+                         ylab = "Modified Pearson Residuals",
+                         main = expression(paste(plain("Modified Pearson Residuals vs. "),
+                                                 sqrt(plain("Leverage")))),
                          ...),
 
         scatterPlot.lmfm(x,
-                         x.fun = fitted,
-                         y.fun = function(u) sqrt(abs(residuals(u, type = "deviance"))),
-                         xlab = "Fitted Values",
-                         ylab = expression(sqrt(abs(plain("Deviance Residuals")))),
+                         x.fun = predict,
+                         y.fun = function(u) sqrt(abs(rmodified(u, type = "deviance"))),
+                         xlab = "Predicted Values",
+                         ylab = expression(sqrt(abs(plain("Modified Deviance Residuals")))),
                          main = "Scale-Location",
                          ...)
-
-      ) ## switch(pick, ..)
-    } ## end for(...)
-  } ## repeat {...}
+      )
+    }
+  }
 
   invisible(x)
 }

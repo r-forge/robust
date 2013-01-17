@@ -22,8 +22,7 @@ export(
 
   # Generalized Linear Model Comparison
   summary.glmfm,
-  plot.glmfm,
-  glmfmResQQPlot
+  plot.glmfm
 )
 
  ## S3 methods for fit.models ##

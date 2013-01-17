@@ -5,11 +5,11 @@
 \title{Register Comparable Functions}
 
 \description{
-The fit.models package maintains a list of comparable models caled the \code{fit.models.registery}.  These functions provide a method for adding new classes of models to the \code{fit.models.registery}.
+The fit.models package maintains a list of comparable models called the fit.models registery.  These functions provide a method for adding new classes of models to the fit.models registery.
 }
 
 \usage{
-fmclass.register(fmclass, classes, validation.function = NULL, attributes.function = NULL)
+fmclass.register(fmclass, classes, validation.function = NULL)
 
 fmclass.add.class(fmclass, class, warn = TRUE)
 }
@@ -22,8 +22,6 @@ fmclass.add.class(fmclass, class, warn = TRUE)
   \item{class}{a character string specifying a class compatible with the methods of \code{fmclass}.}
 
   \item{validation.function}{a function returning \code{TRUE} when the models are comparable.}
-
-  \item{attributes.function}{a function that adds attributes to the object created by fit.models.}
 
   \item{warn}{a logical value. If TRUE, a warning is printed if \code{class} is already registered in the \code{fit.models.registery}.}
 }
