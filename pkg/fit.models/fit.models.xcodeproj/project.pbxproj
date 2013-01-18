@@ -13,9 +13,11 @@
 		0E54A40C1681265A00A8D64E /* rmodified.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.q; sourceTree = "<group>"; };
 		0E54A40D1681267100A8D64E /* leverage.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.q; sourceTree = "<group>"; };
 		0E5AF8DA16A8B731008271C0 /* plot.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.q; sourceTree = "<group>"; };
+		0E5F167D16A9D671009AF3C0 /* glmfm.R */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = glmfm.R; path = tests/glmfm.R; sourceTree = "<group>"; };
 		0E60E515169608F000464611 /* fm.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.q; sourceTree = "<group>"; };
 		0EB18F251683A8170025E93E /* leverage.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.Rd; sourceTree = "<group>"; };
 		0EB18F261683A8170025E93E /* rmodified.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.Rd; sourceTree = "<group>"; };
+		0ECF482D16A933E400192B0B /* lmfm.R */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = lmfm.R; path = tests/lmfm.R; sourceTree = "<group>"; };
 		0EE45B2D169AA2D4007CC8C7 /* scatterPlot.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scatterPlot.lmfm.Rd; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
 		0EF220FD15675D7900CFD1EF /* fit.models.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.Rd; sourceTree = "<group>"; };
@@ -108,6 +110,15 @@
 			name = glmfm;
 			sourceTree = "<group>";
 		};
+		0ECF482B16A933CF00192B0B /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				0ECF482D16A933E400192B0B /* lmfm.R */,
+				0E5F167D16A9D671009AF3C0 /* glmfm.R */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
 		0EF220EC15675CD200CFD1EF = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +126,7 @@
 				0EF2210B15675D7900CFD1EF /* NAMESPACE */,
 				0EF2210C15675D7900CFD1EF /* R */,
 				0EF220FC15675D7900CFD1EF /* man */,
+				0ECF482B16A933CF00192B0B /* tests */,
 			);
 			sourceTree = "<group>";
 		};

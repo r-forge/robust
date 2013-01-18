@@ -1,0 +1,293 @@
+
+R version 2.15.2 (2012-10-26) -- "Trick or Treat"
+Copyright (C) 2012 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: x86_64-apple-darwin12.2.0/x86_64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> options(warn = 2)
+> 
+> library(fit.models)
+Loading required package: lattice
+> require(MASS)
+Loading required package: MASS
+> 
+> ################################################################################
+> # Test models with differenct formulas
+> ################################################################################
+> 
+> counts <- c(18, 17, 15, 20, 10, 20, 25, 13, 12)
+> outcome <- gl(3, 1, 9)
+> treatment <- c(gl(3,2), gl(3,1))
+> d.AD <- data.frame(treatment, outcome, counts)
+> 
+> trt <- glm(counts ~ treatment, family = poisson())
+> out <- glm(counts ~ outcome, family = poisson())
+> 
+> fm1 <- fit.models(trt, out)
+> print(fm1)
+
+Calls:
+trt: glm(formula = counts ~ treatment, family = poisson())
+out: glm(formula = counts ~ outcome, family = poisson())
+
+Coefficients:
+    (Intercept) treatment outcome2 outcome3
+trt      3.1645   -0.1810                  
+out      3.0445            -0.4543   -0.293
+
+> print(fm1.sum <- summary(fm1, correlation = TRUE))
+
+Calls:
+trt: glm(formula = counts ~ treatment, family = poisson())
+out: glm(formula = counts ~ outcome, family = poisson())
+
+Deviance Residuals:
+         Min      1Q  Median     3Q   Max
+trt: -1.0652 -0.6356 -0.4014 0.8371 1.575
+out: -0.9666 -0.6712 -0.1696 0.8472 1.049
+
+Coefficients:
+                  Estimate Std. Error z value Pr(>|z|)    
+(Intercept): trt:   3.1645     0.2064  15.333   <2e-16 ***
+             out:   3.0445     0.1260  24.165   <2e-16 ***
+                                                          
+  treatment: trt:  -0.1810     0.1008  -1.795   0.0726 .  
+             out:                                         
+                                                          
+   outcome2: trt:                                         
+             out:  -0.4543     0.2022  -2.247   0.0246 *  
+                                                          
+   outcome3: trt:                                         
+             out:  -0.2930     0.1927  -1.520   0.1285    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+Null deviance:
+  trt: 10.58 on 8 degrees of freedom
+  out: 10.58 on 8 degrees of freedom
+
+Residual deviance:
+  trt: 7.333 on 7 degrees of freedom
+  out: 5.129 on 6 degrees of freedom
+
+Correlations:
+trt:
+          (Intercept)
+treatment -0.92      
+
+out:
+         (Intercept) outcome2
+outcome2 -0.62               
+outcome3 -0.65        0.41   
+
+> 
+> pdf("fm1.pdf")
+> plot(fm1, 2)
+> plot(fm1, 3)
+> plot(fm1, 4)
+> plot(fm1, 5)
+> plot(fm1, 6)
+> plot(fm1, 7)
+> dev.off()
+null device 
+          1 
+> 
+> rm(fm1, fm1.sum)
+> unlink("fm1.pdf")
+> 
+> 
+> ################################################################################
+> # Test models with different formulas
+> ################################################################################
+> 
+> 
+> ## an example with offsets from Venables & Ripley (2002, p.189)
+> utils::data(anorexia, package = "MASS")
+> 
+> offset <- glm(Postwt ~ Prewt + Treat + offset(Prewt), family = gaussian,
++               data = anorexia)
+> 
+> no.offset <- glm(Postwt - Prewt ~ Treat, family = gaussian, data = anorexia)
+> 
+> fm2 <- fit.models(offset, no.offset)
+> print(fm2)
+
+Calls:
+   offset: glm(formula = Postwt ~ Prewt + Treat + offset(Prewt), family = gaussian, 
+    data = anorexia)
+no.offset: glm(formula = Postwt - Prewt ~ Treat, family = gaussian, data = anorexia)
+
+Coefficients:
+          (Intercept)   Prewt TreatCont TreatFT
+offset        49.7711 -0.5655   -4.0971   4.563
+no.offset      3.0069           -3.4569   4.258
+
+> print(fm2.sum <- summary(fm2, correlation = TRUE))
+
+Calls:
+   offset: glm(formula = Postwt ~ Prewt + Treat + offset(Prewt), family = gaussian, 
+    data = anorexia)
+no.offset: glm(formula = Postwt - Prewt ~ Treat, family = gaussian, data = anorexia)
+
+Deviance Residuals:
+              Min     1Q  Median    3Q   Max
+   offset: -14.11 -4.277 -0.5484 5.484 15.29
+no.offset: -12.56 -4.543 -1.0069 3.846 17.89
+
+Coefficients:
+                        Estimate Std. Error z value Pr(>|z|)    
+(Intercept):    offset:  49.7711    13.3910   3.717 0.000410 ***
+             no.offset:   3.0069     1.3980   2.151 0.034992 *  
+                                                                
+      Prewt:    offset:  -0.5655     0.1612  -3.509 0.000803 ***
+             no.offset:                                         
+                                                                
+  TreatCont:    offset:  -4.0971     1.8935  -2.164 0.033999 *  
+             no.offset:  -3.4569     2.0333  -1.700 0.093608 .  
+                                                                
+    TreatFT:    offset:   4.5631     2.1333   2.139 0.036035 *  
+             no.offset:   4.2578     2.2996   1.852 0.068376 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+Null deviance:
+     offset: 4525 on 71 degrees of freedom
+  no.offset: 4525 on 71 degrees of freedom
+
+Residual deviance:
+     offset: 3311 on 68 degrees of freedom
+  no.offset: 3911 on 69 degrees of freedom
+
+Correlations:
+offset:
+          (Intercept) Prewt TreatCont
+Prewt     -1.00                      
+TreatCont -0.16        0.10          
+TreatFT   -0.02       -0.04  0.41    
+
+no.offset:
+          (Intercept) TreatCont
+TreatCont -0.69                
+TreatFT   -0.61        0.42    
+
+> 
+> pdf("fm2.pdf")
+> plot(fm2, 2)
+> plot(fm2, 3)
+> plot(fm2, 4)
+> plot(fm2, 5)
+> plot(fm2, 6)
+> plot(fm2, 7)
+> dev.off()
+null device 
+          1 
+> 
+> rm(fm2, fm2.sum)
+> unlink("fm2.pdf")
+> 
+> 
+> ################################################################################
+> # Test models with different formulas and subsets
+> ################################################################################
+> 
+> m1 <- glm(Postwt ~ Prewt + Treat, family = gaussian,
++           data = subset(anorexia, Prewt > 75))
+> 
+> m2 <- glm(Postwt ~ Treat, family = gaussian, data = anorexia)
+> 
+> fm3 <- fit.models(m1, m2)
+> print(fm3)
+
+Calls:
+m1: glm(formula = Postwt ~ Prewt + Treat, family = gaussian, data = subset(anorexia, 
+    Prewt > 75))
+m2: glm(formula = Postwt ~ Treat, family = gaussian, data = anorexia)
+
+Coefficients:
+   (Intercept)   Prewt TreatCont TreatFT
+m1     18.2207  0.8093   -4.6651   4.141
+m2     85.6966           -4.5889   4.798
+
+> print(fm3.sum <- summary(fm3, correlation = TRUE))
+
+Calls:
+m1: glm(formula = Postwt ~ Prewt + Treat, family = gaussian, data = subset(anorexia, 
+    Prewt > 75))
+m2: glm(formula = Postwt ~ Treat, family = gaussian, data = anorexia)
+
+Deviance Residuals:
+       Min     1Q    Median    3Q   Max
+m1: -12.31 -4.747 -0.463868 4.579 13.59
+m2: -15.29 -3.730 -0.002122 4.781 17.90
+
+Coefficients:
+                 Estimate Std. Error z value Pr(>|z|)    
+(Intercept): m1:  18.2207    15.0442   1.211   0.2304    
+             m2:  85.6966     1.3534  63.321  < 2e-16 ***
+                                                         
+      Prewt: m1:   0.8093     0.1803   4.488 3.12e-05 ***
+             m2:                                         
+                                                         
+  TreatCont: m1:  -4.6651     1.8353  -2.542   0.0135 *  
+             m2:  -4.5889     1.9684  -2.331   0.0227 *  
+                                                         
+    TreatFT: m1:   4.1408     2.0463   2.024   0.0473 *  
+             m2:   4.7976     2.2262   2.155   0.0347 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+Null deviance:
+  m1: 4431 on 66 degrees of freedom
+  m2: 4584 on 71 degrees of freedom
+
+Residual deviance:
+  m1: 2676 on 63 degrees of freedom
+  m2: 3665 on 69 degrees of freedom
+
+Correlations:
+m1:
+          (Intercept) Prewt TreatCont
+Prewt     -1.00                      
+TreatCont -0.09        0.04          
+TreatFT    0.01       -0.06  0.40    
+
+m2:
+          (Intercept) TreatCont
+TreatCont -0.69                
+TreatFT   -0.61        0.42    
+
+> 
+> pdf("fm3.pdf")
+> plot(fm3, 2)
+> plot(fm3, 3)
+> plot(fm3, 4)
+> plot(fm3, 5)
+> plot(fm3, 6)
+> plot(fm3, 7)
+> dev.off()
+null device 
+          1 
+> 
+> rm(fm3, fm3.sum)
+> unlink("fm3.pdf")
+> 
+> 
+> ################################################################################
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+  1.555   0.075   1.688 

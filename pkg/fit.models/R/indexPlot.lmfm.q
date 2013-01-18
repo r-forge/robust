@@ -17,8 +17,8 @@ indexPlot.lmfm <- function(x, fun, level = 0.95, id.n = 3, ...)
   indices <- lapply(x, function(u) attributes(model.frame(u))$row.names)
 
   if(all(sapply(indices, class) == "integer")) {
+    newx <- min(unlist(indices)):max(unlist(indices))
     for(i in 1:n.models) {
-      newx <- min(indices[[i]]):max(indices[[i]])
       newy <- rep(as.numeric(NA), length(newx))
       newy[indices[[i]]] <- y[[i]]
       indices[[i]] <- newx
