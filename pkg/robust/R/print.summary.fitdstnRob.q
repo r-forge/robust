@@ -1,9 +1,9 @@
-print.summary.fitdistrRob <- function(x, digits = getOption("digits"), ...)
+print.summary.fitdstnRob <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
 	cat("Call: ")
 	print(x$call)
 	cat("\nParameter Estimates (Std. Error):\n")
-	print.fitdistrRob(x, digits = digits, ...)
+	print.fitdstnRob(x, digits = digits, ...)
 
   tab <- format(c(x$mu, sqrt(x$V.mu)), digits = digits, ...)
   tab[1] <- paste("", tab[1], "")

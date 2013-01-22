@@ -44,7 +44,7 @@ a list with class "fitdistrRob" inheriting from "fitdistr".
 
 
 \seealso{
-\code{\link{weibullRob.control}}, \code{\link{fitdistrRob}}, and \code{\link[MASS]{fitdistr}}.
+\code{\link{weibullRob.control}}, \code{\link{fitdstnRob}}.
 }
 
 \keyword{robust}

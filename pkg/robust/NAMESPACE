@@ -1,26 +1,5 @@
 export(
-
-  ## fit.models ##
-
-  # Linear Model Comparison
-  lmfmResVsRDPlot,
-
-  # Covariance Comparison
-  summary.covfm,
-  plot.covfm,
-  covfmDistancePlot,
-  covfmEllipsesPlot,
-  covfmScreePlot,
-  covfmSqrtMDPlot,
-
-  #Robust univariate parameter estimation
-  plot.fdfm,
-  fdfmOverlaidDenPlot,
-  fdfmQQPlot,
-
-
   ## lmRob ##
-
   lmRob,
   lmRob.fit,
   lmRob.wfit,
@@ -45,7 +24,6 @@ export(
   
 
   ## glmRob ##
-
   glmRob,
   glmRob.control,
   glmRob.cubif,
@@ -62,8 +40,7 @@ export(
   residuals.glmRob,
 
 
-  ## covRob / covMLE ##
-
+  # covRob / covMLE
   covRob,
   covRob.control,
   summary.covRob,
@@ -72,21 +49,35 @@ export(
   summary.covMLE,
   plot.covMLE,
 
+  # Covariance Comparison
+  summary.covfm,
+  plot.covfm,
+  covfmDistancePlot,
+  covfmEllipsesPlot,
+  covfmScreePlot,
+  covfmSqrtMDPlot,
+
 
   ## Robust univariate parameter estimation ##
 
-  fitdistrRob,
+  fitdstnRob,
   gammaRob,
   gammaRob.control,
   lognormRob,
   lognormRob.control,
   weibullRob,
   weibullRob.control,
-  summary.fitdistrRob,
+  summary.fitdstnRob,
+
+
+  #Robust univariate parameter estimation
+  plot.fdfm,
+  OverlaidDenPlot.fdfm,
+  QQPlot.fdfm,
+
 
 
   ## Other ##
-
   gen.data
 )
 
@@ -100,7 +91,6 @@ S3method(plot, lmRob)
 S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
-S3method(hatvalues, lmRob)
 
 S3method(print, summary.lmRob)
 
@@ -113,7 +103,6 @@ S3method(summary, glmRob)
 S3method(labels, glmRob)
 S3method(predict, glmRob)
 S3method(residuals, glmRob)
-S3method(hatvalues, glmRob)
 
 S3method(print, summary.glmRob)
 
@@ -132,9 +121,6 @@ S3method(summary, covMLE)
 S3method(print, summary.covMLE)
 
 
-## S3 methods for fitdistrRob ##
-
-
 ## S3 methods for fit.models ##
 
 S3method(plot, covfm)
@@ -148,14 +134,16 @@ S3method(plot, fdfm)
 S3method(print, fdfm)
 
 
-## S3 methods for fitdistrRob ##
+## S3 methods for fitdstnRob ##
 
-S3method(print, fitdistrRob)
-S3method(summary, fitdistrRob)
+S3method(print, fitdstnRob)
+S3method(summary, fitdstnRob)
 
-S3method(print, summary.fitdistrRob)
+S3method(print, summary.fitdstnRob)
 
-## Imports ##
 
-importFrom(stats, hatvalues)
+
+
+
+
 

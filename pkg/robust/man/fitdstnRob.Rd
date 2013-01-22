@@ -1,5 +1,5 @@
-\name{fitdistrRob}
-\alias{fitdistrRob}
+\name{fitdstnRob}
+\alias{fitdstnRob}
 
 \title{Robust Fitting of Univariate Distributions}
 
@@ -8,7 +8,7 @@ Robust Fitting of Univariate Distributions.
 }
 
 \usage{
-fitdistrRob(x, densfun, ...)
+fitdstnRob(x, densfun, ...)
 }
 
 \arguments{
@@ -20,7 +20,7 @@ fitdistrRob(x, densfun, ...)
 }
 
 \value{
-a list with class "fitdistrRob" inheriting from "fitdistr".
+a list with class "fitdstnRob" containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 
@@ -40,7 +40,7 @@ a list with class "fitdistrRob" inheriting from "fitdistr".
 }
 
 \seealso{
-\code{\link{gammaRob}}, \code{\link{lognormRob}}, \code{\link{weibullRob}}, and \code{\link[MASS]{fitdistr}}.
+\code{\link{gammaRob}}, \code{\link{lognormRob}}, \code{\link{weibullRob}}.
 }
 
 \keyword{robust}

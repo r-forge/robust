@@ -1,4 +1,9 @@
-robust.xcodeproj
-gui
-meta
+^Robust.pdf
+^datasets
+^funs
+^gui
+^meta
+^robust.xcodeproj
+^sgml
+
 

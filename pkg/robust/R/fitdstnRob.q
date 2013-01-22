@@ -1,6 +1,9 @@
-fitdistrRob <- function(x, densfun, ...)
+fitdstnRob <- function(x, densfun, ...)
 {
   the.call <- match.call()
+
+  x <- as.vector(x)
+
   if(densfun == "log-normal") densfun <- "lognormal"
   densfun <- match.arg(densfun, c("gamma", "lognormal", "weibull"))
 
@@ -10,7 +13,7 @@ fitdistrRob <- function(x, densfun, ...)
     weibull = weibullRob(x, ...)
   )
 
-  oldClass(ans) <- "fitdistrRob"
+  oldClass(ans) <- "fitdstnRob"
   ans
 }
 

@@ -234,3 +234,5 @@ weibullRob <- function(x, estim = c("M", "tdmean"),
   oldClass(z) <- "fitdistrRob"
   z
 }
+
+

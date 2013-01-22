@@ -61,21 +61,21 @@ plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
 
         place.holder <- 1,
         
-        fdfmOverlaidDenPlot(x,
-                            main = "Overlaid Density Estimates",
-                            xlab = data.name,
-                            col = colors,
-                            col.hist = "lightgray",
-                            lwd = n.models:1,
-                            lty = 1:n.models,
-                            ...),
+        OverlaidDenPlot.fdfm(x,
+                             main = "Overlaid Density Estimates",
+                             xlab = data.name,
+                             col = colors,
+                             col.hist = "lightgray",
+                             lwd = n.models:1,
+                             lty = 1:n.models,
+                             ...),
 
-        fdfmQQPlot(x,
-                   main = "Sample QQ Plot",
-                   xlab = "Estimated Quantiles",
-                   ylab = "Ordered Sample",
-                   pch = 16,
-                   ...)
+        QQPlot.fdfm(x,
+                    main = "Sample QQ Plot",
+                    xlab = "Estimated Quantiles",
+                    ylab = "Ordered Sample",
+                    pch = 16,
+                    ...)
 
       )
     }

@@ -1,22 +1,22 @@
-\name{summary.fitdistrRob}
-\alias{summary.fitdistrRob}
+\name{summary.fitdstnRob}
+\alias{summary.fitdstnRob}
 
-\title{fitdistrRob Summary Method}
+\title{fitdstnRob Summary Method}
 
 \description{Summary for univariate parameter estimates.}
 
 \usage{
-\method{summary}{fitdistrRob}(object, ...)
+\method{summary}{fitdstnRob}(object, ...)
 }
 
 \arguments{
-  \item{object}{an \code{fitdistrRob} object.}
+  \item{object}{an \code{fitdstnRob} object.}
 
   \item{\dots}{additional arguments are ignored.}
 }
 
 \value{
-  a list with class "summary.fitdistrRob".
+  a list with class "summary.fitdstnRob" containing the following elements:
 
   \item{call}{the matched call.}
 

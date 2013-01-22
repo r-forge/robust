@@ -1,5 +1,5 @@
-\name{fdfmQQPlot}
-\alias{fdfmQQPlot}
+\name{QQPlot.fdfm}
+\alias{QQPlot.fdfm}
 
 \title{QQ Plot}
 
@@ -8,7 +8,7 @@ Side-by-side QQ plots of the sample versus estimated quantiles.
 }
 
 \usage{
-fdfmQQPlot(x, robustQQline = TRUE, ...)
+QQPlot.fdfm(x, robustQQline = TRUE, ...)
 }
 
 \arguments{

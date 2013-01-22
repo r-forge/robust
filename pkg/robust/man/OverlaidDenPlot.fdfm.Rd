@@ -1,5 +1,5 @@
-\name{fdfmOverlaidDenPlot}
-\alias{fdfmOverlaidDenPlot}
+\name{OverlaidDenPlot.fdfm}
+\alias{OverlaidDenPlot.fdfm}
 
 \title{Overlaid Density Plot}
 
@@ -8,7 +8,7 @@ Plots the estimated densities over a histogram of the data.
 }
 
 \usage{
-fdfmOverlaidDenPlot(x, truncate = 0.99, ...)
+OverlaidDenPlot.fdfm(x, truncate = 0.999, ...)
 }
 
 \arguments{
