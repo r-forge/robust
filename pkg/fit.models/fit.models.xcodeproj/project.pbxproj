@@ -17,6 +17,7 @@
 		0E60E515169608F000464611 /* fm.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.q; sourceTree = "<group>"; };
 		0EB18F251683A8170025E93E /* leverage.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.Rd; sourceTree = "<group>"; };
 		0EB18F261683A8170025E93E /* rmodified.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.Rd; sourceTree = "<group>"; };
+		0EC0C03216AF593C004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
 		0ECF482D16A933E400192B0B /* lmfm.R */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = lmfm.R; path = tests/lmfm.R; sourceTree = "<group>"; };
 		0EE45B2D169AA2D4007CC8C7 /* scatterPlot.lmfm.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = scatterPlot.lmfm.Rd; sourceTree = "<group>"; };
 		0EF220FB15675D7900CFD1EF /* DESCRIPTION */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 			children = (
 				0EF220FB15675D7900CFD1EF /* DESCRIPTION */,
 				0EF2210B15675D7900CFD1EF /* NAMESPACE */,
+				0EC0C03216AF593C004A7926 /* .Rbuildignore */,
 				0EF2210C15675D7900CFD1EF /* R */,
 				0EF220FC15675D7900CFD1EF /* man */,
 				0ECF482B16A933CF00192B0B /* tests */,
