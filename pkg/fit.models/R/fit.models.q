@@ -40,6 +40,10 @@ fit.models <- function(model.list, ...)
 
   else if(is.character(model.list) || class(model.list)[1] == "list") {
     model.list <- as.list(model.list)
+
+    ## Little hack for robust package backward compatibility
+    model.list[model.list == "cov"] <- "covMLE"
+
     n.models <- length(model.list)
     model.funs <- unlist(model.list)
 
