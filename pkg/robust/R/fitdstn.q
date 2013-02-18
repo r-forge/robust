@@ -1,4 +1,4 @@
-fitdstnRob <- function(x, densfun, ...)
+fitdstn <- function(x, densfun, ...)
 {
   the.call <- match.call()
   data.name <- deparse(substitute(x))
@@ -14,14 +14,20 @@ fitdstnRob <- function(x, densfun, ...)
     densfun <- "lnorm"
 
   ans <- switch(densfun,
-    gamma = gammaRob(x, ...),
-    lnorm = lognormRob(x, ...),
-    weibull = weibullRob(x, ...)
+    gamma = {
+      m <- mean(x)
+      v <- var(x)
+      fitdistr(x, dgamma, start = list(shape = m^2/v, scale = v/m), lower = 0.0)
+    },
+
+    lnorm = fitdistr(x, "lognormal"),
+
+    weibull = fitdistr(x, "weibull", lower = 0.0)
   )
 
   ans <- c(ans, call = the.call, densfun = densfun, data.name = data.name,
            list(x = x))
-  oldClass(ans) <- c("fitdstnRob", "fitdstn")
+  oldClass(ans) <- "fitdstn"
   ans
 }
 

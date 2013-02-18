@@ -9,8 +9,12 @@
 {
   fmclass.add.class("lmfm", "lmRob")
   fmclass.add.class("glmfm", "glmRob")
-  fmclass.register("covfm", c("covRob", "covMLE", "cov"))
+
+  fmclass.register("covfm", c("covRob", "covMLE"))
+  fmclass.register("fdfm", c("fitdstnRob", "fitdstn"))
+
   invisible()
 }
+
 
 

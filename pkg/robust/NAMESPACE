@@ -52,28 +52,28 @@ export(
   # Covariance Comparison
   summary.covfm,
   plot.covfm,
-  covfmDistancePlot,
-  covfmEllipsesPlot,
-  covfmScreePlot,
-  covfmSqrtMDPlot,
+  ddPlot.covfm,
+  ellipsesPlot.covfm,
+  screePlot.covfm,
+  distancePlot.covfm,
 
 
   ## Robust univariate parameter estimation ##
 
   fitdstnRob,
+  fitdstn,
   gammaRob,
   gammaRob.control,
   lognormRob,
   lognormRob.control,
   weibullRob,
   weibullRob.control,
-  summary.fitdstnRob,
 
 
   #Robust univariate parameter estimation
   plot.fdfm,
-  OverlaidDenPlot.fdfm,
-  QQPlot.fdfm,
+  overlaidDenPlot.fdfm,
+  qqPlot.fdfm,
 
 
 
@@ -121,6 +121,13 @@ S3method(summary, covMLE)
 S3method(print, summary.covMLE)
 
 
+## S3 methods for fitdstnRob ##
+
+S3method(print, fitdstn)
+S3method(summary, fitdstnRob)
+S3method(print, summary.fitdstnRob)
+
+
 ## S3 methods for fit.models ##
 
 S3method(plot, covfm)
@@ -130,17 +137,10 @@ S3method(summary, covfm)
 S3method(print, summary.covfm)
 
 
-S3method(plot, fdfm)
+
 S3method(print, fdfm)
-
-
-## S3 methods for fitdstnRob ##
-
-S3method(print, fitdstnRob)
-S3method(summary, fitdstnRob)
-
-S3method(print, summary.fitdstnRob)
-
+S3method(summary, fdfm)
+S3method(plot, fdfm)
 
 
 

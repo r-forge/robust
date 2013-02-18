@@ -8,7 +8,7 @@
 }
 
 \usage{
-lognormRob(x, estim = c("tdmean"), control = lognormRob.control(estim, ...), ...)
+lognormRob(x, estim = c("tdmean"), control = lognormRob.control(estim, \dots), \dots)
 }
 
 
@@ -23,21 +23,17 @@ lognormRob(x, estim = c("tdmean"), control = lognormRob.control(estim, ...), ...
 }
 
 \value{
-a list with class "fitdistrRob" inheriting from "fitdistr".
+a list with elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 
-  \item{sd}{a named numeric vector containing the standard deviations of the parameter estimates.}
+  \item{sd}{a named numeric vector containing the standard deviations of the parameter estimates.  Missing in current implementation.}
 
-  \item{vcov}{a numeric matrix containing the variance-covariance matrix of the estimated parameter vector.}
-
-  \item{loglik}{currently missing.}
+  \item{vcov}{a numeric matrix containing the variance-covariance matrix of the estimated parameter vector.  Missing in current implementation.}
 
   \item{mu}{a single numeric value containing an estimate of the mean.}
 
   \item{V.mu}{a single numeric value containing the variance of the estimated mean.}
-
-  \item{call}{the matched call.}
 
   \item{control}{a list containing the control parameters used by the estimator.}
 }

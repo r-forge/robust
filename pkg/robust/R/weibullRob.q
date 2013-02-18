@@ -228,11 +228,8 @@ weibullRob <- function(x, estim = c("M", "tdmean"),
   names(estimate) <- c("shape", "scale")
   sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
-  z <- list(estimate = estimate, sd = sd, vcov = zl$vcov, loglik = NA,
-            mu = zl$mu, V.mu = zl$V.mu, call = the.call, control = control)
-
-  oldClass(z) <- "fitdistrRob"
-  z
+  list(estimate = estimate, sd = sd, vcov = zl$vcov, mu = zl$mu,
+       V.mu = zl$V.mu, control = control)
 }
 
 

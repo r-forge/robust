@@ -7,7 +7,7 @@ Create a list of control parameters for the weibullRob function.
 }
 
 \usage{
-weibullRob.control(estim, ...)
+weibullRob.control(estim, \dots)
 }
 
 \arguments{

@@ -1,22 +1,22 @@
-\name{summary.fitdstnRob}
-\alias{summary.fitdstnRob}
+\name{summary.fitdstn}
+\alias{summary.fitdstn}
 
-\title{fitdstnRob Summary Method}
+\title{fitdstn Summary Method}
 
 \description{Summary for univariate parameter estimates.}
 
 \usage{
-\method{summary}{fitdstnRob}(object, ...)
+\method{summary}{fitdstn}(object, \dots)
 }
 
 \arguments{
-  \item{object}{an \code{fitdstnRob} object.}
+  \item{object}{a \code{fitdstn} object.}
 
   \item{\dots}{additional arguments are ignored.}
 }
 
 \value{
-  a list with class "summary.fitdstnRob" containing the following elements:
+  a list with class \code{summary.fitdstn} containing the following elements:
 
   \item{call}{the matched call.}
 
@@ -31,6 +31,6 @@
   \item{V.mu}{a single numeric value containing the variance of the estimated mean.}
 }
 
-\keyword{robust}
+\keyword{methods}
 
 

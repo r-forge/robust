@@ -8,7 +8,7 @@ Robust Fitting of Univariate Distributions.
 }
 
 \usage{
-fitdstnRob(x, densfun, ...)
+fitdstnRob(x, densfun, \dots)
 }
 
 \arguments{
@@ -20,7 +20,7 @@ fitdstnRob(x, densfun, ...)
 }
 
 \value{
-a list with class "fitdstnRob" containing the following elements:
+a list with class "fitdstn" containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 
@@ -28,15 +28,17 @@ a list with class "fitdstnRob" containing the following elements:
 
   \item{vcov}{a numeric matrix containing the variance-covariance matrix of the estimated parameter vector.}
 
-  \item{loglik}{currently missing.}
-
   \item{mu}{a single numeric value containing an estimate of the mean.}
 
   \item{V.mu}{a single numeric value containing the variance of the estimated mean.}
 
+  \item{control}{a list containing the control parameters used by the estimator.}
+
   \item{call}{the matched call.}
 
-  \item{control}{a list containing the control parameters used by the estimator.}
+  \item{densfun}{the character string \code{densfun} provided in the arguments.}
+
+  \item{x}{the data provided in \code{x}.}
 }
 
 \seealso{

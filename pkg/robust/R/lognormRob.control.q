@@ -12,7 +12,7 @@ lognormRob.control <- function(estim, ...)
     control[user.args] <- dots[user.args]
   }
 
-	control
+  c(list(estim = estim), control)
 }
 
 

@@ -1,4 +1,4 @@
-print.fitdstnRob <- function(x, digits = max(3, getOption("digits") - 3), ...)
+print.fitdstn <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   ans <- format(rbind(x$estimate, x$sd), digits = digits)
   ans[1, ] <- sapply(ans[1, ], function(x) paste("", x))

@@ -1,7 +1,5 @@
-plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
+plot.fdfm <- function(x, which.plots = 2:3, ...)
 {
-  data.name <- attributes(x)$data.name
-
   choices <- c("All",
                "Overlaid Density Estimates", 
                "Sample QQ Plot")
@@ -11,7 +9,8 @@ plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
   tmenu <- paste("plot:", choices)
 
   if(is.numeric(which.plots)) {
-    which.plots <- intersect(which.plots, all.plots)
+    if(!all(which.plots %in% all.plots))
+      stop(sQuote("which"), " must be in 2:", length(choices))
 
     if(length(which.plots) == 0)
       return(invisible(x))
@@ -36,16 +35,12 @@ plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
     ask <- TRUE
 
   n.models <- length(x)
-  if(n.models <= 3)
-    colors <- c("black", "blue", "purple")[1:n.models]
-  else
-    colors <- 1:n.models
+  data.name <- x[[1]]$data.name
 
   repeat {
     if(ask) {
       which.plots <- menu(tmenu,
         title = "\nMake plot selections (or 0 to exit):\n")
-
       if(any(which.plots == 1)) {
         which.plots <- c(all.plots, 0)
         par.ask <- par(ask = TRUE)
@@ -61,20 +56,15 @@ plot.fdfm <- function(x, which.plots = ifelse(interactive(), "ask", "all"), ...)
 
         place.holder <- 1,
         
-        OverlaidDenPlot.fdfm(x,
+        overlaidDenPlot.fdfm(x,
                              main = "Overlaid Density Estimates",
                              xlab = data.name,
-                             col = colors,
-                             col.hist = "lightgray",
-                             lwd = n.models:1,
-                             lty = 1:n.models,
                              ...),
 
-        QQPlot.fdfm(x,
+        qqPlot.fdfm(x,
                     main = "Sample QQ Plot",
-                    xlab = "Estimated Quantiles",
-                    ylab = "Ordered Sample",
-                    pch = 16,
+                    xlab = "Theoretical Quantiles",
+                    ylab = paste("Empirical Quantiles of", data.name),
                     ...)
 
       )

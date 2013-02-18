@@ -8,7 +8,7 @@ Create a list of control parameters for the gammaRob function.
 }
 
 \usage{
-gammaRob.control(estim, ...)
+gammaRob.control(estim, \dots)
 }
 
 \arguments{

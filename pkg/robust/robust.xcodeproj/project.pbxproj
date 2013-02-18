@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		0E09E5DA154CAD3B0004C9C6 /* OverlaidDenPlot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = OverlaidDenPlot.fdfm.q; sourceTree = "<group>"; };
-		0E09E5DE154CEC170004C9C6 /* QQPlot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = QQPlot.fdfm.q; sourceTree = "<group>"; };
+		0E09E5DA154CAD3B0004C9C6 /* overlaidDenPlot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = overlaidDenPlot.fdfm.q; sourceTree = "<group>"; };
+		0E09E5DE154CEC170004C9C6 /* qqPlot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = qqPlot.fdfm.q; sourceTree = "<group>"; };
 		0E0ACBCF155A1A1F002E0744 /* labels.lmRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.lmRob.q; sourceTree = "<group>"; };
 		0E0E0E7D0B4AF65F0078D331 /* glmRob.mallows.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.mallows.Rd; path = man/glmRob.mallows.Rd; sourceTree = SOURCE_ROOT; };
 		0E0E0E7E0B4AF6780078D331 /* glmRob.misclass.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.Rd; path = man/glmRob.misclass.Rd; sourceTree = SOURCE_ROOT; };
 		0E13EB481547225800786D46 /* gammaRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = gammaRob.q; sourceTree = "<group>"; };
 		0E20A7E30B49ABE000D9044A /* glmRob.mallows.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = glmRob.mallows.control.Rd; sourceTree = "<group>"; };
 		0E20A7E40B49ABFE00D9044A /* glmRob.misclass.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.control.Rd; path = man/glmRob.misclass.control.Rd; sourceTree = SOURCE_ROOT; };
+		0E2B2CD416B0E5BD0065531D /* fitdstn.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = fitdstn.Rd; sourceTree = "<group>"; };
 		0E3CE2E50B487217008C361D /* breslow.dat.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = breslow.dat.txt; path = data/breslow.dat.txt; sourceTree = SOURCE_ROOT; };
 		0E3CE2F40B487705008C361D /* glmRob.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = glmRob.control.q; sourceTree = "<group>"; };
 		0E3CE30A0B487F02008C361D /* glmRob.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.control.Rd; path = man/glmRob.control.Rd; sourceTree = SOURCE_ROOT; };
@@ -32,10 +33,10 @@
 		0E4500160A029C050064D9A4 /* covMLE.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covMLE.q; path = R/covMLE.q; sourceTree = SOURCE_ROOT; };
 		0E4500170A029C050064D9A4 /* covRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.control.q; path = R/covRob.control.q; sourceTree = SOURCE_ROOT; };
 		0E4500180A029C050064D9A4 /* covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covRob.q; path = R/covRob.q; sourceTree = SOURCE_ROOT; };
-		0E4500190A029C050064D9A4 /* covfmDistancePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistancePlot.q; path = R/covfmDistancePlot.q; sourceTree = SOURCE_ROOT; };
-		0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.q; path = R/covfmEllipsesPlot.q; sourceTree = SOURCE_ROOT; };
-		0E45001B0A029C050064D9A4 /* covfmScreePlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.q; path = R/covfmScreePlot.q; sourceTree = SOURCE_ROOT; };
-		0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.q; path = R/covfmSqrtMDPlot.q; sourceTree = SOURCE_ROOT; };
+		0E4500190A029C050064D9A4 /* ddPlot.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = ddPlot.covfm.q; path = R/ddPlot.covfm.q; sourceTree = SOURCE_ROOT; };
+		0E45001A0A029C050064D9A4 /* ellipsesPlot.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = ellipsesPlot.covfm.q; path = R/ellipsesPlot.covfm.q; sourceTree = SOURCE_ROOT; };
+		0E45001B0A029C050064D9A4 /* screePlot.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = screePlot.covfm.q; path = R/screePlot.covfm.q; sourceTree = SOURCE_ROOT; };
+		0E45001C0A029C050064D9A4 /* distancePlot.covfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = distancePlot.covfm.q; path = R/distancePlot.covfm.q; sourceTree = SOURCE_ROOT; };
 		0E4500220A029C050064D9A4 /* library.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = library.q; path = R/library.q; sourceTree = SOURCE_ROOT; };
 		0E4500230A029C050064D9A4 /* plot.covMLE.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.covMLE.q; path = R/plot.covMLE.q; sourceTree = SOURCE_ROOT; };
 		0E4500240A029C050064D9A4 /* plot.covRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.covRob.q; path = R/plot.covRob.q; sourceTree = SOURCE_ROOT; };
@@ -230,7 +231,7 @@
 		0E4C09B21549CFF30080765A /* lognormRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lognormRob.q; sourceTree = "<group>"; };
 		0E4C09B31549D0450080765A /* lognormRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lognormRob.control.q; sourceTree = "<group>"; };
 		0E61FA2E152A70D5005596B3 /* NAMESPACE */ = {isa = PBXFileReference; lastKnownFileType = text; path = NAMESPACE; sourceTree = "<group>"; };
-		0E636229154B4A4A00D3F31F /* print.fitdstnRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.fitdstnRob.q; sourceTree = "<group>"; };
+		0E636229154B4A4A00D3F31F /* print.fitdstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.fitdstn.q; sourceTree = "<group>"; };
 		0E63622F154B53DA00D3F31F /* summary.fitdstnRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.fitdstnRob.q; sourceTree = "<group>"; };
 		0E636230154B57F100D3F31F /* print.summary.fitdstnRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = print.summary.fitdstnRob.q; sourceTree = "<group>"; };
 		0E67A7850B8270DD0044A84B /* plot.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = plot.glmRob.Rd; path = man/plot.glmRob.Rd; sourceTree = SOURCE_ROOT; };
@@ -257,6 +258,7 @@
 		0E9C45050E2129C800DE7FD9 /* compatibility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compatibility.c; path = src/compatibility.c; sourceTree = SOURCE_ROOT; };
 		0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.ga.q; sourceTree = "<group>"; };
 		0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.genetic.control.q; sourceTree = "<group>"; };
+		0EB73D5A16CEC657004E4617 /* summary.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.fdfm.q; sourceTree = "<group>"; };
 		0EBB2D93154E5BD70053C2A7 /* plot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.fdfm.q; sourceTree = "<group>"; };
 		0EBC2E0A0A2F70E300C89C9F /* lmRob.const.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.const.q; path = R/lmRob.const.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E0B0A2F70E300C89C9F /* lmRob.control.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = lmRob.control.q; path = R/lmRob.control.q; sourceTree = SOURCE_ROOT; };
@@ -283,10 +285,10 @@
 		0EBC2E400A2F71CE00C89C9F /* update.lmRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = update.lmRob.q; path = R/update.lmRob.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E440A2F726C00C89C9F /* gen.data.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = gen.data.q; path = R/gen.data.q; sourceTree = SOURCE_ROOT; };
 		0EBC2E460A2F728F00C89C9F /* Copyright */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = Copyright; path = inst/Copyright; sourceTree = SOURCE_ROOT; };
-		0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmDistancePlot.Rd; path = man/covfmDistancePlot.Rd; sourceTree = SOURCE_ROOT; };
-		0EBC2E4D0A2F72B600C89C9F /* covfmEllipsesPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmEllipsesPlot.Rd; path = man/covfmEllipsesPlot.Rd; sourceTree = SOURCE_ROOT; };
-		0EBC2E4E0A2F72B600C89C9F /* covfmScreePlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmScreePlot.Rd; path = man/covfmScreePlot.Rd; sourceTree = SOURCE_ROOT; };
-		0EBC2E4F0A2F72B600C89C9F /* covfmSqrtMDPlot.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = covfmSqrtMDPlot.Rd; path = man/covfmSqrtMDPlot.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4C0A2F72B600C89C9F /* ddPlot.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = ddPlot.covfm.Rd; path = man/ddPlot.covfm.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4D0A2F72B600C89C9F /* ellipsesPlot.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = ellipsesPlot.covfm.Rd; path = man/ellipsesPlot.covfm.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4E0A2F72B600C89C9F /* screePlot.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = screePlot.covfm.Rd; path = man/screePlot.covfm.Rd; sourceTree = SOURCE_ROOT; };
+		0EBC2E4F0A2F72B600C89C9F /* distancePlot.covfm.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = distancePlot.covfm.Rd; path = man/distancePlot.covfm.Rd; sourceTree = SOURCE_ROOT; };
 		0EBC2E510A2F730100C89C9F /* anova.lmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = anova.lmRob.Rd; sourceTree = "<group>"; };
 		0EBC2E530A2F730100C89C9F /* drop1.lmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = drop1.lmRob.Rd; sourceTree = "<group>"; };
 		0EBC2E550A2F730100C89C9F /* lmRob.control.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = lmRob.control.Rd; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		0EBDE6841550EA0F002B561F /* weibullRob.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = weibullRob.q; sourceTree = "<group>"; };
 		0EBDE6851550EED4002B561F /* weibullRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = weibullRob.control.q; sourceTree = "<group>"; };
 		0EC0C02016AF4D96004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
+		0EC0C07516AF6ABC004A7926 /* fitdstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fitdstn.q; sourceTree = "<group>"; };
 		0EC212FD0B850BAA00C049F7 /* predict.glmRob.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = predict.glmRob.Rd; path = man/predict.glmRob.Rd; sourceTree = SOURCE_ROOT; };
 		0ECC5F481547852700833ABD /* fitdstnRob.auxiliary.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fitdstnRob.auxiliary.q; sourceTree = "<group>"; };
 		0EDE357E15473A46000FAEE6 /* gammaRob.control.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = gammaRob.control.q; sourceTree = "<group>"; };
@@ -392,16 +395,18 @@
 			isa = PBXGroup;
 			children = (
 				0EE51B3E154B9E570023004C /* print.fdfm.q */,
+				0EB73D5A16CEC657004E4617 /* summary.fdfm.q */,
 				0EBB2D93154E5BD70053C2A7 /* plot.fdfm.q */,
-				0E09E5DA154CAD3B0004C9C6 /* OverlaidDenPlot.fdfm.q */,
-				0E09E5DE154CEC170004C9C6 /* QQPlot.fdfm.q */,
+				0E09E5DA154CAD3B0004C9C6 /* overlaidDenPlot.fdfm.q */,
+				0E09E5DE154CEC170004C9C6 /* qqPlot.fdfm.q */,
 			);
 			name = fdfm;
 			sourceTree = "<group>";
 		};
-		0E13EB471547221F00786D46 /* fitdistrRob */ = {
+		0E13EB471547221F00786D46 /* fitdstnRob */ = {
 			isa = PBXGroup;
 			children = (
+				0EC0C07516AF6ABC004A7926 /* fitdstn.q */,
 				0EFC04641551AD8600143807 /* fitdstnRob.q */,
 				0E13EB481547225800786D46 /* gammaRob.q */,
 				0EDE357E15473A46000FAEE6 /* gammaRob.control.q */,
@@ -409,13 +414,13 @@
 				0E4C09B31549D0450080765A /* lognormRob.control.q */,
 				0EBDE6841550EA0F002B561F /* weibullRob.q */,
 				0EBDE6851550EED4002B561F /* weibullRob.control.q */,
-				0E63622F154B53DA00D3F31F /* summary.fitdstnRob.q */,
 				0ECC5F481547852700833ABD /* fitdstnRob.auxiliary.q */,
-				0E636229154B4A4A00D3F31F /* print.fitdstnRob.q */,
+				0E636229154B4A4A00D3F31F /* print.fitdstn.q */,
+				0E63622F154B53DA00D3F31F /* summary.fitdstnRob.q */,
 				0E636230154B57F100D3F31F /* print.summary.fitdstnRob.q */,
 				0E13E4001564C30900AB4198 /* fdfm */,
 			);
-			name = fitdistrRob;
+			name = fitdstnRob;
 			sourceTree = "<group>";
 		};
 		0E3CE2EE0B487253008C361D /* glmRob */ = {
@@ -456,7 +461,7 @@
 			children = (
 				0E4500220A029C050064D9A4 /* library.q */,
 				0EBC2E440A2F726C00C89C9F /* gen.data.q */,
-				0E13EB471547221F00786D46 /* fitdistrRob */,
+				0E13EB471547221F00786D46 /* fitdstnRob */,
 				DA3B967F0A0610F100A2200C /* covRob */,
 				DA1294B90B37FF9400B17596 /* glmRob */,
 				DAB89E380A1CA1A500F2C64D /* lmRob */,
@@ -840,10 +845,10 @@
 			children = (
 				0E45002F0A029C060064D9A4 /* summary.covfm.q */,
 				0E4500250A029C050064D9A4 /* plot.covfm.q */,
-				0E4500190A029C050064D9A4 /* covfmDistancePlot.q */,
-				0E45001A0A029C050064D9A4 /* covfmEllipsesPlot.q */,
-				0E45001B0A029C050064D9A4 /* covfmScreePlot.q */,
-				0E45001C0A029C050064D9A4 /* covfmSqrtMDPlot.q */,
+				0E4500190A029C050064D9A4 /* ddPlot.covfm.q */,
+				0E45001A0A029C050064D9A4 /* ellipsesPlot.covfm.q */,
+				0E45001B0A029C050064D9A4 /* screePlot.covfm.q */,
+				0E45001C0A029C050064D9A4 /* distancePlot.covfm.q */,
 				0EF220D21566F5CC00CFD1EF /* Private */,
 			);
 			name = covfm;
@@ -905,10 +910,10 @@
 			children = (
 				0E45000F0A029C050064D9A4 /* summary.covfm.Rd */,
 				0E4500090A029C050064D9A4 /* plot.covfm.Rd */,
-				0EBC2E4C0A2F72B600C89C9F /* covfmDistancePlot.Rd */,
-				0EBC2E4D0A2F72B600C89C9F /* covfmEllipsesPlot.Rd */,
-				0EBC2E4E0A2F72B600C89C9F /* covfmScreePlot.Rd */,
-				0EBC2E4F0A2F72B600C89C9F /* covfmSqrtMDPlot.Rd */,
+				0EBC2E4C0A2F72B600C89C9F /* ddPlot.covfm.Rd */,
+				0EBC2E4D0A2F72B600C89C9F /* ellipsesPlot.covfm.Rd */,
+				0EBC2E4E0A2F72B600C89C9F /* screePlot.covfm.Rd */,
+				0EBC2E4F0A2F72B600C89C9F /* distancePlot.covfm.Rd */,
 			);
 			name = covfm;
 			sourceTree = "<group>";
@@ -939,6 +944,7 @@
 		0EF220D71566FFFB00CFD1EF /* fitdstnRob */ = {
 			isa = PBXGroup;
 			children = (
+				0E2B2CD416B0E5BD0065531D /* fitdstn.Rd */,
 				0EF220D91567018100CFD1EF /* fitdstnRob.Rd */,
 				0EF220DB1567018100CFD1EF /* gammaRob.Rd */,
 				0EF220DA1567018100CFD1EF /* gammaRob.control.Rd */,

@@ -15,6 +15,6 @@ Author: Jiahui Wang,
         Martin Maechler <maechler@stat.math.ethz.ch>,
         Kjell Konis <kjell.konis@me.com>.
 Maintainer: Kjell Konis <kjell.konis@me.com>
-Depends: R (>= 2.15.0), fit.models, MASS, lattice, robustbase, rrcov, stats
+Depends: R (>= 2.15.0), fit.models, MASS, lattice, robustbase, rrcov
 License: GPL
 

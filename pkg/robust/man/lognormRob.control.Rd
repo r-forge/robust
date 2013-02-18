@@ -9,7 +9,7 @@ Create a list of control parameters for the lognormRob function.
 
 
 \usage{
-lognormRob.control(estim, ...)
+lognormRob.control(estim, \dots)
 }
 
 \arguments{
