@@ -51,7 +51,7 @@ an object of class "\code{covRob}" with components:
 
 \item{center}{a numeric vector containing the final robust estimate of the location vector.}
 
-\item{dist}{a numeric vector containing the squared Mahalanobis distances computed using robust estimates of covariance and location contained in \code{cov} and \code{center}. If \code{distance = FALSE} this element is set to \code{NA}.}
+\item{dist}{a numeric vector containing the squared Mahalanobis distances computed using robust estimates of covariance and location contained in \code{cov} and \code{center}. If \code{distance = FALSE} this element will me missing.}
 
 \item{raw.cov}{a numeric matrix containing the initial robust estimate of the covariance/correlation matrix. If there is no initial robust estimate then this element is set to \code{NA}.}
 

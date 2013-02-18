@@ -4,17 +4,17 @@
 \alias{plot.covfm}
 
 \title{
-  Plot Method
+  Plot Method 
 }
 
 \description{
-  The generic plot method for objects of class "covMLE", "covRob", and "covfm".
+  Generic plot method for objects with classes \dQuote{covfm}, \dQuote{covRob}, and \dQuote{covMLE}.
 }
 
 \usage{
-\method{plot}{covMLE}(x, which.plots = "ask", ...)
-\method{plot}{covRob}(x, which.plots = "ask", ...)
-\method{plot}{covfm}(x, which.plots = "ask", ...)
+\method{plot}{covMLE}(x, which.plots = c(4, 3, 5), \dots)
+\method{plot}{covRob}(x, which.plots = c(4, 3, 5), \dots)
+\method{plot}{covfm}(x, which.plots = c(4, 3, 5), \dots)
 }
 
 \arguments{
@@ -22,11 +22,11 @@
 
   \item{which.plots}{either "ask", "all", or an integer vector specifying which plots to draw.  If which.plots is an integer vector, use the plot numbers given here (or in the "ask" menu).  The plot options are (2) Eigenvalues of Covariance Estimate, (3) Sqrt of Mahalanobis Distances, (4) Ellipses Matrix, and (5) Distance - Distance Plot.}
 
-  \item{\dots}{additional arguments to be passed to the plotting subfunctions.}
+  \item{\dots}{additional arguments are passed to the plot subfunctions.}
 }
 
 \value{
-  x is invisibly returned.
+  \code{x} is invisibly returned.
 }
 
 \section{Side Effects}{
@@ -42,22 +42,24 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
   \code{\link{covMLE}},
   \code{\link{covRob}},
   \code{\link{fit.models}},
-  \code{\link{covfmDistancePlot}},
-  \code{\link{covfmEllipsesPlot}},
-  \code{\link{covfmScreePlot}},
-  \code{\link{covfmSqrtMDPlot}}.
+  \code{\link{ddPlot.covfm}},
+  \code{\link{ellipsesPlot.covfm}},
+  \code{\link{screePlot.covfm}},
+  \code{\link{distancePlot.covfm}}.
 }
 
 \examples{
 data(woodmod.dat)
-woodmod.cov <- covMLE(woodmod.dat)
-woodmod.covRob <- covRob(woodmod.dat)
-plot(woodmod.cov, which.plots = 1)
-plot(woodmod.covRob, which = 1)
 
-woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-                         data = woodmod.dat)
-plot(woodmod.fm, which = 1)
+woodm.cov <- covMLE(woodmod.dat)
+woodm.covRob <- covRob(woodmod.dat)
+
+plot(woodm.cov)
+plot(woodm.covRob)
+
+woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+                       data = woodmod.dat)
+plot(woodm.fm)
 }
 
 \keyword{methods}

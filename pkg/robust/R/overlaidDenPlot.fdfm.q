@@ -7,8 +7,8 @@ overlaidDenPlot.fdfm <- function(x, trunc = 1.0 - 1e-3, ...)
   if(!is.null(trunc)) {
     b <- numeric(n.models)
     for(i in 1:n.models)
-      b[i] <- do.call(paste("q", fm[[i]]$densfun, sep = ""),
-                      c(list(p = trunc), fm[[i]]$estimate))
+      b[i] <- do.call(paste("q", x[[i]]$densfun, sep = ""),
+                      c(list(p = trunc), x[[i]]$estimate))
     b <- min(b)
     data <- data[data < b]
 

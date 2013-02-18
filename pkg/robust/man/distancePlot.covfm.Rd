@@ -8,7 +8,7 @@
 }
 
 \usage{
-  distancePlot.covfm(x, level = 0.975, id.n = 3, ...)
+  distancePlot.covfm(x, level = 0.95, id.n = 3, ...)
 }
 
 \arguments{

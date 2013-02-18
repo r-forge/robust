@@ -1,4 +1,4 @@
-plot.covMLE <- function(x, which.plots = "ask", ...)
+plot.covMLE <- function(x, which.plots = c(4, 3, 5), ...)
 {
   x.name <- deparse(substitute(x))
   fm <- fit.models(x)

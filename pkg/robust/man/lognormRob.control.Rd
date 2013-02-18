@@ -4,7 +4,7 @@
 \title{Control Parameters for lognormRob}
 
 \description{
-Create a list of control parameters for the lognormRob function.
+Create a list of control parameters for the \code{lognormRob} function.
 }
 
 

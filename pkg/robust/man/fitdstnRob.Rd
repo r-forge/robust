@@ -16,11 +16,11 @@ fitdstnRob(x, densfun, \dots)
 
   \item{densfun}{a character string naming the distribution. Distributions \sQuote{gamma}, \sQuote{lognormal}, and \sQuote{weibull} are recognized.}
 
-  \item{\dots}{additional arguments are passed to the underlying functions.}
+  \item{\dots}{additional arguments are passed to the fitting functions.}
 }
 
 \value{
-a list with class "fitdstn" containing the following elements:
+a list with class \dQuote{fitdstn} containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 

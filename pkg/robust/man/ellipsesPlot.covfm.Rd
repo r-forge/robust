@@ -23,9 +23,9 @@
 
 \examples{
   data(woodmod.dat)
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-                           data = woodmod.dat)
-  ellipsesPlot.covfm(woodmod.fm)
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+                         data = woodmod.dat)
+  ellipsesPlot.covfm(woodm.fm)
 }
 
 \keyword{hplot}

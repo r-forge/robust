@@ -5,7 +5,7 @@ summary.covMLE <- function(object, ...)
   object$evals <- evals
 
   object <- object[c("call", "cov", "center", "evals", "dist", "corr")]
-  oldClass(object) <- "summary.cov"
+  oldClass(object) <- "summary.covMLE"
   object
 }
 

@@ -228,8 +228,15 @@ gammaRob <- function(x, estim = c("M", "tdmean"),
   names(estimate) <- c("shape", "scale")
   sd <- if(!is.null(zl$vcov)) sqrt(diag(zl$vcov)) else c(NA, NA)
 
-  list(estimate = estimate, sd = sd, vcov = zl$vcov, mu = zl$mu,
-       V.mu = zl$V.mu, control = control)
+  ans <- list(estimate = estimate,
+              sd = sd,
+              vcov = zl$vcov,
+              mu = zl$mu,
+              V.mu = zl$V.mu,
+              control = control)
+
+  oldClass(ans) <- "fitdstn"
+  ans
 }
 
 

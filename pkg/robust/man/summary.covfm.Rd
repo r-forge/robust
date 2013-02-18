@@ -48,15 +48,15 @@
 
 \examples{
   data(woodmod.dat)
-  woodmod.cov <- covMLE(woodmod.dat)
-  woodmod.sc <- summary(woodmod.cov)
+  woodm.cov <- covMLE(woodmod.dat)
+  summary(woodm.cov)
 
-  woodmod.covRob <- covRob(woodmod.dat)
-  woodmod.scr <- summary(woodmod.covRob)
+  woodm.covRob <- covRob(woodmod.dat)
+  summary(woodm.covRob)
 
-  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-                           data = woodmod.dat)
-  woodmod.sfm <- summary(woodmod.fm)
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+                         data = woodmod.dat)
+  summary(woodm.fm)
 }
 
 \keyword{methods}

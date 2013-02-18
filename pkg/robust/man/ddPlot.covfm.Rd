@@ -8,13 +8,15 @@
 }
 
 \usage{
-  ddPlot.covfm(x, level = 0.975, id.n = 3, ...)
+  ddPlot.covfm(x, level = 0.95, strip = "", id.n = 3, ...)
 }
 
 \arguments{
   \item{x}{a \code{"covfm"} object.}
 
   \item{level}{a single numeric value between 0 and 1 giving the chi-squared percent point used to compute the outlyingness threshold.}
+
+  \item{strip}{a character string printed in the \dQuote{strip} at the top of the plot.}
 
   \item{id.n}{a single nonnegative integer specifying the number of extreme points to label in the plot.}
 

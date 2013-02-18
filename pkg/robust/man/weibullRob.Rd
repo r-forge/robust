@@ -13,9 +13,9 @@ weibullRob(x, estim = c("M", "tdmean"), control = weibullRob.control(estim, \dot
 
 
 \arguments{
-  \item{x}{A numeric vector containing the sample.}
+  \item{x}{a numeric vector containing the sample.}
 
-  \item{estim}{a character string specifying the estimator to use.}
+  \item{estim}{a character string specifying which estimator to use.}
 
   \item{control}{a list of control parameters appropriate for the estimator in \code{estim}.}
 
@@ -23,7 +23,7 @@ weibullRob(x, estim = c("M", "tdmean"), control = weibullRob.control(estim, \dot
 }
 
 \value{
-a list with elements:
+a list with class \dQuote{fitdstn} containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 

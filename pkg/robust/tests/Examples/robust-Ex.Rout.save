@@ -34,6 +34,27 @@ Scalable Robust Estimators with High Breakdown Point (version 1.3-02)
 > 
 > assign(".oldSearch", search(), pos = 'CheckExEnv')
 > cleanEx()
+> nameEx("OverlaidDenPlot.fdfm")
+> ### * OverlaidDenPlot.fdfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: overlaidDenPlot.fdfm
+> ### Title: Overlaid Density Plot
+> ### Aliases: overlaidDenPlot.fdfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(los)
+>   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
++                          x = los, densfun = "gamma")
+>   overlaidDenPlot.fdfm(los.fm, xlab = "x-axis label", ylab = "y-axis label",
++                        main = "Plot Title")
+> 
+> 
+> 
+> cleanEx()
 > nameEx("anova.glmRob")
 > ### * anova.glmRob
 > 
@@ -135,7 +156,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > 
 > ### Name: covMLE
 > ### Title: Classical Covariance Estimation
-> ### Aliases: covMLE cov
+> ### Aliases: covMLE
 > ### Keywords: robust multivariate
 > 
 > ### ** Examples
@@ -211,74 +232,14 @@ Robust Estimate of Location:
 > 
 > 
 > cleanEx()
-> nameEx("covfmDistancePlot")
-> ### * covfmDistancePlot
+> nameEx("ddPlot.covfm")
+> ### * ddPlot.covfm
 > 
 > flush(stderr()); flush(stdout())
 > 
-> ### Name: covfmDistancePlot
+> ### Name: ddPlot.covfm
 > ### Title: Distance - Distance Plot
-> ### Aliases: covfmDistancePlot
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
->  data(woodmod.dat)
->  woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-+                           data = woodmod.dat)
->  covfmDistancePlot(woodmod.fm)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("covfmEllipsesPlot")
-> ### * covfmEllipsesPlot
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: covfmEllipsesPlot
-> ### Title: Ellipses Plot
-> ### Aliases: covfmEllipsesPlot
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
->   data(woodmod.dat)
->   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-+                            data = woodmod.dat)
->   covfmEllipsesPlot(woodmod.fm)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("covfmScreePlot")
-> ### * covfmScreePlot
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: covfmScreePlot
-> ### Title: Screeplot
-> ### Aliases: covfmScreePlot
-> ### Keywords: hplot
-> 
-> ### ** Examples
-> 
->   data(woodmod.dat)
->   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-+                            data = woodmod.dat)
->   covfmScreePlot(woodmod.fm)
-> 
-> 
-> 
-> cleanEx()
-> nameEx("covfmSqrtMDPlot")
-> ### * covfmSqrtMDPlot
-> 
-> flush(stderr()); flush(stdout())
-> 
-> ### Name: covfmSqrtMDPlot
-> ### Title: Side-by-Side (Square Root of) Mahalanobis Distances Plot
-> ### Aliases: covfmSqrtMDPlot
+> ### Aliases: ddPlot.covfm
 > ### Keywords: hplot
 > 
 > ### ** Examples
@@ -286,7 +247,29 @@ Robust Estimate of Location:
 >   data(woodmod.dat)
 >   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
 +                          data = woodmod.dat)
->   covfmSqrtMDPlot(woodm.fm)
+>   ddPlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
++                ylab = "y-axis label", pch = 4, col = "purple")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distancePlot.covfm")
+> ### * distancePlot.covfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distancePlot.covfm
+> ### Title: Side-by-Side Mahalanobis Distance Plot
+> ### Aliases: distancePlot.covfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(woodmod.dat)
+>   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
++                          data = woodmod.dat)
+>   distancePlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
++                      ylab = "y-axis label", pch = 4, col = "purple")
 > 
 > 
 > 
@@ -319,6 +302,26 @@ scale:  1.837073
 Air.Flow    1 36.213
 Water.Temp  1 20.829
 Acid.Conc.  1 16.049
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ellipsesPlot.covfm")
+> ### * ellipsesPlot.covfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ellipsesPlot.covfm
+> ### Title: Ellipses Plot - Visual Correlation Matrix Comparison
+> ### Aliases: ellipsesPlot.covfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(woodmod.dat)
+>   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
++                          data = woodmod.dat)
+>   ellipsesPlot.covfm(woodm.fm)
 > 
 > 
 > 
@@ -519,14 +522,36 @@ Residual Deviance: 29.59
 > ### ** Examples
 > 
 > data(woodmod.dat)
-> woodmod.cov <- covMLE(woodmod.dat)
-> woodmod.covRob <- covRob(woodmod.dat)
-> plot(woodmod.cov, which.plots = 1)
-> plot(woodmod.covRob, which = 1)
 > 
-> woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-+                          data = woodmod.dat)
-> plot(woodmod.fm, which = 1)
+> woodm.cov <- covMLE(woodmod.dat)
+> woodm.covRob <- covRob(woodmod.dat)
+> 
+> plot(woodm.cov)
+> plot(woodm.covRob)
+> 
+> woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
++                        data = woodmod.dat)
+> plot(woodm.fm)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.fdfm")
+> ### * plot.fdfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.fdfm
+> ### Title: fdfm Plot Method
+> ### Aliases: plot.fdfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(los)
+>   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
++                          x = los, densfun = "gamma")
+>   plot(los.fm)
 > 
 > 
 > 
@@ -621,6 +646,48 @@ $residual.scale
 $df
 [1] 17
 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("qqPlot.fdfm")
+> ### * qqPlot.fdfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: qqPlot.fdfm
+> ### Title: Comparison Quantile-Quantile Plot
+> ### Aliases: qqPlot.fdfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(los)
+>   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
++                          x = los, densfun = "gamma")
+>   qqPlot.fdfm(los.fm, xlab = "x-axis label", ylab = "y-axis label",
++               main = "Plot Title", pch = 4, col = "purple")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("screePlot.covfm")
+> ### * screePlot.covfm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: screePlot.covfm
+> ### Title: Comparison Screeplot
+> ### Aliases: screePlot.covfm
+> ### Keywords: hplot
+> 
+> ### ** Examples
+> 
+>   data(woodmod.dat)
+>   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
++                          data = woodmod.dat)
+>   screePlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
++                   ylab = "y-axis label", pch = 4:5)
 > 
 > 
 > 
@@ -750,15 +817,88 @@ Coefficients:
 > ### ** Examples
 > 
 >   data(woodmod.dat)
->   woodmod.cov <- covMLE(woodmod.dat)
->   woodmod.sc <- summary(woodmod.cov)
+>   woodm.cov <- covMLE(woodmod.dat)
+>   summary(woodm.cov)
+Call:
+covMLE(data = woodmod.dat)
+
+Classical Estimate of Covariance: 
+           V1         V2        V3         V4         V5
+V1  0.0082920 -0.0002912  0.003602  0.0026908 -0.0028684
+V2 -0.0002912  0.0004888 -0.000352 -0.0008388  0.0006124
+V3  0.0036022 -0.0003520  0.004185  0.0015788 -0.0016916
+V4  0.0026908 -0.0008388  0.001579  0.0039462 -0.0007920
+V5 -0.0028684  0.0006124 -0.001692 -0.0007920  0.0027570
+
+Classical Estimate of Location: 
+    V1     V2     V3     V4     V5 
+0.5508 0.1330 0.5087 0.5112 0.9070 
+
+Eigenvalues: 
+  Eval. 1   Eval. 2   Eval. 3   Eval. 4   Eval. 5 
+0.0128527 0.0029621 0.0021125 0.0016344 0.0001075 
+
+Classical Mahalanobis Distances: 
+    1     2     3     4     5     6     7     8     9    10    11    12    13 
+4.327 1.552 3.224 3.959 3.277 3.974 9.124 4.536 5.665 7.588 5.075 6.833 4.506 
+   14    15    16    17    18    19    20 
+1.500 1.945 9.049 4.548 4.637 4.599 5.084 
 > 
->   woodmod.covRob <- covRob(woodmod.dat)
->   woodmod.scr <- summary(woodmod.covRob)
+>   woodm.covRob <- covRob(woodmod.dat)
+>   summary(woodm.covRob)
+Call:
+covRob(data = woodmod.dat)
+
+Robust Estimate of Covariance: 
+          V1         V2         V3         V4         V5
+V1  0.038232  0.0066282 -0.0021650 -0.0015136 -0.0048570
+V2  0.006628  0.0016512  0.0001382 -0.0010400 -0.0003837
+V3 -0.002165  0.0001382  0.0036709  0.0001514  0.0015113
+V4 -0.001514 -0.0010400  0.0001514  0.0048313 -0.0014409
+V5 -0.004857 -0.0003837  0.0015113 -0.0014409  0.0044166
+
+Robust Estimate of Location: 
+    V1     V2     V3     V4     V5 
+0.5693 0.1189 0.5093 0.5399 0.8964 
+
+Eigenvalues: 
+  Eval. 1   Eval. 2   Eval. 3   Eval. 4   Eval. 5 
+0.0402612 0.0063495 0.0039998 0.0019171 0.0002747 
+
+Robust Distances: 
+ [1]  1.2996  0.3348  0.4099 15.8192  0.4578 18.0052  8.5876 24.2857  8.1617
+[10]  5.1665  2.0412  5.3157  5.7099  0.2672  0.3173  5.5845  3.4097  0.4362
+[19] 25.9520  3.5364
 > 
->   woodmod.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
-+                            data = woodmod.dat)
->   woodmod.sfm <- summary(woodmod.fm)
+>   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
++                          data = woodmod.dat)
+>   summary(woodm.fm)
+
+Calls: 
+Robust : covRob(data = woodmod.dat)
+Classical : covMLE(data = woodmod.dat)
+
+Comparison of Covariance/Correlation Estimates:
+ (unique correlation terms) 
+             [1,1]      [2,1]     [3,1]     [4,1]     [5,1]     [2,2]
+Robust    0.038232  0.0066282 -0.002165 -0.001514 -0.004857 0.0016512
+Classical 0.008292 -0.0002912  0.003602  0.002691 -0.002868 0.0004888
+               [3,2]      [4,2]      [5,2]    [3,3]     [4,3]     [5,3]
+Robust     0.0001382 -0.0010400 -0.0003837 0.003671 0.0001514  0.001511
+Classical -0.0003520 -0.0008388  0.0006124 0.004185 0.0015788 -0.001692
+             [4,4]     [5,4]    [5,5]
+Robust    0.004831 -0.001441 0.004417
+Classical 0.003946 -0.000792 0.002757
+
+Comparison of Location Estimates: 
+              V1     V2     V3     V4     V5
+Robust    0.5693 0.1189 0.5093 0.5399 0.8964
+Classical 0.5508 0.1330 0.5087 0.5112 0.9070
+
+Comparison of Eigenvalues: 
+          Eval. 1  Eval. 2  Eval. 3  Eval. 4   Eval. 5
+Robust    0.04026 0.006349 0.004000 0.001917 0.0002747
+Classical 0.01285 0.002962 0.002112 0.001634 0.0001075
 > 
 > 
 > 
@@ -954,7 +1094,7 @@ LS-estimate     2.640  0.6197
 > ### * <FOOTER>
 > ###
 > cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.21 0.062 1.274 0 0 
+Time elapsed:  3.797 0.076 4.066 0 0 
 > grDevices::dev.off()
 null device 
           1 

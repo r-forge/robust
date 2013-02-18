@@ -9,7 +9,7 @@ qqPlot.fdfm <- function(x, qqline = TRUE, ...)
   quantiles <- matrix(0.0, n, n.models)
 
   for(j in 1:n.models)
-    quantiles[,j] <- do.call(paste("q", fm[[j]]$densfun, sep = ""),
+    quantiles[,j] <- do.call(paste("q", x[[j]]$densfun, sep = ""),
                              c(list(p = p), x[[j]]$estimate))
 
   mod <- factor(rep(mod.names, each = n), levels = mod.names)

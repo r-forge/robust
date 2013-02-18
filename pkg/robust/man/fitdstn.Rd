@@ -24,7 +24,7 @@ This function relies on the \code{\link[MASS]{fitdistr}} function for the comput
 }
 
 \value{
-a list with class "fitdstn" containing the following elements:
+a list with class \dQuote{fitdstn} containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 

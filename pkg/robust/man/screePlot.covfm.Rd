@@ -8,13 +8,15 @@
 }
 
 \usage{
-  screePlot.covfm(x, npcs, ...)
+  screePlot.covfm(x, npcs, strip = "", ...)
 }
 
 \arguments{
   \item{x}{a \code{"covfm"} object.}
 
   \item{npcs}{a postive integer value specifying the number of components to be plotted.}
+
+  \item{strip}{a character string printed in the \dQuote{strip} at the top of the plot.}
 
   \item{\dots}{additional arguments are passed to \code{xyplot}.}
 }

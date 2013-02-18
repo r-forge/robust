@@ -92,6 +92,13 @@ S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
 
+S3method(coef, lmRob)
+S3method(residuals, lmRob)
+S3method(model.matrix, lmRob)
+S3method(model.frame, lmRob)
+S3method(print, lmRob)
+
+
 S3method(print, summary.lmRob)
 
 
@@ -124,8 +131,7 @@ S3method(print, summary.covMLE)
 ## S3 methods for fitdstnRob ##
 
 S3method(print, fitdstn)
-S3method(summary, fitdstnRob)
-S3method(print, summary.fitdstnRob)
+S3method(summary, fitdstn)
 
 
 ## S3 methods for fit.models ##

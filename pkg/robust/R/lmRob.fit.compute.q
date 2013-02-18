@@ -827,7 +827,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
   if(casefold(est) == "final")
     z$yc <- yc
 
-  oldClass(z) <- c("lmRob", "lm")
+  oldClass(z) <- "lmRob"
   z
 }
 

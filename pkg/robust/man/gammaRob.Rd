@@ -13,9 +13,9 @@ gammaRob(x, estim = c("M", "tdmean"), control = gammaRob.control(estim, \dots), 
 
 
 \arguments{
-  \item{x}{A numeric vector containing the sample.}
+  \item{x}{a numeric vector containing the sample.}
 
-  \item{estim}{a character string specifying the estimator to use.}
+  \item{estim}{a character string specifying which estimator to use.}
 
   \item{control}{a list of control parameters appropriate for the estimator in \code{estim}.}
 
@@ -23,7 +23,7 @@ gammaRob(x, estim = c("M", "tdmean"), control = gammaRob.control(estim, \dots), 
 }
 
 \value{
-a list with elements:
+a list with class \dQuote{fitdstn} containing the following elements:
 
   \item{estimate}{a named numeric vector containing the parameter estimates.}
 
@@ -37,7 +37,6 @@ a list with elements:
 
   \item{control}{a list containing the control parameters used by the estimator.}
 }
-
 
 \seealso{
 \code{\link{gammaRob.control}}, \code{\link{fitdstnRob}}.

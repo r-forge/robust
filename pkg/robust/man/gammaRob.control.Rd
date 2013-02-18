@@ -4,7 +4,7 @@
 \title{Control Parameters for gammaRob}
 
 \description{
-Create a list of control parameters for the gammaRob function.
+Create a list of control parameters for the \code{gammaRob} function.
 }
 
 \usage{

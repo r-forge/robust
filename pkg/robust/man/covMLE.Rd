@@ -1,7 +1,6 @@
 %% --- NOTA BENE:  Renamed function  from  cov() to ccov() to covMLE()
 \name{covMLE}
 \alias{covMLE}
-\alias{cov}% for now, backcompatibility
 
 \title{Classical Covariance Estimation}
 
@@ -37,7 +36,7 @@ covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
 }
 
 \value{
-  an object of class "\code{cov}" with components:
+  a list with class \dQuote{covMLE} containing the following elements:
 
   \item{call}{an image of the call that produced the object with all the arguments named.}
 
@@ -45,7 +44,7 @@ covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
 
   \item{center}{a numeric vector containing the estimate of the location vector.}
 
-  \item{dist}{a numeric vector containing the Mahalanobis distances.  Only
+  \item{dist}{a numeric vector containing the squared Mahalanobis distances.  Only
     present if \code{distance = TRUE} in the \code{call}.}
 
   \item{corr}{a logical flag.  If \code{corr = TRUE} then \code{cov}

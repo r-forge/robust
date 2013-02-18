@@ -25,8 +25,12 @@ fitdstn <- function(x, densfun, ...)
     weibull = fitdistr(x, "weibull", lower = 0.0)
   )
 
-  ans <- c(ans, call = the.call, densfun = densfun, data.name = data.name,
+  ans <- c(ans,
+           call = the.call,
+           densfun = densfun,
+           data.name = data.name,
            list(x = x))
+
   oldClass(ans) <- "fitdstn"
   ans
 }

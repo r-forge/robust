@@ -37,7 +37,6 @@ screePlot.covfm <- function(x, npcs, strip = "", ...)
               key = key,
               scales = x.scale,
               ...)
-              
 
   print(p)
   invisible(p)

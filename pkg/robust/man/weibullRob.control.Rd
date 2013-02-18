@@ -1,9 +1,10 @@
 \name{weibullRob.control}
 \alias{weibullRob.control}
+
 \title{Control Parameters for weibullRob}
 
 \description{
-Create a list of control parameters for the weibullRob function.
+Create a list of control parameters for the \code{weibullRob} function.
 }
 
 \usage{

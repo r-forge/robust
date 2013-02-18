@@ -19,9 +19,13 @@ fitdstnRob <- function(x, densfun, ...)
     weibull = weibullRob(x, ...)
   )
 
-  ans <- c(ans, call = the.call, densfun = densfun, data.name = data.name,
+  ans <- c(ans,
+           call = the.call,
+           densfun = densfun,
+           data.name = data.name,
            list(x = x))
-  oldClass(ans) <- c("fitdstnRob", "fitdstn")
+
+  oldClass(ans) <- "fitdstn"
   ans
 }
 
