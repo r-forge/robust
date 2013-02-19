@@ -9,7 +9,7 @@ Produces a set of comparison diagnostic plots.  The plot options are
 \describe{
   \item{(2)}{Normal QQ Plot of Modified Residuals,}
   \item{(3)}{Kernel Density Estimate of Modified Residuals,}
-  \item{(4)}{Modified Residuals vs. sqrt(Leverage),}
+  \item{(4)}{Modified Residuals vs. Leverage,}
   \item{(5)}{Modified Residuals vs. Fitted Values,}
   \item{(6)}{Scale-Location,}
   \item{(7)}{Response vs. Fitted Values,}
