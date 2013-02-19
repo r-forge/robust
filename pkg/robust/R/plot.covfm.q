@@ -70,6 +70,14 @@ plot.covfm <- function(x, which.plots = c(4, 3, 5), ...)
                         ylab = "Variances",
                         main = "Screeplot",
                         ...),
+
+        distancePlot.covfm(x,
+                           xlab = "Index",
+                           ylab = "Mahalanobis Distance",
+                           pch = 16,
+                           ...),
+
+        ellipsesPlot.covfm(x, ...),
         
         {
           strip <- paste(mod.names[1], "Distance vs.", mod.names[2], "Distance")
@@ -80,15 +88,7 @@ plot.covfm <- function(x, which.plots = c(4, 3, 5), ...)
                        main = "Distance-Distance Plot",
                        pch = 16,
                        ...)
-        },
-        
-        ellipsesPlot.covfm(x, ...),
-        
-        distancePlot.covfm(x,
-                           xlab = "Index",
-                           ylab = "Mahalanobis Distance",
-                           pch = 16,
-                           ...)
+        }
       )
     }
   }

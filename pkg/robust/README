@@ -20,7 +20,7 @@ This package contains the following robust methods:
   Robust Covariance estimation (scatter and location)
   Robust Linear Regression
   Robust Generalized Linear Models
-  Robust Gamma, Weibull , and lognormal parameter estimation
+  Robust Gamma, Weibull, and lognormal parameter estimation
 
 A method for side-by-side comparison of robust and classical models is also
 provided.  Please see Robust.pdf for further details.

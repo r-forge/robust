@@ -31,7 +31,7 @@ print.fdfm <- function(x, digits = max(3, getOption("digits") - 3), ...)
   for(i in 1:n.params)
     for(j in 1:n.models)
       estimates[i, j] <- paste(estimates[i, (2*j - 1):(2*j)], collapse = " ")
-  estimates <- estimates[, 1:n.models]
+  estimates <- estimates[, 1:n.models, drop = FALSE]
   dimnames(estimates) <- list(p.names, mod.names)
 
   print(estimates, quote = FALSE)

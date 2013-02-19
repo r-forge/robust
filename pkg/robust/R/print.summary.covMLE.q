@@ -17,7 +17,7 @@ print.summary.covMLE <- function(x, digits = max(3, getOption("digits") - 3),
   print(x$evals, digits = digits, ...)
 
   if(print.distance && !is.null(x$dist)) {
-    cat("\nClassical Mahalanobis Distances: \n")
+    cat("\nSquared Mahalanobis Distances: \n")
     print(x$dist, digits = digits, ...)
   }
 

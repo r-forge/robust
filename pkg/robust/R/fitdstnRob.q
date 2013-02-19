@@ -19,11 +19,8 @@ fitdstnRob <- function(x, densfun, ...)
     weibull = weibullRob(x, ...)
   )
 
-  ans <- c(ans,
-           call = the.call,
-           densfun = densfun,
-           data.name = data.name,
-           list(x = x))
+  ans$call <- the.call
+  ans$data.name <- data.name
 
   oldClass(ans) <- "fitdstn"
   ans

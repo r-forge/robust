@@ -41,6 +41,7 @@ distancePlot.covfm <- function(x, level = 0.95, id.n = 3, ...)
               data = tdf,
               panel = panel.special,
               strip = function(...) strip.default(..., style = 1),
+              layout = c(n.models, 1, 1),
               id.n = id.n,
               ...)
 

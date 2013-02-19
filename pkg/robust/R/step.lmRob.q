@@ -226,3 +226,5 @@ step.lmRob <- function(object, scope, scale, direction = c("both", "backward", "
 
 add1.lmRob <- function(u, v, w, x)
   stop("add1.lmRob is not implemented")
+
+

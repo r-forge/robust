@@ -37,6 +37,7 @@ qqPlot.fdfm <- function(x, qqline = TRUE, ...)
               panel = panel.special,
               qqline = qqline,
               strip = function(...) strip.default(..., style = 1),
+              layout = c(n.models, 1, 1),
               ...)
 
   print(p)

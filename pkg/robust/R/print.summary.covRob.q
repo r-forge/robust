@@ -17,7 +17,7 @@ print.summary.covRob <- function(x, digits = max(3, getOption("digits") - 3),
   print(x$evals, digits = digits, ...)
 
   if(print.distance && !is.null(x$dist)) {
-    cat("\nRobust Distances: \n")
+    cat("\nSquared Robust Distances: \n")
     print(x$dist, digits = digits, ...)
   }
 

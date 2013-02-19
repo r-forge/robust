@@ -1,8 +1,9 @@
 lognormRob <- function(x, estim = c("tdmean"),
                        control = lognormRob.control(estim, ...), ...)
 {
-	the.call <- match.call()
 	estim <- match.arg(estim)
+	the.call <- match.call()
+  data.name <- deparse(substitute(x))
 
 	beta <- control$beta
 	gam <- control$gam
@@ -121,7 +122,11 @@ lognormRob <- function(x, estim = c("tdmean"),
               vcov = zl$vcov,
               mu = zl$mu,
               V.mu = zl$V.mu,
-              control = control)
+              control = control,
+              call = the.call,
+              densfun = "lnorm",
+              data.name = data.name,
+              x = x)
 
   oldClass(ans) <- "fitdstn"
   ans

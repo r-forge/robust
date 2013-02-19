@@ -249,6 +249,8 @@
 		0E683F630B851CC400777DA9 /* summary.aovfm.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.aovfm.q; path = funs/aovRob/summary.aovfm.q; sourceTree = SOURCE_ROOT; };
 		0E683F640B851CC400777DA9 /* summary.aovRob.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = summary.aovRob.q; path = funs/aovRob/summary.aovRob.q; sourceTree = SOURCE_ROOT; };
 		0E70AD4516D2C2D400E3640D /* lm.methods.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = lm.methods.q; sourceTree = "<group>"; };
+		0E70AD5216D2D47900E3640D /* plot.fitdstn.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.fitdstn.q; sourceTree = "<group>"; };
+		0E70AD5416D2F2FD00E3640D /* robLev.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = robLev.q; sourceTree = "<group>"; };
 		0E8F52F70B8E4BBF00B057CB /* breslow.dat.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = breslow.dat.Rd; path = man/breslow.dat.Rd; sourceTree = SOURCE_ROOT; };
 		0E8F52FC0B8E4E2700B057CB /* glmRob.misclass.misc.q */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = glmRob.misclass.misc.q; path = R/glmRob.misclass.misc.q; sourceTree = SOURCE_ROOT; };
 		0E96A3870A55C021009C18C6 /* weight.funs.Rd */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = weight.funs.Rd; path = man/weight.funs.Rd; sourceTree = SOURCE_ROOT; };
@@ -418,6 +420,7 @@
 				0E636229154B4A4A00D3F31F /* print.fitdstn.q */,
 				0E63622F154B53DA00D3F31F /* summary.fitdstn.q */,
 				0E636230154B57F100D3F31F /* print.summary.fitdstnRob.q */,
+				0E70AD5216D2D47900E3640D /* plot.fitdstn.q */,
 				0E13E4001564C30900AB4198 /* fdfm */,
 			);
 			name = fitdstnRob;
@@ -1120,6 +1123,7 @@
 				0EBC2E400A2F71CE00C89C9F /* update.lmRob.q */,
 				0E70AD4516D2C2D400E3640D /* lm.methods.q */,
 				0E0ACBCF155A1A1F002E0744 /* labels.lmRob.q */,
+				0E70AD5416D2F2FD00E3640D /* robLev.q */,
 			);
 			name = methods;
 			path = R;

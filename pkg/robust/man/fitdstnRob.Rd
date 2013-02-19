@@ -39,6 +39,8 @@ a list with class \dQuote{fitdstn} containing the following elements:
   \item{densfun}{the character string \code{densfun} provided in the arguments.}
 
   \item{x}{the data provided in \code{x}.}
+
+The \code{print} method displays the estimated parameters and thier standard errors (in parentheses).
 }
 
 \seealso{

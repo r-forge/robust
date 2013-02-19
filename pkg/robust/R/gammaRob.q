@@ -3,6 +3,7 @@ gammaRob <- function(x, estim = c("M", "tdmean"),
 {
 	estim <- match.arg(estim)
 	the.call <- match.call()
+  data.name <- deparse(substitute(x))
 
 	if(estim == "M") {
 		maxit <- control$maxit
@@ -233,7 +234,11 @@ gammaRob <- function(x, estim = c("M", "tdmean"),
               vcov = zl$vcov,
               mu = zl$mu,
               V.mu = zl$V.mu,
-              control = control)
+              control = control,
+              call = the.call,
+              densfun = "gamma",
+              data.name = data.name,
+              x = x)
 
   oldClass(ans) <- "fitdstn"
   ans

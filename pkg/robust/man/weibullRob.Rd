@@ -36,6 +36,8 @@ a list with class \dQuote{fitdstn} containing the following elements:
   \item{V.mu}{a single numeric value containing the variance of the estimated mean.}
 
   \item{control}{a list containing the control parameters used by the estimator.}
+
+The \code{print} method displays the estimated parameters and thier standard errors (in parentheses).
 }
 
 
