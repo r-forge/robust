@@ -1,6 +1,6 @@
 Package: fit.models
-Version: 0.5-9
-Date: 2013-02-18
+Version: 0.5-10
+Date: 2013-02-20
 Title: fit.models
 Description: A framework for comparing fitted models
 Author: Kjell Konis <kjell.konis@me.com>.

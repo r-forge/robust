@@ -7,7 +7,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                "Response vs. Fitted Values",
                "Normal QQ Plot of Modified Pearson Residuals",
                "Normal QQ Plot of Modified Deviance Residuals",
-               "Pearson Residuals vs. sqrt(Leverage)",
+               "Pearson Residuals vs. Leverage",
                "Scale-Location")
 
   all.plots <- 2:length(choices)
@@ -93,12 +93,11 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                     ...),
 
         scatterPlot.lmfm(x,
-                         x.fun = function(u) sqrt(leverage(u)),
+                         x.fun = leverage,
                          y.fun = function(v) rmodified(v, type = "pearson"),
-                         xlab = expression(sqrt(plain("Leverage"))),
+                         xlab = expression(plain("Leverage")),
                          ylab = expression(plain("Modified Pearson Residuals")),
-                         main = expression(paste(plain("Modified Pearson Residuals vs. "),
-                                                 sqrt(plain("Leverage")))),
+                         main = expression(plain("Modified Pearson Residuals vs. Leverage")),
                          ...),
 
         scatterPlot.lmfm(x,
