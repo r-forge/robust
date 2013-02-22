@@ -1,4 +1,4 @@
-robLev <- function(object, scale = c("hii", "md"), ...)
+robLev <- function(object, scale = c("hii", "md2"), ...)
 {
   scale <- match.arg(scale)
   m <- model.frame(object)
@@ -29,12 +29,19 @@ robLev <- function(object, scale = c("hii", "md"), ...)
 
   D <- model.matrix(m.terms, m)
 
-  R <- qr.R(qr(D))
-  U <- backsolve(R, t(X), transpose = TRUE)
-  ans <- colSums(U^2)
-
-  if(scale == "md")
-    ans <- (nrow(X) - 1)*(ans - 1/nrow(X))
+  if(scale == "hii") {
+    R <- qr.R(qr(D))
+    U <- backsolve(R, t(X), transpose = TRUE)
+    ans <- colSums(U^2)
+  }
+  
+  else {
+    if(attr(m.terms, "intercept")) {
+      X <- X[, -1, drop = FALSE]
+      D <- D[, -1, drop = FALSE]
+    }
+    ans <- mahalanobis(X, apply(D, 2, mean), var(D))
+  }
 
   ans
 }
