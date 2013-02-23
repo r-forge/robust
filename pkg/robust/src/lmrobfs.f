@@ -127,7 +127,7 @@ C=======================================================================
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),THETA(N),RES(N),XPXH(NP,NP),XPXI(NP,NP)
-      DIMENSION X2(MDX,NP),SF(NP),SG(NP),SH(NP),IP(NP)
+      DIMENSION X2(MDX,NP),SF(NP),SG(3*NP),SH(NP),IP(NP)
       DIMENSION HDIAG(N),Q(NP,NP),U(NP,NP),Z(MDX,NP)
       DATA ZERO,ONE/0.D0,1.D0/
 C-----------------------------------------------------------------------     
@@ -202,15 +202,16 @@ c      CALL CHOL(XPXH,NP,SF,0,0,KK)
             Q(I,J) = S
          ENDDO
       ENDDO
-      CALL RS(NP,NP,Q,SF,1,U,SG,SH,INFO)
-      IF (INFO .EQ. 1) RETURN
+C      CALL RS(NP,NP,Q,SF,1,U,SG,SH,INFO)
+      CALL DSYEV('V','U',NP,Q,NP,SF,SG,3*NP,INFO)
+      IF (INFO .NE. 0) RETURN
       DO I = 1, N
          DO J = 1, NP
             S = ZERO
             DO KK = 1, NP
                DO LL = 1, NP
-c                  S = S+X2(I,KK)*XPXH(KK,LL)*U(LL,NP-J+1)
-                  S = S+X2(I,KK)*XPXH(KK,LL)*U(LL,J)
+C                  S = S+X2(I,KK)*XPXH(KK,LL)*U(LL,NP-J+1)
+                  S = S+X2(I,KK)*XPXH(KK,LL)*Q(LL,J)
                ENDDO
             ENDDO
             Z(I,J) = S
@@ -225,7 +226,7 @@ C=======================================================================
 C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),RES(N),XPXH(NP,NP),XPXI(NP,NP),Y2(N)
-      DIMENSION SF(NP),SG(NP),SH(NP),IP(NP),IPERM(N)
+      DIMENSION SF(NP),SG(3*NP),SH(NP),IP(NP),IPERM(N)
       DIMENSION HDIAG(N),Q(NP,NP),U(NP,NP),Z(MDX,NP),X2(MDX,NP)
       DIMENSION XX(MDX,NP),YY(N),THETA(N),XTHETA1(NP),XTHETA2(NP)
       LOGICAL ALLEQUAL

@@ -331,7 +331,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
                    TAU = as.double(tua),
                    K = integer(1),
                    SF = double(p),
-                   SG = double(p),
+                   SG = double(3*p),
                    SH = double(p),
                    IP = integer(p),
                    XPXH = matrix(0.0, p, p),
@@ -360,7 +360,7 @@ lmRob.fit.compute <- function(x, y, x1.idx = NULL, nrep = NULL,
                    C1 = as.double(2),
                    PACKAGE = "robust")
 
-    if(z1$IERR == 1)
+    if(z1$IERR != 0)
       stop("Singular matrix encountered in FORTRAN subroutine rlfastse")
 
     coeff0 <- z1$XTHETA2
