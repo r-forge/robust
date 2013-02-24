@@ -1,4 +1,4 @@
-plot.glmRob <- function(x, which.plots = c(2, 5, 8, 6), ...)
+plot.glmRob <- function(x, which.plots = c(2, 5, 7, 6), ...)
 {
   fm <- fit.models(x)
   names(fm) <- deparse(substitute(x))

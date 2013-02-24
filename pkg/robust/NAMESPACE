@@ -92,12 +92,10 @@ S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
 
-S3method(coef, lmRob)
 S3method(residuals, lmRob)
 S3method(model.matrix, lmRob)
 S3method(model.frame, lmRob)
 S3method(print, lmRob)
-
 
 S3method(print, summary.lmRob)
 
@@ -109,7 +107,14 @@ S3method(print, glmRob)
 S3method(summary, glmRob)
 S3method(labels, glmRob)
 S3method(predict, glmRob)
+
 S3method(residuals, glmRob)
+S3method(model.matrix, glmRob)
+S3method(model.frame, glmRob)
+S3method(print, glmRob)
+importFrom(stats, family)
+S3method(family, glmRob)
+S3method(leverage, glmRob)
 
 S3method(print, summary.glmRob)
 
@@ -138,6 +143,7 @@ importFrom(fit.models, leverage)
 S3method(leverage, lmRob)
 S3method(leverage, lmrob)
 S3method(leverage, rlm)
+S3method(leverage, glmrob)
 
 S3method(plot, covfm)
 S3method(print, covfm)

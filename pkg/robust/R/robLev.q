@@ -59,4 +59,7 @@ leverage.lmrob <- function(object, ...)
 leverage.rlm <- function(object, ...)
   robLev(object)
 
+leverage.glmrob <- function(object, ...)
+  robLev(object)
+
 

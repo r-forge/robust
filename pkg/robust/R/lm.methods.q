@@ -1,10 +1,3 @@
-coef.lmRob <- function(object, ...)
-{
-  oldClass(object) <- "lm"
-  coef(object)
-}
-
-
 residuals.lmRob <- function(object, ...)
 {
   oldClass(object) <- "lm"
