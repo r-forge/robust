@@ -261,6 +261,7 @@
 		0E9C45050E2129C800DE7FD9 /* compatibility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = compatibility.c; path = src/compatibility.c; sourceTree = SOURCE_ROOT; };
 		0E9C45200E212A7D00DE7FD9 /* lmRob.ga.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.ga.q; sourceTree = "<group>"; };
 		0E9C45210E212A7D00DE7FD9 /* lmRob.genetic.control.q */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmRob.genetic.control.q; sourceTree = "<group>"; };
+		0EA6994016DE8A6500FF51F5 /* globalVariables.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = globalVariables.q; sourceTree = "<group>"; };
 		0EB2E68A16D9927700271F4A /* glm.methods.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = glm.methods.q; sourceTree = "<group>"; };
 		0EB73D5A16CEC657004E4617 /* summary.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.fdfm.q; sourceTree = "<group>"; };
 		0EBB2D93154E5BD70053C2A7 /* plot.fdfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.fdfm.q; sourceTree = "<group>"; };
@@ -464,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				0E4500220A029C050064D9A4 /* library.q */,
+				0EA6994016DE8A6500FF51F5 /* globalVariables.q */,
 				0EBC2E440A2F726C00C89C9F /* gen.data.q */,
 				0E13EB471547221F00786D46 /* fitdstnRob */,
 				DA3B967F0A0610F100A2200C /* covRob */,
