@@ -6,9 +6,6 @@ fit.models <- function(model.list, ...)
   dots <- list(...)
   dots.names <- names(dots)
 
-#  if(is.null(attributes))
-#    attributes <- list()
-
   if(is.null(dots.names))
     dots.names <- character(length(dots))
 
@@ -63,7 +60,7 @@ fit.models <- function(model.list, ...)
   }
 
   else
-    cat("Assert: bigo-error, this should never happen!\n\n")
+    stop("impossible error: this should never happen!")
 
   if(any(nchar(model.names) == 0))
     stop("All models should be named")
@@ -85,30 +82,25 @@ fit.models <- function(model.list, ...)
   ## Now we should have a properly named list of fitted models.  Have to
   ## set the appropriate attributes.
 
-#  if(is.null(attributes$fmclass)) {
-    candidates <- lapply(fmreg, getElement, name = "classes")
-    classes <- sapply(model.list, function(u) class(u)[1])
+  candidates <- lapply(fmreg, getElement, name = "classes")
+  classes <- sapply(model.list, function(u) class(u)[1])
+
+  ## First, the fm class must beable to compare all the classes.
+
+  idx <- sapply(candidates, function(u) all(classes %in% u))
+  candidates <- candidates[idx]
+
+  if(!length(candidates)) {
+    warning("fit.models cannot compare the provided models")
+    return(invisible(model.list))
+  }
 
 
-    ## First, the fm class must beable to compare all the classes.
+  ## Try to choose the best comparable class.
 
-    idx <- sapply(candidates, function(u) all(classes %in% u))
-    candidates <- candidates[idx]
+  idx <- sapply(candidates, function(u) length(intersect(u, classes)))
+  fmclass <- names(which(idx == max(idx)))[1]
 
-    if(!length(candidates)) {
-      warning("fit.models cannot compare the provided models")
-      return(invisible(model.list))
-    }
-
-
-    ## Try to choose the best comparable class.
-
-    idx <- sapply(candidates, function(u) length(intersect(u, classes)))
-    #attributes$
-    fmclass <- names(which(idx == max(idx)))[1]
-#  }
-
-  #base::attributes(model.list) <- attributes
   oldClass(model.list) <- fmclass
   model.list
 }
