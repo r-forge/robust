@@ -16,9 +16,8 @@ covClassic <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
   colNames <- dn[[2]]
   if(is.null(colNames)) colNames <- paste("V", 1:p, sep = "")
 
-  if(length(center) != p && is.logical(center)) {
+  if(length(center) != p && is.logical(center))
     center <- if(center) apply(data, 2, mean) else numeric(p)
-  }
 
   data <- sweep(data, 2, center)
 
@@ -42,8 +41,5 @@ covClassic <- function(data, corr = FALSE, center = TRUE, distance = TRUE,
   oldClass(ans) <- c("covClassic")
   ans
 }
-
-
-covMLE <- covClassic
 
 

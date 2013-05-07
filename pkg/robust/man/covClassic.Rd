@@ -1,7 +1,6 @@
 %% --- NOTA BENE:  Renamed function  from  cov() to ccov() to covClassic()
 \name{covClassic}
 \alias{covClassic}
-\alias{covMLE}
 
 \title{Classical Covariance Estimation}
 
@@ -16,9 +15,6 @@
 \usage{
 covClassic(data, corr = FALSE, center = TRUE, distance = TRUE,
            na.action = na.fail, unbiased = TRUE, ...)
-
-covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
-       na.action = na.fail, unbiased = TRUE, ...)
 }
 
 \arguments{

@@ -155,7 +155,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 > 
 > ### Name: covClassic
 > ### Title: Classical Covariance Estimation
-> ### Aliases: covClassic covMLE
+> ### Aliases: covClassic
 > ### Keywords: robust multivariate
 > 
 > ### ** Examples
