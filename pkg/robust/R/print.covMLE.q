@@ -1,4 +1,4 @@
-print.covMLE <- function(x, digits = max(3, getOption("digits") - 3), ...)
+print.covClassic <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   cat("Call:\n")
   dput(x$call)

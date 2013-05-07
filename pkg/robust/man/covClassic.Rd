@@ -1,11 +1,12 @@
-%% --- NOTA BENE:  Renamed function  from  cov() to ccov() to covMLE()
-\name{covMLE}
+%% --- NOTA BENE:  Renamed function  from  cov() to ccov() to covClassic()
+\name{covClassic}
+\alias{covClassic}
 \alias{covMLE}
 
 \title{Classical Covariance Estimation}
 
 \description{
-  Computes an estimate of the covariance/correlation matrix and location
+  Compute an estimate of the covariance/correlation matrix and location
   vector using classical methods.
 
   Its main intention is to return an object compatible to that
@@ -13,8 +14,11 @@
 }
 
 \usage{
+covClassic(data, corr = FALSE, center = TRUE, distance = TRUE,
+           na.action = na.fail, unbiased = TRUE, ...)
+
 covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
-       na.action = na.fail, unbiased = TRUE, control = list())
+       na.action = na.fail, unbiased = TRUE, ...)
 }
 
 \arguments{
@@ -31,12 +35,11 @@ covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
   \item{unbiased}{logical indicating if an unbiased estimate of the
     covariance matrix is should becomputed.  If false, the maximum
     likelihood estimate is computed.}
-  \item{control}{not used, but necessarily allowed in order to fit the
-    \code{\link{fit.models}} framework.}
+  \item{...}{additional .}
 }
 
 \value{
-  a list with class \dQuote{covMLE} containing the following elements:
+  a list with class \dQuote{covClassic} containing the following elements:
 
   \item{call}{an image of the call that produced the object with all the arguments named.}
 
@@ -65,7 +68,7 @@ covMLE(data, corr = FALSE, center = TRUE, distance = TRUE,
 
 \examples{
   data(stack.dat)
-  covMLE(stack.dat)
+  covClassic(stack.dat)
 }
 
 \keyword{robust}

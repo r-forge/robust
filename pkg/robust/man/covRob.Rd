@@ -86,7 +86,7 @@ Version 0.3-8 of the Robust Library: all of the functions origianlly contributed
   \code{\link[rrcov]{CovOgk}},
   \code{\link[rrcov]{covMest}},
   \code{\link{covRob.control}},
-  \code{\link{covMLE}}.
+  \code{\link{covClassic}}.
 }
 
 \examples{

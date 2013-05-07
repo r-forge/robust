@@ -23,7 +23,7 @@
 
 \examples{
   data(woodmod.dat)
-  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
                          data = woodmod.dat)
   ellipsesPlot.covfm(woodm.fm)
 }

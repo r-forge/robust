@@ -56,7 +56,7 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+	temp <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
                            data = covRob.data,
                            control = covRob.control(estim = "donostah"))
 	pdf("plot.fit.models.cov.both.pdf")
@@ -142,7 +142,7 @@
 
 {
 	#make a fit.models object and start pdf device
-	temp <- fit.models(list(Classical = "covMLE"), data = covRob.data, control = covRob.control(estim = "donostah"))
+	temp <- fit.models(list(Classical = "covClassic"), data = covRob.data, control = covRob.control(estim = "donostah"))
 	pdf("plot.fit.models.cov.only.pdf")
 	TRUE
 }

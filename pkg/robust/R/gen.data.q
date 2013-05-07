@@ -1,5 +1,5 @@
 gen.data <- function(coeff, n = 100, eps = 0.1, sig = 3,
-              snr = 1/20, seed = 837)
+                     snr = 1/20, seed = 837)
 {
 
 # coeff : 3 x 1 vector of coefficients

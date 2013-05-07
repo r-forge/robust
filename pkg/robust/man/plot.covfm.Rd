@@ -1,24 +1,24 @@
 \name{plot.covfm}
-\alias{plot.covMLE}
-\alias{plot.covRob}
 \alias{plot.covfm}
+\alias{plot.covRob}
+\alias{plot.covClassic}
 
 \title{
   Plot Method 
 }
 
 \description{
-  Generic plot method for objects with classes \dQuote{covfm}, \dQuote{covRob}, and \dQuote{covMLE}.
+  Generic plot method for objects with classes \dQuote{covfm}, \dQuote{covRob}, and \dQuote{covClassic}.
 }
 
 \usage{
-\method{plot}{covMLE}(x, which.plots = c(4, 3, 5), \dots)
-\method{plot}{covRob}(x, which.plots = c(4, 3, 5), \dots)
 \method{plot}{covfm}(x, which.plots = c(4, 3, 5), \dots)
+\method{plot}{covRob}(x, which.plots = c(4, 3, 5), \dots)
+\method{plot}{covClassic}(x, which.plots = c(4, 3, 5), \dots)
 }
 
 \arguments{
-  \item{x}{an oject of class "cov", "covRob", or "covfm".}
+  \item{x}{an oject of class "covClassic", "covRob", or "covfm".}
 
   \item{which.plots}{either "ask", "all", or an integer vector specifying which plots to draw.  If which.plots is an integer vector, use the plot numbers given here (or in the "ask" menu).  The plot options are (2) Eigenvalues of Covariance Estimate, (3) Sqrt of Mahalanobis Distances, (4) Ellipses Matrix, and (5) Distance - Distance Plot.}
 
@@ -39,7 +39,7 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 
 \seealso{
   \code{\link{plot}},
-  \code{\link{covMLE}},
+  \code{\link{covClassic}},
   \code{\link{covRob}},
   \code{\link{fit.models}},
   \code{\link{ddPlot.covfm}},
@@ -51,13 +51,13 @@ The actual plot functions are only implemented for "fit.models" objects.  When t
 \examples{
 data(woodmod.dat)
 
-woodm.cov <- covMLE(woodmod.dat)
+woodm.cov <- covClassic(woodmod.dat)
 woodm.covRob <- covRob(woodmod.dat)
 
 plot(woodm.cov)
 plot(woodm.covRob)
 
-woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
                        data = woodmod.dat)
 plot(woodm.fm)
 }

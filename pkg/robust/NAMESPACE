@@ -40,14 +40,14 @@ export(
   residuals.glmRob,
 
 
-  # covRob / covMLE
+  # covRob / covClassic
   covRob,
   covRob.control,
   summary.covRob,
   plot.covRob,
-  covMLE,
-  summary.covMLE,
-  plot.covMLE,
+  covClassic,
+  summary.covClassic,
+  plot.covClassic,
 
   # Covariance Comparison
   summary.covfm,
@@ -119,15 +119,15 @@ S3method(leverage, glmRob)
 S3method(print, summary.glmRob)
 
 
-## S3 methods for covRob/covMLE ##
+## S3 methods for covRob/covClassic ##
 
 S3method(print, covRob)
 S3method(summary, covRob)
 S3method(print, summary.covRob)
 
-S3method(print, covMLE)
-S3method(summary, covMLE)
-S3method(print, summary.covMLE)
+S3method(print, covClassic)
+S3method(summary, covClassic)
+S3method(print, summary.covClassic)
 
 
 ## S3 methods for fitdstnRob ##

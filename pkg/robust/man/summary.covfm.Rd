@@ -1,5 +1,5 @@
 \name{summary.covfm}
-\alias{summary.covMLE}
+\alias{summary.covClassic}
 \alias{summary.covRob}
 \alias{summary.covfm}
 
@@ -8,23 +8,23 @@
 }
 
 \description{
-  The generic summary method for objects of class "covMLE", "covRob", and "covfm".
+  The generic summary method for objects of class "covClassic", "covRob", and "covfm".
 }
 
 \usage{
-\method{summary}{covMLE}(object, ...)
+\method{summary}{covClassic}(object, ...)
 \method{summary}{covRob}(object, ...)
 \method{summary}{covfm}(object, ...)
 }
 
 \arguments{
-  \item{object}{an object of class "covMLE", "covRob", or "covfm".}
+  \item{object}{an object of class "covClassic", "covRob", or "covfm".}
 
   \item{\dots}{additional arguments for the summary method.}
 }
 
 \value{
-  an object of class "summary.covMLE", "summary.covRob", or "summary.covfm" respectively.  Objects of class "summary.cov" and "summary.covRob" have the following components.  Objects of class "summary.covfm" are lists whose elements are "summary.cov" and "summary.covRob" objects.
+  an object of class "summary.covClassic", "summary.covRob", or "summary.covfm" respectively.  Objects of class "summary.cov" and "summary.covRob" have the following components.  Objects of class "summary.covfm" are lists whose elements are "summary.cov" and "summary.covRob" objects.
 
   \item{call}{an image of the call that produced the object with all the arguments named.}
 
@@ -41,20 +41,20 @@
 
 \seealso{
   \code{\link{summary}},
-  \code{\link{covMLE}},
+  \code{\link{covClassic}},
   \code{\link{covRob}},
   \code{\link{fit.models}}.
 }
 
 \examples{
   data(woodmod.dat)
-  woodm.cov <- covMLE(woodmod.dat)
+  woodm.cov <- covClassic(woodmod.dat)
   summary(woodm.cov)
 
   woodm.covRob <- covRob(woodmod.dat)
   summary(woodm.covRob)
 
-  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
                          data = woodmod.dat)
   summary(woodm.fm)
 }

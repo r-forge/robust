@@ -14,7 +14,7 @@
   fmclass.add.class("glmfm", "glmRob")
   fmclass.add.class("glmfm", "glmrob")
 
-  fmclass.register("covfm", c("covRob", "covMLE"))
+  fmclass.register("covfm", c("covRob", "covClassic"))
 
   fmclass.register("fdfm", c("fitdstnRob", "fitdstn"))
 

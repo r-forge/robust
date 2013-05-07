@@ -29,7 +29,7 @@ if the models can be compared then the plotted \code{trellis} object is invisibl
 
 \examples{
   data(woodmod.dat)
-  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covMLE"),
+  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
                          data = woodmod.dat)
   ddPlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
                ylab = "y-axis label", pch = 4, col = "purple")
