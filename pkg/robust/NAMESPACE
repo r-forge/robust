@@ -76,7 +76,6 @@ export(
   qqPlot.fdfm,
 
 
-
   ## Other ##
   gen.data
 )
@@ -84,6 +83,7 @@ export(
 
 ## S3 methods for lmRob ##
 
+importFrom(stats, hatvalues)
 S3method(anova, lmRob)
 S3method(drop1, lmRob)
 S3method(labels, lmRob)
@@ -91,7 +91,7 @@ S3method(plot, lmRob)
 S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
-
+S3method(hatvalues, lmRob)
 S3method(residuals, lmRob)
 S3method(model.matrix, lmRob)
 S3method(model.frame, lmRob)
@@ -107,14 +107,13 @@ S3method(print, glmRob)
 S3method(summary, glmRob)
 S3method(labels, glmRob)
 S3method(predict, glmRob)
-
+S3method(hatvalues, glmRob)
 S3method(residuals, glmRob)
 S3method(model.matrix, glmRob)
 S3method(model.frame, glmRob)
 S3method(print, glmRob)
 importFrom(stats, family)
 S3method(family, glmRob)
-S3method(leverage, glmRob)
 
 S3method(print, summary.glmRob)
 
@@ -139,12 +138,6 @@ S3method(plot, fitdstn)
 
 ## S3 methods for fit.models ##
 
-importFrom(fit.models, leverage)
-S3method(leverage, lmRob)
-S3method(leverage, lmrob)
-S3method(leverage, rlm)
-S3method(leverage, glmrob)
-
 S3method(plot, covfm)
 S3method(print, covfm)
 S3method(summary, covfm)
@@ -155,7 +148,9 @@ S3method(summary, fdfm)
 S3method(plot, fdfm)
 
 
+## S3 methods for other packages ##
 
-
-
+S3method(hatvalues, rlm)
+S3method(hatvalues, lmrob)
+S3method(hatvalues, glmrob)
 

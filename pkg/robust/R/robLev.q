@@ -1,4 +1,4 @@
-robLev <- function(object, scale = c("hii", "md2"), ...)
+robMD2 <- function(object, scale = c("md2", "hat"), X = NULL)
 {
   scale <- match.arg(scale)
   m <- model.frame(object)
@@ -7,7 +7,9 @@ robLev <- function(object, scale = c("hii", "md2"), ...)
     return(rep(as.numeric(NA), length(fitted(object))))
 
   m.terms <- terms(m)
-  X <- model.matrix(m.terms, m)
+
+  if(is.null(X))
+    X <- model.matrix(m.terms, m)
 
   dc <- attr(m.terms, "dataClasses")
   tl <- attr(m.terms, "term.labels")
@@ -29,7 +31,7 @@ robLev <- function(object, scale = c("hii", "md2"), ...)
 
   D <- model.matrix(m.terms, m)
 
-  if(scale == "hii") {
+  if(scale == "hat") {
     R <- qr.R(qr(D))
     U <- backsolve(R, t(X), transpose = TRUE)
     ans <- colSums(U^2)
@@ -47,19 +49,28 @@ robLev <- function(object, scale = c("hii", "md2"), ...)
 }
 
 
-leverage.lmRob <- function(object, ...)
-  robLev(object)
+hatvalues.lmRob <- function(model, ...)
+  robMD2(model, scale = "hat", X = model$x)
 
 
-## Doesn't really belong in this package ##
+## Methods for other packages ##
 
-leverage.lmrob <- function(object, ...)
-  robLev(object)
 
-leverage.rlm <- function(object, ...)
-  robLev(object)
+hatvalues.lmrob <- function(model, ...)
+  robMD2(model, scale = "hat")
 
-leverage.glmrob <- function(object, ...)
-  robLev(object)
+
+hatvalues.glmrob <- function(model, ...)
+  robMD2(model, scale = "hat")
+
+
+hatvalues.rlm <- function(model, ...)
+  robMD2(model, scale = "hat")
+
+
+
+
+
+
 
 

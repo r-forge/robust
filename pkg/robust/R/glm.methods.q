@@ -33,7 +33,7 @@ family.glmRob <- function(object, ...)
 }
 
 
-leverage.glmRob <- function(object, ...)
-  robLev(object)
+hatvalues.glmRob <- function(model, ...)
+  robMD2(model, scale = "md2", X = model$x)
 
 
