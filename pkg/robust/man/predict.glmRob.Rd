@@ -8,7 +8,9 @@ Obtains predictions and optionally estimates standard errors of those prediction
 }
 
 \usage{
-\method{predict}{glmRob}(object, newdata, type = c("link", "response", "terms"), se.fit = FALSE, terms = labels(object), dispersion = NULL, ...)
+\method{predict}{glmRob}(object, newdata,
+       type = c("link", "response", "terms"), se.fit = FALSE,
+       terms = labels(object), dispersion = NULL, ...)
 }
 
 \arguments{
@@ -42,7 +44,7 @@ If \code{se.fit = FALSE}, a vector or matrix of predictions.  Otherwise a list w
 
 \examples{
 data(breslow.dat)
-bres.rob <- glmRob(sumY ~ Age10 + Base4 * Trt, family = poisson(), data = breslow.dat) 
+bres.rob <- glmRob(sumY ~ Age10 + Base4 * Trt, family = poisson(), data = breslow.dat)
 predict(bres.rob)
 }
 
