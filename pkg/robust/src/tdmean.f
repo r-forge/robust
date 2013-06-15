@@ -5,7 +5,7 @@ c$$$C
 c$$$C                   DOUBLE PRECISION VERSION
 c$$$C                   ************************
 c$$$C
-c$$$C  MACHINE PARAMETERS : TO  ALTER  THIS  SUBROUTINE  FOR  A PARTICULAR 
+c$$$C  MACHINE PARAMETERS : TO  ALTER  THIS  SUBROUTINE  FOR  A PARTICULAR
 c$$$C  ++++++++++++++++++   ENVIRONMENT, THE DESIRED SET OF DATA STATEMENT
 c$$$C  SHOULD BE ACTIVATED BY REMOVING THE "C" FROM COLUMN ONE  AND ADDING
 c$$$C  THE "C" FOR THE TWO LINES AFTER "... VAX FORTRAN (V5) compiler".
@@ -57,7 +57,7 @@ c$$$      RETURN
 c$$$      END
 c$$$C
 c$$$C==========================================================================
-C     
+C
 c$$$      DOUBLE PRECISION FUNCTION RLEXU(X)
 c$$$      DOUBLE PRECISION X
 c$$$      RLEXU=X
@@ -79,7 +79,7 @@ c$$$      IF (NCALL.EQ.0) THEN
 c$$$        CALL RLMACHD(4,XMIN)
 c$$$        CALL RLMACHD(5,YMIN)
 c$$$        NCALL=1
-c$$$      ENDIF 
+c$$$      ENDIF
 c$$$C
 c$$$C  EXTENDED NATURAL LOGARITHM FUNCTION
 c$$$C
@@ -91,7 +91,7 @@ c$$$      ELSE
 c$$$        RLXLOGD=DLOG(X)
 c$$$      ENDIF
 c$$$      RETURN
-c$$$      END 
+c$$$      END
 c$$$C
 c$$$C-----------------------------------------------------------------------
 c$$$C
@@ -228,7 +228,7 @@ C                                  CERFD(XBIG) .APPROX. DETAP
       DATA               XBIG/13.3D0/
       DATA               SQRPI/.5641895835477563D0/
 C
-      Y=X
+      Y=real(X)
       XX = Y
       ISW = 1
       IF (XX.GE.0.0D0) GO TO 5
@@ -320,7 +320,7 @@ C     1   .OR.LIMIT.GT.500)  CALL MESSGE(500,'INTGRD',1)
       CALL RLQAGE1T(F,FARR,N,FEXT,GEXT,A,B,EPSABS,EPSREL,KEY,LIMIT,
      1     RESULT,ABSERR,NEVAL,IER,
      2     WORK,WORK(BLIST),WORK(RLIST),WORK(ELIST),IWORK,LAST,
-     2	   NPR,PARAM)
+     3     NPR,PARAM)
 C
       RETURN
       END
@@ -328,9 +328,9 @@ C
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLQAGE1T(F,FARR,N,FEXT,GEXT,A,B,EPSABS,EPSREL,KEY,
-     *  LIMIT,
-     *  RESULT,ABSERR,NEVAL,IER,ALIST,BLIST,RLIST,ELIST,IORD,LAST,
-     * 	NPR,PARAM)
+     *     LIMIT,
+     *     RESULT,ABSERR,NEVAL,IER,ALIST,BLIST,RLIST,ELIST,IORD,LAST,
+     *     NPR,PARAM)
 C.......................................................................
 C
 C   AUTHOR :     QUADPACK
@@ -523,7 +523,7 @@ C
    60 IF(KEYF.NE.1) NEVAL = (10*KEYF+1)*(2*NEVAL+1)
       IF(KEYF.EQ.1) NEVAL = 30*NEVAL+15
 C  999 IF (IER.NE.0) CALL MESSGE(400+IER,'QAGE1D',0)
-  999 CONTINUE
+      CONTINUE
       RETURN
       END
 C
@@ -961,9 +961,9 @@ c$$$   40 CONTINUE
 c$$$      GOTO 20
 c$$$   90 CONTINUE
 c$$$      END
-C*** 
+C***
 C======================================================================
-C*** 
+C***
       SUBROUTINE RLQUANTD(P,XX)
 C**********************************************************************
 C     Normal distribution inverse
@@ -1072,13 +1072,13 @@ C ----------------------------------------------------------------------
 C            INVERSE INCOMPLETE GAMMA RATIO FUNCTION
 C
 C     GIVEN A>0 , AND NONEGATIVE P THEN X IS COMPUTED WHERE P(A,X) = P.
-C     SCHRODER ITERATION IS EMPLOYED. 
+C     SCHRODER ITERATION IS EMPLOYED.
 C                      ------------
 C
 C     X IS A VARIABLE. IF P = 0 THEN X IS ASSIGNED THE VALUE 0,
 C     OTHERWISE, RLQGAMMA ATTEMPTS TO OBTAIN A SOLUTION FOR P(A,X) = P.
 C     IF THE ROUTINE IS SUCCESSFUL THEN THE SOLUTION IS STORED IN X.
-C     
+C
 C     MESSAGE THAT REPORTS THE ERROR STATUS OF THE RESULTS.
 C
 C       MESSAGE 403   NO SOLUTION WAS OBTAINED. THE RATIO (1-P)/A
@@ -1088,8 +1088,8 @@ C                     THIS MAY OCCUR WHEN X IS APPROXIMATELY 0.
 C       MESSAGE 408   A VALUE FOR X HAS BEEN OBTAINED, BUT THE
 C                     ROUTINE IS NOT CERTAIN OF ITS ACCURACY.
 C                     ITERATION CANNOT BE PERFORMED IN THIS
-C                     CASE. THIS CAN OCCUR IF P OR 1-P IS 
-C                     APPROXIMATELY 0. 
+C                     CASE. THIS CAN OCCUR IF P OR 1-P IS
+C                     APPROXIMATELY 0.
 C ----------------------------------------------------------------------
 C     WRITTEN BY ALFRED H. MORRIS, JR.
 C        NAVAL SURFACE WEAPONS CENTER
@@ -1191,7 +1191,7 @@ C         XN = Y - S*RLXLOGD(T,XL,YL) - RLXLOGD(U,XL,YL)
    12 C1 = -S*Z
       C2 = -S*(1.D0 + C1)
       C3 =  S*((0.5D0*C1 + (2.D0 - A))*C1 + (2.5D0 - 1.5D0*A))
-      C4 = -S*(((C1/3.D0 + (2.5D0 - 1.5D0*A))*C1 + ((A - 6.D0)*A + 
+      C4 = -S*(((C1/3.D0 + (2.5D0 - 1.5D0*A))*C1 + ((A - 6.D0)*A +
      *       7.D0))*C1 + ((11.D0*A - 46.D0)*A + 47.D0)/6.D0)
       C5 = -S*((((-C1/4.D0 + (11.D0*A - 17.D0)/6.D0)*C1
      *           + ((-3.D0*A + 13.D0)*A - 13.D0))*C1
@@ -1266,8 +1266,8 @@ C
          AP2 = A + 2.D0
          AP3 = A + 3.D0
          X = RLXEXPD((W + X)/A)
-C         TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2),XL,YL) 
-         TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2)) 
+C         TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2),XL,YL)
+         TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2))
          X = RLXEXPD((W + X - TX)/A)
 C         TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2),XL,YL)
          TX = RLXLOGD(1.D0 + (X/AP1)*(1.D0 + X/AP2))
@@ -1339,7 +1339,7 @@ C
 C
   210 IF (IERR .GE. 20) GO TO 530
       IERR = IERR + 1
-      CALL RLINGAMA (XN, A, PN) 
+      CALL RLINGAMA (XN, A, PN)
       QN=1.D0-PN
       IF (PN .EQ. 0.D0 .OR. QN .EQ. 0.D0) GO TO 550
       R = RLRCOMP(A,XN)
@@ -1527,7 +1527,7 @@ C     -------------------
       IF (A .GE. 1.D0) GO TO 10
          RLRCOMP = (A*DEXP(T))*(1.D0 + RLGAM1(A))
          RETURN
-   10 CALL RLLGAMAD(A,AL)      
+   10 CALL RLLGAMAD(A,AL)
       RLRCOMP = RLXEXPD(T-AL)  !/GAMMA(A)
       RETURN
 C
@@ -1574,7 +1574,7 @@ C
         CALL RLMACHD(5,YLGMN)
         CALL RLMACHD(6,XMAX)
       ENDIF
-c      IF (ALPHA.LE.0.D0.OR.SIGMA.LE.0..OR.P.LT.0..OR.P.GT.1.) 
+c      IF (ALPHA.LE.0.D0.OR.SIGMA.LE.0..OR.P.LT.0..OR.P.GT.1.)
 c     +CALL MESSGE(500,'QWEIBL',1)
       X=0.D0
       IF (P.LE.0.D0) RETURN
@@ -1590,7 +1590,7 @@ c     +CALL MESSGE(500,'QWEIBL',1)
       IF (XT.GT.EXMIN) XT=DEXP(T)
       X=XT*SIGMA
       RETURN
-      END 
+      END
 C-----------------------------------------------------------------------
       SUBROUTINE RLPLNORM(ALPHA,SIGMA,X,P)
       implicit double precision(a-h,o-z)
@@ -1660,11 +1660,11 @@ C-----------------------------------------------------------------------
         IF (I.LT.IUL) GOTO 200
         AREA=SUMU+SU*X(IU+1)-SUML-SL*X(IL+1)
         UNITS=SU-SL+FLOAT(IU-IL)
-        POS=AREA/UNITS          
+        POS=AREA/UNITS
       ENDIF
       RETURN
       END
-C      
+C
       SUBROUTINE RLTMADVE(X,N,BETA,GAM,POS,SCAL,SX)
       implicit double precision(a-h,o-z)
       DIMENSION X(N),SX(N)
@@ -1694,7 +1694,7 @@ C-----------------------------------------------------------------------
       ENDIF
       RETURN
       END
-C 
+C
       DOUBLE PRECISION FUNCTION RLEQAD1G(DD,V,NV,PARAM)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION DD,V(NV),M,MMD,PARAM(1)
@@ -1711,7 +1711,7 @@ C
       RLEQAD1G=DBLE(TMP)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQAD1DG(ALPHA,BETA,GAM,TOL,QAD1,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLEQAD1G,QAD,SMIN,SMAX,PARAM(1)
@@ -1769,7 +1769,7 @@ c      DOUBLE PRECISION ASLVDG,A,B,FA,FB,TL,TOLD,X,XN,FN
       TOLD=DBLE(TOL)
       IF (A.GE.100.D0) TOLD=DMIN1(5.D-3,TOLD)
       MAXIT=100
-C     WARNING: 
+C     WARNING:
 C     A CALL TO RGFLD HERE CAUSES RECURSION AND WRONG RESULTS!!
 C     CALL RLRGFLD(ASLVDG,V,0.D0,A,B,TOLD,MAXIT,X,ITERM)
       ITR=1
@@ -1833,13 +1833,13 @@ c      DOUBLE PRECISION AA,A0,PA0,B0,A1,PA1,B1,A2,PA2,B2,SS,SUP,SLOW
         A2=PA2*AA*SS
         CALL RLINGAMA(DBLE(mF + QADF)/SS,AA,B1)
         CALL RLINGAMA(DBLE(MMQ),AA,B2)
-        IF (DABS(GAM-GAM0).LT.1.D-6) THEN 
+        IF (DABS(GAM-GAM0).LT.1.D-6) THEN
           SUP=(A1 + A2 - 2.D0*A0) - DBLE(mF) * (B1 + B2 - 2.D0*B0)
           GAM0=1.D0-GAM
           GOTO 100
         ELSE
           SLOW=(A1 + A2 - 2.D0*A0) - DBLE(mF) * (B1 + B2 - 2.D0*B0)
-        ENDIF 
+        ENDIF
         sF=DBLE(SUP-SLOW)/(1.D0-2.D0*GAM)
       ENDIF
       RETURN
@@ -1887,7 +1887,7 @@ C-----------------------------------------------------------------------
       RLLEQNG=DBLE(TMP)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQUQLDG(U,ALPHA,SIGMA,TOL,QL,QU,ISOL)
       implicit double precision(a-h,o-z)
 c      DOUBLE PRECISION RLLEQNG,QQL,SMIN,SMAX,TOLD
@@ -1989,7 +1989,7 @@ c IF.D1.f
       GX=-GAM
       IF (mF+D1.GE.Y) GX=GX+1.D0
       IF (mF-D1.GE.Y) GX=GX-1.D0
-      D1F=(-GX+TRMNF*(FQGLOW-FQGUP))/(FQGLOW+FQGUP) 
+      D1F=(-GX+TRMNF*(FQGLOW-FQGUP))/(FQGLOW+FQGUP)
 c IF.D2.f
       FQGLOW=DBLE(TETA(31))
       FQGUP=DBLE(TETA(30))
@@ -2064,12 +2064,12 @@ C
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION ANS,EXGAM,EXPSI,DX,IFG(1),WGT(N),TETA(NT),XX(1)
       EXTERNAL EXGAM,EXPSI
-C     COMMON/TETAPR/TETA(60)        
+C     COMMON/TETAPR/TETA(60)
 C
       RLIFGANS=0.D0
       ANS=EXGAM(WGT(2),WGT(1),DX)
       IF (ANS.LE.1.D-15) RETURN
-      ALPHA=WGT(1)   
+      ALPHA=WGT(1)
       SIGMA=WGT(2)
       ITC=INT(SNGL(WGT(3)))
       XX(1)=DX
@@ -2100,7 +2100,7 @@ c      ENDIF
       IF (ITC.NE.1.AND.ITC.NE.2) GOTO 103
       IF (ITC.EQ.1) XIF=TRMNF
       IF (ITC.EQ.2) XIF=TRMDF
-      GOTO 300      
+      GOTO 300
 c IF.alpha.Dsm.g
   103 mF=TETA(6)
       sF=TETA(10)
@@ -2111,26 +2111,26 @@ c IF.alpha.Dsm.g
       ALDSMG=A/B
       IF (ITC.NE.3) GOTO 104
       XIF=ALDSMG
-      GOTO 300      
+      GOTO 300
 c IF.sigma.Dsm.g
   104 SIDSMG=(TRMDF-SpF*ALDSMG*SIGMA)*SIGMA/sF
       IF (IABS(ITC).NE.4) GOTO 105
       XIF=SIDSMG
       IF (ITC.EQ.-4) XIF=XIF*ALDSMG
-      GOTO 300      
+      GOTO 300
 c IF.mu.g
   105 XIF=SIGMA*ALDSMG+ALPHA*SIDSMG
       IF (ITC.EQ.5) GOTO 300
 c IF.qu1.g
-  106 QU1G=-ALDSMG*TETA(51)/TETA(50)
+      QU1G=-ALDSMG*TETA(51)/TETA(50)
       IF (ITC.NE.6) GOTO 107
       XIF=QU1G
-      GOTO 300      
+      GOTO 300
 c IF.qu.Dsm.g
   107 QUDSMG=SIDSMG*TETA(37)+QU1G*SIGMA
       IF (ITC.NE.7) GOTO 108
       XIF=QUDSMG
-      GOTO 300      
+      GOTO 300
 c IF.H0.g
   108 quF=TETA(38)
       fquF=TETA(41)
@@ -2140,7 +2140,7 @@ c IF.H0.g
       H0G=H0G+fquF*QUDSMG
       IF (ITC.NE.8) GOTO 109
       XIF=H0G
-      GOTO 300      
+      GOTO 300
 cc IF.H1.g
   109 H1=TETA(45)
       H1G=-H1
@@ -2148,7 +2148,7 @@ cc IF.H1.g
       H1G=H1G+fquF*quF*QUDSMG
       IF (ITC.NE.9) GOTO 110
       XIF=H1G
-      GOTO 300      
+      GOTO 300
 c IF.ql1.g
   110 u=TETA(34)
       B=(u-TETA(48))*ALDSMG+(TETA(56)-TETA(55)-TETA(52)*TETA(35))*ALDSMG
@@ -2157,12 +2157,12 @@ c IF.ql1.g
       QL1G=B/A
       IF (ITC.NE.10) GOTO 111
       XIF=QL1G
-      GOTO 300      
+      GOTO 300
 c IF.ql.Dsm.g
   111 QLDSMG=SIDSMG*TETA(39)+QL1G*SIGMA
       IF (ITC.NE.11) GOTO 112
       XIF=QLDSMG
-      GOTO 300      
+      GOTO 300
 c IF.J0.g
   112 qlF=TETA(40)
       fqlF=TETA(42)
@@ -2171,7 +2171,7 @@ c IF.J0.g
       J0G=J0G+fqlF*QLDSMG
       IF (ITC.NE.12) GOTO 113
       XIF=J0G
-      GOTO 300      
+      GOTO 300
 c IF.J1.g
   113 J1=TETA(47)
       J1G=-J1
@@ -2197,7 +2197,7 @@ c IF.mad.f
       fMmD=TETA(35)
       fMpD=TETA(34)
       amdF=emdF*(fMmD-fMpD)
-      SGN=DABS(X-medF)-madF           
+      SGN=DABS(X-medF)-madF
       IF (DABS(SGN).GT.1D-6) amdF=amdF+DSIGN(0.5D0,SGN)
       amdF=amdF/(fMmD+fMpD)
       IF (ITC.NE.2) GOTO 203
@@ -2211,26 +2211,26 @@ c IF.alpha.D.g
       ALFDG=A/B
       IF (ITC.NE.3) GOTO 204
       XIF=ALFDG
-      GOTO 300      
+      GOTO 300
 c IF.sigma.D.g
   204 SIGDG=(amdF-madF*DpF*ALFDG/D1F)/D1F
       IF (IABS(ITC).NE.4) GOTO 205
       XIF=SIGDG
       IF (ITC.EQ.-4) XIF=XIF*ALFDG
-      GOTO 300      
+      GOTO 300
 c IF.mu.g
   205 XIF=SIGMA*ALFDG+ALPHA*SIGDG
       IF (ITC.EQ.5) GOTO 300
 c IF.qu1.g
-  206 QU1G=-ALFDG*TETA(19)/TETA(18)
+      QU1G=-ALFDG*TETA(19)/TETA(18)
       IF (ITC.NE.6) GOTO 207
       XIF=QU1G
-      GOTO 300      
+      GOTO 300
 c IF.qu.D.g
   207 QUDG=SIGDG*TETA(5)+QU1G*SIGMA
       IF (ITC.NE.7) GOTO 208
       XIF=QUDG
-      GOTO 300      
+      GOTO 300
 c IF.H0.g
   208 quF=TETA(6)
       fquF=TETA(9)
@@ -2241,7 +2241,7 @@ c IF.H0.g
       H0G=H0G+fquF*QUDG
       IF (ITC.NE.8) GOTO 209
       XIF=H0G
-      GOTO 300      
+      GOTO 300
 c IF.H1.g
   209 H1=TETA(13)
       H1G=-H1
@@ -2249,7 +2249,7 @@ c IF.H1.g
       H1G=H1G+fquF*quF*QUDG
       IF (ITC.NE.9) GOTO 210
       XIF=H1G
-      GOTO 300      
+      GOTO 300
 c IF.ql1.g
   210 B=(u-TETA(16))*ALFDG+(TETA(24)-TETA(23)-TETA(20)*TETA(3))*ALFDG
      +   - TETA(21)*QU1G
@@ -2257,12 +2257,12 @@ c IF.ql1.g
       QL1G=B/A
       IF (ITC.NE.10) GOTO 211
       XIF=QL1G
-      GOTO 300      
+      GOTO 300
 c IF.ql.D.g
   211 QLDG=SIGDG*TETA(7)+QL1G*SIGMA
       IF (ITC.NE.11) GOTO 212
       XIF=QLDG
-      GOTO 300      
+      GOTO 300
 c IF.J0.g
   212 qlF=TETA(8)
       fqlF=TETA(10)
@@ -2271,7 +2271,7 @@ c IF.J0.g
       J0G=J0G+fqlF*QLDG
       IF (ITC.NE.12) GOTO 213
       XIF=J0G
-      GOTO 300      
+      GOTO 300
 c IF.J1.g
   213 J1=TETA(15)
       J1G=-J1
@@ -2279,10 +2279,10 @@ c IF.J1.g
       J1G=J1G+fqlF*qlF*QLDG
       IF (ITC.NE.13) GOTO 214
       XIF=J1G
-      GOTO 300      
+      GOTO 300
 c IF.tcmean.g
   214 H0mJ0=TETA(12)-TETA(14)
-      XIF=(-(H1-J1)*(H0G-J0G)/H0mJ0 + H1G-J1G)/H0mJ0     
+      XIF=(-(H1-J1)*(H0G-J0G)/H0mJ0 + H1G-J1G)/H0mJ0
   300 IFG(IX)=DBLE(XIF)
   500 CONTINUE
       RETURN
@@ -2319,7 +2319,7 @@ c  100 CONTINUE
 C
 C=======================================================================
       SUBROUTINE RLTRMNLW(ALPHA,SIGMA,BETA,mF)
-      implicit double precision(a-h,o-z)      
+      implicit double precision(a-h,o-z)
       DOUBLE PRECISION GL,GU,mF
       IF (DABS(BETA-0.5D0).LT.1.D-5) THEN
         mF=-0.3665129D0
@@ -2337,7 +2337,7 @@ C=======================================================================
   100 mF=mF/ALPHA + DLOG(SIGMA)
       RETURN
       END
-C 
+C
       DOUBLE PRECISION FUNCTION RLEQADLW(DD,V,NV,PARAM)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION DD,V(NV),M,PARAM(1)
@@ -2352,7 +2352,7 @@ C
       RLEQADLW=DBLE(TMP)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQAD1LW(BETA,GAM,TOL,QAD1,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLEQADLW,QAD,SMIN,SMAX,TOLD,PARAM(1),Q(2)
@@ -2398,15 +2398,15 @@ C
         CALL RLSUMLGM(DBLE(EmQ),1.D0,AA2)
         A2=DBLE(AA2)
         CALL RLPWEIBL(1.D0,1.D0,EmQ,B2)
-        IF (DABS(GAM-GAM0).LT.1.D-6) THEN 
+        IF (DABS(GAM-GAM0).LT.1.D-6) THEN
           SUP=(A1 + A2 - 2.D0 * A0) - mF * (B1 + B2 - 2.D0 * B0)
           GAM0=1.-GAM
-          ISOL=JSOL 
+          ISOL=JSOL
           GOTO 100
         ELSE
           SLOW=(A1 + A2 - 2.D0 * A0) - mF * (B1 + B2 - 2.D0 * B0)
           IF (JSOL.EQ.0) ISOL=0
-        ENDIF 
+        ENDIF
         sF=(SUP-SLOW)/(1.D0-2.D0*GAM)
       ENDIF
       sF=sF/ALPHA
@@ -2443,7 +2443,7 @@ C-----------------------------------------------------------------------
       RLLEQNW=DBLE(TMP)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQUQLDW(U,ALPHA,SIGMA,TOL,QL,QU,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLLEQNW,QQL,SMIN,SMAX,TOLD,PARAM(1),Q(2)
@@ -2510,11 +2510,10 @@ c       CALL RLPWEIBL(ALPHA,1.D0,QU,PU)
       CALL RLTRMNW(ALPHA,1.D0,BETA,M)
       CALL RLPWEIBL(ALPHA,1.D0,M+D,P1)
       CALL RLPWEIBL(ALPHA,1.D0,M-D,P2)
-      TMP=P1-P2-(1.D0-GAM)
-      RLEQADW=DBLE(TMP)
+      RLEQADW= P1- P2 - (1.D0-GAM)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQAD1W(ALPHA,BETA,GAM,TOL,QAD1,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLEQADW,QAD,SMIN,SMAX,TOLD,PARAM(1),Q(3)
@@ -2578,7 +2577,7 @@ C
       RLIFWANS=0.D0
       ANS=EXWEB(WGT(2),WGT(1),DX)
       IF (ANS.LE.1.D-15) RETURN
-      ALPHA=WGT(1)   
+      ALPHA=WGT(1)
       SIGMA=WGT(2)
       ITC=INT(SNGL(WGT(3)))
       CALL RLIFWEIB(DX,TETA,1,NT,ALPHA,SIGMA,ITC,0,IFW)
@@ -2601,7 +2600,7 @@ C
         CALL RLMACHD(4,XLGMN)
         CALL RLMACHD(5,YLGMN)
       ENDIF
-      IF (DABS(ALPHA-ALF0).GT.1D-6) THEN 
+      IF (DABS(ALPHA-ALF0).GT.1D-6) THEN
         TA=1.D0+1.D0/ALPHA
         ALF0=ALPHA
         CALL RLLGAMAD(TA,GA)
@@ -2640,7 +2639,7 @@ c IF.mu.w
   105 IFW(IX)=DEXP(DBLE(GA))*DBLE(SIDSMW-SIGMA*ALDSMW*DGA/ALPHA**2)
       IF (ITC.EQ.5) GOTO 500
 c IF.qu1.w
-  106 QU1W=-ALDSMW*TETA(51)/TETA(50)
+      QU1W=-ALDSMW*TETA(51)/TETA(50)
       IF (ITC.NE.6) GOTO 107
       XIF=QU1W
       GOTO 300
@@ -2709,7 +2708,7 @@ c IF.med.f
       emdF=0.5D0
       IF (medF.GE.X) emdF=-0.5D0
       emdF=emdF/TETA(33)
-      IF (ITC.NE.1) GOTO 202 
+      IF (ITC.NE.1) GOTO 202
       XIF=emdF
       GOTO 300
 c IF.mad.f
@@ -2717,7 +2716,7 @@ c IF.mad.f
       fMmD=TETA(35)
       fMpD=TETA(34)
       amdF=emdF*(fMmD-fMpD)
-      SGN=DABS(X-medF)-madF           
+      SGN=DABS(X-medF)-madF
       IF (DABS(SGN).GT.1D-6) amdF=amdF+DSIGN(0.5D0,SGN)
       amdF=amdF/(fMmD+fMpD)
       IF (ITC.NE.2) GOTO 203
@@ -2742,7 +2741,7 @@ c IF.mu.w
   205 IFW(IX)=DEXP(DBLE(GA))*DBLE(SIGDW-SIGMA*ALFDW*DGA/ALPHA**2)
       IF (ITC.EQ.5) GOTO 500
 c IF.qu1.w
-  206 QU1W=-ALFDW*TETA(19)/TETA(18)
+      QU1W=-ALFDW*TETA(19)/TETA(18)
       IF (ITC.NE.6) GOTO 207
       XIF=QU1W
       GOTO 300
@@ -2771,7 +2770,7 @@ c IF.H1.w
       XIF=H1W
       GOTO 300
 c IF.mu1.w
-  210 MU1W=-DGA*ALFDW*RLXEXPD(GA)/ALPHA**2      
+  210 MU1W=-DGA*ALFDW*RLXEXPD(GA)/ALPHA**2
 c IF.ql1.w
       B=(u-TETA(16))*MU1W+(TETA(24)-TETA(23)-TETA(20)*TETA(3))*ALFDW
      +   - TETA(21)*QU1W
@@ -2804,7 +2803,7 @@ c IF.J1.w
       GOTO 300
 c IF.tcmean.w
   214 H0mJ0=TETA(12)-TETA(14)
-      XIF=(-(H1-J1)*(H0W-J0W)/H0mJ0 + H1W-J1W)/H0mJ0      
+      XIF=(-(H1-J1)*(H0W-J0W)/H0mJ0 + H1W-J1W)/H0mJ0
   300 IFW(IX)=DBLE(XIF)
   500 CONTINUE
       RETURN
@@ -2864,7 +2863,7 @@ C
       ENDIF
       RETURN
       END
-C 
+C
       DOUBLE PRECISION FUNCTION RLEQADN(DD,V,NV,PARAM)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION DD,MM,P1,P2,V(NV),M,PARAM(1)
@@ -2878,7 +2877,7 @@ C
       RLEQADN=P1-P2-DBLE(1.D0-GAM)
       RETURN
       END
-C      
+C
       SUBROUTINE RLQAD1N(BETA,GAM,TOL,QAD1,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLEQADN,QAD,SMIN,SMAX,TOLD,PARAM(1),Q(2)
@@ -2918,15 +2917,15 @@ C
         A2=-A2
         CALL RLGAUSSD(1,mF+QADF,B1)
         CALL RLGAUSSD(1,mF-QADF,B2)
-        IF (DABS(GAM-GAM0).LT.1.D-6) THEN 
+        IF (DABS(GAM-GAM0).LT.1.D-6) THEN
           SUP=(A1 + A2 - 2.D0 * A0) - mF * (B1 + B2 - 2.D0 * B0)
-          ISOL=JSOL 
+          ISOL=JSOL
           GAM0=1.D0-GAM
           GOTO 100
         ELSE
           SLOW=(A1 + A2 - 2.D0 * A0) - mF * (B1 + B2 - 2.D0 * B0)
-          IF (JSOL.EQ.0) ISOL=0 
-        ENDIF 
+          IF (JSOL.EQ.0) ISOL=0
+        ENDIF
         sF=(SUP-SLOW)/(1.D0-2.D0*GAM)
       ENDIF
       sF=sF*SIGMA
@@ -2957,7 +2956,7 @@ C-----------------------------------------------------------------------
       RLLEQNL=XMS
       RETURN
       END
-C      
+C
       SUBROUTINE RLQUQLDL(U,ALPHA,SIGMA,TOL,QL,QU,ISOL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION RLLEQNL,QQL,QQU,SMIN,SMAX,TOLD,PARAM(1),Q(2)
@@ -3019,14 +3018,14 @@ C
       RLIFLANS=0.D0
       ANS=EXGAU(WGT(2),WGT(1),DX)
       IF (ANS.LE.1.D-20) RETURN
-      ALPHA=WGT(1)   
+      ALPHA=WGT(1)
       SIGMA=WGT(2)
       ITC=INT(SNGL(WGT(3)))
       CALL RLIFLOGN(Z,TETA,1,NT,ALPHA,SIGMA,ITC,0,IFL)
       IF (ITC.GE.0) IFL(1)=IFL(1)*IFL(1)
       RLIFLANS=IFL(1)*ANS
       RETURN
-      END      
+      END
 C
       SUBROUTINE RLIFLOGN(DX,TETA,NX,NT,ALPHA,SIGMA,ITC,ITT,IFL)
       implicit double precision(a-h,o-z)
@@ -3073,7 +3072,7 @@ c IF.mu.l
         GOTO 500
       ENDIF
 c IF.mu1.l
-  106 MU1L=SIGMA*SIDSML*TETA(35)
+      MU1L=SIGMA*SIDSML*TETA(35)
 c IF.qu1.l
       Z=DBLE(SIDSML)*DBLE(TETA(51))/DBLE(TETA(50))
       QU1L=-DBLE(Z)
@@ -3227,7 +3226,7 @@ c$$$      FN=F(XN,V,nv,param)-Y
 c$$$      IF (ITR.GE.MAXIT) GOTO 60
 c$$$C-----------------------------------------------------------------------
 c$$$C     TEST TO SEE IF ROOT HAS BEEN FOUND
-c$$$C-----------------------------------------------------------------------     
+c$$$C-----------------------------------------------------------------------
 c$$$      IF (DABS(FN).LT.TOL) GOTO 70
 c$$$      IF (FA*FN.LE.0.D0) GOTO 40
 c$$$      A=XN
@@ -3235,11 +3234,11 @@ c$$$      FA=FN
 c$$$      GOTO 50
 c$$$ 40   B=XN
 c$$$      FB=FN
-c$$$C-----------------------------------------------------------------------     
+c$$$C-----------------------------------------------------------------------
 c$$$C     INCREMENT ITERATION COUNTER
 c$$$C-----------------------------------------------------------------------
 c$$$ 50   ITR=ITR+1
-c$$$      GOTO 20  
+c$$$      GOTO 20
 c$$$ 60   ITERM=2
 c$$$      X=XN
 c$$$      RETURN
@@ -3279,4 +3278,4 @@ c$$$      CALL RLINGAMA(HI,ALPHA,GX)
 c$$$      GL=LOGHI*GX-SUM
 c$$$      RETURN
 c$$$      END
-c$$$      
+c$$$

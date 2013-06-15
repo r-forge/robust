@@ -192,7 +192,7 @@ C-----------------------------------------------------------------------
 c     random sample (w/o replacement): rlrndm2(*, U) <=> U <- runif(1)
 c     --> ./lmrobmm.f
  110        CALL RLRNDM2(ISEED,RND)
-            ITK=RND*N+1
+            ITK= idint(RND*N)+1
             DO 120 KK=1,K-1
                IF (ITK.EQ.IT(KK)) GOTO 110
  120        CONTINUE

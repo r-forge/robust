@@ -47,11 +47,11 @@ C-----------------------------------------------------------------------
       IF (ITRACE .EQ. 1) THEN
          call mminitclk(iclock)
          ielapse=0
-         if (np .le. 10) then 
+         if (np .le. 10) then
             ninc=15000
          else if (np .le. 15) then
             ninc=10000
-         else 
+         else
             ninc=5000
          endif
       endif
@@ -69,7 +69,7 @@ C-----------------------------------------------------------------------
  100  IF (IOPT.NE.3) THEN
          DO 130 K=1,NQ
  110        CALL RLRNDM2(ISEED,RND)
-            ITK=RND*N+1
+            ITK=idint(RND*N)+1
             DO 120 KK=1,K-1
                IF (ITK.EQ.IT(KK)) GOTO 110
  120        CONTINUE
@@ -147,7 +147,7 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     STEP 6: UPDATE BEST FIT
 C-----------------------------------------------------------------------
- 600  IERR=0
+      IERR=0
       SMIN=SRES
       S0=SMIN
       DO 610 K=1,NP
@@ -935,18 +935,18 @@ C
       END
 c
       DOUBLE PRECISION FUNCTION PNORM0(Z)
-      DOUBLE PRECISION Z,TMP 
+      DOUBLE PRECISION Z,TMP
       CALL RLGAUSSD(1,Z,TMP)
       PNORM0=TMP
       RETURN
       END
 c
       DOUBLE PRECISION FUNCTION RLChisk(S,K0)
-      DOUBLE PRECISION S,S2,ABST,TMP,K0 
+      DOUBLE PRECISION S,S2,ABST,TMP,K0
 c     COMMON/PSIPR/IPSI,C,H1,H2,H3,XK,D
-c      
+c
 c     K0=DBLE(XK)
-  300 TMP=1.D0
+      TMP=1.D0
       ABST=DABS(S)
       IF (ABST.GE.K0) GOTO 400
       S2=(S/K0)**2
@@ -956,9 +956,9 @@ c     K0=DBLE(XK)
       END
 c
       DOUBLE PRECISION FUNCTION RLPSI1N(Z,U)
-      DOUBLE PRECISION Z,U 
+      DOUBLE PRECISION Z,U
       RLPSI1N=0.D0
-      IF (Z.LT.-U.OR.Z.GT.U) RETURN 
+      IF (Z.LT.-U.OR.Z.GT.U) RETURN
       RLPSI1N=Z
       RETURN
       END
@@ -966,7 +966,7 @@ c
       DOUBLE PRECISION FUNCTION RLPSI2N(Z,U)
       DOUBLE PRECISION Z,U
       RLPSI2N=0.D0
-      IF (Z.LT.-U.OR.Z.GT.U) RETURN 
+      IF (Z.LT.-U.OR.Z.GT.U) RETURN
       RLPSI2N=Z*Z
       RETURN
       END
@@ -993,8 +993,8 @@ c
       ENDIF
       ETA=dnorm0(U)
       TMP=-YLGMN
-      IF (ETA.GT.XLGMN) TMP=-dlog(ETA)      
-      ETA=TMP  
+      IF (ETA.GT.XLGMN) TMP=-dlog(ETA)
+      ETA=TMP
       RHO=dnorm0(z0)
       TMP=-YLGMN
       IF (RHO.GT.XLGMN) TMP=-dlog(RHO)
@@ -1007,19 +1007,19 @@ c
 c
       SUBROUTINE RLD1N(U,SIGMA,IT0,XtX,NP,VAL)
       DOUBLE PRECISION U,L,SIGMA,IT0(NP),XtX(NP,NP),TMP1,
-     +       DNORM0,EZU,VAL(NP)
+     +       TMP, DNORM0,EZU,VAL(NP)
       EXTERNAL DNORM0
       L=-U
 c     TMP2=(U*U-L*L)*IS0=0.D0
       TMP1=U-L
-      EZU=DNORM0(U) 
+      EZU=DNORM0(U)
       DO 200 I=1,NP
       TMP=0.D0
       DO 100 J=1,NP
-      TMP=TMP+XtX(I,J)*IT0(J)
+      TMP=TMP+ XtX(I,J)*IT0(J)
   100 CONTINUE
       VAL(I)=TMP1*TMP
-      VAL(I)=EZU*(VAL(I))/SIGMA  
+      VAL(I)=EZU*(VAL(I))/SIGMA
   200 CONTINUE
       RETURN
       END
@@ -1031,13 +1031,13 @@ c
       U2=U*U
       TMP2=(U*U2-L*U2)*IS0
 c      TMP1=0.D0
-      EZU=DNORM0(U) 
+      EZU=DNORM0(U)
 c      TMP=0.D0
 c      DO 100 J=1,NP
 c      TMP=TMP+XBAR(J)*IT0(J)
 c  100 CONTINUE
 c      VAL=TMP*TMP1
-      VAL=EZU*TMP2/SIGMA  
+      VAL=EZU*TMP2/SIGMA
       RETURN
       END
 c
@@ -1063,7 +1063,7 @@ c      avs0=0.d0
 c      avs=0.d0
       tmp1=xbar(1)
       en2=dfloat(n)*dfloat(n-np)
-  200 pnrm0=pnorm0(u)
+      pnrm0=pnorm0(u)
       alfa=2.d0*pnrm0-1.d0
       beta=RLBETAN(u)
 
@@ -1079,7 +1079,7 @@ c      avs=0.d0
         do 235 i=1,np
   235   sc1(i)=tmp1*x0(i)
         sc1(np+1)=rlchisk(z0,k0)
-        do 240 i=1,np+1     
+        do 240 i=1,np+1
         its0(i)=0.d0
         do 230 j=1,np+1
         its0(i)=its0(i)+invm0(i,j)*sc1(j)
@@ -1095,17 +1095,17 @@ c  260   continue
 c        z0=z0/sigma1
         ialf=IALPHAN(Z0,U,SIGMA,IS0)
         tmp1=RLPSI1N(z0,u)
-        call RLD1N(U,SIGMA,ITS0,XtX,NP,SA)   
+        call RLD1N(U,SIGMA,ITS0,XtX,NP,SA)
         call RLD2N(U,SIGMA,IS0,TMP2)
         tmp2=tmp2+RLPSI2N(z0,u)-alfa*beta-beta*ialf
         do 265 i=1,np
   265   sc1(i)=tmp1*x0(i)+sa(i)
         sc1(np+1)=tmp2
-        do 280 i=1,np+1 
+        do 280 i=1,np+1
         its(i)=0.d0
         do 270 j=1,np+1
         its(i)=its(i)+invm1(i,j)*sc1(j)
-  270   continue    
+  270   continue
   280   continue
 c
         do 300 i=1,np+1
@@ -1212,7 +1212,7 @@ c     COMMON/ZEZCOM/CONST
       XU=RLXEXPD(TU)
       CALL RLPWEIBL(1.D0,1.D0,XU,PU)
       XL=RLXEXPD(TL)
-      CALL RLPWEIBL(1.D0,1.D0,XL,PL)  
+      CALL RLPWEIBL(1.D0,1.D0,XL,PL)
       P=PU-PL
       RETURN
       END
@@ -1247,7 +1247,7 @@ C
       implicit double precision(a-h,o-z)
       DIMENSION WGT(N)
       EXTERNAL EXU,EXV
-      I=WGT(1)
+      I= idint(WGT(1))
       B1=WGT(2)
       ANS=EXU(DX)
       IF (I.GE.4) THEN
@@ -1294,47 +1294,47 @@ C======================================================================
 
       DOUBLE PRECISION FUNCTION rlezez(Z)
       implicit double precision(a-h,o-z)
-      DOUBLE PRECISION Z,EXMIN,TMP,VAL 
+      DOUBLE PRECISION Z,EXMIN,TMP,VAL
       DATA NCALL,EXMIN/0,0.D0/
       IF (NCALL.EQ.0) THEN
         NCALL=1
         CALL RLMACHD(3,EXMIN)
       ENDIF
       TMP=Z
-      IF (Z.GE.EXMIN) TMP=Z-DEXP(Z)        
+      IF (Z.GE.EXMIN) TMP=Z-DEXP(Z)
       VAL=0.D0
-      IF (TMP.GT.EXMIN) VAL=DEXP(TMP) 
+      IF (TMP.GT.EXMIN) VAL=DEXP(TMP)
       rlezez=VAL
       RETURN
       END
 c
       DOUBLE PRECISION FUNCTION rlpezez(Z)
       implicit double precision(a-h,o-z)
-      DOUBLE PRECISION Z,EXMIN,TMP,VAL 
+      DOUBLE PRECISION Z,EXMIN,TMP,VAL
       DATA NCALL,EXMIN/0,0.D0/
       IF (NCALL.EQ.0) THEN
         NCALL=1
         CALL RLMACHD(3,EXMIN)
       ENDIF
       TMP=0.D0
-      IF (Z.GT.EXMIN) TMP=-DEXP(Z)        
+      IF (Z.GT.EXMIN) TMP=-DEXP(Z)
       VAL=0.D0
-      IF (TMP.GT.EXMIN) VAL=DEXP(TMP) 
+      IF (TMP.GT.EXMIN) VAL=DEXP(TMP)
       rlpezez=1.D0-VAL
       RETURN
       END
 c
       DOUBLE PRECISION FUNCTION RLPSI1W(Z,L,U)
-      DOUBLE PRECISION Z,L,U,EXMIN,TMP 
+      DOUBLE PRECISION Z,L,U,EXMIN,TMP
       DATA NCALL,EXMIN/0,0.D0/
       IF (NCALL.EQ.0) THEN
         NCALL=1
         CALL RLMACHD(3,EXMIN)
       ENDIF
       RLPSI1W=0.D0
-      IF (Z.LT.L.OR.Z.GT.U) RETURN 
+      IF (Z.LT.L.OR.Z.GT.U) RETURN
       TMP=-1.D0
-      IF (Z.GT.EXMIN) TMP=DEXP(Z)-1.D0        
+      IF (Z.GT.EXMIN) TMP=DEXP(Z)-1.D0
       RLPSI1W=TMP
       RETURN
       END
@@ -1347,9 +1347,9 @@ c
         CALL RLMACHD(3,EXMIN)
       ENDIF
       RLPSI2W=0.D0
-      IF (Z.LT.L.OR.Z.GT.U) RETURN 
+      IF (Z.LT.L.OR.Z.GT.U) RETURN
       TMP=-Z
-      IF (Z.GT.EXMIN) TMP=Z*(DEXP(Z)-1.D0)        
+      IF (Z.GT.EXMIN) TMP=Z*(DEXP(Z)-1.D0)
       RLPSI2W=TMP
       RETURN
       END
@@ -1374,16 +1374,16 @@ c
         NCALL=1
         CALL RLMACHD(3,EXMIN)
       ENDIF
-      ETA=DEXP(U)-U        
+      ETA=DEXP(U)-U
       RHO=-Z0
-      IF (Z0.GT.EXMIN) RHO=DEXP(Z0)-Z0 
+      IF (Z0.GT.EXMIN) RHO=DEXP(Z0)-Z0
       TMP=(U*RLEZEZ(U)-L*RLEZEZ(L))*IS0/SIGMA-(RLPEZEZ(U)-RLPEZEZ(L))
       IF (ETA.GE.RHO) TMP=TMP+1.D0
       RLIALFAW=TMP
       RETURN
       END
 
-c 
+c
       SUBROUTINE RLD1W(L,U,SIGMA,IT0,IS0,XtX,XBAR,NP,VAL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION L,U,SIGMA,IT0(NP),IS0,XtX(NP,NP),TMP,TMP1,TMP2,
@@ -1398,18 +1398,18 @@ c
       IF (L.GT.EXMIN) DXPL=DEXP(L)
       TMP1=(DEXP(U)-DXPL)
       TMP2=(U*DEXP(U)-U-L*DXPL+L)*IS0
-      EZU=RLEZEZ(U) 
+      EZU=RLEZEZ(U)
       DO 200 I=1,NP
       TMP=0.D0
       DO 100 J=1,NP
       TMP=TMP+XtX(I,J)*IT0(J)
   100 CONTINUE
       VAL(I)=TMP1*TMP+TMP2*XBAR(I)
-      VAL(I)=EZU*(VAL(I))/SIGMA  
+      VAL(I)=EZU*(VAL(I))/SIGMA
   200 CONTINUE
       RETURN
       END
-c 
+c
       SUBROUTINE RLD2W(L,U,SIGMA,IT0,IS0,XBAR,NP,VAL)
       implicit double precision(a-h,o-z)
       DOUBLE PRECISION L,U,SIGMA,IT0(NP),IS0,XBAR(NP),TMP,TMP1,TMP2,
@@ -1424,18 +1424,18 @@ c
       IF (L.GT.EXMIN) DXPL=DEXP(L)
       TMP2=(U*U*(DEXP(U)-1.D0)-L*L*(DXPL-1.D0))*IS0
       TMP=U*(DEXP(U)-1.D0)-L*(DXPL-1.D0)
-      EZU=RLEZEZ(U) 
+      EZU=RLEZEZ(U)
       TMP1=0.D0
       DO 100 J=1,NP
       TMP1=TMP1+XBAR(J)*IT0(J)
   100 CONTINUE
       VAL=TMP*TMP1
-      VAL=EZU*(VAL+TMP2)/SIGMA  
+      VAL=EZU*(VAL+TMP2)/SIGMA
       RETURN
       END
 c
       SUBROUTINE rlavtmlwf(X,y,n,np,ncov,l,u,xk,theta,sigma,invm0,
-     +           invm1,avts0,avts,xbar,XtX,sa,sc1,x0,its0,its)          
+     +           invm1,avts0,avts,xbar,XtX,sa,sc1,x0,its0,its)
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       double precision X(n,np),l,u,xbar(np),y(n),theta(np),XtX(np,np),
      +       invm0(np+1,np+1),invm1(np+1,np+1),x0(np),is0,sa(ncov),
@@ -1451,26 +1451,26 @@ c
         avts(i,j)=0.d0
    10 continue
       en2=dfloat(n)*dfloat(n-np)
- 
-  200 alfa=rlpezez(u)-rlpezez(l)
+
+      alfa=rlpezez(u)-rlpezez(l)
       beta=RLBetaw(l,u)
       do 500 k=1,n
         y0=y(k)
         z0=y0
         do 220 j=1,np
-        x0(j)=X(k,j)
-        z0=z0-x0(j)*theta(j)
+           x0(j)=X(k,j)
+           z0=z0-x0(j)*theta(j)
   220   continue
         z0=z0/sigma
         tmp1=rlpsim2(z0,2,xk)
         do 235 i=1,np
   235   sc1(i)=tmp1*x0(i)
         sc1(np+1)=rlchisk(z0,xk)
-        do 240 i=1,np+1      
+        do 240 i=1,np+1
         its0(i)=0.d0
         do 230 j=1,np+1
         its0(i)=its0(i)+invm0(i,j)*sc1(j)
-  230   continue    
+  230   continue
   240   continue
         is0=its0(np+1)
         its0(1)=its0(1)+0.1352D0*is0
@@ -1489,11 +1489,11 @@ c        z0=z0/sigma1
         do 265 i=1,np
   265   sc1(i)=tmp1*x0(i)+sa(i)
         sc1(np+1)=tmp2
-        do 280 i=1,np+1 
+        do 280 i=1,np+1
         its(i)=0.d0
         do 270 j=1,np+1
         its(i)=its(i)+invm1(i,j)*sc1(j)
-  270   continue    
+  270   continue
   280   continue
 c
         do 300 i=1,np+1

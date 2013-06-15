@@ -31,7 +31,7 @@ C-----------------------------------------------------------------------
          J=NP-J1+1
          CALL RLH12M2(2,J,J+1,N,XT(1,J),1,SH(J),RS1,1,N,1,N)
       ENDDO
- 120  CALL RLPERMM2(THETA,IP,NP,NP)
+      CALL RLPERMM2(THETA,IP,NP,NP)
       RETURN
       END
 C=======================================================================
@@ -287,7 +287,7 @@ C-----------------------------------------------------------------------
       GOTO 435
  500  CALL RLRSIGM2(RES,HDIAG,S0,N,NP,TOLR,1,1,MAXS1,NIS,SRES,HDIAG,
      +     HDIAG,IPS,XK,BETA,BET0)
- 600  SMIN=SRES
+      SMIN=SRES
       S0=SMIN
       DO J=1,NP
          XTHETA2(J)=THETA(J)

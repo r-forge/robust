@@ -1,16 +1,16 @@
 C
-C	file: glmrob.f
+C       file: glmrob.f
 C
-C	Matias - Jeff
+C       Matias - Jeff
 C
-C		
+C
       SUBROUTINE RLGINTAC(X,Y,NI,OI,MDX,MDT,N,NP,NCOV,ICASE,MAXTT,
      +     MAXTA,TAU,TOLT,TOLA,B,C,NITT,NITA,SIGMA,A,THETA,CI,DIST,
      +     RW1,RW2,IW1,DW1,IPS,XK)
 C.......................................................................
 C
 C  INITIAL VALUES FOR THE LOGISTIC REGRESSION
-C   
+C
 
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
 
@@ -35,7 +35,7 @@ C
      +     RW1(ISW),RW2,IW1,DW1,DW1(IST),DW1(ISD),DW1(ISU),IPS,XK)
       RETURN
       END
- 
+
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLGITAC2(X,Y,NI,OI,MDX,MDT,N,NP,NCOV,ICASE,MAXTT,
@@ -45,17 +45,17 @@ C.......................................................................
 C
 C  INITIAL VALUES FOR THE LOGISTIC REGRESSION
 C
-	
+
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),COV(NCOV),CI(N),THETA(MDT),WGT(N),
      +     DIST(N),OI(N),SC(NCOV),SF(NCOV),SG(NCOV),SH(NCOV),
      +     SX(MDX,NP),SY(N),SW(N)
       DIMENSION A(NCOV),SA(NCOV),SD(NP),ST(NCOV),SU(N)
       INTEGER NI(N),SP(NP)
-      DATA ZERO,ONE/0.D0,1.D0/	
+      DATA ZERO,ONE/0.D0,1.D0/
 C
 C these are for the function ucv_glmrob (ex ucv) in rlwyfalg
-C     
+C
       IUCV=1
       A2=ZERO
       B2=B*B
@@ -73,7 +73,7 @@ C
 
 C
 C COMPUTES A (FIXED POINT ALGORITHM)
-C 	(I REMOVED THE ARGUMENT "NITMON")
+C       (I REMOVED THE ARGUMENT "NITMON")
 C
       CALL RLWFAGBI(X,A,SW,N,NP,0,NCOV,MDX,TAU,MAXTA,ICNV,ITYPW,
      +     0,TOLA,NITA,WGT,SU,SA,ST,SD,SD,IUCV,A2,B2)
@@ -99,7 +99,7 @@ C
  10      S=Y(L)
          IF (S.LE.ZERO) S=0.5D0
          SY(L)=DLOG(S)-OI(L)
- 15      SU(L)=SY(L) 
+ 15      SU(L)=SY(L)
          DO 20 K=1,NP
             SX(L,K)=X(L,K)
  20      CONTINUE
@@ -112,13 +112,13 @@ C INITIAL BETA -> BET0
       CALL RLBET0BI(WGT,N,2,1,TOLT,BET0)
       CALL RLLARSBI(SX,SY,N,NP,MDX,MDT,TAU,NIT,K,KODE,
      +     SIG0,THETA,SW,CI,SF,SG,SH,BET0)
-      
+
 c
 c     sig0 == 0 !!!!
 c
 c     maybe this is making sigma=0 in RLrwagM2
 c
-      
+
       IF (SIG0 .LE. TAU) SIG0=ONE
       CPSI=C
 
@@ -175,7 +175,7 @@ C     IF (NITT.EQ.MAXTT) IERR=1
          DIST(I)=Z
  90   CONTINUE
       RETURN
-      END  
+      END
 
 C-----------------------------------------------------------------------
       SUBROUTINE RLMACHD(I,X)
@@ -185,7 +185,7 @@ C
 C                   DOUBLE PRECISION VERSION
 C                   ************************
 C
-C  MACHINE PARAMETERS : TO  ALTER  THIS  SUBROUTINE  FOR  A PARTICULAR 
+C  MACHINE PARAMETERS : TO  ALTER  THIS  SUBROUTINE  FOR  A PARTICULAR
 C  ++++++++++++++++++   ENVIRONMENT, THE DESIRED SET OF DATA STATEMENT
 C  SHOULD BE ACTIVATED BY REMOVING THE "C" FROM COLUMN ONE  AND ADDING
 C  THE "C" FOR THE TWO LINES AFTER "... VAX FORTRAN (V5) compiler".
@@ -260,7 +260,7 @@ C==>      LOGISTIC BERNOULLI
             T0=DMIN1(AA,DABS(TEMP))
             IF (TEMP.LT.ZERO) T0=-T0
             TEMP=ONE-PI-CC
-		  A=dble(1)	
+            A = dble(1)
             T1=DMIN1(A,ABS(TEMP))
             IF (TEMP.LT.0.D0) T1=-T1
             D(I)=T1*(ONE-PI)*PI-T0*PI*(ONE-PI)
@@ -285,7 +285,7 @@ C==>      LOGISTIC BINOMIAL
                TE=TPJ*TT
                EI=EI+TE
                IF (J.LE.MED) GOTO 200
-               IF (DABS(TT).GT.ZERO .AND. DABS(TMP).LE.PREC 
+               IF (DABS(TT).GT.ZERO .AND. DABS(TMP).LE.PREC
      +              .AND.TE.LE.PREC) GOTO 350
  200        CONTINUE
 
@@ -305,7 +305,7 @@ C==>      LOGISTIC POISSON
                DI=DI+TMP
                TE=TPJ*TT
                EI=EI+TE
-               IF (DABS(TT).GT.ZERO .AND. DABS(TMP).LE.PREC 
+               IF (DABS(TT).GT.ZERO .AND. DABS(TMP).LE.PREC
      +              .AND.TE.LE.PREC) GOTO 350
  300        CONTINUE
          ENDIF
@@ -314,7 +314,7 @@ C==>      LOGISTIC POISSON
  500  CONTINUE
       RETURN
       END
-C     
+C
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLPROBIN(K,N,P,PK)
@@ -330,13 +330,13 @@ C
          CALL RLMACHD(5,ALSML)
          NCALL=1
       ENDIF
- 10   IF (P .NE. 0.D0) GO TO 15
+      IF (P .NE. 0.D0) GO TO 15
       PK = 1.D0
-      IF (K .NE. 0) PK=0.D0 
+      IF (K .NE. 0) PK=0.D0
       GOTO 900
  15   IF (P .NE. 1.) GO TO 20
       PK = 1.D0
-      IF (K .NE. N) PK=0.D0  
+      IF (K .NE. N) PK=0.D0
       GO TO 900
  20   IF (K.EQ.0.OR.KL+1.NE.K) THEN
          Q1=1.D0-P
@@ -349,9 +349,9 @@ C
          PK=0.D0
          LPL=DBLE(N)*ALQ
          IF (LPL.GT.EMIN) PK=DEXP(LPL)
-      ELSEIF (KL+1.NE.K.OR.LPL.LE.ALSML) THEN 
+      ELSEIF (KL+1.NE.K.OR.LPL.LE.ALSML) THEN
          CALL RLBINPRD(K,N,P,S1,PK)
-         GOTO 900 
+         GOTO 900
       ELSE
          LPL=LPL+DLOG(DBLE(N-K+1))+ALP-DLOG(DBLE(K))-ALQ
          PK=0.D0
@@ -359,7 +359,7 @@ C
       ENDIF
       GOTO 950
  900  LPL=ALSML
-      IF (PK.GT.SML) LPL=DLOG(PK)   
+      IF (PK.GT.SML) LPL=DLOG(PK)
  950  KL=K
       RETURN
       END
@@ -381,7 +381,7 @@ C
       IF (K.GT.1100000) THEN
 C       For E.LE.1E6 and K.GT.1100000 the probability
 C       PK is smaller than 1E-2000.
-         LPL = YLMN 
+         LPL = YLMN
          PK=0.D0
          GOTO 950
       ELSEIF (E.LT.DSQRT(XLMN)) THEN
@@ -390,7 +390,7 @@ C       problems
          PK = 0.D0
          IF (K.EQ.0) PK = 1.D0
          IF (K.EQ.1) PK = E
-         GOTO 900 
+         GOTO 900
       ENDIF
       IF (K.EQ.0.OR.KL+1.NE.K) THEN
          LE=YLMN
@@ -399,16 +399,16 @@ C       problems
       IF (K.EQ.0) THEN
          LPL = -E
       ELSEIF (KL+1.NE.K.OR.LPL.LE.YLMN) THEN
-         CALL RLPOISSN(E,K,S1,PK)      
-         GOTO 900 
+         CALL RLPOISSN(E,K,S1,PK)
+         GOTO 900
       ELSE
          LPL=LPL+LE-DLOG(DBLE(K))
       ENDIF
       PK=0.D0
       IF (LPL.GT.ESML) PK = DEXP(LPL)
       GOTO 950
- 900  LPL=YLMN 
-      IF (PK.GT.XLMN) LPL=DLOG(PK) 
+ 900  LPL=YLMN
+      IF (PK.GT.XLMN) LPL=DLOG(PK)
  950  KL=K
       RETURN
       END
@@ -576,12 +576,12 @@ C.......................................................................
 C
 C
       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
-C     
+C
       PK = 0.D0
       PS = 0.D0
       CALL RLMACHD(4,SML)
       CALL RLMACHD(5,ALSML)
- 10   IF (P .NE. 0.D0) GO TO 15
+      IF (P .NE. 0.D0) GO TO 15
       PS = 1.D0
       IF (K .NE. 0) GO TO 900
       PK = 1.D0
@@ -601,7 +601,7 @@ C
       Q1 = P
       K1 = N-K
  25   ALQN = XN*DLOG(Q1)
-      ICNT = ALQN/ALSML
+      ICNT = idint(ALQN/ALSML)
       ALQN = ALQN-ICNT*ALSML
       PK = RLXEXPD(ALQN)
       IF (K1 .EQ. 0) GO TO 35
@@ -693,7 +693,7 @@ C
 C.......................................................................
 C
 C  MAIN ALGORITHM FOR THE LOGISTIC REGRESSION
-C   
+C
       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),COV(NCOV),THETA(NP),CI(N),VTHETA(N),
      +     WA(N),DELTA(NP),GRAD(NP),HESSNV(NCOV),RW2(MDX,NP),
@@ -732,11 +732,11 @@ C
      1     MAXTC,
      1     TOL,TOLT,TOLA,TOLC,ZMIN,NIT,CI,WA,VTHETA,
      1     DELTA,GRAD,HESSNV,F0,F1,F2,SC,SE,SF,SG,SH,SX,SP,SA,ST,SD,
-     1 	   SU, TRACE)
+     1     SU, TRACE)
 C.......................................................................
 C
 C  MAIN ALGORITHM FOR THE LOGISTIC REGRESSION
-C   
+C
       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
       DIMENSION X(MDX,NP),Y(N),WA(N),F0(N),F1(N),F2(N),CI(N),VTHETA(N),
      +     THETA(NP),DELTA(NP),GRAD(NP),COV(NCOV),HESSNV(NCOV),
@@ -803,7 +803,7 @@ C
 C     RLICTHM2 checks if the vector DELTA is small enough
 C
 
-      IF (RLICTHM2(NP,NCOV,DELTA,1.D0,COV,TOL,ICNVT).EQ.1) 
+      IF (RLICTHM2(NP,NCOV,DELTA,1.D0,COV,TOL,ICNVT).EQ.1)
      +     RETURN
 
 C
@@ -813,7 +813,7 @@ C  ------
      +     MDX,TAU,MAXTA,
      +     ICNVA,TOLA,NITA,WA,SU,SA,ST,SD)
 
-      DO 340 I=1,N   
+      DO 340 I=1,N
          ZNR=WA(I)
          IF (ZNR.GT.ZMIN) GOTO 320
          ZNR=ZMIN
@@ -821,14 +821,14 @@ C  ------
  340  CONTINUE
 
 C
-C  STEP 4 : COMPUTE THE ci's 
+C  STEP 4 : COMPUTE THE ci's
 C  ------
       CALL RLGICSTP(ICASE,IALG,NI,VTHETA,WA,OI,N,TOLC,MAXTC,CI)
 C
 C  STEP 5 : SET NIT:=NIT+1 AND GOTO STEP 1
 C  ------
       NIT=NIT+1
-  	  OURNIT(1) = NIT
+      OURNIT(1) = NIT
       GOTO 100
  500  RETURN
       END
@@ -858,7 +858,7 @@ C
 C  STEP 1.   SET NIT=1
 C  ------
 C
- 100  NIT=1
+      NIT=1
 C
 C  STEP 2.   COMPUTE CURRENT OBJECTIVE FUNCTION VALUE AND (-)DERIVATIVES
 C  ------
@@ -891,7 +891,7 @@ C
          ELSE
             CALL RLRMTRM2(SX,N,NP,MDX,INTCH,TAU,K,SF,SG,SH,IP)
          ENDIF
-C     
+C
          L=0
          DO 425 I=1,NP
             DO 420 J=1,I
@@ -903,12 +903,12 @@ C
          IF (K.EQ.0) GOTO 500
          CALL RLKIASM2(SX,K,NP,MDX,NCOV,1.D0,1.D0,HESSNV)
          CALL RLKFASM2(SX,HESSNV,K,NP,MDX,NCOV,1.D0,
-     +        DELTA,SG,IP) 
+     +        DELTA,SG,IP)
 C
 C  STEP 5.   COMPUTE THE INCREMENT VECTOR
 C  ------
 C
- 500     continue 
+ 500     continue
          CALL RLMSFDBI(HESSNV,GRAD,DELTA,NP,NCOV,1,NP,NP)
          GAM0=GAM
          IF (K.LT.NP.AND.IOPT.NE.2) THEN
@@ -946,17 +946,17 @@ C     It looks like IOPT==1
 C
          IF (IOPT.EQ.1) THEN
             IF (ICASE.LE.2) THEN
-                 CALL RLDBINOM(Y,CI,VTHETA,WA,NI,F0,OI,N,1.D-6,F2)
-	    endif
+               CALL RLDBINOM(Y,CI,VTHETA,WA,NI,F0,OI,N,1.D-6,F2)
+            endif
             IF (ICASE.EQ.3) THEN
                  CALL RLDPOISS(Y,CI,VTHETA,WA,F0,OI,N,1.D-6,F2)
-	    endif
+            endif
             GOTO 400
          ELSE
             CALL RLSTPLRG(ICASE,X,Y,CI,OI,ZETA,IQ,THETA,DELTA,WA,
      +           NI,GRAD,N,NP,MDX,Q0,Q01,GAM0,ST,F0,VTHETA)
             GOTO 700
-         ENDIF   
+         ENDIF
  650     IF (Q01.LT.Q0L) THEN
             DO 670 J=1,NP
                THETA(J)=SF(J)
@@ -968,14 +968,14 @@ C  STEP 7. STOP ITERATIONS IF DESIRED PRECISION HAS BEEN REACHED
 C  -------
  700     IF (NIT.EQ.MAXIT) GOTO 730
          IF (RLICTHM2(NP,NCOV,DELTA,1.D0,COV,TOL,ICNV).EQ.1) GOTO 730
- 720     NIT=NIT+1
+         NIT=NIT+1
          GOTO 200
- 730     continue 
-	 CALL RLMFYD(X,THETA,VTHETA,N,NP,MDX,NP,1,N,1)
+ 730     continue
+         CALL RLMFYD(X,THETA,VTHETA,N,NP,MDX,NP,1,N,1)
          CALL RLLRFNCT(ICASE,Y,CI,VTHETA,OI,WA,NI,N,1,1,1,F0,F1,F2,Q0)
          RETURN
          END
-C     
+C
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLMFYD(A,Y,Z,M,N,MDA,NY,IYE,NZ,IZE)
@@ -1087,7 +1087,7 @@ C
             D(I)=KAP
             GOTO 500
          ENDIF
- 200	 CALL RLTS12BI(YY,AI,ENI,OO,XMIN,YMIN,T1,S1,T2,S2)
+         CALL RLTS12BI(YY,AI,ENI,OO,XMIN,YMIN,T1,S1,T2,S2)
          ELG0=F0(I)
          ELG1=(-AI*T1+S1)
          ELG2=( AI*T2+S2)
@@ -1108,7 +1108,7 @@ C
          GOTO 500
  300     T1=(YY-AI)/(ENI-YY+AI)
          T1=RLDXLOG(T1,XMIN,YMIN)-OO
- 350     S2=ENI/4.D0
+         S2=ENI/4.D0
          IF (T1.GT.0.D0) THEN
             S2=RLGFUN(2,1,T1+OO)
             S2=S2*(1.D0-S2)*ENI
@@ -1123,12 +1123,12 @@ C
       SUBROUTINE RLBIGGBI(X,DNI,DMIN,DMAX,Y)
 C.......................................................................
 C
-      DOUBLE PRECISION DNI,DMIN,DMAX,X,Y  
+      DOUBLE PRECISION DNI,DMIN,DMAX,X,Y
 C
 C  AUXILIARY SUBROUTINE FOR RLDBINOM (BINOMIAL CASE).
 C
       IF (X.LE.DMIN) THEN
-         Y=0.D0 
+         Y=0.D0
       ELSEIF (X.GE.DMAX) THEN
          Y=DNI*X
       ELSE
@@ -1158,7 +1158,7 @@ C
       S2=-(YI+AI)*T2+DNI*S2
       RETURN
       END
-C     
+C
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLDPOISS(Y,CI,VTHETA,WA,F0,OI,N,KAP,D)
@@ -1199,7 +1199,7 @@ C
          ELSE
             D(I)=KAP
             GOTO 500
-         ENDIF 
+         ENDIF
          ELG0=F0(I)
          ELG1=(-AI*T1+S1)
          ELG2=( AI*T2+S2)
@@ -1218,7 +1218,7 @@ C
  500  CONTINUE
       RETURN
       END
-C     
+C
 C-----------------------------------------------------------------------
 C
       SUBROUTINE RLTS12PO(YI,AI,OI,XMIN,YMIN,T1,S1,T2,S2)
@@ -1255,28 +1255,28 @@ C
       CALL RLMACHD(4,XMIN)
       CALL RLMACHD(5,YMIN)
       CALL RLMACHD(6,XBIG)
-      XBIG=XBIG/10.D0 
+      XBIG=XBIG/10.D0
       DMAX=DLOG(XBIG)
       NCALL=1
  10   SUM=0.D0
       DO 500 I=1,N
          GI=VTHETA(I)
          OF=OI(I)
-         GO=GI+OF 
+         GO=GI+OF
          YI=Y(I)-C(I)
          AI=WA(I)
          NI=1
          IF (ICASE.EQ.2) NI=NN(I)
          ENI=DBLE(NI)
          IF (-YI.GE.AI) THEN
-            S2=0.D0 
+            S2=0.D0
             GOTO 200
          ENDIF
          IF (ICASE.EQ.3) GOTO 30
 C==>    BERNOUILLI OR BINOMIAL CASE
          IF (-YI.LT.-AI) THEN
             IF (-YI+ENI.LE.-AI) THEN
-               S1=0.D0 
+               S1=0.D0
                GOTO 100
             ENDIF
             T1=(YI-AI)/(ENI-YI+AI)
@@ -1293,15 +1293,15 @@ C==>    BERNOUILLI OR BINOMIAL CASE
          ENDIF
  30      IF (-YI.LT.-AI) THEN
 C==>    POISSON CASE
-            T1=YI-AI 
-            T2=YI+AI 
+            T1=YI-AI
+            T2=YI+AI
             T1=RLDXLOG(T1,XMIN,YMIN)-OF
             T2=RLDXLOG(T2,XMIN,YMIN)-OF
             IF (GI.LT.T1) THEN
-               S1=-(YI-AI)*T1+(YI-AI) 
+               S1=-(YI-AI)*T1+(YI-AI)
                GOTO 100
             ELSEIF (GI.GT.T2) THEN
-               S2=-(YI+AI)*T2+(YI+AI) 
+               S2=-(YI+AI)*T2+(YI+AI)
                GOTO 200
             ELSE
                GOTO 400
@@ -1310,7 +1310,7 @@ C==>    POISSON CASE
             T2=YI+AI
             T2=RLDXLOG(T2,XMIN,YMIN)-OF
             IF (GI.LE.T2) GOTO 400
-            S2=-(YI+AI)*T2+(YI+AI) 
+            S2=-(YI+AI)*T2+(YI+AI)
             GOTO 200
          ENDIF
  50      IF (-YI+ENI.LE.AI) GOTO 300
@@ -1321,35 +1321,35 @@ C==>    POISSON CASE
          S2=RLDXLOG(S2,XMIN,YMIN)
          S2=-(YI+AI)*T2+ENI*S2
          GOTO 200
- 100     F0I=-AI*GI+S1  
+ 100     F0I=-AI*GI+S1
          IF (I0.NE.0) F0(I)=F0I
          IF (I1.NE.0) F1(I)=-AI
          IF (I2.NE.0) F2(I)=0.D0
          GOTO 450
  200     F0I=AI*GI+S2
-         IF (I0.NE.0) F0(I)=F0I 
+         IF (I0.NE.0) F0(I)=F0I
          IF (I1.NE.0) F1(I)=AI
          IF (I2.NE.0) F2(I)=0.D0
          GOTO 450
  300     IF (GI+OF.LE.DMIN) THEN
-            S1=0.D0 
+            S1=0.D0
          ELSEIF (GI+OF.GE.DMAX) THEN
             S1=ENI*(GI+OF)
          ELSE
             S1=ENI*DLOG(1.D0+DEXP(GI+OF))
          ENDIF
          S2=RLGFUN(ICASE,1,GO)
-         F0I=-YI*GI+S1 
+         F0I=-YI*GI+S1
          IF (I0.NE.0) F0(I)=F0I
          IF (I1.NE.0) F1(I)=-YI+ENI*S2
          IF (I2.NE.0) F2(I)=ENI*S2*(1.D0-S2)
          GOTO 450
  400     EXPGI=RLGFUN(ICASE,1,GO)
-         F0I=-YI*GI+EXPGI 
+         F0I=-YI*GI+EXPGI
          IF (I0.NE.0) F0(I)=F0I
          IF (I1.NE.0) F1(I)=-YI+EXPGI
          IF (I2.NE.0) F2(I)=EXPGI
- 450     SUM=SUM+F0I  
+ 450     SUM=SUM+F0I
  500  CONTINUE
       SF0=SUM
       RETURN
@@ -1431,7 +1431,7 @@ C  ------
 C
 C  STEP 1: COMPUTE WEIGHTED COVARIANCE (ST) AND AUXILIARY VALUES
 C  ------
- 100  CALL RLUCOWJ(X,Y,NI,VTHETA,OI,CI,A,ST,NOBS,NVAR,NCOV,MDX,
+      CALL RLUCOWJ(X,Y,NI,VTHETA,OI,CI,A,ST,NOBS,NVAR,NCOV,MDX,
      +     ICNV,NIT,DELTA,DIST,SU,SD,IUGL,B,ICASE)
 
 C
@@ -1441,8 +1441,8 @@ C  ------
      +     GOTO 500
 C
 C  STEP 3: FIND IMPROVEMENT MATRIX SS=I-ST FOR A
-C  ------ 
- 300  INFO=0
+C  ------
+      INFO=0
       CALL RLPRSFBI(ST,NVAR,NCOV,TAU,INFO)
 
 C
@@ -1467,7 +1467,7 @@ C.......................................................................
 C
 C  PURPOSE
 C  -------
-C  WEIGHT FUNCTION FOR THE A-STEP 
+C  WEIGHT FUNCTION FOR THE A-STEP
 C
       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
 C      DIMENSION UPAR(NPAR)
@@ -1487,7 +1487,7 @@ C      DIMENSION UPAR(NPAR)
 C
 C     it seems IUGL==1 (always)
 C
-C====>  OPTION 1 
+C====>  OPTION 1
          PP=RLGFUN(ICASE,1,GI)
          IF (ICASE.EQ.1) THEN
 C==>      LOGISTIC BERNOULLI
@@ -1496,7 +1496,7 @@ C==>      LOGISTIC BERNOULLI
             IF (TEMP.LT.A) T1=TEMP**2
             TEMP=DABS(-PP-CI)
             T2=A**2
-            IF (TEMP.LT.A) T2=TEMP**2 
+            IF (TEMP.LT.A) T2=TEMP**2
             RLUGL=T1*PP+T2*(1.D0-PP)
          ELSEIF (ICASE.EQ.2) THEN
 C==>      LOGISTIC BINOMIAL
@@ -1574,7 +1574,7 @@ C
          UARR(4)=CL
          U=RLUGL(UARR,DISTL,IUGL,ICASE,B)
          SU(L)=U
- 80      IJ=0
+         IJ=0
          DO 90 I=1,NP
             DO 85 J=1,I
                IJ=IJ+1
@@ -1604,7 +1604,7 @@ C
          GI=VTHETA(I)+OI(I)
          A=WA(I)
          NI=1
-         IF (ICASE.EQ.2) NI=NN(I) 
+         IF (ICASE.EQ.2) NI=NN(I)
          PP=RLGFUN(ICASE,NI,GI)
          T=C(I)+PP
          CALL RLGYCSTP(ICASE,IALG,NI,A,PP,TOL,MAXIT,T)
@@ -1635,7 +1635,7 @@ C  ------
 
  10   NIT=1
 C
-C  STEP 1.   COMPUTE CURRENT OBJECTIVE FUNCTION VALUE 
+C  STEP 1.   COMPUTE CURRENT OBJECTIVE FUNCTION VALUE
 C  ------
       IF (ICASE.EQ.1) THEN
 C==>    LOGISTIC BERNOULLI : SOLVE EXPLICITLY
@@ -1746,7 +1746,7 @@ C  _______
       TK=DBLE(K)-TSTAR
       TKP1=TK+1
       IF (K.EQ.NI) TKP1=A+1.D0
-      IF (TH.LE.-A .AND. -A.LT.THP1 .AND. TK.LE.A.AND.A.LT.TKP1) 
+      IF (TH.LE.-A .AND. -A.LT.THP1 .AND. TK.LE.A.AND.A.LT.TKP1)
      +     THEN
          T=TSTAR
          RETURN
@@ -1771,7 +1771,7 @@ C
       IF (DABS(DELTA).LT.TOL.OR.NIT.EQ.MAXIT) GOTO 600
       NIT=NIT+1
       GOTO 100
- 600  RETURN 
+ 600  RETURN
       END
 C
 C-----------------------------------------------------------------------
@@ -1782,8 +1782,8 @@ C
 C     NEW VERSION (10/99)
 C.......................................................................
 C
-C     GLM DEVIANCE COMPUTATION 
-C   
+C     GLM DEVIANCE COMPUTATION
+C
       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
       DIMENSION Y(N),CI(N),WA(N),VTHETA(N),OI(N),THETAS(N),SC(N)
       DOUBLE PRECISION LI(N)
@@ -1793,7 +1793,7 @@ C
       DO 700 I=1,N
          TMP=(Y(I)-CI(I))/DBLE(NI(I))
          THETAS(I)=RLFLINK(ICASE,TMP)-OI(I)
- 700  CONTINUE 
+ 700  CONTINUE
       QS=0.D0
       DO 800 I=1,N
          ENI=DBLE(NI(I))
@@ -1806,10 +1806,10 @@ C
          ELSE
             TMP=YI
             IF (YI.GT.0.D0) TMP=TMP-YI*DLOG(YI)
-         ENDIF  
+         ENDIF
          QS=QS+TMP
          SC(I)=TMP
- 800  CONTINUE 
+ 800  CONTINUE
       DEV=2.D0*DABS(Q-QS)
       RETURN
       END
@@ -1832,15 +1832,15 @@ C
       CALL RLMACHD(5,YMIN)
       NCALL=1
  10   RLFLINK=-999.D0
-      IF (EM.LE.0.D0) RETURN 
+      IF (EM.LE.0.D0) RETURN
       TT=YMIN
       IF (EM.GT.XMIN) TT=DLOG(EM)
       TMP=0.D0
-      IF (ICASE.GT.2) GOTO 20 
-      IF (1.D0-EM.LE.0.D0) RETURN 
+      IF (ICASE.GT.2) GOTO 20
+      IF (1.D0-EM.LE.0.D0) RETURN
       TMP=YMIN
       IF (1.D0-EM.GT.XMIN) TMP=DLOG(1.D0-EM)
- 20   RLFLINK=TT-TMP 
+ 20   RLFLINK=TT-TMP
       RETURN
       END
 
