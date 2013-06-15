@@ -21,7 +21,7 @@ export(
   rho.weight,
   psp.weight,
   chi.weight,
-  
+
 
   ## glmRob ##
   glmRob,
@@ -79,6 +79,8 @@ export(
   ## Other ##
   gen.data
 )
+
+importFrom(robustbase, covMcd, rrcov.control)
 
 
 ## S3 methods for lmRob ##
