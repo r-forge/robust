@@ -110,7 +110,7 @@ anova.glmRob <- function(object, ..., test = c("none", "Chisq", "F", "Cp"))
 
   else
     stat.anova(aod, test, 
-      stats:::deviance.lm(object)/object$df.resid, 
+      deviance(object)/object$df.resid, 
       object$df.resid, nrow(x))
 }
 

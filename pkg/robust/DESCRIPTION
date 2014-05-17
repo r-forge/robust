@@ -1,6 +1,6 @@
 Package: robust
-Version: 0.4-15
-Date: 2013-06-15
+Version: 0.4-16
+Date: 2014-05-16
 Title: Robust Library
 Description: A package of robust methods.
 Author: Jiahui Wang,
@@ -15,8 +15,7 @@ Author: Jiahui Wang,
         Martin Maechler <maechler@stat.math.ethz.ch>,
         Kjell Konis <kjell.konis@me.com>.
 Maintainer: Kjell Konis <kjell.konis@me.com>
-Depends: R (>= 2.15.0), fit.models, MASS, lattice, robustbase, rrcov
-Imports: stats, robustbase
-License: GPL
+Depends: fit.models, MASS, lattice, robustbase, rrcov, stats
+License: GPL-2
 
 

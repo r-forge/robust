@@ -15,6 +15,7 @@ export(
   rb.lmRob,
   lmRob.RFPE,
   test.lmRob,
+  lsRobTest,
   update.lmRob,
 
   psi.weight,
@@ -81,7 +82,10 @@ export(
 )
 
 importFrom(robustbase, covMcd, rrcov.control)
-
+importFrom(fit.models, fit.models, fmclass.register, fmclass.add.class)
+importFrom(rrcov, CovSde)
+importFrom(lattice, xyplot)
+importFrom(MASS, fitdistr)
 
 ## S3 methods for lmRob ##
 
@@ -100,6 +104,8 @@ S3method(model.frame, lmRob)
 S3method(print, lmRob)
 
 S3method(print, summary.lmRob)
+
+S3method(print, lsRobTest)
 
 
 ## S3 methods for glmRob ##

@@ -1,7 +1,7 @@
 
-R version 3.0.0 (2013-04-03) -- "Masked Marvel"
-Copyright (C) 2013 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin12.3.0 (64-bit)
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -28,7 +28,7 @@ Loading required package: robustbase
 Loading required package: rrcov
 Loading required package: pcaPP
 Loading required package: mvtnorm
-Scalable Robust Estimators with High Breakdown Point (version 1.3-3)
+Scalable Robust Estimators with High Breakdown Point (version 1.3-4)
 
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
@@ -485,8 +485,49 @@ Residual Deviance: 29.59
 > ### ** Examples
 > 
 > data(stack.dat)
-> my.control <- lmRob.control(weight=c("Bisquare","Optimal")) 
-> stack.bo <- lmRob(Loss ~ ., data = stack.dat, control = my.control) 
+> my.control <- lmRob.control(weight=c("Bisquare","Optimal"))
+> stack.bo <- lmRob(Loss ~ ., data = stack.dat, control = my.control)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lsRobTest")
+> ### * lsRobTest
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lsRobTest
+> ### Title: Bias Test for Least-Squares Regression Estimates
+> ### Aliases: lsRobTest
+> ### Keywords: robust regression
+> 
+> ### ** Examples
+> 
+> rob.fit <- lmRob(stack.loss ~ ., data = stackloss)
+> lsRobTest(rob.fit)
+Test for least squares bias
+H0: composite normal/non-normal regression error distribution
+
+Individual coefficient tests:
+                LS   Robust    Delta Std. Error    Stat p-value
+Air.Flow    0.7156  0.79769 -0.08205     0.1353 -0.6064 0.54427
+Water.Temp  1.2953  0.57734  0.71795     0.3366  2.1332 0.03291
+Acid.Conc. -0.1521 -0.06706 -0.08506     0.1200 -0.7091 0.47824
+
+Joint test for bias:
+Test statistic: 6.61 on 3 DF, p-value: 0.08541
+> lsRobTest(rob.fit, test = "T1")
+Test for least squares bias
+H0: normal regression error distribution
+
+Individual coefficient tests:
+                LS   Robust    Delta Std. Error   Stat   p-value
+Air.Flow    0.7156  0.79769 -0.08205    0.02101 -3.906 9.388e-05
+Water.Temp  1.2953  0.57734  0.71795    0.05225 13.741 5.764e-43
+Acid.Conc. -0.1521 -0.06706 -0.08506    0.01862 -4.568 4.928e-06
+
+Joint test for bias:
+Test statistic: 274.3 on 3 DF, p-value: 0
 > 
 > 
 > 
@@ -587,7 +628,7 @@ Residual Deviance: 29.59
 > ### ** Examples
 > 
 > data(breslow.dat)
-> bres.rob <- glmRob(sumY ~ Age10 + Base4 * Trt, family = poisson(), data = breslow.dat) 
+> bres.rob <- glmRob(sumY ~ Age10 + Base4 * Trt, family = poisson(), data = breslow.dat)
 > predict(bres.rob)
        1        2        3        4        5        6        7        8 
 2.592342 2.580261 2.345916 2.548386 4.396928 3.124781 2.627130 4.151528 
@@ -1092,8 +1133,9 @@ LS-estimate     2.640  0.6197
 > 
 > ### * <FOOTER>
 > ###
+> options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.244 0.097 4.592 0 0 
+Time elapsed:  3.838 0.107 4.29 0 0 
 > grDevices::dev.off()
 null device 
           1 
