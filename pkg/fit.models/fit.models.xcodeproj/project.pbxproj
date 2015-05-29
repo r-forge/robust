@@ -14,7 +14,7 @@
 		0E54A40D1681267100A8D64E /* leverage.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.q; sourceTree = "<group>"; };
 		0E5AF8DA16A8B731008271C0 /* plot.glmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = plot.glmfm.q; sourceTree = "<group>"; };
 		0E5F167D16A9D671009AF3C0 /* glmfm.R */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.rez; name = glmfm.R; path = tests/glmfm.R; sourceTree = "<group>"; };
-		0E60E515169608F000464611 /* fm.registry.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fm.registry.q; sourceTree = "<group>"; };
+		0E60E515169608F000464611 /* fit.models.environment.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = fit.models.environment.q; sourceTree = "<group>"; };
 		0EB18F251683A8170025E93E /* leverage.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = leverage.Rd; sourceTree = "<group>"; };
 		0EB18F261683A8170025E93E /* rmodified.Rd */ = {isa = PBXFileReference; lastKnownFileType = text; path = rmodified.Rd; sourceTree = "<group>"; };
 		0EC0C03216AF593C004A7926 /* .Rbuildignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Rbuildignore; sourceTree = "<group>"; };
@@ -52,6 +52,8 @@
 		0EF2212315675D7900CFD1EF /* summary.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = summary.lmfm.q; sourceTree = "<group>"; };
 		0EF3FF9415685FBD003D6485 /* scatterPlot.lmfm.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = scatterPlot.lmfm.q; sourceTree = "<group>"; };
 		0EF3FFA71568B39C003D6485 /* library.q */ = {isa = PBXFileReference; lastKnownFileType = text; path = library.q; sourceTree = "<group>"; };
+		1A1FCFC81B190E9900AE1D93 /* glmfm.Rout.save */ = {isa = PBXFileReference; lastKnownFileType = text; name = glmfm.Rout.save; path = tests/glmfm.Rout.save; sourceTree = "<group>"; };
+		1A1FCFC91B190E9900AE1D93 /* lmfm.Rout.save */ = {isa = PBXFileReference; lastKnownFileType = text; name = lmfm.Rout.save; path = tests/lmfm.Rout.save; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -115,7 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				0ECF482D16A933E400192B0B /* lmfm.R */,
+				1A1FCFC91B190E9900AE1D93 /* lmfm.Rout.save */,
 				0E5F167D16A9D671009AF3C0 /* glmfm.R */,
+				1A1FCFC81B190E9900AE1D93 /* glmfm.Rout.save */,
 			);
 			name = tests;
 			sourceTree = "<group>";
@@ -149,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0EF2210F15675D7900CFD1EF /* fit.models.q */,
-				0E60E515169608F000464611 /* fm.registry.q */,
+				0E60E515169608F000464611 /* fit.models.environment.q */,
 				0E405277156ABF9A00867444 /* fmclass.register.q */,
 				0E405279156ABFB000867444 /* fmclass.add.class.q */,
 				0EF3FFA71568B39C003D6485 /* library.q */,

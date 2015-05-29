@@ -1,6 +1,6 @@
 .onAttach <- function(libname, pkgname)
 {
-  assign("fmreg", list(), pos = fit.models:::fm.registry)
+  assign("fmreg", list(), envir = e)
   
 
   fmclass.register(fmclass = "lmfm",

@@ -1,3 +1,5 @@
+import(lattice)
+
 export(
   fit.models,
   fmclass.register,

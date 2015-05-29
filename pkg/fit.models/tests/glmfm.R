@@ -1,7 +1,7 @@
 options(warn = 2)
 
 library(fit.models)
-require(MASS)
+library(MASS)
 
 ################################################################################
 # Test models with differenct formulas

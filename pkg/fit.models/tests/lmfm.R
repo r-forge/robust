@@ -3,7 +3,7 @@ options(warn = 2)
 data(stackloss)
 
 library(fit.models)
-require(MASS)
+library(MASS)
 
 # add rlm to the lmfm fit.models class
 fmclass.add.class("lmfm", "rlm")

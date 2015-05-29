@@ -1,8 +1,7 @@
 
-R version 2.15.2 (2012-10-26) -- "Trick or Treat"
-Copyright (C) 2012 The R Foundation for Statistical Computing
-ISBN 3-900051-07-0
-Platform: x86_64-apple-darwin12.2.0/x86_64 (64-bit)
+R version 3.1.2 (2014-10-31) -- "Pumpkin Helmet"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin14.1.0 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -24,7 +23,7 @@ Type 'q()' to quit R.
 > library('fit.models')
 Loading required package: lattice
 > 
-> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
 > nameEx("fit.models")
 > ### * fit.models
@@ -77,7 +76,7 @@ Coefficients:
  Acid.Conc.: rlm:  -0.1278     0.1289  -0.992             
               lm:  -0.1521     0.1563  -0.973  0.34405    
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual Scale Estimates:
 rlm: 2.441 on 17 degrees of freedom
@@ -122,7 +121,7 @@ Coefficients:
  Acid.Conc.:    lm.clean:  -0.01725    0.06314  -0.273  0.78933    
              lm.complete:  -0.15212    0.15629  -0.973  0.34405    
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual Scale Estimates:
    lm.clean: 1.156 on 12 degrees of freedom
@@ -299,7 +298,7 @@ Coefficients:
      log(u): lot1:  0.0153431  0.0004150   36.98 2.75e-09 ***
              lot2:  0.0235992  0.0005768   40.91 1.36e-09 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Null deviance:
   lot1: 3.513 on 8 degrees of freedom
@@ -355,7 +354,7 @@ Coefficients:
  Acid.Conc.: m1:  -0.1521     0.1563  -0.973  0.34405    
              m2:                                         
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual Scale Estimates:
 m1: 3.243 on 17 degrees of freedom
@@ -370,8 +369,9 @@ m2: 0.9088
 > 
 > ### * <FOOTER>
 > ###
-> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.346 0.058 1.41 0 0 
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  2.351 0.04 2.407 0 0 
 > grDevices::dev.off()
 null device 
           1 

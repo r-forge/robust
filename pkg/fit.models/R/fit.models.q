@@ -9,8 +9,7 @@ fit.models <- function(model.list, ...)
   if(is.null(dots.names))
     dots.names <- character(length(dots))
 
-  fmreg <- get("fmreg", pos = fit.models:::fm.registry)
-  supported.classes <- unlist(sapply(fmreg, function(u) u$classes))
+  supported.classes <- unlist(sapply(e$fmreg, function(u) u$classes))
 
 
   ## The only way model list can be missing is if all the arguments in the call
@@ -82,7 +81,7 @@ fit.models <- function(model.list, ...)
   ## Now we should have a properly named list of fitted models.  Have to
   ## set the appropriate attributes.
 
-  candidates <- lapply(fmreg, getElement, name = "classes")
+  candidates <- lapply(e$fmreg, getElement, name = "classes")
   classes <- sapply(model.list, function(u) class(u)[1])
 
   ## First, the fm class must beable to compare all the classes.
