@@ -13,7 +13,7 @@ print.summary.lmfm <- function(x, digits = max(3, getOption("digits") - 3),
   }
 
   ## Not sure why I've got na.rm = TRUE here, can residuals be missing? ##
-  resq <- t(sapply(x, function(u) quantile(resid(u), na.rm = TRUE)))
+  resq <- t(sapply(x, function(u) quantile(residuals(u), na.rm = TRUE)))
   dimnames(resq) <- list(fancy.names, c("Min", "1Q", "Median", "3Q", "Max"))
 
   cat("\nResidual Statistics:\n")

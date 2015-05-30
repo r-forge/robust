@@ -75,14 +75,13 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                     main = expression(plain("Normal QQ Plot of Modified Residuals")),
                     xlab = expression(plain("Standard Normal Quantiles")),
                     ylab = expression(plain("Empirical Quantiles of Modified Residuals")),
-                    ...),
+                    pch = 16),
 
         kernDenPlot.lmfm(x,
                          fun = rmodified,
                          main = expression(plain("Kernel Density Estimate of Modified Residuals")),
                          xlab = expression(plain("Modified Residuals")),
-                         ylab = expression(plain("Density")),
-                         ...),
+                         ylab = expression(plain("Density"))),
 
         scatterPlot.lmfm(x,
                          x.fun = leverage,
@@ -90,7 +89,7 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                          xlab = expression(plain("Leverage")),
                          ylab = expression(plain("Modified Residuals")),
                          main = expression(plain("Modified Residuals vs. Leverage")),
-                         ...),
+                         pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = fitted,
@@ -98,7 +97,7 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                          main = expression(plain("Residuals vs. Fitted Values")),
                          xlab = expression(plain("Fitted Values")),
                          ylab = expression(plain("Residuals")),
-                         ...),
+                         pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = fitted,
@@ -106,7 +105,7 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                          main = expression(plain("Scale-Location")),
                          xlab = expression(plain("Fitted Values")),
                          ylab = expression(sqrt(abs(plain("Modified Residuals")))),
-                         ...),
+                         pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = fitted,
@@ -114,34 +113,33 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
                          main = expression(plain("Response vs. Fitted Values")),
                          xlab = expression(plain("Fitted Values")),
                          ylab = expression(plain("Response")),
-                         ...),
+                         pch = 16),
 
         indexPlot.lmfm(x,
                        fun = rmodified,
                        main = expression(plain("Modified Residuals vs. Index (Time)")),
                        xlab = expression(plain("Index (Time)")),
                        ylab = expression(plain("Modified Residuals")),
-                       ...),
+                       pch = 16),
 
         overlaidQQPlot.lmfm(x,
                             fun = rmodified,
                             main = expression(plain("Normal QQ Plot of Modified Residuals")),
                             xlab = expression(plain("Standard Normal Quantiles")),
                             ylab = expression(plain("Empirical Quantiles of Modified Residuals")),
-                            ...),
+                            pch = 16),
 
         overlaidKernDenPlot.lmfm(x,
                                  fun = rmodified,
                                  main = expression(plain("Kernel Density Estimate of Modified Residuals")),
                                  xlab = expression(plain("Modified Residuals")),
-                                 ylab = expression(plain("Density")),
-                                 ...),
+                                 ylab = expression(plain("Density"))),
 
         simpleRegPlot.lmfm(x,
                            main = expression(plain("Scatter Plot with Overlaid Fits")),
                            lwd.reg = n.models:1,
                            col.reg = colors,
-                           ...)
+                           pch = 16)
       )
     }
   }

@@ -1,4 +1,4 @@
-panel.addons <- function(x, y, smooths = FALSE, rugplot = FALSE, id.n = 3, ...)
+panel.addons <- function(x, y, smooths = FALSE, rugplot = FALSE, id.n = 3)
 {
   if(smooths)
     panel.loess(x, y, col = "red")

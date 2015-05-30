@@ -66,7 +66,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          xlab = expression(plain("Predicted Values")),
                          ylab = expression(plain("Deviance Residuals")),
                          main = expression(plain("Deviance Residuals vs. Predicted Values")),
-                         ...),
+                         pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = fitted,
@@ -74,7 +74,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          xlab = expression(plain("Fitted Values")),
                          ylab = expression(plain("Response")),
                          main = expression(plain("Response vs. Fitted Values")),
-                         ...),
+                         pch = 16),
 
         qqPlot.lmfm(x,
                     fun = function(u) rmodified(u, type = "pearson"),
@@ -82,7 +82,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                     ylab = expression(plain("Empirical Quantiles of Modified Pearson Residuals")),
                     main = expression(plain("Normal QQ Plot of Modified Pearson Residuals")),
                     envelope = FALSE,
-                    ...),
+                    pch = 16),
 
         qqPlot.lmfm(x,
                     fun = function(u) rmodified(u, type = "deviance"),
@@ -90,7 +90,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                     ylab = expression(plain("Empirical Quantiles of Modified Deviance Residuals")),
                     main = expression(plain("Normal QQ Plot of Modified Deviance Residuals")),
                     envelope = FALSE,
-                    ...),
+                    pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = leverage,
@@ -98,7 +98,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          xlab = expression(plain("Leverage")),
                          ylab = expression(plain("Modified Pearson Residuals")),
                          main = expression(plain("Modified Pearson Residuals vs. Leverage")),
-                         ...),
+                         pch = 16),
 
         scatterPlot.lmfm(x,
                          x.fun = predict,
@@ -106,7 +106,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
                          xlab = expression(plain("Predicted Values")),
                          ylab = expression(sqrt(abs(plain("Modified Deviance Residuals")))),
                          main = expression(plain("Scale-Location")),
-                         ...)
+                         pch = 16)
       )
     }
   }

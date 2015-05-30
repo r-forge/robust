@@ -4,7 +4,7 @@ leverage <- function(object, ...)
 
 leverage.default <- function(object, ...)
 {
-  p <- length(coefficients(object))
+  p <- length(coef(object))
   n <- length(fitted(object))
   rep(p/n, n)
 }

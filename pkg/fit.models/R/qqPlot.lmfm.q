@@ -91,10 +91,10 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
         v <- quantile(y[!is.na(y)], c(0.25, 0.75))
         slope <- diff(v) / diff(u)
         int <- v[1] - slope * u[1]
-        panel.abline(int, slope)
+        panel.abline(int, slope, ...)
       }
 
-      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n, ...)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
 
@@ -122,14 +122,14 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
 
       panel.xyplot(x[dat.idx], y[dat.idx], ...)
 
-      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n, ...)
+      panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
 
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
         v <- quantile(y[!is.na(y)], c(0.25, 0.75))
         slope <- diff(v) / diff(u)
         int <- v[1] - slope * u[1]
-        panel.abline(int, slope)
+        panel.abline(int, slope, ...)
       }
 
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
@@ -150,14 +150,14 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
 
     panel.special <- function(x, y, id.n, qqline, ...) {
       panel.xyplot(x, y, ...)
-      panel.addons(x, y, id.n = id.n, ...)
+      panel.addons(x, y, id.n = id.n)
 
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
         v <- quantile(y[!is.na(y)], c(0.25, 0.75))
         slope <- diff(v) / diff(u)
         int <- v[1] - slope * u[1]
-        panel.abline(int, slope)
+        panel.abline(int, slope, ...)
       }
 
       invisible()

@@ -12,7 +12,7 @@ scatterPlot.lmfm <- function(object, x.fun, y.fun, ...)
 
   panel.special <- function(x, y, ...) {
     panel.xyplot(x, y, ...)
-    panel.addons(x, y, ...)
+    panel.addons(x, y)
     invisible()
   }
 

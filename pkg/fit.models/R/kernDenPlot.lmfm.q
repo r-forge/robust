@@ -21,6 +21,7 @@ kernDenPlot.lmfm <- function(x, fun, ...)
                    n = 256,
                    bw = "SJ",
                    plot.points = FALSE,
+                   ref = TRUE,
                    panel = panel.special,
                    strip = function(...) strip.default(..., style = 1),
                    layout = c(n.models, 1, 1),
