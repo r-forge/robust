@@ -40,11 +40,17 @@ ellipsesPlot.covfm <- function(x, ...)
       y.max <- max(y.max, z[[i]][,2])
     }
 
-    points <- eval(x[[1]]$call$data)
-    x.min <- min(x.min, points[,1])
-    x.max <- max(x.max, points[,1])
-    y.min <- min(y.min, points[,2])
-    y.max <- max(y.max, points[,2])
+    X <- try(eval(x[[1]]$call$data, envir = sys.parent(2)), silent = TRUE)
+    if(!inherits(X, "try-error")) {
+      X <- as.matrix(X)
+      x.min <- min(x.min, X[,1])
+      x.max <- max(x.max, X[,1])
+      y.min <- min(y.min, X[,2])
+      y.max <- max(y.max, X[,2])
+    } else {
+      X <- matrix(NA, 1, 2)
+    }
+
     center <- c(mean(c(x.min, x.max)), mean(c(y.min, y.max)))
 
     s.range <- max(abs(c(center[1] - x.min, x.max - center[1],
@@ -55,18 +61,20 @@ ellipsesPlot.covfm <- function(x, ...)
     else
       header <- "95% Tolerance Ellipses"
 
-    plot(points,
-      xlim = c(center[1] - s.range, center[1] + s.range),
-      ylim = c(center[2] - s.range, center[2] + s.range),
-      main = header,
-      pch = 16)
+    plot(X,
+         xlim = c(center[1] - s.range, center[1] + s.range),
+         ylim = c(center[2] - s.range, center[2] + s.range),
+         main = header,
+         col = "lightgray",
+         pch = 16,
+         asp = 1)
 
     for(i in 1:length(z))
-      polygon(z[[i]], density = 0, lty = i, col = i, lwd = i)
+      polygon(z[[i]], density = 0, lty = i, col = i, lwd = 2)
 
     pos <- ifelse(x[[1]]$cov[1,2] > 0, "topleft", "topright")
     legend(x = pos, legend = mod.names, col = 1:n.models, lty = 1:n.models,
-           lwd = 1:n.models, bty = "n")
+           lwd = 2, bty = "n")
   }
 
   ## if p > 2 plot matrix of ellipses ##
@@ -119,10 +127,10 @@ ellipsesPlot.covfm <- function(x, ...)
       ut <- row(X) < col(X)
       lt <- row(X) > col(X)
 
-      points <- c(seq(0.0, 2*pi, length.out = 181), NA)
-      xs <- sapply(X[ut], function(u, v) cos(v + acos(u)/2), v = points)
+      pts <- c(seq(0.0, 2*pi, length.out = 181), NA)
+      xs <- sapply(X[ut], function(u, v) cos(v + acos(u)/2), v = pts)
       xs <- 0.475 * xs + rep(xc[ut], each = 182)
-      ys <- sapply(X[ut], function(u, v) cos(v - acos(u)/2), v = points)
+      ys <- sapply(X[ut], function(u, v) cos(v - acos(u)/2), v = pts)
       ys <- 0.475 * ys + rep(yc[ut], each = 182)
 
       polygon(x = as.vector(xs),
@@ -133,21 +141,14 @@ ellipsesPlot.covfm <- function(x, ...)
               lty = k)
 
       corr <- X[lt]
-      nonneg <- (corr >= 0.0)
-      corr <- round(corr, digits = 2)
-      zero.corr <- (abs(corr) < 1e-4)
-      corr <- as.character(corr)
-      corr[nonneg] <- paste(" ", corr[nonneg], sep = "")
-      n.char <- nchar(corr)
-      tz <- max(n.char) - n.char
-      tz <- sapply(tz, function(u) paste(rep("0", u), collapse = ""))
-      corr <- paste(corr, tz, sep = "")
-      corr[zero.corr] <- " 0.00"
+      corr[corr > 0.99 & corr < 1.00] <- 0.99
+      corr[corr < -0.99 & corr > -1.00] <- -0.99
+      corr <- format(round(corr, digits = 2))
 
-      text(xc[lt],
+      text(xc[lt] + 0.5*strwidth("0.00", cex = cex.corr),
            yc[lt],
            labels = corr,
-           adj = c(0.5, vert[k]),
+           adj = c(1.0, vert[k]),
            col = k,
            cex = cex.corr)
     }
@@ -170,7 +171,8 @@ ellipsesPlot.covfm <- function(x, ...)
            lwd = n.models:1,
            col = 1:n.models,
            lty = 1:n.models,
-           bty = "n")
+           bty = "n",
+           horiz = TRUE)
   }
 
   invisible(x)
