@@ -1,3 +1,40 @@
+### Import from other Packages ---------------------------------------------
+
+importFrom("graphics", legend, lines, par, plot, polygon,
+           strheight, strwidth, text)
+importFrom("stats", anova, as.formula, binomial, coef,
+           delete.response, deviance, dgamma, dlnorm, dnorm,
+           drop.scope, dweibull, factor.scope, fitted,
+           formula, glm.fit,
+           hatvalues,
+           lm, lsfit, mad, mahalanobis,
+           median, model.extract, model.frame, model.matrix,
+           na.fail, napredict, naprint, nlm, pchisq,
+           pgamma, pnorm, printCoefmat, pt, pweibull,
+           qchisq, qgamma, qnorm, quantile, qweibull,
+           resid, residuals, rnorm, runif, stat.anova,
+           terms, uniroot, update, update.formula, var,
+           weighted.mean)
+importFrom("utils", menu)
+
+importFrom("lattice", histogram,
+           panel.abline, panel.histogram, panel.mathdensity, panel.text, panel.xyplot,
+           prepanel.default.histogram,
+           simpleKey, strip.default, xyplot)
+
+importFrom("MASS", fitdistr, lmsreg)
+
+importFrom("robustbase", covMcd, rrcov.control)
+
+importFrom("fit.models", fit.models, fmclass.register, fmclass.add.class,
+           plot.glmfm)
+
+importFrom("rrcov", CovControlOgk, covMest, CovOgk, CovSde,
+           getCenter, getCov, getDistance)
+
+
+### Export Functions and Methods -------------------------------------------
+
 export(
   ## lmRob ##
   lmRob,
@@ -81,15 +118,8 @@ export(
   gen.data
 )
 
-importFrom(robustbase, covMcd, rrcov.control)
-importFrom(fit.models, fit.models, fmclass.register, fmclass.add.class)
-importFrom(rrcov, CovSde)
-importFrom(lattice, xyplot)
-importFrom(MASS, fitdistr)
-
 ## S3 methods for lmRob ##
 
-importFrom(stats, hatvalues)
 S3method(anova, lmRob)
 S3method(drop1, lmRob)
 S3method(labels, lmRob)
@@ -122,6 +152,7 @@ S3method(model.frame, glmRob)
 S3method(print, glmRob)
 importFrom(stats, family)
 S3method(family, glmRob)
+S3method(plot, glmRob)
 
 S3method(print, summary.glmRob)
 
@@ -130,10 +161,13 @@ S3method(print, summary.glmRob)
 
 S3method(print, covRob)
 S3method(summary, covRob)
-S3method(print, summary.covRob)
+S3method(plot, covRob)
 
 S3method(print, covClassic)
 S3method(summary, covClassic)
+S3method(plot, covClassic)
+
+S3method(print, summary.covRob)
 S3method(print, summary.covClassic)
 
 
@@ -154,6 +188,11 @@ S3method(print, summary.covfm)
 S3method(print, fdfm)
 S3method(summary, fdfm)
 S3method(plot, fdfm)
+
+## S3 methods for [g]lmRoblist ##
+
+S3method(anova,glmRoblist)
+S3method(anova, lmRoblist)
 
 
 ## S3 methods for other packages ##

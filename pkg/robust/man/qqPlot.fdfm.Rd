@@ -20,7 +20,7 @@ qqPlot.fdfm(x, qqline = TRUE, ...)
 }
 
 \examples{
-  data(los)
+  data(los, package = "robustbase")
   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
                          x = los, densfun = "gamma")
   qqPlot.fdfm(los.fm, xlab = "x-axis label", ylab = "y-axis label",

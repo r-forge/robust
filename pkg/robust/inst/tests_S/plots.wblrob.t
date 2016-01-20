@@ -36,6 +36,10 @@
 }
 
 {
+	require("fit.models")
+}
+
+{
 	#make a gamma fit.models object
 	temp <- fit.models(list(Robust = "gammaRob", MLE = "gammaMLE"), data = the.data)
 	TRUE

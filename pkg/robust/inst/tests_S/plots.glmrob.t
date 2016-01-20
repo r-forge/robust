@@ -45,6 +45,9 @@
 ################################################################
 
 ## 2 Test plot.fit.models with glmRob - glm  Comparison
+{
+	require("fit.models")
+}
 
 {
 	#make a fit.models object and start pdf device

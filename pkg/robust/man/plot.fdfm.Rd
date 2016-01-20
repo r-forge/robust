@@ -24,7 +24,7 @@ Comparison plots for fitted univariate distributions.
 }
 
 \examples{
-  data(los)
+  data(los, package = "robustbase")
   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
                          x = los, densfun = "gamma")
   plot(los.fm)

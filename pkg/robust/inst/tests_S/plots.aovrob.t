@@ -81,6 +81,9 @@
 ################################################################
 
 	#2 Test plot.fit.models with lmRob comparison
+{
+	require("fit.models")
+}
 
 {
 	#make a fit.models object and start pdf device

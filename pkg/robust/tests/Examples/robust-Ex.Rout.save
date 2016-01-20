@@ -1,7 +1,7 @@
 
-R version 3.1.0 (2014-04-10) -- "Spring Dance"
-Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin13.1.0 (64-bit)
+R Under development (unstable) (2016-01-17 r69948) -- "Unsuffered Consequences"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -22,14 +22,6 @@ Type 'q()' to quit R.
 > options(warn = 1)
 > library('robust')
 Loading required package: fit.models
-Loading required package: lattice
-Loading required package: MASS
-Loading required package: robustbase
-Loading required package: rrcov
-Loading required package: pcaPP
-Loading required package: mvtnorm
-Scalable Robust Estimators with High Breakdown Point (version 1.3-4)
-
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
@@ -45,7 +37,7 @@ Scalable Robust Estimators with High Breakdown Point (version 1.3-4)
 > 
 > ### ** Examples
 > 
->   data(los)
+>   data(los, package="robustbase")
 >   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
 +                          x = los, densfun = "gamma")
 >   overlaidDenPlot.fdfm(los.fm, xlab = "x-axis label", ylab = "y-axis label",
@@ -243,11 +235,11 @@ Robust Estimate of Location:
 > 
 > ### ** Examples
 > 
->   data(woodmod.dat)
->   woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
-+                          data = woodmod.dat)
->   ddPlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
-+                ylab = "y-axis label", pch = 4, col = "purple")
+>  data(woodmod.dat)
+>  woodm.fm <- fit.models(list(Robust = "covRob", Classical = "covClassic"),
++                         data = woodmod.dat)
+>  ddPlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
++               ylab = "y-axis label", pch = 4, col = "purple")
 > 
 > 
 > 
@@ -588,7 +580,7 @@ Test statistic: 274.3 on 3 DF, p-value: 0
 > 
 > ### ** Examples
 > 
->   data(los)
+>   data(los, package = "robustbase")
 >   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
 +                          x = los, densfun = "gamma")
 >   plot(los.fm)
@@ -611,6 +603,7 @@ Test statistic: 274.3 on 3 DF, p-value: 0
 > data(stack.dat)
 > stack.rob <- lmRob(Loss ~ ., data = stack.dat)
 > plot(stack.rob, which.plots = 6)
+Warning in sqrt(1 - hatvalues(object)) : NaNs produced
 > 
 > 
 > 
@@ -702,7 +695,7 @@ $df
 > 
 > ### ** Examples
 > 
->   data(los)
+>   data(los, package = "robustbase")
 >   los.fm <- fit.models(c(Robust = "fitdstnRob", MLE = "fitdstn"),
 +                          x = los, densfun = "gamma")
 >   qqPlot.fdfm(los.fm, xlab = "x-axis label", ylab = "y-axis label",

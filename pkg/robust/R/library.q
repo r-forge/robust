@@ -1,25 +1,46 @@
 .onLoad <- function(libname, pkgname)
 {
   library.dynam("robust", package = pkgname, lib.loc = libname)
+
+  ##--------------- begin {fit.models} -----------------
+  requireNamespace("fit.models")
+  FM.add.class <- fit.models::fmclass.add.class
+  FM.register  <- fit.models::fmclass.register
+
+  FM.add.class("lmfm", "lmRob")
+  FM.add.class("lmfm", "lmrob")
+  FM.add.class("lmfm", "rlm")
+
+  FM.add.class("glmfm", "glmRob")
+  FM.add.class("glmfm", "glmrob")
+
+  FM.register("covfm", c("covRob",  "covClassic"))
+  FM.register("fdfm",  c("fitdstnRob", "fitdstn"))
+  ##--------------- end {fit.models} -------------------
+
   invisible()
 }
 
 
-.onAttach <- function(libname, pkgname)
-{
-  fmclass.add.class("lmfm", "lmRob")
-  fmclass.add.class("lmfm", "lmrob")
-  fmclass.add.class("lmfm", "rlm")
+### do everthing at *load* time
+## .onAttach <- function(libname, pkgname)
+## {
+##   requireNamespace("fit.models")
+##   FM.add.class      <- fit.models::fmclass.add.class
+##   FM.register.class <- fit.models::fmclass.register.class
 
-  fmclass.add.class("glmfm", "glmRob")
-  fmclass.add.class("glmfm", "glmrob")
+##   FM.add.class("lmfm", "lmRob")
+##   FM.add.class("lmfm", "lmrob")
+##   FM.add.class("lmfm", "rlm")
 
-  fmclass.register("covfm", c("covRob", "covClassic"))
+##   FM.add.class("glmfm", "glmRob")
+##   FM.add.class("glmfm", "glmrob")
 
-  fmclass.register("fdfm", c("fitdstnRob", "fitdstn"))
+##   FM.register("covfm", c("covRob", "covClassic"))
+##   FM.register("fdfm", c("fitdstnRob", "fitdstn"))
 
-  invisible()
-}
+##   invisible()
+## }
 
 
 

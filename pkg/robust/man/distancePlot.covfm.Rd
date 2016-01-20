@@ -32,7 +32,6 @@
   distancePlot.covfm(woodm.fm, main = "Plot Title", xlab = "x-axis label",
                      ylab = "y-axis label", pch = 4, col = "purple")
 }
-
 \keyword{hplot}
 
 
