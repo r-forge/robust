@@ -5,7 +5,7 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
   confidence.envelope <- function(n, sd = 1, n.samples = 250, level = 0.95,
                                   half.normal = FALSE)
   {
-    lower <- upper <- matrix(0.0, n, n.models)
+    ## lower <- upper <- matrix(0.0, n, n.models)
 
     alphaOver2 <- (1.0 - level) / 2.0
     probs <- c(alphaOver2, 1.0 - alphaOver2)
@@ -21,7 +21,7 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
     list(lower = env[1, ], upper = env[2, ])
   }
 
-  n.models <- length(x)
+  stopifnot((n.models <- length(x)) >= 1)
   mod.names <- names(x)
 
   res <- lapply(x, fun)
@@ -65,12 +65,13 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
     lower <- lapply(env, function(u) u$lower)
     upper <- lapply(env, function(u) u$upper)
 
-    den.range <- c(min(unlist(py), unlist(lower)),
-                   max(unlist(py), unlist(upper)))
+    ## unused:
+    ## den.range <- c(min(unlist(py), unlist(lower)),
+    ##                max(unlist(py), unlist(upper)))
   }
-
-  else
-    den.range <- c(min(unlist(py)), max(unlist(py)))
+  ## unused :
+  ## else
+  ##     den.range <- c(min(unlist(py)), max(unlist(py)))
 
   if(envelope && half.normal) {
     mod <- factor(rep(rep(mod.names, n.res), 3), levels = mod.names)
@@ -110,7 +111,6 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
 
   else if(envelope) {
     mod <- factor(rep(rep(mod.names, n.res), 3), levels = mod.names)
-
     tdf <- data.frame(py = c(unlist(py),
                              unlist(lower),
                              unlist(upper)),
@@ -119,11 +119,8 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
 
     panel.special <- function(x, y, id.n, qqline, ...) {
       dat.idx <- 1:(length(x)/3)
-
       panel.xyplot(x[dat.idx], y[dat.idx], ...)
-
       panel.addons(x[dat.idx], y[dat.idx], id.n = id.n)
-
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
         v <- quantile(y[!is.na(y)], c(0.25, 0.75))
@@ -131,15 +128,10 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
         int <- v[1] - slope * u[1]
         panel.abline(int, slope, ...)
       }
-
       dat.idx <- ((length(x)/3)+1):(2*length(x)/3)
-
       llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
-
       dat.idx <- (2*(length(x)/3)+1):(length(x))
-
       llines(sort(x[dat.idx]), sort(y[dat.idx]), col.line = "black", lty = 2)
-
       invisible()
     }
   }
@@ -151,7 +143,6 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
     panel.special <- function(x, y, id.n, qqline, ...) {
       panel.xyplot(x, y, ...)
       panel.addons(x, y, id.n = id.n)
-
       if(qqline) {
         u <- quantile(x[!is.na(x)], c(0.25, 0.75))
         v <- quantile(y[!is.na(y)], c(0.25, 0.75))
@@ -159,7 +150,6 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
         int <- v[1] - slope * u[1]
         panel.abline(int, slope, ...)
       }
-
       invisible()
     }
   }
@@ -172,7 +162,6 @@ qqPlot.lmfm <- function(x, fun, envelope = TRUE, half.normal = FALSE,
               strip = function(...) strip.default(..., style = 1),
               layout = c(n.models, 1, 1),
               ...)
-
   print(p)
   invisible(p)
 }

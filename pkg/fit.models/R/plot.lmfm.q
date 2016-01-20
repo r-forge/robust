@@ -68,7 +68,7 @@ plot.lmfm <- function(x, which.plots = c(5, 2, 6, 4), ...)
       switch(pick,
         return(invisible(x)),
 
-        place.holder <- 1,
+        place.holder = 1,
 
         qqPlot.lmfm(x,
                     fun = rmodified,

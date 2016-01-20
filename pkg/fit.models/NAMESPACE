@@ -1,4 +1,20 @@
-import(lattice)
+importFrom("graphics", par)
+
+importFrom("stats", as.formula, coef, fitted, formula,
+           hatvalues, lm.influence, model.frame,
+           model.response, predict, printCoefmat, qnorm,
+           qqnorm, quantile, residuals, rnorm)
+
+importFrom("utils", menu)
+
+importFrom("lattice", densityplot, llines,
+           panel.abline, panel.densityplot, panel.loess, panel.rug,
+           panel.text, panel.xyplot,
+           qqmath,
+           simpleKey, strip.default, xyplot)
+
+
+
 
 export(
   fit.models,
@@ -27,7 +43,14 @@ export(
   plot.glmfm
 )
 
- ## S3 methods for fit.models ##
+## S3 methods for fit.models ##
+
+S3method(leverage, default)
+S3method(leverage, lm)
+
+S3method(rmodified, default)
+
+## -- our "classes" :
 
 S3method(coef, lmfm)
 S3method(plot, lmfm)

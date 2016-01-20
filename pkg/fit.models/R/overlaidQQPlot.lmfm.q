@@ -1,6 +1,6 @@
 overlaidQQPlot.lmfm <- function(x, fun, ...)
 {
-  n.models <- length(x)
+  ## n.models <- length(x)
   mod.names <- names(x)
 
   y <- lapply(x, fun)

@@ -1,6 +1,6 @@
 plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
 {
-  n.models <- length(x)
+  ## n.models <- length(x)
 
   choices <- c("All",
                "Deviance Residuals vs. Predicted Values",
@@ -58,7 +58,7 @@ plot.glmfm <- function(x, which.plots = c(2, 5, 7, 6), ...)
       switch(pick,
         return(invisible(x)),
 
-        place.holder <- 1,
+        place.holder = 1,
 
         scatterPlot.lmfm(x,
                          x.fun = predict,

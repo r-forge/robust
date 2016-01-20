@@ -1,7 +1,7 @@
 
-R version 3.1.2 (2014-10-31) -- "Pumpkin Helmet"
-Copyright (C) 2014 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin14.1.0 (64-bit)
+R version 3.2.3 Patched (2016-01-17 r69948) -- "Wooden Christmas-Tree"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -21,7 +21,6 @@ Type 'q()' to quit R.
 > source(file.path(R.home("share"), "R", "examples-header.R"))
 > options(warn = 1)
 > library('fit.models')
-Loading required package: lattice
 > 
 > base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
 > cleanEx()
@@ -153,12 +152,13 @@ detaching ‘package:MASS’
 > flush(stderr()); flush(stdout())
 > 
 > ### Name: leverage
-> ### Title: Leverage
+> ### Title: Leverage Measure for Each Data Point
 > ### Aliases: leverage leverage.default leverage.lm
 > ### Keywords: regression methods
 > 
 > ### ** Examples
 > 
+> require("stats")
 > ## Example from lm:
 > ctl <- c(4.17,5.58,5.18,6.11,4.50,4.61,5.17,4.53,5.33,5.14)
 > trt <- c(4.81,4.17,4.41,3.59,5.87,3.83,6.03,4.89,4.32,4.69)
@@ -166,7 +166,11 @@ detaching ‘package:MASS’
 > weight <- c(ctl, trt)
 > lm.D9 <- lm(weight ~ group)
 > 
+> ## balanced design --> constant leverages :
 > leverage(lm.D9)
+  1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
+0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 
+> hatvalues(lm.D9)
   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20 
 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 
 > 
@@ -371,7 +375,7 @@ m2: 0.9088
 > ###
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  2.351 0.04 2.407 0 0 
+Time elapsed:  0.777 0.098 0.874 0 0 
 > grDevices::dev.off()
 null device 
           1 

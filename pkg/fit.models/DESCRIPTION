@@ -1,11 +1,13 @@
 Package: fit.models
 Version: 0.5-11
-Date: 2015-05-29
-Title: fit.models
-Description: A framework for comparing fitted models
+Date: 2016-01-20
+Title: Compare Fitted Models
+Description: A framework for comparing fitted models, notably robust and
+  classical fits.
 Author: Kjell Konis <kjell.konis@me.com>.
 Maintainer: Kjell Konis <kjell.konis@me.com>
-Depends: R (>= 2.15.0), lattice
+Depends: R (>= 2.15.0)
+Imports: lattice
 Suggests: MASS
 License: GPL
 

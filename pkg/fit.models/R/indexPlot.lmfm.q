@@ -44,7 +44,7 @@ indexPlot.lmfm <- function(x, fun, level = 0.95, id.n = 3, ...)
     s <- y[1]
     x <- x[-1]
     y <- y[-1]
-    type <- ifelse(length(y) > 60, "l", "b")
+    type <- if(length(y) > 60) "l" else "b"
     panel.xyplot(x, y, type = type, ...)
     s <- s * qnorm(0.5 + level / 2.0)
     if(id.n > 0) {

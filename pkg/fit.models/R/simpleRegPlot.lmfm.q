@@ -1,6 +1,6 @@
-simpleRegPlot.lmfm <- function(x, lwd.reg, col.reg, ...) 
+simpleRegPlot.lmfm <- function(x, lwd.reg, col.reg, ...)
 {
-  n.models <- length(x)
+  stopifnot((n.models <- length(x)) >= 1)
   mod.names <- names(x)
 
   mf <- sapply(x, function(u) !is.null(u$model))
@@ -15,7 +15,7 @@ simpleRegPlot.lmfm <- function(x, lwd.reg, col.reg, ...)
     stop(sQuote("x"), " is not a simple linear regression model")
 
   var.names <- attributes(mf)$names
-  frm <- as.formula(paste(paste(var.names, collapse = " ~ "), " | \"\""))
+  ## frm <- as.formula(paste(paste(var.names, collapse = " ~ "), " | \"\""))
 
   if(missing(lwd.reg))
     lwd.reg <- 1:n.models
@@ -54,7 +54,7 @@ simpleRegPlot.lmfm <- function(x, lwd.reg, col.reg, ...)
   key$lines$lwd <- lwd.reg
 
   mod <- rep(format(formula(x[[1]])), dim(mf)[1])
-
+  force(mod) # (to avoid wrong NOTE)
   p <- xyplot(mf[[1]] ~ mf[[2]] | mod,
               panel = panel.special,
               object = x,

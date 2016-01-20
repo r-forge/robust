@@ -1,10 +1,10 @@
 overlaidKernDenPlot.lmfm <- function(x, fun, ...)
 {
-  n.models <- length(x)
+  ## n.models <- length(x)
   mod.names <- names(x)
 
   y <- lapply(x, fun)
-  n.y <- sapply(y, length)
+  n.y <- sapply(y, length) # <- use lengths() once 'Depends: R (>= 3.2.0)'
   mod <- factor(rep(mod.names, n.y), levels = mod.names)
   tdf <- data.frame(y = unlist(y), mod = mod)
 
