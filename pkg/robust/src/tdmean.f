@@ -337,7 +337,7 @@ C   AUTHOR :     QUADPACK
 C                ADAPTED FOR ROBETH BY A. RANDRIAMIHARISOA
 C.......................................................................
 C
-	  implicit double precision(a-h, o-z)
+      implicit double precision(a-h, o-z)
 C      DOUBLE PRECISION A,ABSERR,ALIST,AREA,AREA1,AREA12,AREA2,
 C     *  AA1,AA2,B,
 C     *  BLIST,BB1,BB2,C,DABS,DEFABS,DEFAB1,DEFAB2,DMAX1,ELIST,EPMACH,
@@ -824,19 +824,28 @@ C
       B=B+2.D0
       TERM=TERM+1.D0
       AN=A*TERM
-      DO 33 I=1,2
-   33 PN(I+4)=B*PN(I+2)-AN*PN(I)
+C      DO 33 I=1,2
+C   33 PN(I+4)=B*PN(I+2)-AN*PN(I)
+      DO I=1,2
+        PN(I+4)=B*PN(I+2)-AN*PN(I)
+      END DO
       IF (PN(6).EQ.0.D0) GOTO 35
       RN=PN(5)/PN(6)
       DIF=DABS(GIN-RN)
       IF (DIF.GT.TOL) GOTO 34
       IF (DIF.LE.TOL*RN) GOTO 42
    34 GIN=RN
-   35 DO 36 I=1,4
-   36 PN(I)=PN(I+2)
+C   35 DO 36 I=1,4
+C   36 PN(I)=PN(I+2)
+   35 DO I=1,4
+        PN(I)=PN(I+2)
+      END DO
       IF (DABS(PN(5)).LT.OFLO) GOTO 32
-      DO 41 I=1,4
-   41 PN(I)=PN(I)/OFLO
+C      DO 41 I=1,4
+C   41 PN(I)=PN(I)/OFLO
+      DO I=1,4
+        PN(I)=PN(I)/OFLO
+      END DO
       GOTO 32
    42 GIN=1.D0-FACTOR*GIN
    50 G=GIN
@@ -1403,7 +1412,7 @@ C     ------------------------------------------------------------------
      *     Q3/-.119041179760821D-01/, Q4/ .595130811860248D-03/
 C     ------------------
       IF (DABS(X) .GT. 0.15D0) GO TO 10
-      REXP = X*(((P2*X + P1)*X + 1.D0)/((((Q4*X + Q3)*X + Q2)*X
+      RLREXP = X*(((P2*X + P1)*X + 1.D0)/((((Q4*X + Q3)*X + Q2)*X
      *                 + Q1)*X + 1.D0))
       RETURN
 C
@@ -1486,7 +1495,14 @@ C     -------------------
       T = A
       D = A - 0.5D0
       IF (D .GT. 0.D0) T = D - 0.5D0
-      IF (T) 30,10,20
+C      IF (T) 30,10,20
+      if(T < 0.D0) then
+        goto 30
+      else if (T > 0.D0) then
+        goto 20
+      else
+        goto 10
+      end if
 C
    10 RLGAM1 = 0.D0
       RETURN
@@ -1642,8 +1658,11 @@ C-----------------------------------------------------------------------
         IF (2*MED.EQ.N) POS=(X(MED)+POS)/2.D0
       ELSEIF (BETA.LT.1.D-5) THEN
         SUM=X(1)
-        DO 100 I=2,N
-  100   SUM=SUM+X(I)
+C        DO 100 I=2,N
+C  100   SUM=SUM+X(I)
+        DO I=2,N
+          SUM=SUM+X(I)
+        END DO
         POS=SUM/EN
       ELSE
         IU=INT(EN*(1.D0-BETA))
@@ -1669,8 +1688,11 @@ C
       implicit double precision(a-h,o-z)
       DIMENSION X(N),SX(N)
       CALL RLTMEANE(X,N,BETA,POS)
-      DO 100 I=1,N
-  100 SX(I)=DABS(X(I)-POS)
+C      DO 100 I=1,N
+C  100 SX(I)=DABS(X(I)-POS)
+      DO I=1,N
+        SX(I)=DABS(X(I)-POS)
+      END DO
       CALL RLTMEANE(SX,N,GAM,SCAL)
       RETURN
       END
@@ -2065,6 +2087,10 @@ C
       DOUBLE PRECISION ANS,EXGAM,EXPSI,DX,IFG(1),WGT(N),TETA(NT),XX(1)
       EXTERNAL EXGAM,EXPSI
 C     COMMON/TETAPR/TETA(60)
+C
+C avoid compiler warnings
+C
+      dummy = expsi(1.D0,1,1,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0)
 C
       RLIFGANS=0.D0
       ANS=EXGAM(WGT(2),WGT(1),DX)
@@ -2572,6 +2598,11 @@ C
       EXTERNAL EXWEB,EXPSI
 C     COMMON/TETAPR/TETA(60)
 C
+C avoid compiler warnings
+C
+      dummy = expsi(1.D0,1,1,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0)
+C
+C
 C  Initializations
 C
       RLIFWANS=0.D0
@@ -3006,6 +3037,11 @@ C
       EXTERNAL EXGAU,EXPSI
 c     COMMON/TETAPR/TETA(60)
       DATA NCALL,EXMIN/0,0.D0/
+C
+C avoid compiler warnings
+C
+      dummy = expsi(1.D0,1,1,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0,1.D0)
+C
 C
 C  Initializations
 C

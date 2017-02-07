@@ -13,7 +13,7 @@
 
 void F77_NAME(mminitclk)(Sint *ct)
 {
-  *ct = clock();
+  *ct = (Sint) clock();
 }
 
 void F77_NAME(mmprint)(Sint *nrep, Sint *itmp, Sint *ct, 
@@ -24,7 +24,7 @@ void F77_NAME(mmprint)(Sint *nrep, Sint *itmp, Sint *ct,
 
   nleft=(*nrep-(*ninc)*(*itmp))/(*ninc)+1;
   *elap += clock()-*ct;
-  *ct = clock();
+  *ct = (Sint) clock();
 
   tmp = (Sfloat) nleft /CLOCKS_PER_SEC;
   lapt = (Sint) ((*elap)/(*itmp)*tmp); 

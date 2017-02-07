@@ -61,8 +61,11 @@ C-----------------------------------------------------------------------
       ITYPE=1
       IF (IOPT.NE.2) NREP=ICNREP(N,NQ,IOPT,0)
       PSP0=RLPSPM2(ZERO,IPS,XK)
-      DO 10 I=1,NP
-  10  SP(I)=I
+C      DO 10 I=1,NP
+C  10  SP(I)=I
+      DO I=1,NP
+        SP(I)=I
+      END DO
 C-----------------------------------------------------------------------
 C     STEP 1: DRAW A SUBSAMPLE
 C-----------------------------------------------------------------------
@@ -187,16 +190,21 @@ C-----------------------------------------------------------------------
       MAXIW=1
       ISIGMA=-1
   830 SWI=0.D0
-      DO 860 I=1,N
-      WI=0.D0
-      IF (RS(I).EQ.0.D0) GOTO 840
-      T=RS(I)/SMIN
-      WI=RLPSIM2(T,IPS,XK)/T
-      SWI=SWI+WI
-      WI=SQRT(WI)
-  840 DO 850 J=1,NP
-  850 SX(I,J)=WI*X(I,J)
-  860 CONTINUE
+C      DO 860 I=1,N
+      DO I=1,N
+        WI=0.D0
+        IF (RS(I).EQ.0.D0) GOTO 840
+        T=RS(I)/SMIN
+        WI=RLPSIM2(T,IPS,XK)/T
+        SWI=SWI+WI
+        WI=SQRT(WI)
+C  840   DO 850 J=1,NP
+C  850   SX(I,J)=WI*X(I,J)
+  840   DO J=1,NP
+          SX(I,J)=WI*X(I,J)
+        END DO
+      END DO
+C  860 CONTINUE
       CALL RLKFFAM2(RS,N,NP,SMIN,FH,IPS,XK)
       FACT=FH*SWI/DFLOAT(N)
       IF (K.EQ.0) FACT=FACT*SMIN*SMIN
@@ -205,8 +213,11 @@ c        call dblepr('cov',3,cov,ncov)
       IF (K.EQ.0) RETURN
       SRES=SMIN
       ICNV=1
-      DO 870 J=1,NP
-  870 XTHETA(J)=THETA(J)
+C      DO 870 J=1,NP
+C  870 XTHETA(J)=THETA(J)
+      DO J=1,NP
+        XTHETA(J)=THETA(J)
+      END DO
       IF (MAXIW.EQ.1) CALL RLQRSHM2(RS,N,NP,SRES,QR0,IPS,XK)
   880  CALL RLRWAGM2(X,Y,THETA,SZ,COV,PSP0,SRES,N,NP,MDX,NCOV,
      *      TOLR,GAM,TAU,ITYPE,ISIGMA,ICNV,MAXIW,MAXS2,NIT8,
@@ -231,13 +242,23 @@ c
       SMIN=SRES
       FACT=SMIN*SMIN
       CALL RLSCALM2(COV,FACT,NCOV,1,NCOV)
-  915 DO 920 J=1,NP
-  920 THETA(J)=XTHETA(J)
-      DO 940 I=1,N
-      S=Y(I)
-      DO 930 J=1,NP
-  930 S=S-THETA(J)*X(I,J)
-  940 RS(I)=S
+C  915 DO 920 J=1,NP
+C  920 THETA(J)=XTHETA(J)
+  915 DO J=1,NP
+        THETA(J)=XTHETA(J)
+      END DO
+C      DO 940 I=1,N
+C      S=Y(I)
+C      DO 930 J=1,NP
+C  930 S=S-THETA(J)*X(I,J)
+C  940 RS(I)=S
+      DO I=1,N
+        S=Y(I)
+        DO J=1,NP
+          S=S-THETA(J)*X(I,J)
+        END DO
+        RS(I)=S
+      END DO
       RETURN
       END
 c
@@ -254,7 +275,16 @@ C
       DIMENSION NREPQ(8),NREPE(5)
       DATA NREPQ/150,300,400,500,600,700,850,1250/
       DATA NREPE/500,1000,1500,2000,2500/
-      GOTO (1,2,3,4) IOPT+1
+C      GOTO (1,2,3,4) IOPT+1
+      if (IOPT + 1 == 2) then
+        goto 2
+      else if (IOPT + 1 == 3) then
+        goto 3
+      else if (IOPT + 1 == 4) then
+        goto 4
+      else
+        goto 1
+      end if
     1 IF(NP .GE. 9) THEN
          ICNREP=1500
       ELSE
@@ -269,9 +299,13 @@ C
     3 RETURN
     4 NN=N
       NR=1
-      DO 10 I=1,NP
+C      DO 10 I=1,NP
+C         NR=(NR*NN)/I
+C   10    NN=NN-1
+      DO I=1,NP
          NR=(NR*NN)/I
-   10    NN=NN-1
+         NN=NN-1
+      END DO
       IF (IMODE.GE.3) NR=NR*2**(NP-1)
       ICNREP=NR
       RETURN
@@ -360,7 +394,7 @@ C   AUTHOR :     QUADPACK
 C                ADAPTED FOR ROBETH BY A. RANDRIAMIHARISOA
 C.......................................................................
 C
-C	  implicit double precision(a-h, o-z)
+C      implicit double precision(a-h, o-z)
 C      DOUBLE PRECISION A,ABSERR,ALIST,AREA,AREA1,AREA12,AREA2,
 C     *  AA1,AA2,B,
 C     *  BLIST,BB1,BB2,C,DABS,DEFABS,DEFAB1,DEFAB2,DMAX1,ELIST,EPMACH,
@@ -1054,11 +1088,17 @@ c
 c     IPSI=4
 c     K0=1.548D0
 c
-      do 10 i=1,np+1
-      do 10 j=1,np+1
-        avts0(i,j)=0.d0
-        avts(i,j)=0.d0
-   10 continue
+C      do 10 i=1,np+1
+C      do 10 j=1,np+1
+C        avts0(i,j)=0.d0
+C        avts(i,j)=0.d0
+C   10 continue
+      do i=1,np+1
+        do j=1,np+1
+          avts0(i,j)=0.d0
+          avts(i,j)=0.d0
+        end do
+      end do
 c      avs0=0.d0
 c      avs=0.d0
       tmp1=xbar(1)
@@ -1076,8 +1116,11 @@ c      avs=0.d0
   220   continue
         z0=z0/sigma
         tmp1=rlpsim2(z0,2,k0)
-        do 235 i=1,np
-  235   sc1(i)=tmp1*x0(i)
+C        do 235 i=1,np
+C  235   sc1(i)=tmp1*x0(i)
+        do i=1,np
+          sc1(i)=tmp1*x0(i)
+        end do
         sc1(np+1)=rlchisk(z0,k0)
         do 240 i=1,np+1
         its0(i)=0.d0
@@ -1098,8 +1141,11 @@ c        z0=z0/sigma1
         call RLD1N(U,SIGMA,ITS0,XtX,NP,SA)
         call RLD2N(U,SIGMA,IS0,TMP2)
         tmp2=tmp2+RLPSI2N(z0,u)-alfa*beta-beta*ialf
-        do 265 i=1,np
-  265   sc1(i)=tmp1*x0(i)+sa(i)
+C        do 265 i=1,np
+C  265   sc1(i)=tmp1*x0(i)+sa(i)
+        do i=1,np
+          sc1(i)=tmp1*x0(i)+sa(i)
+        end do
         sc1(np+1)=tmp2
         do 280 i=1,np+1
         its(i)=0.d0
@@ -1108,13 +1154,21 @@ c        z0=z0/sigma1
   270   continue
   280   continue
 c
-        do 300 i=1,np+1
-        do 300 j=1,i
-        avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
-        if (i.ne.j) avts0(j,i)=avts0(i,j)
-        avts(i,j)=avts(i,j)+its(i)*its(j)/en2
-        if (i.ne.j) avts(j,i)=avts(i,j)
-  300   continue
+c        do 300 i=1,np+1
+c        do 300 j=1,i
+c        avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
+c        if (i.ne.j) avts0(j,i)=avts0(i,j)
+c        avts(i,j)=avts(i,j)+its(i)*its(j)/en2
+c        if (i.ne.j) avts(j,i)=avts(i,j)
+c  300   continue
+      do i=1,np+1
+        do j=1,i
+          avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
+          if (i.ne.j) avts0(j,i)=avts0(i,j)
+          avts(i,j)=avts(i,j)+its(i)*its(j)/en2
+          if (i.ne.j) avts(j,i)=avts(i,j)
+        end do
+      end do
   500 continue
       return
       end
@@ -1255,7 +1309,18 @@ C
         ZV=DX/VV
         XZV=EXV(ZV)
       ENDIF
-      GOTO (10,20,30,40,50) I
+c      GOTO (10,20,30,40,50) I
+      if(I == 2) then
+        goto 20
+      else if (I == 3) then 
+        goto 30
+      else if (I == 4) then
+        goto 40
+      else if (I == 5) then
+        goto 50
+      else
+        goto 10
+      end if
    10 CHIS1WP=(EXV(DX-B1)-1.D0)*ANS
       RETURN
    20 CHIS1WP=EXV(DX-B1)*ANS
@@ -1445,11 +1510,17 @@ c
 c     COMMON/PSIPR/IPSI,C,H1,H2,H3,XK,D
 c
 c
-      do 10 i=1,np+1
-      do 10 j=1,np+1
-        avts0(i,j)=0.d0
-        avts(i,j)=0.d0
-   10 continue
+c      do 10 i=1,np+1
+c      do 10 j=1,np+1
+c        avts0(i,j)=0.d0
+c        avts(i,j)=0.d0
+c   10 continue
+      do i=1,np+1
+        do j=1,np+1
+          avts0(i,j)=0.d0
+          avts(i,j)=0.d0
+        end do
+      end do
       en2=dfloat(n)*dfloat(n-np)
 
       alfa=rlpezez(u)-rlpezez(l)
@@ -1463,8 +1534,11 @@ c
   220   continue
         z0=z0/sigma
         tmp1=rlpsim2(z0,2,xk)
-        do 235 i=1,np
-  235   sc1(i)=tmp1*x0(i)
+c        do 235 i=1,np
+c  235   sc1(i)=tmp1*x0(i)
+        do i=1,np
+          sc1(i)=tmp1*x0(i)
+        end do
         sc1(np+1)=rlchisk(z0,xk)
         do 240 i=1,np+1
         its0(i)=0.d0
@@ -1486,8 +1560,11 @@ c        z0=z0/sigma1
         call RLD1W(L,U,SIGMA,ITS0,IS0,XtX,XBAR,NP,SA)
         call RLD2W(L,U,SIGMA,ITS0,IS0,XBAR,NP,TMP2)
         tmp2=tmp2+RLPsi2w(z0,l,u)-alfa*beta-beta*ialf
-        do 265 i=1,np
-  265   sc1(i)=tmp1*x0(i)+sa(i)
+c        do 265 i=1,np
+c  265   sc1(i)=tmp1*x0(i)+sa(i)
+        do i=1,np
+          sc1(i)=tmp1*x0(i)+sa(i)
+        end do
         sc1(np+1)=tmp2
         do 280 i=1,np+1
         its(i)=0.d0
@@ -1496,13 +1573,21 @@ c        z0=z0/sigma1
   270   continue
   280   continue
 c
-        do 300 i=1,np+1
-        do 300 j=1,i
-        avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
-        if (i.ne.j) avts0(j,i)=avts0(i,j)
-        avts(i,j)=avts(i,j)+its(i)*its(j)/en2
-        if (i.ne.j) avts(j,i)=avts(i,j)
-  300   continue
+c        do 300 i=1,np+1
+c        do 300 j=1,i
+c        avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
+c        if (i.ne.j) avts0(j,i)=avts0(i,j)
+c        avts(i,j)=avts(i,j)+its(i)*its(j)/en2
+c        if (i.ne.j) avts(j,i)=avts(i,j)
+c  300   continue
+      do i=1,np+1
+        do j=1,i
+          avts0(i,j)=avts0(i,j)+its0(i)*its0(j)/en2
+          if (i.ne.j) avts0(j,i)=avts0(i,j)
+          avts(i,j)=avts(i,j)+its(i)*its(j)/en2
+          if (i.ne.j) avts(j,i)=avts(i,j)
+        end do
+      end do
   500 continue
       return
       end

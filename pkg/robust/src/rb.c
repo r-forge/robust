@@ -139,7 +139,7 @@ void rl_rb_rand(Sfloat *X, Sfloat *y, Sint *N, Sint *P, Sint *M, Sfloat *ours,
 	/* the correction matrix is now in x3 */
 	/* the correction vector is now in v2 */
 
-	srand(seed);
+	/* srand(seed); */
 
 	/* start the bootstrap replications */
 	for(i = 0; i < m; i++) {
@@ -303,7 +303,7 @@ void rl_rb_fixed(Sfloat *X, Sfloat *y, Sint *N, Sint *P, Sint *M, Sfloat *ours,
 	/* the correction matrix is now in x3 */
 	/* the correction vector is now in v2 */
 
-	srand(seed);
+	/* srand(seed); */
 
 	/* start the bootstrap replications */
 	for(i=0;i<m;i++) {
