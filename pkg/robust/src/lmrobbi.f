@@ -140,6 +140,14 @@ C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION WGT(N),INDEX(7),TUNINGC(9)
       EXTERNAL FPSI
+C
+C avoid compiler warnings
+C
+
+      dummy = WGT(1)
+      dummy = SIGM
+      dummy = XLCNST
+
 C-----------------------------------------------------------------------
 C compute  Psi^2 (s)  or  Psi^2 (s / wgt[i]) -- psi(.) specified by FPSI(.)
 c     used as integrand passed to rlIGRDbi(.)
@@ -283,6 +291,14 @@ C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION WGT(N),INDEX(7),TUNINGC(9)
       EXTERNAL FPSI
+C
+C avoid compiler warnings
+C
+
+      dummy = WGT(1)
+      dummy = SIGM
+      dummy = XLCNST
+
 C-----------------------------------------------------------------------
 C compute  Psi(s)*phi(s)*s  or ... (s/wgt[i]) -- psi(.) specified by FPSI(.)
 c     phi(.) = dnorm(.);  used to compute  integral[..  psi'(.) ]
@@ -831,6 +847,12 @@ C.......................................................................
       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
       DIMENSION WGT(N),INDEX(7),TUNINGC(9)
       EXTERNAL EXU
+C
+C
+C
+
+      dummy = WGT(1)
+
 C-----------------------------------------------------------------------
 C     rlUZEDbi(S)=U(SQRT(ZBAR2+BET2*S^2))*dG(S)
 C-----------------------------------------------------------------------
@@ -1538,7 +1560,7 @@ C-----------------------------------------------------------------------
  15   CONTINUE
       IF (INIT.EQ.1) RETURN
       IF (ITYPW.EQ.2) GOTO 100
- 20   DO 50 J=1,NVAR
+      DO 50 J=1,NVAR
          CALL rlLMDDbi(X(1,J),SC,NFIRST,1,XME,XMD,XSD)
          SQDEV2=DSQRT(XSD**2+XME**2)
          JJ=(J*J+J)/2
@@ -2202,7 +2224,7 @@ C----------------------------------------------------------------------
 C----------------------------------------------------------------------
 C     STEP 1. SET NIT:=1
 C----------------------------------------------------------------------
- 100  NIT=1
+      NIT=1
 C----------------------------------------------------------------------
 C     STEP 2. COMPUTE RESIDUALS
 C----------------------------------------------------------------------
@@ -2221,7 +2243,7 @@ C----------------------------------------------------------------------
 C----------------------------------------------------------------------
 C     STEP 4. COMPUTE THE (UNSCALED) NEGATIVE GRADIENT
 C----------------------------------------------------------------------
- 400  DO 410 I=1,N
+      DO 410 I=1,N
          SD(I)=RS(I)
  410  CONTINUE
       CALL rlHUBbi(SD,WGT,WGT,SIGMB,N,ITYP,IPS,XK)

@@ -130,6 +130,12 @@ C.......................................................................
       DIMENSION X2(MDX,NP),SF(NP),SG(3*NP),SH(NP),IP(NP)
       DIMENSION HDIAG(N),Q(NP,NP),U(NP,NP),Z(MDX,NP)
       DATA ZERO,ONE/0.D0,1.D0/
+C
+C avoid compiler warnings
+C 
+
+      dummy = U(1,1)
+
 C-----------------------------------------------------------------------     
 C     COMPUTES OLS FIT AND PRINCIPAL SENSITIVITY COMPONENTS
 C-----------------------------------------------------------------------   

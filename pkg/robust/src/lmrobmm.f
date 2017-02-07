@@ -413,7 +413,12 @@ C-----------------------------------------------------------------------
       DO 10 J=L1,M
          CL=DMAX1(DABS(U(1,J)),CL)
  10   CONTINUE
-      IF (CL) 130,130,20
+C      IF (CL) 130,130,20
+      if(CL > 0.D0) then
+        goto 20
+      else
+        goto 130
+      end if
  20   CLINV=ONE/CL
       SM=(U(1,LPIVOT)*CLINV)**2
       DO 30 J=L1,M
@@ -424,7 +429,12 @@ C     CONVERT DBLE. PRE. SM TO SNGL. PREC. SM1
 C-----------------------------------------------------------------------
       SM1=SM
       CL=CL*DSQRT(SM1)
-      IF (U(1,LPIVOT)) 50,50,40
+C      IF (U(1,LPIVOT)) 50,50,40
+      if(U(1,LPIVOT) > 0.D0) then
+        goto 40
+      else
+        goto 50
+      end if
  40   CL=-CL
  50   UP=U(1,LPIVOT)-CL
       U(1,LPIVOT)=CL
@@ -432,13 +442,23 @@ C-----------------------------------------------------------------------
 C-----------------------------------------------------------------------
 C     APPLY THE TRANSFORMATION I+U*(U**T)/B TO C
 C-----------------------------------------------------------------------
- 60   IF (CL) 130,130,70
+c 60   IF (CL) 130,130,70
+ 60   if(CL > 0.D0) then
+        goto 70
+      else
+        goto 130
+      end if
  70   IF (NCV.LE.0) RETURN
       B=UP*U(1,LPIVOT)
 C-----------------------------------------------------------------------
 C     B MUST BE NONPOSITIVE HERE. IF B=0., RETURN.
 C-----------------------------------------------------------------------
-      IF (B) 80,130,130
+c      IF (B) 80,130,130
+      if(B < 0.D0) then
+        goto 80
+      else
+        goto 130
+      end if
  80   B=ONE/B
       I2=1-ICV+ICE*(LPIVOT-1)
       INCR=ICE*(L1-LPIVOT)
@@ -451,7 +471,12 @@ C-----------------------------------------------------------------------
             SM=SM+C(I3)*U(1,I)
             I3=I3+ICE
  90      CONTINUE
-         IF (SM) 100,120,100
+C         IF (SM) 100,120,100
+      if(SM > 0.D0 .or. SM < 0.D0) then
+        goto 100
+      else
+        goto 120
+      end if
  100     SM=SM*B
          C(I2)=C(I2)+SM*UP
          DO 110 I=L1,M
@@ -656,7 +681,12 @@ C-----------------------------------------------------------------------
             SM=SM+X(I,J)*THETA(J)
  50      CONTINUE
  60      SM1=SM
-         IF (X(I,I)) 80,70,80
+C         IF (X(I,I)) 80,70,80
+         if(X(I,I) > 0.D0 .or. X(I,I) < 0.D0) then
+           goto 80
+         else
+           goto 70
+         end if
  70      CALL XERROR('Singular matrix',15,10,-1)
  80      THETA(I)=(THETA(I)-SM1)/X(I,I)
  90   CONTINUE
@@ -821,7 +851,12 @@ C-----------------------------------------------------------------------
       ONE=1.D0
       K=L1-1
       B=U(1,LPIVOT)*UP
-      IF (B) 15,999,999
+C      IF (B) 15,999,999
+      if(B < 0.D0) then
+        goto 15
+      else
+        goto 999
+      end if
  15   B=ONE/B
 C-----------------------------------------------------------------------
 C     COMPUTE THE SCALAR PRODUCTS OF U WITH THE H-TH COLUMN OF S FOR H=1..M
@@ -985,7 +1020,12 @@ C-----------------------------------------------------------------------
             SH(L)=SH(L)-X(J-1,L)**2
             IF(SH(L).GT.SH(LMAX)) LMAX=L
  10      CONTINUE
-         IF (HMAX+FACTOR*SH(LMAX)-HMAX) 20,20,50
+C         IF (HMAX+FACTOR*SH(LMAX)-HMAX) 20,20,50
+      if((HMAX+FACTOR*SH(LMAX)-HMAX) > 0.D0) then
+        goto 50
+      else
+        goto 20
+      end if
 C-----------------------------------------------------------------------
 C     COMPUTE SQUARED COLUMN LENGTHS AND FIND LMAX
 C-----------------------------------------------------------------------

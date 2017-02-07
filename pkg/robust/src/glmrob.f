@@ -746,6 +746,12 @@ C
       EXTERNAL RLICTHM2
       DATA ZERO/0.D0/
 C
+C avoid compiler warning
+C
+
+      idummy = TRACE
+
+C
 C  STEP 0 : INITIALIZATIONS
 C  ------
 
@@ -880,12 +886,19 @@ C  ------
 C
       FIRST=.TRUE.
  400  NULF2=.TRUE.
-      DO 410 I=1,N
-         SQF2=DSQRT(F2(I))
-         IF (SQF2.GT.1.D-5) NULF2=.FALSE.
-         DO 410 J=1,NP
-            SX(I,J)=X(I,J)*SQF2
- 410     CONTINUE
+c      DO 410 I=1,N
+c         SQF2=DSQRT(F2(I))
+c         IF (SQF2.GT.1.D-5) NULF2=.FALSE.
+c         DO 410 J=1,NP
+c            SX(I,J)=X(I,J)*SQF2
+c 410     CONTINUE
+      DO I=1,N
+        SQF2=DSQRT(F2(I))
+        IF (SQF2.GT.1.D-5) NULF2=.FALSE.
+        DO J=1,NP
+          SX(I,J)=X(I,J)*SQF2
+        END DO
+      END DO
          IF (NULF2) THEN
             K=0
          ELSE
@@ -1866,6 +1879,12 @@ C
      2          RW1(5*NP),RW2(MDX,NP),HESSNV(NCOV)
       INTEGER NI(N),IW1(NP)
       DATA ZETA,IQ/0.D001,10/
+C
+C avoid compiler warnings
+C
+
+      idummy = nitmon
+
 C
 C  PARAMETER CHECK
 C
