@@ -1,6 +1,6 @@
 Package: robust
 Version: 0.4-18
-Date: 2017-02-07
+Date: 2017-04-26
 Title: Port of the S+ "Robust Library"
 Description: Methods for robust statistics, a state of the art in the early
   2000s, notably for robust regression and robust multivariate analysis.

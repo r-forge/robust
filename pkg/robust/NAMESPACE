@@ -27,7 +27,7 @@ importFrom("MASS", fitdistr, lmsreg)
 importFrom("robustbase", covMcd, rrcov.control)
 
 importFrom("fit.models", fit.models, fmclass.register, fmclass.add.class,
-           plot.glmfm)
+           plot.glmfm, designMD)
 
 importFrom("rrcov", CovControlOgk, covMest, CovOgk, CovSde,
            getCenter, getCov, getDistance)
@@ -127,7 +127,7 @@ S3method(plot, lmRob)
 S3method(predict, lmRob)
 S3method(summary, lmRob)
 S3method(update, lmRob)
-S3method(hatvalues, lmRob)
+S3method(designMD, lmRob)
 S3method(residuals, lmRob)
 S3method(model.matrix, lmRob)
 S3method(model.frame, lmRob)
@@ -145,7 +145,7 @@ S3method(print, glmRob)
 S3method(summary, glmRob)
 S3method(labels, glmRob)
 S3method(predict, glmRob)
-S3method(hatvalues, glmRob)
+S3method(designMD, glmRob)
 S3method(residuals, glmRob)
 S3method(model.matrix, glmRob)
 S3method(model.frame, glmRob)
@@ -197,7 +197,7 @@ S3method(anova, lmRoblist)
 
 ## S3 methods for other packages ##
 
-S3method(hatvalues, rlm)
-S3method(hatvalues, lmrob)
-S3method(hatvalues, glmrob)
+S3method(designMD, rlm)
+S3method(designMD, lmrob)
+S3method(designMD, glmrob)
 

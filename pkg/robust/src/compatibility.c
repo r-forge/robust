@@ -1,5 +1,13 @@
 #include <S.h>
+#include "R_ext/Rdynload.h"
 #include "robust.h"
+
+void R_init_mypkg(DllInfo *dll)
+{
+    R_registerRoutines(dll, NULL, NULL, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}
+
 
 #ifdef USING_R
 void F77_SUB(fseedi)(void)

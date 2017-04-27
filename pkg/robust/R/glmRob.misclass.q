@@ -43,7 +43,7 @@ glmRob.misclass <- function(x, y, control, offset, null.dev, family, Terms)
 
   w <- glmRob.misclass.w(eta, mc.gamma)
 
-  w.glm.fit <- glm.fit(x = x, y = y, family = binomial(), weights = w)
+  w.glm.fit <- suppressWarnings(glm.fit(x = x, y = y, family = binomial(), weights = w))
 
   w.glm.fit$call <- the.call
   w.glm.fit$control <- control

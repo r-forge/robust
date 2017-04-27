@@ -1,15 +1,12 @@
-robMD2 <- function(object, scale = c("md2", "hat"), X = NULL)
+robMD2 <- function(object)
 {
-  scale <- match.arg(scale)
   m <- model.frame(object)
 
   if(is.null(m))
     return(rep(as.numeric(NA), length(fitted(object))))
 
   m.terms <- terms(m)
-
-  if(is.null(X))
-    X <- model.matrix(m.terms, m)
+  X <- model.matrix(m.terms, m)
 
   dc <- attr(m.terms, "dataClasses")
   tl <- attr(m.terms, "term.labels")
@@ -31,41 +28,32 @@ robMD2 <- function(object, scale = c("md2", "hat"), X = NULL)
 
   D <- model.matrix(m.terms, m)
 
-  if(scale == "hat") {
-    R <- qr.R(qr(D))
-    U <- backsolve(R, t(X), transpose = TRUE)
-    ans <- colSums(U^2)
-  }
-  
-  else {
-    if(attr(m.terms, "intercept")) {
-      X <- X[, -1, drop = FALSE]
-      D <- D[, -1, drop = FALSE]
-    }
-    ans <- mahalanobis(X, apply(D, 2, mean), var(D))
+  if(attr(m.terms, "intercept")) {
+    X <- X[, -1, drop = FALSE]
+    D <- D[, -1, drop = FALSE]
   }
 
-  ans
+  stats::mahalanobis(X, colMeans(D), var(D))
 }
 
 
-hatvalues.lmRob <- function(model, ...)
-  robMD2(model, scale = "hat", X = model$x)
+designMD.lmRob <- function(object, ...)
+  robMD2(object)
 
 
 ## Methods for other packages ##
 
 
-hatvalues.lmrob <- function(model, ...)
-  robMD2(model, scale = "hat")
+designMD.lmrob <- function(object, ...)
+  robMD2(object)
 
 
-hatvalues.glmrob <- function(model, ...)
-  robMD2(model, scale = "hat")
+designMD.glmrob <- function(object, ...)
+  robMD2(object)
 
 
-hatvalues.rlm <- function(model, ...)
-  robMD2(model, scale = "hat")
+designMD.rlm <- function(object, ...)
+  robMD2(object)
 
 
 

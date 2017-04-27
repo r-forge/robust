@@ -393,8 +393,6 @@ Residual Deviance: 40.06
 > data(leuk.dat)
 > 
 > glmRob(y ~ ag + wbc, data = leuk.dat, family = binomial(), method = 'misclass')
-Warning in eval(expr, envir, enclos) :
-  non-integer #successes in a binomial glm!
 Call:
 glmRob(formula = y ~ ag + wbc, family = binomial(), data = leuk.dat, 
     method = "misclass")
@@ -603,7 +601,6 @@ Test statistic: 274.3 on 3 DF, p-value: 0
 > data(stack.dat)
 > stack.rob <- lmRob(Loss ~ ., data = stack.dat)
 > plot(stack.rob, which.plots = 6)
-Warning in sqrt(1 - hatvalues(object)) : NaNs produced
 > 
 > 
 > 

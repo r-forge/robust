@@ -33,7 +33,7 @@ family.glmRob <- function(object, ...)
 }
 
 
-hatvalues.glmRob <- function(model, ...)
-  robMD2(model, scale = "md2", X = model$x)
+designMD.glmRob <- function(object, ...)
+robMD2(object)
 
 
